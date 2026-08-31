@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -208,6 +208,7 @@
         <nav class="nav-links">
             <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Bienvenido</a>
             <a href="#" class="nav-link">Catálogo</a>
+            <a href="/categories" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">Categorías (Admin)</a>
             <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">Usuarios (Admin)</a>
         </nav>
         

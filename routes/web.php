@@ -11,3 +11,9 @@ Route::get('/users', 'App\Http\Controllers\UserController@index')->name('users.i
 Route::get('/users/{id}/edit', 'App\Http\Controllers\UserController@edit')->name('users.edit');
 Route::put('/users/{id}', 'App\Http\Controllers\UserController@update')->name('users.update');
 Route::delete('/users/{id}', 'App\Http\Controllers\UserController@destroy')->name('users.destroy');
+
+Route::get('/categories', 'App\Http\Controllers\CategoryController@index')->name('categories.index');
+Route::post('/categories', 'App\Http\Controllers\CategoryController@store')->name('categories.store');
+Route::get('/categories/{id}/edit', 'App\Http\Controllers\CategoryController@edit')->name('categories.edit');
+Route::put('/categories/{id}', 'App\Http\Controllers\CategoryController@update')->name('categories.update');
+Route::delete('/categories/{id}', 'App\Http\Controllers\CategoryController@destroy')->name('categories.destroy');
