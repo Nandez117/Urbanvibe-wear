@@ -19,9 +19,9 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - Las tablas en la base de datos deben estar en plural y sus columnas en *snake_case*.
   - Al instanciar un modelo, la variable debe tener el mismo nombre que la clase (ej. $product = new Product();).
 - **Encapsulamiento (-0.4):** 
-  - Es obligatorio declarar explícitamente todos los atributos del modelo (-0.2 si falta el listado).
-  - Los atributos deben tener visibilidad private y usar notación camelCase (indicando su tipo, sin repetir el nombre de la clase).
-  - El acceso y modificación de estos atributos, incluso en las relaciones de Eloquent, debe hacerse estrictamente mediante métodos accesores y mutadores (getters y setters).
+  - **Excepción Eloquent vs UML:** En Laravel (Eloquent), declarar propiedades private interfiere con el funcionamiento interno del ORM (que usa el arreglo attributes). Por lo tanto, el estándar para cumplir con el encapsulamiento es:
+  - Declarar el listado completo de atributos como un gran comentario (DocBlock) en la parte superior de la clase.
+  - Crear todos los métodos accesores y mutadores (getters y setters) en notación camelCase (ej. getNombre()) utilizando internamente $this->attributes['nombre']. Así se respeta el encapsulamiento estricto sin romper el framework.
 - **Métodos y Relaciones:** 
   - Los métodos internos deben ser privados, escritos en camelCase y siempre incluir paréntesis ().
   - Las relaciones del diagrama de clases se traducen en dos funciones (propiedades dinámicas) que conectan ambos modelos. No se deben incluir multiplicidades numéricas en el código.
