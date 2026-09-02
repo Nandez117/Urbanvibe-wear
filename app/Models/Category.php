@@ -20,24 +20,24 @@ class Category extends Model
         'name',
     ];
 
-    public function getId(): int
-    {
-        return $this->attributes['id'];
-    }
-
     public function setId(int $id): void
     {
         $this->attributes['id'] = $id;
     }
 
-    public function getName(): string
-    {
-        return $this->attributes['name'];
-    }
-
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
+
+    public function getName(): string
+    {
+        return $this->attributes['name'];
     }
 
     public function getCreatedAt(): string
