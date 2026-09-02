@@ -149,6 +149,16 @@ class Product extends Model
         $this->attributes['category_id'] = $categoryId;
     }
 
+    public function getCreatedAt(): string
+    {
+        return $this->attributes['created_at'];
+    }
+
+    public function getUpdatedAt(): string
+    {
+        return $this->attributes['updated_at'];
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -162,15 +172,5 @@ class Product extends Model
     public function setCategory(Category $category): void
     {
         $this->category()->associate($category);
-    }
-
-    public function getCreatedAt(): string
-    {
-        return $this->attributes['created_at'];
-    }
-
-    public function getUpdatedAt(): string
-    {
-        return $this->attributes['updated_at'];
     }
 }
