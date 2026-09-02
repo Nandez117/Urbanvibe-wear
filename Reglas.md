@@ -46,5 +46,5 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 Para asegurar que todo el equipo comparta el mismo estilo de formateo y adherencia a los estándares (como PSR-12), se utilizará **[Laravel Pint](https://laravel.com/docs/pint)**. Pint es un formateador de código de PHP estricto y sin configuración, construido sobre PHP-CS-Fixer, diseñado para mantener el código limpio y consistente.
 
 - **Ubicación de Ejecución:** El comando para formatear el código **siempre se debe ejecutar desde la raíz del proyecto** (la carpeta principal).
-- **Flujo Obligatorio:** Antes de confirmar cualquier cambio (`git commit`), cada desarrollador debe ejecutar en su terminal el comando `./vendor/bin/pint` (o `php artisan pint`). 
+- **Flujo Obligatorio (Desde la Raíz):** Antes de confirmar cualquier cambio (`git commit`), cada desarrollador debe asegurarse de **estar parado en la carpeta raíz del proyecto** (ej: `Urbanvibe-wear/`) y ejecutar en su terminal el comando `./vendor/bin/pint` (o `php artisan pint`). 
 - **Revisión en Pull Requests:** Si un PR contiene problemas de formato que Pint podría haber corregido, el PR será rechazado y no será integrado en la rama `develop` hasta que el autor aplique la corrección.

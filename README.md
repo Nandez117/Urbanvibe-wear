@@ -1,4 +1,4 @@
-﻿# Urbanvibe-wear 👕👟
+# Urbanvibe-wear 👕👟
 
 **Urbanvibe-wear** es una plataforma moderna de comercio electrónico enfocada en la venta de ropa y calzado urbano. Nuestro objetivo es ofrecer una experiencia de compra ágil, segura y con una interfaz de usuario atractiva para los amantes del estilo urbano.
 
@@ -77,6 +77,13 @@ Estamos utilizando **Laragon / MAMP** como entorno de desarrollo local. Los serv
    ```
    ```bash
    npm run dev
+   ```
+
+7. **Estandarización de Código:**
+   El proyecto utiliza **[Laravel Pint](https://laravel.com/docs/pint)** (un formateador de código estricto para PHP). 
+   Debes ejecutarlo **siempre desde la ruta raíz del proyecto** antes de hacer un commit:
+   ```bash
+   ./vendor/bin/pint
    ```
 
 ## 🚀 Despliegue en GCP (Google Cloud Platform)
