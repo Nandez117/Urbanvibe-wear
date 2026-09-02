@@ -36,3 +36,10 @@ Route::post('/order-items', 'App\Http\Controllers\OrderItemController@store')->n
 Route::get('/order-items/{id}/edit', 'App\Http\Controllers\OrderItemController@edit')->name('order-items.edit');
 Route::put('/order-items/{id}', 'App\Http\Controllers\OrderItemController@update')->name('order-items.update');
 Route::delete('/order-items/{id}', 'App\Http\Controllers\OrderItemController@destroy')->name('order-items.destroy');
+
+Route::get('/reviews', 'App\Http\Controllers\ReviewController@index')->name('reviews.index');
+Route::get('/reviews/create', 'App\Http\Controllers\ReviewController@create')->name('reviews.create');
+Route::post('/reviews', 'App\Http\Controllers\ReviewController@store')->name('reviews.store');
+Route::get('/reviews/{id}/edit', 'App\Http\Controllers\ReviewController@edit')->name('reviews.edit');
+Route::put('/reviews/{id}', 'App\Http\Controllers\ReviewController@update')->name('reviews.update');
+Route::delete('/reviews/{id}', 'App\Http\Controllers\ReviewController@destroy')->name('reviews.destroy');
