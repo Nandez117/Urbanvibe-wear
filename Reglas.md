@@ -1,4 +1,4 @@
-﻿# Normativas y Estándares de Desarrollo (Urbanvibe-wear)
+# Normativas y Estándares de Desarrollo (Urbanvibe-wear)
 
 Este documento define las políticas técnicas y de estilo que el equipo debe seguir para garantizar la calidad, legibilidad y consistencia del código. El incumplimiento de estas normas conlleva penalizaciones en la evaluación.
 
@@ -22,6 +22,7 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - **Excepción Eloquent vs UML:** En Laravel (Eloquent), declarar propiedades private interfiere con el funcionamiento interno del ORM (que usa el arreglo attributes). Por lo tanto, el estándar para cumplir con el encapsulamiento es:
   - Declarar el listado completo de atributos como un gran comentario (DocBlock) en la parte superior de la clase.
   - Crear todos los métodos accesores y mutadores (getters y setters) en notación camelCase (ej. getNombre()) utilizando internamente $this->attributes['nombre']. Así se respeta el encapsulamiento estricto sin romper el framework.
+  - **Tipado Estricto y Retornos:** Es obligatorio definir el tipo de dato de los parámetros recibidos en los setters y el tipo de retorno en los getters (ej. `public function getId(): int`).
 - **Métodos y Relaciones:** 
   - Los métodos internos deben ser privados, escritos en camelCase y siempre incluir paréntesis ().
   - Las relaciones del diagrama de clases se traducen en dos funciones (propiedades dinámicas) que conectan ambos modelos. No se deben incluir multiplicidades numéricas en el código.
