@@ -29,3 +29,10 @@ Route::post('/orders', 'App\Http\Controllers\OrderController@store')->name('orde
 Route::get('/orders/{id}/edit', 'App\Http\Controllers\OrderController@edit')->name('orders.edit');
 Route::put('/orders/{id}', 'App\Http\Controllers\OrderController@update')->name('orders.update');
 Route::delete('/orders/{id}', 'App\Http\Controllers\OrderController@destroy')->name('orders.destroy');
+
+Route::get('/order-items', 'App\Http\Controllers\OrderItemController@index')->name('order-items.index');
+Route::get('/order-items/create', 'App\Http\Controllers\OrderItemController@create')->name('order-items.create');
+Route::post('/order-items', 'App\Http\Controllers\OrderItemController@store')->name('order-items.store');
+Route::get('/order-items/{id}/edit', 'App\Http\Controllers\OrderItemController@edit')->name('order-items.edit');
+Route::put('/order-items/{id}', 'App\Http\Controllers\OrderItemController@update')->name('order-items.update');
+Route::delete('/order-items/{id}', 'App\Http\Controllers\OrderItemController@destroy')->name('order-items.destroy');
