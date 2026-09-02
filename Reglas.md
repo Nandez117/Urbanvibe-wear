@@ -43,7 +43,8 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 - **Optimización:** Se deben aplicar conceptos como *Dynamic loading* y funciones accesorias (*accessors*) cuando el contexto lo amerite para mejorar el rendimiento y la limpieza.
 
 ## 5. Estandarización Automática (Laravel Pint)
-Para asegurar que todo el equipo comparta el mismo estilo de formateo, se utilizará **Laravel Pint**.
+Para asegurar que todo el equipo comparta el mismo estilo de formateo y adherencia a los estándares (como PSR-12), se utilizará **[Laravel Pint](https://laravel.com/docs/pint)**. Pint es un formateador de código de PHP estricto y sin configuración, construido sobre PHP-CS-Fixer, diseñado para mantener el código limpio y consistente.
 
-- **Flujo Obligatorio:** Antes de confirmar cualquier cambio (git commit), cada desarrollador debe ejecutar en su terminal el comando ./vendor/bin/pint (o php artisan pint). 
-- **Revisión en Pull Requests:** Si un PR contiene problemas de formato que Pint podría haber corregido, no será integrado en la rama develop hasta que el autor aplique la corrección.
+- **Ubicación de Ejecución:** El comando para formatear el código **siempre se debe ejecutar desde la raíz del proyecto** (la carpeta principal).
+- **Flujo Obligatorio:** Antes de confirmar cualquier cambio (`git commit`), cada desarrollador debe ejecutar en su terminal el comando `./vendor/bin/pint` (o `php artisan pint`). 
+- **Revisión en Pull Requests:** Si un PR contiene problemas de formato que Pint podría haber corregido, el PR será rechazado y no será integrado en la rama `develop` hasta que el autor aplique la corrección.
