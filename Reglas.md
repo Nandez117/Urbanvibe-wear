@@ -1,4 +1,4 @@
-﻿# Normativas y Estándares de Desarrollo (Urbanvibe-wear)
+# Normativas y Estándares de Desarrollo (Urbanvibe-wear)
 
 Este documento define las políticas técnicas y de estilo que el equipo debe seguir para garantizar la calidad, legibilidad y consistencia del código. El incumplimiento de estas normas conlleva penalizaciones en la evaluación.
 
@@ -22,6 +22,11 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - **Excepción Eloquent vs UML:** En Laravel (Eloquent), declarar propiedades private interfiere con el funcionamiento interno del ORM (que usa el arreglo attributes). Por lo tanto, el estándar para cumplir con el encapsulamiento es:
   - Declarar el listado completo de atributos como un gran comentario (DocBlock) en la parte superior de la clase.
   - Crear todos los métodos accesores y mutadores (getters y setters) en notación camelCase (ej. getNombre()) utilizando internamente $this->attributes['nombre']. Así se respeta el encapsulamiento estricto sin romper el framework.
+  - **Tipado Estricto y Retornos:** Es obligatorio definir el tipo de dato de los parámetros recibidos en los setters y el tipo de retorno en los getters (ej. `public function getId(): int`).
+  - **Ordenamiento de Métodos:** Los métodos dentro del modelo deben seguir estrictamente este orden:
+    1. Getters y Setters de atributos primitivos de la base de datos (los que usan `->attributes`).
+    2. Getters y Setters de atributos primitivos (que no pertenezcan directamente a `attributes` si existieran).
+    3. Getters y Setters no primitivos (relaciones con otros modelos, colecciones, objetos, ej. `getCategory()`).
 - **Métodos y Relaciones:** 
   - Los métodos internos deben ser privados, escritos en camelCase y siempre incluir paréntesis ().
   - Las relaciones del diagrama de clases se traducen en dos funciones (propiedades dinámicas) que conectan ambos modelos. No se deben incluir multiplicidades numéricas en el código.
@@ -38,7 +43,8 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 - **Optimización:** Se deben aplicar conceptos como *Dynamic loading* y funciones accesorias (*accessors*) cuando el contexto lo amerite para mejorar el rendimiento y la limpieza.
 
 ## 5. Estandarización Automática (Laravel Pint)
-Para asegurar que todo el equipo comparta el mismo estilo de formateo, se utilizará **Laravel Pint**.
+Para asegurar que todo el equipo comparta el mismo estilo de formateo y adherencia a los estándares (como PSR-12), se utilizará **[Laravel Pint](https://laravel.com/docs/pint)**. Pint es un formateador de código de PHP estricto y sin configuración, construido sobre PHP-CS-Fixer, diseñado para mantener el código limpio y consistente.
 
-- **Flujo Obligatorio:** Antes de confirmar cualquier cambio (git commit), cada desarrollador debe ejecutar en su terminal el comando ./vendor/bin/pint (o php artisan pint). 
-- **Revisión en Pull Requests:** Si un PR contiene problemas de formato que Pint podría haber corregido, no será integrado en la rama develop hasta que el autor aplique la corrección.
+- **Ubicación de Ejecución:** El comando para formatear el código **siempre se debe ejecutar desde la raíz del proyecto** (la carpeta principal).
+- **Flujo Obligatorio (Desde la Raíz):** Antes de confirmar cualquier cambio (`git commit`), cada desarrollador debe asegurarse de **estar parado en la carpeta raíz del proyecto** (ej: `Urbanvibe-wear/`) y ejecutar en su terminal el comando `./vendor/bin/pint` (o `php artisan pint`). 
+- **Revisión en Pull Requests:** Si un PR contiene problemas de formato que Pint podría haber corregido, el PR será rechazado y no será integrado en la rama `develop` hasta que el autor aplique la corrección.
