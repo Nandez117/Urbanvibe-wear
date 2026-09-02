@@ -23,6 +23,10 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - Declarar el listado completo de atributos como un gran comentario (DocBlock) en la parte superior de la clase.
   - Crear todos los métodos accesores y mutadores (getters y setters) en notación camelCase (ej. getNombre()) utilizando internamente $this->attributes['nombre']. Así se respeta el encapsulamiento estricto sin romper el framework.
   - **Tipado Estricto y Retornos:** Es obligatorio definir el tipo de dato de los parámetros recibidos en los setters y el tipo de retorno en los getters (ej. `public function getId(): int`).
+  - **Ordenamiento de Métodos:** Los métodos dentro del modelo deben seguir estrictamente este orden:
+    1. Getters y Setters de atributos primitivos de la base de datos (los que usan `->attributes`).
+    2. Getters y Setters de atributos primitivos (que no pertenezcan directamente a `attributes` si existieran).
+    3. Getters y Setters no primitivos (relaciones con otros modelos, colecciones, objetos, ej. `getCategory()`).
 - **Métodos y Relaciones:** 
   - Los métodos internos deben ser privados, escritos en camelCase y siempre incluir paréntesis ().
   - Las relaciones del diagrama de clases se traducen en dos funciones (propiedades dinámicas) que conectan ambos modelos. No se deben incluir multiplicidades numéricas en el código.
