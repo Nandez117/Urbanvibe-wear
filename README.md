@@ -3,10 +3,9 @@
 **Urbanvibe-wear** es una plataforma moderna de comercio electrónico enfocada en la venta de ropa y calzado urbano. Nuestro objetivo es ofrecer una experiencia de compra ágil, segura y con una interfaz de usuario atractiva para los amantes del estilo urbano.
 
 ### 👥 Integrantes del Equipo:
-- YanF
-- JuanM
-- EstebanA
-
+- Yan Frank Rios Lopez
+- Esteban Alvarez Garcia
+- Juan Manuel Hernandez Martelo
 ---
 
 ## 🌿 Flujo de Desarrollo y Ramas (Git Workflow)
