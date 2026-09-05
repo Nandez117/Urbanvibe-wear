@@ -33,13 +33,12 @@
                     </span>
                 </td>
                 <td>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <a href="{{ route('users.edit', ['id' => $user->getId()]) }}" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Editar</a>
-                        
+                    <div class="actions-row">
+                        <a href="{{ route('users.edit', ['id' => $user->getId()]) }}" class="btn btn-sm">Editar</a>
                         <form action="{{ route('users.destroy', ['id' => $user->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: #ef4444;">Eliminar</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
                     </div>
                 </td>

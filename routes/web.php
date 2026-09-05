@@ -10,6 +10,12 @@ Route::get('/users/{id}/edit', 'App\Http\Controllers\UserController@edit')->name
 Route::put('/users/{id}', 'App\Http\Controllers\UserController@update')->name('users.update');
 Route::delete('/users/{id}', 'App\Http\Controllers\UserController@destroy')->name('users.destroy');
 
+Route::get('/register', 'App\Http\Controllers\AuthController@showRegister')->name('register')->middleware('guest');
+Route::post('/register', 'App\Http\Controllers\AuthController@register')->name('register.store')->middleware('guest');
+Route::get('/login', 'App\Http\Controllers\AuthController@showLogin')->name('login')->middleware('guest');
+Route::post('/login', 'App\Http\Controllers\AuthController@login')->name('login.store')->middleware('guest');
+Route::post('/logout', 'App\Http\Controllers\AuthController@logout')->name('logout')->middleware('auth');
+
 Route::get('/categories', 'App\Http\Controllers\CategoryController@index')->name('categories.index');
 Route::post('/categories', 'App\Http\Controllers\CategoryController@store')->name('categories.store');
 Route::get('/categories/{id}/edit', 'App\Http\Controllers\CategoryController@edit')->name('categories.edit');
@@ -29,6 +35,14 @@ Route::post('/orders', 'App\Http\Controllers\OrderController@store')->name('orde
 Route::get('/orders/{id}/edit', 'App\Http\Controllers\OrderController@edit')->name('orders.edit');
 Route::put('/orders/{id}', 'App\Http\Controllers\OrderController@update')->name('orders.update');
 Route::delete('/orders/{id}', 'App\Http\Controllers\OrderController@destroy')->name('orders.destroy');
+Route::get('/cart', 'App\Http\Controllers\CartController@index')->name('cart.index');
+Route::post('/cart/add/{id}', 'App\Http\Controllers\CartController@add')->name('cart.add');
+Route::put('/cart/{id}', 'App\Http\Controllers\CartController@update')->name('cart.update');
+Route::delete('/cart/{id}', 'App\Http\Controllers\CartController@remove')->name('cart.remove');
+Route::post('/cart/checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout')->middleware('auth');
+Route::get('/orders/{id}/payments/create', 'App\Http\Controllers\PaymentController@create')->name('payments.create');
+Route::post('/orders/{id}/payments', 'App\Http\Controllers\PaymentController@store')->name('payments.store');
+Route::get('/payment/success/{id}', 'App\Http\Controllers\PaymentController@success')->name('payment.success');
 
 Route::get('/order-items', 'App\Http\Controllers\OrderItemController@index')->name('order-items.index');
 Route::get('/order-items/create', 'App\Http\Controllers\OrderItemController@create')->name('order-items.create');

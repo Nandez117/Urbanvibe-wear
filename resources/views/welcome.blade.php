@@ -5,11 +5,11 @@
 <div style="text-align: center; padding: 4rem 1rem;">
     <h1 style="font-size: 3rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Urbanvibe Wear</h1>
     <p style="font-size: 1.25rem; color: var(--text-gray); max-width: 600px; margin: 0 auto 2rem auto;">
-        Tu tienda exclusiva de ropa y calzado urbano. Explora nuestro catálogo y encuentra el estilo que te define.
+        Tu tienda exclusiva de ropa urbana. Explora nuestro catálogo y encuentra el estilo que te define.
     </p>
     
     <div style="display: flex; gap: 1rem; justify-content: center;">
-        <a href="#" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem;">Ver Catálogo</a>
+        <a href="{{ route('products.index') }}" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem;">Ver Catálogo</a>
         <a href="{{ route('users.index') }}" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem; background-color: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue);">Gestión de Usuarios</a>
     </div>
 </div>
