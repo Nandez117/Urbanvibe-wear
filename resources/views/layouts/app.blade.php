@@ -401,7 +401,181 @@ tr:last-child td {
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
 }
-    </style>
+        /* --- Catalog Redesign Styles --- */
+    .catalog-layout {
+        display: flex;
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 0 auto;
+        align-items: flex-start;
+    }
+
+    .catalog-sidebar {
+        width: 250px;
+        flex-shrink: 0;
+        background: var(--surface);
+        padding: 1.5rem;
+        border-radius: 12px;
+        border: 1px solid var(--border-subtle);
+    }
+    .catalog-sidebar h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+    }
+    .sidebar-section {
+        margin-bottom: 1.5rem;
+    }
+    .sidebar-section h4 {
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        margin-bottom: 0.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+    .sidebar-checkbox {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-primary);
+        font-size: 0.95rem;
+    }
+    
+    .catalog-content {
+        flex: 1;
+    }
+
+    .catalog-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .product-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .product-card {
+        background: var(--surface);
+        border: 1px solid var(--border-subtle);
+        border-radius: 12px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.2s, box-shadow 0.2s;
+        position: relative;
+    }
+    .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+        border-color: var(--accent);
+    }
+    .product-image-container {
+        width: 100%;
+        aspect-ratio: 3 / 4; /* Tall image format */
+        background-color: var(--surface-elevated);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-bottom: 1px solid var(--border-subtle);
+    }
+    .product-image-placeholder {
+        font-size: 3rem;
+        color: var(--border-subtle);
+    }
+    .product-badge {
+        position: absolute;
+        top: 0.5rem;
+        left: 0.5rem;
+        background: var(--accent);
+        color: white;
+        font-size: 0.7rem;
+        font-weight: bold;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+    }
+    
+    .product-details {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+    .product-category {
+        font-size: 0.75rem;
+        color: var(--accent);
+        text-transform: uppercase;
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+    }
+    .product-title {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+    .product-price {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-top: auto;
+        margin-bottom: 1rem;
+    }
+
+    .btn-buy {
+        background: #facc15; /* Yellow accent like reference */
+        color: #1a1a1a;
+        font-weight: 700;
+        text-align: center;
+        padding: 0.75rem;
+        border-radius: 6px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        transition: background 0.2s;
+    }
+    .btn-buy:hover {
+        background: #eab308;
+    }
+    .admin-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.75rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid var(--border-subtle);
+    }
+    .admin-actions form {
+        flex: 1;
+    }
+    .btn-admin {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    @media (max-width: 768px) {
+        .catalog-layout {
+            flex-direction: column;
+        }
+        .catalog-sidebar {
+            width: 100%;
+        }
+    }
+</style>
 </head>
 <body>
 
