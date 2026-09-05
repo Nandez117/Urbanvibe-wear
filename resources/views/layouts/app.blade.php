@@ -414,8 +414,10 @@ tr:last-child td {
             <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Bienvenido</a>
             <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Catálogo</a>
             <a href="/orders" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">Órdenes</a>
+              @if(Auth::check() && Auth::user()->getRole() === 'admin')
             <a href="/categories" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">Categorías (Admin)</a>
             <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">Usuarios (Admin)</a>
+              @endif
         </nav>
         
                 <div class="header-icons">
