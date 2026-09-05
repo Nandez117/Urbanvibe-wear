@@ -190,7 +190,7 @@ table {
 }
 
 th {
-    background-color: var(--surface-elevated);
+    background-color: var(--admin-header);
     color: var(--text-secondary);
     padding: 1rem;
     font-weight: 600;
@@ -481,7 +481,7 @@ tr:last-child td {
     .product-image-container {
         width: 100%;
         aspect-ratio: 3 / 4; /* Tall image format */
-        background-color: var(--surface-elevated);
+        background-color: var(--admin-header);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -586,9 +586,10 @@ tr:last-child td {
         </div>
         
         <nav class="nav-links">
-              <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Bienvenido</a>
-              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Catálogo</a>
-              <a href="/orders" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">Órdenes</a>
+              <a href="/" class="nav-link">Volver a Tienda</a>
+              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Gestionar Productos</a>
+              <a href="/categories" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">Categorías</a>
+              <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">Usuarios</a>
           </nav>
         
                 <div class="header-icons">
@@ -599,11 +600,7 @@ tr:last-child td {
                     @endif
                    </a>
             @auth
-                @if(Auth::user()->getRole() === 'admin')
-                      <a href="/categories" class="header-icon" title="Panel Admin"><i class="fa-solid fa-screwdriver-wrench"></i></a>
-                  @else
-                      <a href="/users" class="header-icon"><i class="fa-regular fa-user"></i></a>
-                  @endif
+                <a href="/users" class="header-icon"><i class="fa-regular fa-user"></i></a>
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
                     <button type="submit" class="header-icon" style="background: none; border: none; cursor: pointer;">

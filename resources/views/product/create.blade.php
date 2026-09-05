@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('title', $viewData['title'])
 
 @section('content')
@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('products.store') }}" style="display: flex; flex-direction: column; gap: 1rem;">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}" style="display: flex; flex-direction: column; gap: 1rem;">
         @csrf
         
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
@@ -69,6 +69,11 @@
                 <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Material</label>
                 <input type="text" name="material" value="{{ old('material') }}" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
             </div>
+        </div>
+
+                <div style="margin-top: 1rem;">
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem; color: var(--text-primary);">Imagen del Producto</label>
+            <input type="file" name="image" accept="image/*" style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-subtle); border-radius: 0.375rem; background: var(--surface-input); color: var(--text-primary);">
         </div>
 
         <div style="margin-top: 1rem; display: flex; gap: 1rem;">

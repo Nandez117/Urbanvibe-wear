@@ -19,7 +19,7 @@ class PaymentController extends Controller
         return view('payment.create')->with('viewData', $viewData);
     }
 
-        public function store(StorePaymentRequest $request, string $id): RedirectResponse
+    public function store(StorePaymentRequest $request, string $id): RedirectResponse
     {
         $order = Order::findOrFail($id);
 
@@ -36,7 +36,8 @@ class PaymentController extends Controller
 
         return redirect()->route('payment.success', ['id' => $order->getId()]);
     }
-        public function success(string $id): View
+
+    public function success(string $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Pago exitoso';

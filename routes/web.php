@@ -25,6 +25,7 @@ Route::delete('/categories/{id}', 'App\Http\Controllers\CategoryController@destr
 Route::get('/products', 'App\Http\Controllers\ProductController@index')->name('products.index');
 Route::get('/products/create', 'App\Http\Controllers\ProductController@create')->name('products.create');
 Route::post('/products', 'App\Http\Controllers\ProductController@store')->name('products.store');
+Route::get('/products/{id}', 'App\Http\Controllers\ProductController@show')->name('products.show');
 Route::get('/products/{id}/edit', 'App\Http\Controllers\ProductController@edit')->name('products.edit');
 Route::put('/products/{id}', 'App\Http\Controllers\ProductController@update')->name('products.update');
 Route::delete('/products/{id}', 'App\Http\Controllers\ProductController@destroy')->name('products.destroy');

@@ -3,9 +3,9 @@
 **Urbanvibe-wear** es una plataforma moderna de comercio electrónico enfocada en la venta de ropa y calzado urbano. Nuestro objetivo es ofrecer una experiencia de compra ágil, segura y con una interfaz de usuario atractiva para los amantes del estilo urbano.
 
 ### 👥 Integrantes del Equipo:
-- YanF
-- JuanM
-- EstebanA
+- Yan Frank Rios Lopez
+- Esteban Alvarez Garcia
+- Juan Manuel Hernandez Martelo
 
 ---
 
@@ -14,11 +14,6 @@
 El flujo de trabajo se manejará en base a las siguientes ramas principales:
 - `main`: Producción (GCP).
 - `develop`: Rama principal de integración donde se unirán los avances de todos.
-- `YanF`: Rama de desarrollo de YanF.
-- `JuanM`: Rama de desarrollo de JuanM.
-- `EstebanA`: Rama de desarrollo de EstebanA.
-
-> **Importante:** Cada desarrollador debe trabajar siempre en su rama (ej. `git checkout YanF`), hacer sus commits ahí y luego crear un Pull Request hacia `develop` para revisión y pruebas conjuntas.
 
 ## ⚙️ Configuración del Entorno Local
 

@@ -4,49 +4,44 @@
 @section('content')
 <div class="catalog-layout">
     <!-- Sidebar Filters -->
-    <aside class="catalog-sidebar">
-        <h3>Filtros</h3>
-        
-        <div class="sidebar-section">
-            <h4>Categoría</h4>
-            <label class="sidebar-checkbox">
-                <input type="checkbox" checked> Toda la Ropa
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> Camisetas
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> Pantalones
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> Accesorios
-            </label>
-        </div>
-
-        <div class="sidebar-section">
-            <h4>Precio (USD)</h4>
-            <div style="display: flex; gap: 0.5rem; align-items: center;">
-                <input type="number" placeholder="Min" class="qty-input" style="width: 100%;">
-                <span>-</span>
-                <input type="number" placeholder="Max" class="qty-input" style="width: 100%;">
+        <aside class="catalog-sidebar">
+        <form action="{{ route('products.index') }}" method="GET">
+            <h3>Filtros</h3>
+            
+            <div class="sidebar-section">
+                <h4>Categoría</h4>
+                @foreach($viewData['categories'] as $category)
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox" name="category_id[]" value="{{ $category->getId() }}" 
+                        {{ is_array(request('category_id')) && in_array($category->getId(), request('category_id')) ? 'checked' : '' }}> 
+                        {{ $category->getName() }}
+                    </label>
+                @endforeach
             </div>
-        </div>
-        
-        <div class="sidebar-section">
-            <h4>Tallas</h4>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> S
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> M
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> L
-            </label>
-            <label class="sidebar-checkbox">
-                <input type="checkbox"> XL
-            </label>
-        </div>
+
+            <div class="sidebar-section">
+                <h4>Precio (USD)</h4>
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min" class="qty-input" style="width: 100%;">
+                    <span>-</span>
+                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max" class="qty-input" style="width: 100%;">
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h4>Tallas</h4>
+                @foreach(['S', 'M', 'L', 'XL'] as $size)
+                    <label class="sidebar-checkbox">
+                        <input type="checkbox" name="sizes[]" value="{{ $size }}"
+                        {{ is_array(request('sizes')) && in_array($size, request('sizes')) ? 'checked' : '' }}> 
+                        {{ $size }}
+                    </label>
+                @endforeach
+            </div>
+
+            <button type="submit" class="btn" style="width: 100%; margin-bottom: 0.5rem; justify-content: center;">Aplicar</button>
+            <a href="{{ route('products.index') }}" class="btn" style="width: 100%; background: var(--surface-input); color: var(--text-primary); text-align: center; justify-content: center; text-decoration: none;">Limpiar</a>
+        </form>
     </aside>
 
     <!-- Main Content -->
@@ -67,18 +62,24 @@
         <div class="product-grid">
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
-                    <div class="product-badge">
-                        {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
-                    </div>
-                    
-                    <div class="product-image-container">
-                        <i class="fa-solid fa-shirt product-image-placeholder"></i>
-                    </div>
+                    <a href="{{ route('products.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
+                        <div class="product-badge">
+                            {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
+                        </div>
+                        
+                        <div class="product-image-container">
+                            @if($product->getImage())
+                                <img src="{{ asset('storage/' . $product->getImage()) }}" alt="{{ $product->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
+                            @else
+                                <i class="fa-solid fa-shirt product-image-placeholder"></i>
+                            @endif
+                        </div>
 
-                    <div class="product-details">
-                        <div class="product-category">{{ $product->getCategory()->getName() }}</div>
-                        <h3 class="product-title">{{ $product->getName() }}</h3>
-                        <div class="product-price">${{ number_format($product->getPrice(), 2) }} USD</div>
+                        <div class="product-details">
+                            <div class="product-category">{{ $product->getCategory()->getName() }}</div>
+                            <h3 class="product-title">{{ $product->getName() }}</h3>
+                            <div class="product-price">${{ number_format($product->getPrice(), 2) }} USD</div>
+                    </a>
                         
                         @if ($product->getStock() > 0)
                             <form action="{{ route('cart.add', ['id' => $product->getId()]) }}" method="POST">
