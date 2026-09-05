@@ -6,6 +6,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -20,8 +21,13 @@ class ProductController extends Controller
         return view('product.index')->with('viewData', $viewData);
     }
 
-    public function create(): View
+    public function create(): View|RedirectResponse
     {
+        if (!Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+        }
+
+
         $viewData = [];
         $viewData['title'] = 'Registrar Producto';
         $viewData['categories'] = Category::all();
@@ -31,6 +37,11 @@ class ProductController extends Controller
 
     public function store(StoreProductRequest $request): RedirectResponse
     {
+        if (!Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+        }
+
+
         $product = new Product;
         $product->setName($request->input('name'));
         $product->setDescription($request->input('description'));
@@ -56,8 +67,13 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Producto registrado exitosamente.');
     }
 
-    public function edit(string $id): View
+    public function edit(string $id): View|RedirectResponse
     {
+        if (!Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+        }
+
+
         $viewData = [];
         $viewData['title'] = 'Editar Producto';
         $viewData['product'] = Product::findOrFail($id);
@@ -68,6 +84,11 @@ class ProductController extends Controller
 
     public function update(UpdateProductRequest $request, string $id): RedirectResponse
     {
+        if (!Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+        }
+
+
         $product = Product::findOrFail($id);
         $product->setName($request->input('name'));
         $product->setDescription($request->input('description'));
@@ -87,6 +108,11 @@ class ProductController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
+        if (!Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+        }
+
+
         $product = Product::findOrFail($id);
         $product->delete();
 
