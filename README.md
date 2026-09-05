@@ -1,24 +1,25 @@
-﻿# Urbanvibe-wear 👕👟
+# Urbanvibe-wear 👕👟
 
 **Urbanvibe-wear** es una plataforma moderna de comercio electrónico enfocada en la venta de ropa y calzado urbano. Nuestro objetivo es ofrecer una experiencia de compra ágil, segura y con una interfaz de usuario atractiva para los amantes del estilo urbano.
 
 ### 👥 Integrantes del Equipo:
-- YanF
-- JuanM
-- EstebanA
 
+- Yan Frank Rios Lopez
+- Esteban Alvarez Garcia
+- Juan Manuel Hernandez Martelo
 ---
 
-## 🌿 Ramas del Repositorio
+## 🌿 Flujo de Desarrollo y Ramas (Git Workflow)
 
-El flujo de trabajo se manejará en base a las siguientes ramas principales:
-- `main`: Producción (GCP).
-- `develop`: Rama principal de integración donde se unirán los avances de todos.
-- `YanF`: Rama de desarrollo de YanF.
-- `JuanM`: Rama de desarrollo de JuanM.
-- `EstebanA`: Rama de desarrollo de EstebanA.
+El proyecto utiliza un flujo de trabajo basado en Historias de Usuario (Feature Branches). Las ramas principales son:
 
-> **Importante:** Cada desarrollador debe trabajar siempre en su rama (ej. `git checkout YanF`), hacer sus commits ahí y luego crear un Pull Request hacia `develop` para revisión y pruebas conjuntas.
+- `main`: Rama de Producción (GCP). Contiene el código estable y aprobado.
+- `develop`: Rama principal de integración donde se unirán los avances de todos los desarrolladores.
+- `HU-#-Nombre`: Ramas específicas para el desarrollo de cada Historia de Usuario (Ej: `HU-1-Tabla-users`, `HU-2-Tabla-categories`).
+
+> **Importante:** El desarrollo **no** se hace en ramas personales con el nombre del desarrollador, sino que por cada tarea asignada se debe crear una rama `HU-#-Nombre` partiendo desde `develop` (o encadenando ramas mediante *Stacked PRs* si dependen del código de otra HU no fusionada).
+> 
+> Al finalizar una HU, se hace un `git push` a esa rama y se levanta una **Pull Request (PR)** hacia `develop` (o hacia la rama anterior correspondiente) para revisión del equipo.
 
 ## ⚙️ Configuración del Entorno Local
 
