@@ -25,7 +25,7 @@
             @csrf
             <div>
                 <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Nombre de la Categoría</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Tenis" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Hoodie" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
             </div>
             <button type="submit" class="btn">Crear Categoría</button>
         </form>
@@ -47,13 +47,12 @@
                     <td>{{ $category->getId() }}</td>
                     <td>{{ $category->getName() }}</td>
                     <td>
-                        <div style="display: flex; gap: 0.5rem;">
-                            <a href="{{ route('categories.edit', ['id' => $category->getId()]) }}" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Editar</a>
-                            
+                        <div class="actions-row">
+                            <a href="{{ route('categories.edit', ['id' => $category->getId()]) }}" class="btn btn-sm">Editar</a>
                             <form action="{{ route('categories.destroy', ['id' => $category->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: #ef4444;">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                             </form>
                         </div>
                     </td>

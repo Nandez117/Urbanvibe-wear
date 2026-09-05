@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Hash;
 
 /**
  * User Attributes
@@ -63,7 +64,7 @@ class User extends Authenticatable
 
     public function setPassword(string $password): void
     {
-        $this->attributes['password'] = $password;
+        $this->attributes['password'] = Hash::make($password);
     }
 
     public function setPhone(?string $phone): void

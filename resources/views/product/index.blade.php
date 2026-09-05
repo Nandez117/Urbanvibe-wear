@@ -30,15 +30,21 @@
                     <span style="padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: {{ $product->getStock() > 0 ? '#dcfce7' : '#fee2e2' }}; color: {{ $product->getStock() > 0 ? '#166534' : '#991b1b' }};">
                         {{ $product->getStock() }}
                     </span>
-                </td>
+                 </td>
                 <td>
-                    <div style="display: flex; gap: 0.5rem;">
-                        <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Editar</a>
-                        
+                    <div class="actions-row">
+                        @if ($product->getStock() > 0)
+                            <form action="{{ route('cart.add', ['id' => $product->getId()]) }}" method="POST" class="actions-row" style="gap: 0.4rem;">
+                                @csrf
+                                <input type="number" name="quantity" value="1" min="1" max="{{ $product->getStock() }}" class="qty-input">
+                                <button type="submit" class="btn btn-sm">Agregar</button>
+                            </form>
+                        @endif
+                        <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn btn-sm">Editar</a>
                         <form action="{{ route('products.destroy', ['id' => $product->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem; background-color: #ef4444;">Eliminar</button>
+                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                         </form>
                     </div>
                 </td>
