@@ -6,12 +6,15 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
     public function index(): View
     {
+        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
+
         $viewData = [];
         $viewData['title'] = 'Usuarios - Urbanvibe Wear';
         $viewData['users'] = User::all();
@@ -21,6 +24,8 @@ class UserController extends Controller
 
     public function edit(string $id): View
     {
+        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
+
         $viewData = [];
         $viewData['title'] = 'Editar Usuario';
         $viewData['user'] = User::findOrFail($id);
@@ -30,6 +35,8 @@ class UserController extends Controller
 
     public function update(UpdateUserRequest $request, string $id): RedirectResponse
     {
+        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
+
         $user = User::findOrFail($id);
 
         // Using setters according to the encapsulation rules
@@ -55,6 +62,8 @@ class UserController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
+        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
+
         $user = User::findOrFail($id);
 
         // Integrity check: prevent deletion if user has orders
@@ -62,11 +71,20 @@ class UserController extends Controller
         $hasOrders = Order::where('user_id', $user->getId())->exists();
 
         if ($hasOrders) {
-            return redirect()->route('users.index')->with('error', 'No se puede eliminar el usuario porque tiene órdenes de compra asociadas (Regla de Integridad).');
+            return redirect()->route('users.index')->with('error', 'No se puede eliminar el usuario porque tiene pedidos de compra asociados (Regla de Integridad).');
         }
 
         $user->delete();
 
         return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+    }
+
+    public function profile(): View
+    {
+        $viewData = [];
+        $viewData['title'] = 'Mi perfil - Urbanvibe Wear';
+        $viewData['user'] = User::findOrFail(Auth::id());
+
+        return view('user.profile')->with('viewData', $viewData);
     }
 }

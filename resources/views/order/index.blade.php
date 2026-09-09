@@ -34,12 +34,16 @@
                         @else
                             <span style="color: var(--success); font-weight: 600;">Pagado</span>
                         @endif
-                        <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">Editar</a>
-                        <form action="{{ route('orders.destroy', ['id' => $order->getId()]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
-                        </form>
+                        @if ($order->getStatus() !== 'Pagado')
+                            <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">Editar</a>
+                            <form action="{{ route('orders.destroy', ['id' => $order->getId()]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            </form>
+                        @else
+                            <span style="color: var(--text-gray);"></span>
+                        @endif
                     </div>
                 </td>
             </tr>

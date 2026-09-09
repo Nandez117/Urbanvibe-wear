@@ -600,7 +600,11 @@ tr:last-child td {
                     @endif
                    </a>
             @auth
-                <a href="/users" class="header-icon"><i class="fa-regular fa-user"></i></a>
+                @if(Auth::user()->getRole() === 'admin')
+                    <a href="{{ route('users.index') }}" class="header-icon" title="Gestión de usuarios"><i class="fa-regular fa-user"></i></a>
+                @else
+                    <a href="{{ route('profile') }}" class="header-icon" title="Mi perfil"><i class="fa-regular fa-user"></i></a>
+                @endif
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
                     <button type="submit" class="header-icon" style="background: none; border: none; cursor: pointer;">

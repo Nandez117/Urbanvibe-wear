@@ -6,6 +6,7 @@ use App\Http\Requests\StorePaymentRequest;
 use App\Models\Order;
 use App\Models\Payment;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class PaymentController extends Controller
@@ -14,14 +15,18 @@ class PaymentController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Registrar pago';
-        $viewData['order'] = Order::findOrFail($id);
+        $viewData['order'] = Order::where('user_id', Auth::id())->findOrFail($id);
+
+        abort_if($viewData['order']->getStatus() === 'Pagado', 403, 'Este pedido ya fue pagado.');
 
         return view('payment.create')->with('viewData', $viewData);
     }
 
     public function store(StorePaymentRequest $request, string $id): RedirectResponse
     {
-        $order = Order::findOrFail($id);
+        $order = Order::where('user_id', Auth::id())->findOrFail($id);
+        abort_if($order->getStatus() === 'Pagado', 403, 'Este pedido ya fue pagado.');
+        abort_if($order->items()->doesntExist(), 422, 'No se puede pagar un pedido sin productos.');
 
         $payment = new Payment;
         $payment->setAmount((float) $request->input('amount'));
@@ -41,7 +46,7 @@ class PaymentController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Pago exitoso';
-        $viewData['order'] = Order::findOrFail($id);
+        $viewData['order'] = Order::where('user_id', Auth::id())->findOrFail($id);
 
         return view('payment.success')->with('viewData', $viewData);
     }

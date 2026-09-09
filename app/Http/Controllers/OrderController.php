@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
-use App\Models\User;
+use App\Models\Product;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
 
@@ -16,7 +17,9 @@ class OrderController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Pedidos - Urbanvibe Wear';
-        $viewData['orders'] = Order::with('user')->get();
+        $viewData['orders'] = Order::with('user')
+            ->where('user_id', Auth::id())
+            ->get();
 
         return view('order.index')->with('viewData', $viewData);
     }
@@ -25,7 +28,6 @@ class OrderController extends Controller
     {
         $viewData = [];
         $viewData['title'] = 'Crear pedido';
-        $viewData['users'] = User::all();
 
         return view('order.create')->with('viewData', $viewData);
     }
@@ -35,30 +37,34 @@ class OrderController extends Controller
         $order = new Order;
         $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
         $order->setCreationDate(now()->toDateString());
-        $order->setTotalAmount((float) $request->input('totalAmount'));
+        $order->setTotalAmount(0);
         $order->setStatus('Pendiente');
-        $order->setUserId((int) $request->input('user_id'));
+        $order->setUserId(Auth::id());
         $order->save();
 
-        return redirect()->route('orders.index')->with('success', 'Pedido creado correctamente.');
+        return redirect()->route('orders.edit', ['id' => $order->getId()])
+            ->with('success', 'Pedido creado. Ahora agrega los productos.');
     }
 
     public function edit(string $id): View
     {
         $viewData = [];
         $viewData['title'] = 'Editar pedido';
-        $viewData['order'] = Order::findOrFail($id);
-        $viewData['users'] = User::all();
+        $viewData['order'] = Order::where('user_id', Auth::id())
+            ->with('items.product')
+            ->findOrFail($id);
+
+        abort_if($viewData['order']->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden editar.');
+        $viewData['products'] = Product::where('stock', '>', 0)->get();
 
         return view('order.edit')->with('viewData', $viewData);
     }
 
     public function update(UpdateOrderRequest $request, string $id): RedirectResponse
     {
-        $order = Order::findOrFail($id);
-        $order->setTotalAmount((float) $request->input('totalAmount'));
+        $order = Order::where('user_id', Auth::id())->findOrFail($id);
+        abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden editar.');
         $order->setStatus($request->input('status'));
-        $order->setUserId((int) $request->input('user_id'));
         $order->save();
 
         return redirect()->route('orders.index')->with('success', 'Pedido actualizado correctamente.');
@@ -66,7 +72,8 @@ class OrderController extends Controller
 
     public function destroy(string $id): RedirectResponse
     {
-        $order = Order::findOrFail($id);
+        $order = Order::where('user_id', Auth::id())->findOrFail($id);
+        abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden eliminar.');
         $order->delete();
 
         return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');

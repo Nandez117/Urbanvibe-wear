@@ -10,7 +10,11 @@
     
     <div style="display: flex; gap: 1rem; justify-content: center;">
         <a href="{{ route('products.index') }}" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem;">Ver Catálogo</a>
-        <a href="{{ route('users.index') }}" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem; background-color: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue);">Gestión de Usuarios</a>
+        @auth
+            @if (Auth::user()->getRole() === 'admin')
+                <a href="{{ route('users.index') }}" class="btn" style="font-size: 1.125rem; padding: 0.75rem 2rem; background-color: var(--white); color: var(--primary-blue); border: 2px solid var(--primary-blue);">Gestión de Usuarios</a>
+            @endif
+        @endauth
     </div>
 </div>
 

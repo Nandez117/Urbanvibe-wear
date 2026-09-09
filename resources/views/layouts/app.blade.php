@@ -588,7 +588,7 @@ tr:last-child td {
         <nav class="nav-links">
               <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Bienvenido</a>
               <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Catálogo</a>
-              <a href="/orders" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">Órdenes</a>
+              <a href="/orders" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">Pedidos</a>
           </nav>
         
                 <div class="header-icons">
@@ -601,8 +601,9 @@ tr:last-child td {
             @auth
                 @if(Auth::user()->getRole() === 'admin')
                       <a href="/categories" class="header-icon" title="Panel Admin"><i class="fa-solid fa-screwdriver-wrench"></i></a>
+                      <a href="{{ route('users.index') }}" class="header-icon" title="Gestión de usuarios"><i class="fa-regular fa-user"></i></a>
                   @else
-                      <a href="/users" class="header-icon"><i class="fa-regular fa-user"></i></a>
+                      <a href="{{ route('profile') }}" class="header-icon" title="Mi perfil"><i class="fa-regular fa-user"></i></a>
                   @endif
                 <form action="{{ route('logout') }}" method="POST" style="display: inline;">
                     @csrf
