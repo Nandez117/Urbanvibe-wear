@@ -9,8 +9,12 @@
 
     <div style="display: flex; gap: 3rem; flex-wrap: wrap;">
         <!-- Image Section -->
-        <div style="flex: 1; min-width: 300px; aspect-ratio: 3/4; background: var(--surface-elevated); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--border-subtle); border: 1px solid var(--border-subtle);">
-            <i class="fa-solid fa-shirt"></i>
+        <div style="flex: 1; min-width: 300px; aspect-ratio: 3/4; background: var(--surface-elevated); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--border-subtle); border: 1px solid var(--border-subtle); overflow: hidden;">
+            @if($viewData['product']->getImage())
+                <img src="{{ asset('storage/' . $viewData['product']->getImage()) }}" alt="{{ $viewData['product']->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
+            @else
+                <i class="fa-solid fa-shirt"></i>
+            @endif
         </div>
 
         <!-- Details Section -->

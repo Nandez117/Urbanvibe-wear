@@ -20,7 +20,7 @@
         @method('PUT')
         
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Nombre</label>
+            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.lbl_name') }}</label>
             <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
         </div>
 

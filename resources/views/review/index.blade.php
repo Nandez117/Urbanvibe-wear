@@ -16,7 +16,7 @@
                 <th>Calificación</th>
                 <th>Comentario</th>
                 <th>Fecha</th>
-                <th>Acciones</th>
+                <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -28,11 +28,11 @@
                 <td>{{ $review->getComment() ?? 'Sin comentario' }}</td>
                 <td>{{ $review->getCreationDate() }}</td>
                 <td>
-                    <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">Editar</a>
+                    <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
                     <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn" style="background-color: #ef4444;">Eliminar</button>
+                        <button type="submit" class="btn" style="background-color: #ef4444;">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>

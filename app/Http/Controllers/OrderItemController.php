@@ -26,7 +26,7 @@ class OrderItemController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Registrar detalle de pedido';
+        $viewData['title'] = __('messages.order_item_create_title');
         $viewData['products'] = Product::all();
         $viewData['orders'] = Order::all();
 

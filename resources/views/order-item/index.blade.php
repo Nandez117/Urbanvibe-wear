@@ -16,7 +16,7 @@
                 <th>Cantidad</th>
                 <th>Precio unitario</th>
                 <th>Subtotal</th>
-                <th>Acciones</th>
+                <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -28,11 +28,11 @@
                 <td>${{ number_format($orderItem->getUnitPrice(), 2) }}</td>
                 <td>${{ number_format($orderItem->getSubtotal(), 2) }}</td>
                 <td>
-                    <a href="{{ route('order-items.edit', ['id' => $orderItem->getId()]) }}" class="btn">Editar</a>
+                    <a href="{{ route('order-items.edit', ['id' => $orderItem->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
                     <form action="{{ route('order-items.destroy', ['id' => $orderItem->getId()]) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn" style="background-color: #ef4444;">Eliminar</button>
+                        <button type="submit" class="btn" style="background-color: #ef4444;">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>

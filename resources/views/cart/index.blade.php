@@ -12,7 +12,7 @@
                 <th>Precio unitario</th>
                 <th>Cantidad</th>
                 <th>Subtotal</th>
-                <th>Acciones</th>
+                <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                         @method('PUT')
                         <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}"
                                style="width: 60px; padding: 0.25rem; border-radius: 6px; border: 1px solid var(--border-subtle); background-color: var(--surface-input); color: var(--text-primary);">
-                        <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">Actualizar</button>
+                        <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">{{ __('messages.btn_update') }}</button>
                     </form>
                 </td>
                 <td>${{ number_format($item['subtotal'], 2) }}</td>
@@ -34,7 +34,7 @@
                     <form action="{{ route('cart.remove', ['id' => $item['product']->getId()]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn" style="background-color: var(--danger);">Eliminar</button>
+                        <button type="submit" class="btn" style="background-color: var(--danger);">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>

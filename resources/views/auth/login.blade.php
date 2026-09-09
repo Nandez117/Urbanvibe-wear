@@ -23,7 +23,7 @@
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="auth-field">
-                <label for="password">Contraseña</label>
+                <label for="password">{{ __('messages.lbl_password') }}</label>
                 <input id="password" type="password" name="password" required>
             </div>
             <button type="submit" class="btn btn-block">Iniciar sesión</button>

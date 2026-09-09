@@ -11,12 +11,12 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nombre</th>
+                <th>{{ __('messages.lbl_name') }}</th>
                 <th>Email</th>
                 <th>Teléfono</th>
                 <th>Dirección</th>
                 <th>Rol</th>
-                <th>Acciones</th>
+                <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -34,11 +34,11 @@
                 </td>
                 <td>
                     <div class="actions-row">
-                        <a href="{{ route('users.edit', ['id' => $user->getId()]) }}" class="btn btn-sm">Editar</a>
+                        <a href="{{ route('users.edit', ['id' => $user->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
                         <form action="{{ route('users.destroy', ['id' => $user->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                            <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
                         </form>
                     </div>
                 </td>

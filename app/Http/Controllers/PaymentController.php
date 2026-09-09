@@ -14,7 +14,7 @@ class PaymentController extends Controller
     public function create(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Registrar pago';
+        $viewData['title'] = __('messages.payment_create_title');
         $viewData['order'] = Order::where('user_id', Auth::id())->findOrFail($id);
 
         abort_if($viewData['order']->getStatus() === 'Pagado', 403, 'Este pedido ya fue pagado.');
@@ -35,6 +35,15 @@ class PaymentController extends Controller
         $payment->setStatus('Aprobado');
         $payment->setOrderId($order->getId());
         $payment->save();
+
+        foreach ($order->getItems() as $item) {
+            $product = $item->getProduct();
+            if ($product) {
+                $newStock = $product->getStock() - $item->getQuantity();
+                $product->setStock(max(0, $newStock));
+                $product->save();
+            }
+        }
 
         $order->setStatus('Pagado');
         $order->save();

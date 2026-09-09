@@ -4,7 +4,7 @@
 @section('content')
 <div class="title-section">
     <h2>Pedidos</h2>
-    <a href="{{ route('orders.create') }}" class="btn">Crear pedido</a>
+    <a href="{{ route('products.index') }}" class="btn">Ir al catálogo</a>
 </div>
 
 <div class="table-container">
@@ -16,7 +16,7 @@
                 <th>Fecha de creación</th>
                 <th>Monto total</th>
                 <th>Estado</th>
-                <th>Acciones</th>
+                <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -35,11 +35,11 @@
                             <span style="color: var(--success); font-weight: 600;">Pagado</span>
                         @endif
                         @if ($order->getStatus() !== 'Pagado')
-                            <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">Editar</a>
+                            <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
                             <form action="{{ route('orders.destroy', ['id' => $order->getId()]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
+                                <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
                             </form>
                         @else
                             <span style="color: var(--text-gray);"></span>

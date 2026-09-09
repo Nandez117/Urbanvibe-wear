@@ -19,7 +19,7 @@
         <form method="POST" action="{{ route('register.store') }}">
             @csrf
             <div class="auth-field">
-                <label for="name">Nombre</label>
+                <label for="name">{{ __('messages.lbl_name') }}</label>
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required>
             </div>
             <div class="auth-field">
@@ -27,7 +27,7 @@
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="auth-field">
-                <label for="password">Contraseña</label>
+                <label for="password">{{ __('messages.lbl_password') }}</label>
                 <input id="password" type="password" name="password" required>
             </div>
             <div class="auth-field">

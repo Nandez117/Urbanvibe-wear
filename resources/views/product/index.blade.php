@@ -9,6 +9,15 @@
             <h3>Filtros</h3>
             
             <div class="sidebar-section">
+                <h4>Ordenar por</h4>
+                <select name="sort" class="form-control" onchange="this.form.submit()" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--surface-input); color: var(--text-primary); border: 1px solid var(--border-subtle);">
+                    <option value="">Relevancia</option>
+                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Últimos añadidos</option>
+                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Precio: Menor a Mayor</option>
+                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Precio: Mayor a Menor</option>
+                </select>
+            </div>
+            <div class="sidebar-section">
                 <h4>Categoría</h4>
                 @foreach($viewData['categories'] as $category)
                     <label class="sidebar-checkbox">
@@ -52,10 +61,7 @@
             </div>
             @if(Auth::check() && Auth::user()->getRole() === 'admin')
                 <a href="{{ route('products.create') }}" class="btn btn-sm">Registrar Nuevo Producto</a>
-            @else
-                <div style="color: var(--text-secondary); font-size: 0.9rem;">
-                    <i class="fa-solid fa-arrow-down-a-z"></i> Ordenar por: Relevancia
-                </div>
+
             @endif
         </div>
 
@@ -63,8 +69,16 @@
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
                     <a href="{{ route('products.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
-                        <div class="product-badge">
-                            {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
+                        <div class="product-badge" style="display:flex; justify-content:space-between; width:calc(100% - 1rem);">
+                            <span>
+                                {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
+                                @if(Auth::check() && Auth::user()->getRole() === 'admin')
+                                    ({{ $product->getStock() }})
+                                @endif
+                            </span>
+                            @if(Auth::check() && Auth::user()->getRole() === 'admin' && $product->getStock() < 10)
+                                <span style="background-color: var(--danger); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.65rem;">STOCK BAJO</span>
+                            @endif
                         </div>
                         
                         <div class="product-image-container">
@@ -86,7 +100,7 @@
                                 @csrf
                                 <input type="hidden" name="quantity" value="1">
                                 <button type="submit" class="btn-buy">
-                                    Añadir al carrito
+                                    {{ __('messages.btn_add_cart') }}
                                 </button>
                             </form>
                         @else
@@ -95,13 +109,22 @@
                             </button>
                         @endif
 
+                        @auth
+                            <form action="{{ route('wishlist.store', ['id' => $product->getId()]) }}" method="POST" style="margin-top:0.5rem;">
+                                @csrf
+                                <button type="submit" class="btn" style="width: 100%; border: 1px solid var(--border-subtle); background: transparent; color: var(--text-primary);">
+                                    <i class="fa-regular fa-heart"></i> {{ __('messages.btn_add_wishlist') }}
+                                </button>
+                            </form>
+                        @endauth
+
                         @if(Auth::check() && Auth::user()->getRole() === 'admin')
                             <div class="admin-actions">
-                                <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn btn-sm btn-admin">Editar</a>
+                                <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn btn-sm btn-admin">{{ __('messages.btn_edit') }}</a>
                                 <form action="{{ route('products.destroy', ['id' => $product->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger btn-admin">Borrar</button>
+                                    <button type="submit" class="btn btn-sm btn-danger btn-admin">{{ __('messages.btn_delete') }}</button>
                                 </form>
                             </div>
                         @endif

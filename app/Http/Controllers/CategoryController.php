@@ -14,7 +14,7 @@ class CategoryController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Categorías - Urbanvibe Wear';
+        $viewData['title'] = __('messages.category_index_title');
         $viewData['categories'] = Category::all();
 
         return view('category.index')->with('viewData', $viewData);
@@ -26,13 +26,13 @@ class CategoryController extends Controller
         $category->setName($request->input('name'));
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Categoría creada exitosamente.');
+        return redirect()->route('categories.index')->with('success', __('messages.category_create_success'));
     }
 
     public function edit(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Editar Categoría';
+        $viewData['title'] = __('messages.category_edit_title');
         $viewData['category'] = Category::findOrFail($id);
 
         return view('category.edit')->with('viewData', $viewData);
@@ -44,22 +44,21 @@ class CategoryController extends Controller
         $category->setName($request->input('name'));
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', 'Categoría actualizada exitosamente.');
+        return redirect()->route('categories.index')->with('success', __('messages.category_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
     {
         $category = Category::findOrFail($id);
 
-        // Regla de integridad referencial: No eliminar si hay productos asociados
         $hasProducts = Product::where('category_id', $category->getId())->exists();
 
         if ($hasProducts) {
-            return redirect()->route('categories.index')->with('error', 'No se puede eliminar la categoría porque tiene productos asignados. Reasigna los productos primero.');
+            return redirect()->route('categories.index')->with('error', __('messages.category_delete_error'));
         }
 
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', 'Categoría eliminada exitosamente.');
+        return redirect()->route('categories.index')->with('success', __('messages.category_delete_success'));
     }
 }

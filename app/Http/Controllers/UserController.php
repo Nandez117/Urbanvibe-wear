@@ -39,7 +39,6 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        // Using setters according to the encapsulation rules
         $user->setName($request->input('name'));
         $user->setEmail($request->input('email'));
 
@@ -66,8 +65,6 @@ class UserController extends Controller
 
         $user = User::findOrFail($id);
 
-        // Integrity check: prevent deletion if user has orders
-        // Since we don't have the relationship set up yet in this snippet, we use the Order model directly.
         $hasOrders = Order::where('user_id', $user->getId())->exists();
 
         if ($hasOrders) {

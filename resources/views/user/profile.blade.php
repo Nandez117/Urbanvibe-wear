@@ -13,7 +13,7 @@
 
     <div style="display: grid; gap: 1rem;">
         <div>
-            <strong>Nombre</strong>
+            <strong>{{ __('messages.lbl_name') }}</strong>
             <p>{{ $viewData['user']->getName() }}</p>
         </div>
         <div>

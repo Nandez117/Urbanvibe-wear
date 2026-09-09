@@ -25,7 +25,7 @@
             <div class="form-field">
                 <label for="amount">Monto</label>
                 <input id="amount" type="number" name="amount" min="0" step="0.01"
-                       value="{{ old('amount', $viewData['order']->getTotalAmount()) }}" required>
+                       value="{{ old('amount', $viewData['order']->getTotalAmount()) }}" required readonly style="background-color: var(--surface); color: var(--text-secondary); cursor: not-allowed;">
             </div>
             <div class="form-field">
                 <label for="method">Método de pago</label>

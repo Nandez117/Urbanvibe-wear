@@ -15,7 +15,7 @@ class ReviewController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Reseñas - Urbanvibe Wear';
+        $viewData['title'] = __('messages.review_index_title');
         $viewData['reviews'] = Review::with(['user', 'product'])->get();
 
         return view('review.index')->with('viewData', $viewData);
@@ -24,7 +24,7 @@ class ReviewController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Registrar reseña';
+        $viewData['title'] = __('messages.review_create_title');
         $viewData['users'] = User::all();
         $viewData['products'] = Product::all();
 
@@ -41,13 +41,13 @@ class ReviewController extends Controller
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
-        return redirect()->route('reviews.index')->with('success', 'Reseña registrada correctamente.');
+        return redirect()->route('reviews.index')->with('success', __('messages.review_create_success'));
     }
 
     public function edit(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Editar reseña';
+        $viewData['title'] = __('messages.review_edit_title');
         $viewData['review'] = Review::findOrFail($id);
         $viewData['users'] = User::all();
         $viewData['products'] = Product::all();
@@ -64,7 +64,7 @@ class ReviewController extends Controller
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
-        return redirect()->route('reviews.index')->with('success', 'Reseña actualizada correctamente.');
+        return redirect()->route('reviews.index')->with('success', __('messages.review_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -72,6 +72,6 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
 
-        return redirect()->route('reviews.index')->with('success', 'Reseña eliminada correctamente.');
+        return redirect()->route('reviews.index')->with('success', __('messages.review_delete_success'));
     }
 }

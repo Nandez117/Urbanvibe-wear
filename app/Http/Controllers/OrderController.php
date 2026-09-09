@@ -6,7 +6,9 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -77,5 +79,22 @@ class OrderController extends Controller
         $order->delete();
 
         return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');
+    }
+
+    public function downloadInvoice(string $id): Response
+    {
+        $order = Order::where('user_id', Auth::id())
+            ->with('items.product', 'user', 'payment')
+            ->findOrFail($id);
+
+        abort_if($order->getStatus() !== 'Pagado', 403, 'Solo se puede descargar factura de pedidos pagados.');
+
+        $viewData = [];
+        $viewData['order'] = $order;
+        $viewData['title'] = 'Factura Pedido #'.$order->getOrderNumber();
+
+        $pdf = Pdf::loadView('order.invoice', ['viewData' => $viewData]);
+
+        return $pdf->download('factura_'.$order->getOrderNumber().'.pdf');
     }
 }

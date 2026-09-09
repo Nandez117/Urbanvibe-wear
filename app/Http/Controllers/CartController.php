@@ -54,7 +54,7 @@ class CartController extends Controller
         $items = $this->cart->getItems();
 
         if (empty($items)) {
-            return redirect()->route('cart.index')->with('error', 'Tu carrito está vacío.');
+            return redirect()->route('cart.index')->with('error', __('messages.cart_empty'));
         }
 
         $order = new Order;

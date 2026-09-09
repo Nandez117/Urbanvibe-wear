@@ -38,7 +38,7 @@ class AuthController extends Controller
     public function showLogin(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Iniciar sesión';
+        $viewData['title'] = __('messages.auth_login_title');
 
         return view('auth.login')->with('viewData', $viewData);
     }
@@ -48,18 +48,18 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (! Auth::attempt($credentials)) {
-            return back()->withErrors(['email' => 'Credenciales inválidas.'])->onlyInput('email');
+            return back()->withErrors(['email' => __('messages.auth_invalid_credentials')])->onlyInput('email');
         }
 
         $request->session()->regenerate();
 
-        return redirect()->route('home')->with('success', 'Sesión iniciada correctamente.');
+        return redirect()->route('home')->with('success', __('messages.auth_login_success'));
     }
 
     public function logout(): RedirectResponse
     {
         Auth::logout();
 
-        return redirect()->route('home')->with('success', 'Sesión cerrada correctamente.');
+        return redirect()->route('home')->with('success', __('messages.auth_logout_success'));
     }
 }

@@ -537,8 +537,8 @@ tr:last-child td {
     }
 
     .btn-buy {
-        background: #facc15; /* Yellow accent like reference */
-        color: #1a1a1a;
+        background: var(--accent);
+        color: white;
         font-weight: 700;
         text-align: center;
         padding: 0.75rem;
@@ -549,7 +549,7 @@ tr:last-child td {
         transition: background 0.2s;
     }
     .btn-buy:hover {
-        background: #eab308;
+        background: #2563eb; /* Darker blue */
     }
     .admin-actions {
         display: flex;
@@ -587,8 +587,12 @@ tr:last-child td {
         
         <nav class="nav-links">
               <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">Bienvenido</a>
-              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Catálogo</a>
+              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">{{ __('messages.nav_catalog') }}</a>
               <a href="/orders" class="nav-link {{ request()->is('orders*') ? 'active' : '' }}">Pedidos</a>
+              @auth
+              <a href="{{ route('wishlist.index') }}" class="nav-link {{ request()->is('wishlist*') ? 'active' : '' }}">{{ __('messages.nav_wishlist') }}</a>
+              @endauth
+              
           </nav>
         
                 <div class="header-icons">

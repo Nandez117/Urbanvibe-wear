@@ -16,7 +16,7 @@ class ProductController extends Controller
     public function index(Request $request): View
     {
         $viewData = [];
-        $viewData['title'] = 'Catálogo de Productos - Urbanvibe Wear';
+        $viewData['title'] = __('messages.product_catalog_title');
 
         $query = Product::with('category');
 
@@ -31,6 +31,16 @@ class ProductController extends Controller
         }
         if ($request->filled('sizes')) {
             $query->whereIn('size', $request->input('sizes'));
+        }
+
+        if ($request->filled('sort')) {
+            if ($request->input('sort') === 'price_asc') {
+                $query->orderBy('price', 'asc');
+            } elseif ($request->input('sort') === 'price_desc') {
+                $query->orderBy('price', 'desc');
+            } elseif ($request->input('sort') === 'newest') {
+                $query->orderBy('created_at', 'desc');
+            }
         }
 
         $viewData['products'] = $query->get();
@@ -52,11 +62,11 @@ class ProductController extends Controller
     public function create(): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $viewData = [];
-        $viewData['title'] = 'Registrar Producto';
+        $viewData['title'] = __('messages.product_create_title');
         $viewData['categories'] = Category::all();
 
         return view('product.create')->with('viewData', $viewData);
@@ -65,7 +75,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = new Product;
@@ -95,13 +105,13 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index')->with('success', 'Producto registrado exitosamente.');
+        return redirect()->route('products.index')->with('success', __('messages.product_create_success'));
     }
 
     public function edit(string $id): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $viewData = [];
@@ -115,7 +125,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, string $id): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = Product::findOrFail($id);
@@ -137,18 +147,18 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index')->with('success', 'Producto actualizado exitosamente.');
+        return redirect()->route('products.index')->with('success', __('messages.product_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', 'Acceso denegado. Solo los administradores pueden realizar esta acción.');
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', 'Producto eliminado exitosamente.');
+        return redirect()->route('products.index')->with('success', __('messages.product_delete_success'));
     }
 }
