@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Category Attributes
@@ -14,20 +14,18 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Category extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'name',
     ];
 
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
-    }
-
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 
     public function getId(): int

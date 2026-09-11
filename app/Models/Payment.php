@@ -1,5 +1,7 @@
 <?php
 
+// Yan Frank Ríos López
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -34,11 +36,6 @@ class Payment extends Model
         return [
             'amount' => 'decimal:2',
         ];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function setReference(string $reference): void

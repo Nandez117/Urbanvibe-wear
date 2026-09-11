@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['id'] - int - contains the order item primary key
  * $this->attributes['quantity'] - int - contains the purchased quantity
  * $this->attributes['subtotal'] - float - contains the calculated subtotal
- * $this->attributes['unitPrice'] - float - contains the product unit price
+ * $this->attributes['unit_price'] - float - contains the product unit price
  * $this->attributes['product_id'] - int - contains the product foreign key
  * $this->attributes['order_id'] - int - contains the order foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
@@ -24,7 +24,7 @@ class OrderItem extends Model
     protected $fillable = [
         'quantity',
         'subtotal',
-        'unitPrice',
+        'unit_price',
         'product_id',
         'order_id',
     ];
@@ -34,13 +34,8 @@ class OrderItem extends Model
         return [
             'quantity' => 'integer',
             'subtotal' => 'decimal:2',
-            'unitPrice' => 'decimal:2',
+            'unit_price' => 'decimal:2',
         ];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function setQuantity(int $quantity): void
@@ -55,7 +50,7 @@ class OrderItem extends Model
 
     public function setUnitPrice(float $unitPrice): void
     {
-        $this->attributes['unitPrice'] = $unitPrice;
+        $this->attributes['unit_price'] = $unitPrice;
     }
 
     public function setProductId(int $productId): void
@@ -85,7 +80,7 @@ class OrderItem extends Model
 
     public function getUnitPrice(): float
     {
-        return (float) $this->attributes['unitPrice'];
+        return (float) $this->attributes['unit_price'];
     }
 
     public function getProductId(): int

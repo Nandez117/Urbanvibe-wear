@@ -1,5 +1,9 @@
 <?php
 
+// Yan Frank Ríos López
+// Juan Manuel Hernandez
+// Esteban Alvarez
+
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;

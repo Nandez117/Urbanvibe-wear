@@ -25,7 +25,6 @@
         <div style="display: flex; flex-direction: column; gap: 1rem;">
             @foreach($viewData['wishlists'] as $wishlist)
             <div style="display: flex; background: var(--surface); border: 1px solid var(--border-subtle); border-radius: 12px; overflow: hidden; height: 180px;">
-                <!-- Image Side -->
                 <div style="width: 180px; background: var(--surface-elevated); display: flex; align-items: center; justify-content: center;">
                     @if($wishlist->getProduct()->getImage())
                         <img src="{{ asset('storage/' . $wishlist->getProduct()->getImage()) }}" alt="{{ $wishlist->getProduct()->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
@@ -34,7 +33,6 @@
                     @endif
                 </div>
                 
-                <!-- Content Side -->
                 <div style="flex: 1; padding: 1.5rem; display: flex; flex-direction: column; justify-content: space-between;">
                     <div>
                         <div style="font-size: 0.75rem; color: var(--accent); text-transform: uppercase; font-weight: bold; margin-bottom: 0.25rem;">

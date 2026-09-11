@@ -1,5 +1,7 @@
 <?php
 
+// Yan Frank Ríos López
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateUserRequest;

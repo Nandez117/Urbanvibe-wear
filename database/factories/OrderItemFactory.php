@@ -20,7 +20,7 @@ class OrderItemFactory extends Factory
         return [
             'quantity' => $quantity,
             'subtotal' => round($quantity * $unitPrice, 2),
-            'unitPrice' => $unitPrice,
+            'unit_price' => $unitPrice,
             'product_id' => Product::factory(),
             'order_id' => Order::factory(),
         ];

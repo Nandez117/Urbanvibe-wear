@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['id'] - int - contains the review primary key
  * $this->attributes['rating'] - int - contains the product rating
  * $this->attributes['comment'] - string - contains the review comment
- * $this->attributes['creationDate'] - date - contains the review creation date
+ * $this->attributes['creation_date'] - date - contains the review creation date
  * $this->attributes['user_id'] - int - contains the reviewer foreign key
  * $this->attributes['product_id'] - int - contains the reviewed product foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
@@ -24,7 +24,7 @@ class Review extends Model
     protected $fillable = [
         'rating',
         'comment',
-        'creationDate',
+        'creation_date',
         'user_id',
         'product_id',
     ];
@@ -33,13 +33,8 @@ class Review extends Model
     {
         return [
             'rating' => 'integer',
-            'creationDate' => 'date',
+            'creation_date' => 'date',
         ];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function setRating(int $rating): void
@@ -54,7 +49,7 @@ class Review extends Model
 
     public function setCreationDate(string $creationDate): void
     {
-        $this->attributes['creationDate'] = $creationDate;
+        $this->attributes['creation_date'] = $creationDate;
     }
 
     public function setUserId(int $userId): void
@@ -84,7 +79,7 @@ class Review extends Model
 
     public function getCreationDate(): string
     {
-        return $this->attributes['creationDate'];
+        return $this->attributes['creation_date'];
     }
 
     public function getUserId(): int

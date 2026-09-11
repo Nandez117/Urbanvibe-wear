@@ -12,9 +12,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 /**
  * Order Attributes
  * $this->attributes['id'] - int - contains the order primary key
- * $this->attributes['orderNumber'] - string - contains the unique order number
- * $this->attributes['creationDate'] - date - contains the order creation date
- * $this->attributes['totalAmount'] - float - contains the order total amount
+ * $this->attributes['order_number'] - string - contains the unique order number
+ * $this->attributes['creation_date'] - date - contains the order creation date
+ * $this->attributes['total_amount'] - float - contains the order total amount
  * $this->attributes['status'] - string - contains the order status
  * $this->attributes['user_id'] - int - contains the customer foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
@@ -25,9 +25,9 @@ class Order extends Model
     use HasFactory;
 
     protected $fillable = [
-        'orderNumber',
-        'creationDate',
-        'totalAmount',
+        'order_number',
+        'creation_date',
+        'total_amount',
         'status',
         'user_id',
     ];
@@ -35,29 +35,24 @@ class Order extends Model
     protected function casts(): array
     {
         return [
-            'creationDate' => 'date',
-            'totalAmount' => 'decimal:2',
+            'creation_date' => 'date',
+            'total_amount' => 'decimal:2',
         ];
-    }
-
-    public function setId(int $id): void
-    {
-        $this->attributes['id'] = $id;
     }
 
     public function setOrderNumber(string $orderNumber): void
     {
-        $this->attributes['orderNumber'] = $orderNumber;
+        $this->attributes['order_number'] = $orderNumber;
     }
 
     public function setCreationDate(string $creationDate): void
     {
-        $this->attributes['creationDate'] = $creationDate;
+        $this->attributes['creation_date'] = $creationDate;
     }
 
     public function setTotalAmount(float $totalAmount): void
     {
-        $this->attributes['totalAmount'] = $totalAmount;
+        $this->attributes['total_amount'] = $totalAmount;
     }
 
     public function setStatus(string $status): void
@@ -77,17 +72,17 @@ class Order extends Model
 
     public function getOrderNumber(): string
     {
-        return $this->attributes['orderNumber'];
+        return $this->attributes['order_number'];
     }
 
     public function getCreationDate(): string
     {
-        return $this->attributes['creationDate'];
+        return $this->attributes['creation_date'];
     }
 
     public function getTotalAmount(): float
     {
-        return (float) $this->attributes['totalAmount'];
+        return (float) $this->attributes['total_amount'];
     }
 
     public function getStatus(): string

@@ -14,9 +14,9 @@ class OrderFactory extends Factory
     public function definition(): array
     {
         return [
-            'orderNumber' => 'ORD-'.$this->faker->unique()->numerify('##########'),
-            'creationDate' => $this->faker->date(),
-            'totalAmount' => $this->faker->randomFloat(2, 0, 1000),
+            'order_number' => 'ORD-'.$this->faker->unique()->numerify('##########'),
+            'creation_date' => $this->faker->date(),
+            'total_amount' => $this->faker->randomFloat(2, 0, 1000),
             'status' => 'Pendiente',
             'user_id' => User::factory(),
         ];

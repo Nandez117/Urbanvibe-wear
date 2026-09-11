@@ -1,5 +1,7 @@
 <?php
 
+// Yan Frank Ríos López
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
@@ -15,7 +17,12 @@ use Illuminate\View\View;
 
 class CartController extends Controller
 {
-    public function __construct(private Cart $cart) {}
+    private Cart $cart;
+
+    public function __construct(Cart $cart)
+    {
+        $this->cart = $cart;
+    }
 
     public function index(): View
     {

@@ -17,7 +17,7 @@ class ReviewFactory extends Factory
         return [
             'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $this->faker->sentence(),
-            'creationDate' => $this->faker->date(),
+            'creation_date' => $this->faker->date(),
             'user_id' => User::factory(),
             'product_id' => Product::factory(),
         ];

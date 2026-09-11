@@ -8,7 +8,6 @@
     </a>
 
     <div style="display: flex; gap: 3rem; flex-wrap: wrap;">
-        <!-- Image Section -->
         <div style="flex: 1; min-width: 300px; aspect-ratio: 3/4; background: var(--surface-elevated); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 5rem; color: var(--border-subtle); border: 1px solid var(--border-subtle); overflow: hidden;">
             @if($viewData['product']->getImage())
                 <img src="{{ asset('storage/' . $viewData['product']->getImage()) }}" alt="{{ $viewData['product']->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
@@ -17,7 +16,6 @@
             @endif
         </div>
 
-        <!-- Details Section -->
         <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column;">
             <div style="color: var(--accent); font-weight: bold; margin-bottom: 0.5rem; text-transform: uppercase;">
                 {{ $viewData['product']->getCategory()->getName() }}

@@ -45,6 +45,7 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 - **Código HTML Exclusivo:** El código HTML debe ir exclusivamente en las vistas (views), manteniendo la menor cantidad de elementos posibles para que sean reutilizables.
 - **Traducciones:** Utilizar las directivas de lang para el manejo de idiomas en la interfaz.
 - **Datos en la Vista:** Enviar datos obligatoriamente con el arreglo asociativo $viewData, nunca con compact.
+- **Separación de CSS y HTML:** Se debe separar el CSS del HTML, ubicando los archivos CSS en una carpeta dentro de `public` llamada `css`, y en las vistas (`resources`) llamarlos mediante un *layout*.
 
 ## 6. Calidad del Código y Arquitectura
 - **Legibilidad:** Respetar espacios entre operadores matemáticos y bloques lógicos.
