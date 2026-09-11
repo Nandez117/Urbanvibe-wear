@@ -1,5 +1,6 @@
 <?php
 
+// Autor: Juan Manuel Hernandez Martelo
 namespace Database\Seeders;
 
 use App\Models\Category;

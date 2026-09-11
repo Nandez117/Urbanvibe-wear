@@ -1,5 +1,6 @@
 <?php
 
+// Autor: Juan Manuel Hernandez Martelo
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreProductRequest;

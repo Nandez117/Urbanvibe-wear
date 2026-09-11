@@ -1,6 +1,6 @@
 <?php
 
-// Yan Frank Ríos López
+// Autor: Juan Manuel Hernandez Martelo
 
 namespace App\Models;
 

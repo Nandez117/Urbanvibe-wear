@@ -1,5 +1,6 @@
 <?php
 
+// Autor: Juan Manuel Hernandez Martelo
 // Yan Frank Ríos López
 
 namespace Database\Factories;

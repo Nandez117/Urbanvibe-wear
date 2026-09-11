@@ -1,3 +1,4 @@
+{{-- Autor: Juan Manuel Hernandez Martelo --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
