@@ -1,6 +1,7 @@
 <?php
 
 // Autor: Juan Manuel Hernandez Martelo
+
 namespace App\Http\Requests;
 
 use Illuminate\Contracts\Validation\ValidationRule;
