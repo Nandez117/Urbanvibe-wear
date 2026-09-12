@@ -1,5 +1,7 @@
 <?php
 
+// Autor: Esteban Alvarez Garcia
+
 namespace Database\Factories;
 
 use App\Models\Product;

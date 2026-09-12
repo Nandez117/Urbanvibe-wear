@@ -1,5 +1,7 @@
 <?php
 
+// Autor: Juan Manuel Hernandez Martelo
+
 namespace Database\Factories;
 
 use App\Models\Category;

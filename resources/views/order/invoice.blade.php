@@ -1,3 +1,4 @@
+{{-- Autor: Esteban Alvarez Garcia --}}
 @extends('layouts.app')
 @section('title', 'Factura ' . $viewData['order']->getOrderNumber())
 @push('styles')

@@ -1,5 +1,7 @@
 <?php
 
+// Autor: Esteban Alvarez Garcia
+
 namespace App\Http\Middleware;
 
 use App\Models\User;
