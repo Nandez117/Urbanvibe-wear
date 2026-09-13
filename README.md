@@ -6,19 +6,12 @@
 - Yan Frank Rios Lopez
 - Esteban Alvarez Garcia
 - Juan Manuel Hernandez Martelo
----
 
-## 🌿 Flujo de Desarrollo y Ramas (Git Workflow)
+## 🌿 Ramas del Repositorio
 
-El proyecto utiliza un flujo de trabajo basado en Historias de Usuario (Feature Branches). Las ramas principales son:
-
-- `main`: Rama de Producción (GCP). Contiene el código estable y aprobado.
-- `develop`: Rama principal de integración donde se unirán los avances de todos los desarrolladores.
-- `HU-#-Nombre`: Ramas específicas para el desarrollo de cada Historia de Usuario (Ej: `HU-1-Tabla-users`, `HU-2-Tabla-categories`).
-
-> **Importante:** El desarrollo **no** se hace en ramas personales con el nombre del desarrollador, sino que por cada tarea asignada se debe crear una rama `HU-#-Nombre` partiendo desde `develop` (o encadenando ramas mediante *Stacked PRs* si dependen del código de otra HU no fusionada).
-> 
-> Al finalizar una HU, se hace un `git push` a esa rama y se levanta una **Pull Request (PR)** hacia `develop` (o hacia la rama anterior correspondiente) para revisión del equipo.
+El flujo de trabajo se manejará en base a las siguientes ramas principales:
+- `main`: Producción (GCP).
+- `develop`: Rama principal de integración donde se unirán los avances de todos.
 
 ## ⚙️ Configuración del Entorno Local
 
@@ -77,6 +70,13 @@ Estamos utilizando **Laragon / MAMP** como entorno de desarrollo local. Los serv
    ```
    ```bash
    npm run dev
+   ```
+
+7. **Estandarización de Código:**
+   El proyecto utiliza **[Laravel Pint](https://laravel.com/docs/pint)** (un formateador de código estricto para PHP). 
+   Debes ejecutarlo **siempre desde la ruta raíz del proyecto** antes de hacer un commit:
+   ```bash
+   ./vendor/bin/pint
    ```
 
 ## 🚀 Despliegue en GCP (Google Cloud Platform)

@@ -1,5 +1,8 @@
 <?php
 
+// Autor: Juan Manuel Hernandez Martelo
+// Yan Frank Ríos López
+
 namespace Database\Factories;
 
 use App\Models\User;

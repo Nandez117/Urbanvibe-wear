@@ -1,0 +1,27 @@
+<?php
+
+// Autor: Esteban Alvarez Garcia
+
+namespace Database\Factories;
+
+use App\Models\Product;
+use App\Models\Review;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends Factory<Review>
+ */
+class ReviewFactory extends Factory
+{
+    public function definition(): array
+    {
+        return [
+            'rating' => $this->faker->numberBetween(1, 5),
+            'comment' => $this->faker->sentence(),
+            'creation_date' => $this->faker->date(),
+            'user_id' => User::factory(),
+            'product_id' => Product::factory(),
+        ];
+    }
+}
