@@ -11,7 +11,7 @@
 
 El flujo de trabajo se manejará en base a las siguientes ramas principales:
 - `main`: Producción (GCP).
-- `develop`: Rama principal de integración donde se unirán los avances de todos.
+- `develop`: Rama principal de integración donde se unen los avances de todos.
 
 ## ⚙️ Configuración del Entorno Local
 
