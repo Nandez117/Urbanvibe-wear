@@ -7,8 +7,6 @@
 - Esteban Alvarez Garcia
 - Juan Manuel Hernandez Martelo
 
----
-
 ## 🌿 Ramas del Repositorio
 
 El flujo de trabajo se manejará en base a las siguientes ramas principales:
