@@ -29,7 +29,7 @@ class Cart
         }
 
         $items[$productId] = $quantity;
-    Session::put($this->getSessionKey(), $items);
+        Session::put($this->getSessionKey(), $items);
     }
 
     public function removeProduct(int $productId): void

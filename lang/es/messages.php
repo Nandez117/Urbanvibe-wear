@@ -125,4 +125,12 @@ return [
     'user_update_success' => 'Usuario actualizado correctamente.',
     'user_delete_success' => 'Usuario eliminado correctamente.',
     'wishlist_order_created' => 'Pedido creado desde tu lista de deseos. Ahora completa tu pago.',
+    'user_reviews' => 'Reseñas de Usuarios',
+    'no_reviews_yet' => 'Aún no hay reseñas para este producto. ¡Sé el primero en opinar!',
+    'leave_review' => 'Deja tu Reseña',
+    'rating_1_5' => 'Calificación (1-5)',
+    'comment' => 'Comentario',
+    'publish_review' => 'Publicar Reseña',
+    'must_login_review' => 'Debes iniciar sesión para dejar una reseña.',
+    'login_btn' => 'Iniciar Sesión',
 ];

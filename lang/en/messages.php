@@ -125,4 +125,12 @@ return [
     'user_update_success' => 'User updated successfully.',
     'user_delete_success' => 'User deleted successfully.',
     'wishlist_order_created' => 'Order created from your wishlist. Now complete your payment.',
+    'user_reviews' => 'User Reviews',
+    'no_reviews_yet' => 'No reviews for this product yet. Be the first to review!',
+    'leave_review' => 'Leave a Review',
+    'rating_1_5' => 'Rating (1-5)',
+    'comment' => 'Comment',
+    'publish_review' => 'Publish Review',
+    'must_login_review' => 'You must log in to leave a review.',
+    'login_btn' => 'Login',
 ];
