@@ -31,8 +31,9 @@
                 <div class="header-icons">
                   <a href="{{ route('cart.index') }}" class="header-icon" style="position: relative;">
                     <i class="fa-solid fa-cart-shopping"></i>
-                    @if (session('cart') && array_sum(session('cart')) > 0)
-                        <span style="position: absolute; top: -8px; right: -10px; background-color: var(--danger); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">{{ array_sum(session('cart')) }}</span>
+                    @php($cartCount = app(\App\Services\Cart::class)->getCount())
+                    @if ($cartCount > 0)
+                        <span style="position: absolute; top: -8px; right: -10px; background-color: var(--danger); color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 9999px;">{{ $cartCount }}</span>
                     @endif
                    </a>
             @auth

@@ -5,6 +5,7 @@
 namespace App\Services;
 
 use App\Models\Product;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class Cart
@@ -16,7 +17,7 @@ class Cart
         $items = $this->getRawItems();
         $currentQuantity = $items[$productId] ?? 0;
         $items[$productId] = $currentQuantity + $quantity;
-        Session::put(self::SESSION_KEY, $items);
+        Session::put($this->getSessionKey(), $items);
     }
 
     public function updateQuantity(int $productId, int $quantity): void
@@ -28,19 +29,19 @@ class Cart
         }
 
         $items[$productId] = $quantity;
-        Session::put(self::SESSION_KEY, $items);
+    Session::put($this->getSessionKey(), $items);
     }
 
     public function removeProduct(int $productId): void
     {
         $items = $this->getRawItems();
         unset($items[$productId]);
-        Session::put(self::SESSION_KEY, $items);
+        Session::put($this->getSessionKey(), $items);
     }
 
     public function clear(): void
     {
-        Session::forget(self::SESSION_KEY);
+        Session::forget($this->getSessionKey());
     }
 
     public function getItems(): array
@@ -82,6 +83,13 @@ class Cart
 
     private function getRawItems(): array
     {
-        return Session::get(self::SESSION_KEY, []);
+        return Session::get($this->getSessionKey(), []);
+    }
+
+    private function getSessionKey(): string
+    {
+        return Auth::check()
+            ? self::SESSION_KEY.'_user_'.Auth::id()
+            : self::SESSION_KEY.'_guest';
     }
 }
