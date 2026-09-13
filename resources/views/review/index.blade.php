@@ -4,19 +4,19 @@
 
 @section('content')
 <div class="title-section">
-    <h2>Reseñas</h2>
-    <a href="{{ route('reviews.create') }}" class="btn">Registrar reseña</a>
+    <h2>{{ __('messages.reviews_title') }}</h2>
+    <a href="{{ route('reviews.create') }}" class="btn">{{ __('messages.review_create_title') }}</a>
 </div>
 
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Usuario</th>
-                <th>Calificación</th>
-                <th>Comentario</th>
-                <th>Fecha</th>
+                <th>{{ __('messages.lbl_product') }}</th>
+                <th>{{ __('messages.lbl_user') }}</th>
+                <th>{{ __('messages.lbl_rating') }}</th>
+                <th>{{ __('messages.lbl_comment') }}</th>
+                <th>{{ __('messages.lbl_date') }}</th>
                 <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
@@ -27,7 +27,7 @@
                 <td>{{ $review->getUser()->getName() }}</td>
                 <td>{{ $review->getRating() }}/5</td>
                 <td>{{ $review->getComment() ?? 'Sin comentario' }}</td>
-                <td>{{ $review->getCreationDate() }}</td>
+                <td>{{ $review->getCreatedAt() }}</td>
                 <td>
                     <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
                     <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
@@ -42,7 +42,7 @@
     </table>
 
     @if (count($viewData['reviews']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">No hay reseñas registradas.</div>
+        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_reviews') }}</div>
     @endif
 </div>
 @endsection

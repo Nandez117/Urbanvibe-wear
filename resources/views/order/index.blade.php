@@ -4,19 +4,19 @@
 
 @section('content')
 <div class="title-section">
-    <h2>Pedidos</h2>
-    <a href="{{ route('products.index') }}" class="btn">Ir al catálogo</a>
+    <h2>{{ __('messages.orders_title') }}</h2>
+    <a href="{{ route('products.index') }}" class="btn">{{ __('messages.nav_catalog') }}</a>
 </div>
 
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <th>Número de pedido</th>
-                <th>Cliente</th>
-                <th>Fecha de creación</th>
-                <th>Monto total</th>
-                <th>Estado</th>
+                <th>{{ __('messages.lbl_order_number') }}</th>
+                <th>{{ __('messages.lbl_client') }}</th>
+                <th>{{ __('messages.lbl_creation_date') }}</th>
+                <th>{{ __('messages.lbl_total_amount') }}</th>
+                <th>{{ __('messages.lbl_status') }}</th>
                 <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
@@ -25,15 +25,15 @@
             <tr>
                 <td>{{ $order->getOrderNumber() }}</td>
                 <td>{{ $order->getUser()->getName() }}</td>
-                <td>{{ $order->getCreationDate() }}</td>
+                <td>{{ $order->getCreatedAt() }}</td>
                 <td>${{ number_format($order->getTotalAmount(), 2) }}</td>
                 <td>{{ $order->getStatus() }}</td>
                 <td>
                     <div class="actions-row">
                         @if (!$order->getPayment())
-                            <a href="{{ route('payments.create', ['id' => $order->getId()]) }}" class="btn btn-sm btn-success">Registrar pago</a>
+                            <a href="{{ route('payments.create', ['id' => $order->getId()]) }}" class="btn btn-sm btn-success">{{ __('messages.btn_register_payment') }}</a>
                         @else
-                            <span style="color: var(--success); font-weight: 600;">Pagado</span>
+                            <span style="color: var(--success); font-weight: 600;">{{ __('messages.status_paid') }}</span>
                         @endif
                         @if ($order->getStatus() !== 'Pagado')
                             <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
@@ -53,7 +53,7 @@
     </table>
 
     @if (count($viewData['orders']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">No hay pedidos registrados.</div>
+        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_orders') }}</div>
     @endif
 </div>
 @endsection

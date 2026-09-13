@@ -40,14 +40,13 @@ class OrderController extends Controller
     {
         $order = new Order;
         $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setCreationDate(now()->toDateString());
         $order->setTotalAmount(0);
         $order->setStatus('Pendiente');
         $order->setUserId(Auth::id());
         $order->save();
 
         return redirect()->route('orders.edit', ['id' => $order->getId()])
-            ->with('success', 'Pedido creado. Ahora agrega los productos.');
+            ->with('success', __('messages.order_created_add_products'));
     }
 
     public function edit(string $id): View
@@ -71,7 +70,7 @@ class OrderController extends Controller
         $order->setStatus($request->input('status'));
         $order->save();
 
-        return redirect()->route('orders.index')->with('success', 'Pedido actualizado correctamente.');
+        return redirect()->route('orders.index')->with('success', __('messages.order_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -80,7 +79,7 @@ class OrderController extends Controller
         abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden eliminar.');
         $order->delete();
 
-        return redirect()->route('orders.index')->with('success', 'Pedido eliminado correctamente.');
+        return redirect()->route('orders.index')->with('success', __('messages.order_delete_success'));
     }
 
     public function downloadInvoice(string $id): Response

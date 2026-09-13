@@ -58,7 +58,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Usuario actualizado correctamente.');
+        return redirect()->route('users.index')->with('success', __('messages.user_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -75,7 +75,7 @@ class UserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', 'Usuario eliminado correctamente.');
+        return redirect()->route('users.index')->with('success', __('messages.user_delete_success'));
     }
 
     public function profile(): View

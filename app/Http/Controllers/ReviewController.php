@@ -38,7 +38,6 @@ class ReviewController extends Controller
         $review = new Review;
         $review->setRating((int) $request->input('rating'));
         $review->setComment($request->input('comment'));
-        $review->setCreationDate(now()->toDateString());
         $review->setUserId((int) $request->input('user_id'));
         $review->setProductId((int) $request->input('product_id'));
         $review->save();

@@ -4,7 +4,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
@@ -13,7 +12,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['id'] - int - contains the review primary key
  * $this->attributes['rating'] - int - contains the product rating
  * $this->attributes['comment'] - string - contains the review comment
- * $this->attributes['creation_date'] - date - contains the review creation date
  * $this->attributes['user_id'] - int - contains the reviewer foreign key
  * $this->attributes['product_id'] - int - contains the reviewed product foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
@@ -21,12 +19,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Review extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'rating',
         'comment',
-        'creation_date',
         'user_id',
         'product_id',
     ];
@@ -35,7 +30,6 @@ class Review extends Model
     {
         return [
             'rating' => 'integer',
-            'creation_date' => 'date',
         ];
     }
 
@@ -47,11 +41,6 @@ class Review extends Model
     public function setComment(?string $comment): void
     {
         $this->attributes['comment'] = $comment;
-    }
-
-    public function setCreationDate(string $creationDate): void
-    {
-        $this->attributes['creation_date'] = $creationDate;
     }
 
     public function setUserId(int $userId): void
@@ -77,11 +66,6 @@ class Review extends Model
     public function getComment(): ?string
     {
         return $this->attributes['comment'] ?? null;
-    }
-
-    public function getCreationDate(): string
-    {
-        return $this->attributes['creation_date'];
     }
 
     public function getUserId(): int

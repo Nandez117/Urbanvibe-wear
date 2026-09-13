@@ -9,7 +9,7 @@
             <form action="{{ route('wishlist.checkout') }}" method="POST">
                 @csrf
                 <button type="submit" class="btn" style="background: #3ddc84; color: #1a1a1a; font-weight: bold; padding: 0.75rem 1.5rem; font-size: 1.1rem; border-radius: 8px;">
-                    <i class="fa-solid fa-credit-card"></i> Proceder al Pago
+                    <i class="fa-solid fa-credit-card"></i> {{ __('messages.btn_checkout') }}
                 </button>
             </form>
         @endif

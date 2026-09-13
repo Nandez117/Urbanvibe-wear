@@ -73,7 +73,7 @@ class WishlistController extends Controller
         $wishlists = Wishlist::with('product')->where('user_id', Auth::id())->get();
 
         if ($wishlists->isEmpty()) {
-            return redirect()->route('wishlist.index')->with('error', 'Tu lista de deseos está vacía.');
+            return redirect()->route('wishlist.index')->with('error', __('messages.wishlist_empty'));
         }
 
         $totalAmount = 0;
@@ -83,7 +83,6 @@ class WishlistController extends Controller
 
         $order = new Order;
         $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setCreationDate(now()->toDateString());
         $order->setTotalAmount($totalAmount);
         $order->setStatus('Pendiente');
         $order->setUserId(Auth::id());
@@ -104,6 +103,6 @@ class WishlistController extends Controller
         Wishlist::where('user_id', Auth::id())->delete();
 
         return redirect()->route('payments.create', ['id' => $order->getId()])
-            ->with('success', 'Pedido creado desde tu lista de deseos. Ahora completa tu pago.');
+            ->with('success', __('messages.wishlist_order_created'));
     }
 }

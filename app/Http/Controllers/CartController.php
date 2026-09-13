@@ -1,6 +1,6 @@
 <?php
 
-// Yan Frank Ríos López
+// Yan Frank Ri­os Lopez
 
 namespace App\Http\Controllers;
 
@@ -39,21 +39,21 @@ class CartController extends Controller
         $product = Product::findOrFail($id);
         $this->cart->addProduct($product->getId(), (int) $request->input('quantity'));
 
-        return redirect()->route('cart.index')->with('success', 'Producto agregado al carrito.');
+        return redirect()->route('cart.index')->with('success', __('messages.cart_add_success'));
     }
 
     public function update(UpdateCartRequest $request, string $id): RedirectResponse
     {
         $this->cart->updateQuantity((int) $id, (int) $request->input('quantity'));
 
-        return redirect()->route('cart.index')->with('success', 'Carrito actualizado.');
+        return redirect()->route('cart.index')->with('success', __('messages.cart_update_success'));
     }
 
     public function remove(string $id): RedirectResponse
     {
         $this->cart->removeProduct((int) $id);
 
-        return redirect()->route('cart.index')->with('success', 'Producto eliminado del carrito.');
+        return redirect()->route('cart.index')->with('success', __('messages.cart_remove_success'));
     }
 
     public function checkout(): RedirectResponse
@@ -66,7 +66,6 @@ class CartController extends Controller
 
         $order = new Order;
         $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setCreationDate(now()->toDateString());
         $order->setTotalAmount($this->cart->getTotal());
         $order->setStatus('Pendiente');
         $order->setUserId(Auth::id());
@@ -85,6 +84,6 @@ class CartController extends Controller
         $this->cart->clear();
 
         return redirect()->route('payments.create', ['id' => $order->getId()])
-            ->with('success', 'Pedido creado. Ahora completa tu pago.');
+            ->with('success', __('messages.order_created_payment_pending'));
     }
 }

@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', 'Cuenta creada correctamente.');
+        return redirect()->route('home')->with('success', __('messages.auth_register_success'));
     }
 
     public function showLogin(): View
