@@ -42,6 +42,10 @@ class ReviewController extends Controller
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
+        if (request()->has('from_product')) {
+            return back()->with('success', __('messages.review_create_success'));
+        }
+
         return redirect()->route('reviews.index')->with('success', __('messages.review_create_success'));
     }
 

@@ -67,4 +67,61 @@
         </div>
     </div>
 </div>
+    {{-- Reviews Section --}}
+    <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-subtle);">
+        <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-primary);">{{ __('messages.user_reviews') }}</h2>
+        
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+            {{-- Review List --}}
+            <div style="flex: 2; min-width: 300px;">
+                @if(count($viewData['product']->getReviews()) > 0)
+                    @foreach($viewData['product']->getReviews() as $review)
+                        <div style="background: var(--surface-elevated); padding: 1.5rem; border-radius: 8px; margin-bottom: 1rem; border: 1px solid var(--border-subtle);">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                                <strong>{{ $review->getUser()->getName() }}</strong>
+                                <span style="color: #fbbf24;"><i class="fa-solid fa-star"></i> {{ $review->getRating() }}/5</span>
+                            </div>
+                            <p style="color: var(--text-secondary); margin: 0;">{{ $review->getComment() }}</p>
+                            <small style="color: var(--text-gray); display: block; margin-top: 0.5rem;">{{ $review->getCreatedAt() }}</small>
+                        </div>
+                    @endforeach
+                @else
+                    <p style="color: var(--text-secondary);">{{ __('messages.no_reviews_yet') }}</p>
+                @endif
+            </div>
+
+            {{-- Review Form --}}
+            <div style="flex: 1; min-width: 300px;">
+                @auth
+                    <div style="background: var(--surface-elevated); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
+                        <h3 style="margin-bottom: 1rem;">{{ __('messages.leave_review') }}</h3>
+                        <form action="{{ route('reviews.store') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="from_product" value="1">
+                            <input type="hidden" name="user_id" value="{{ auth()->user()->getId() }}">
+                            <input type="hidden" name="product_id" value="{{ $viewData['product']->getId() }}">
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; margin-bottom: 0.5rem;">{{ __('messages.rating_1_5') }}:</label>
+                                <input type="number" name="rating" min="1" max="5" value="5" required style="width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--surface-input); color: var(--text-primary);">
+                            </div>
+                            
+                            <div style="margin-bottom: 1rem;">
+                                <label style="display: block; margin-bottom: 0.5rem;">{{ __('messages.comment') }}:</label>
+                                <textarea name="comment" rows="3" required style="width: 100%; padding: 0.5rem; border-radius: 4px; border: 1px solid var(--border-subtle); background: var(--surface-input); color: var(--text-primary);"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="btn-buy" style="width: 100%; padding: 0.8rem; font-size: 1rem;">{{ __('messages.publish_review') }}</button>
+                        </form>
+                    </div>
+                @else
+                    <div style="background: var(--surface-elevated); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-subtle); text-align: center;">
+                        <p style="margin-bottom: 1rem; color: var(--text-secondary);">{{ __('messages.must_login_review') }}</p>
+                        <a href="{{ route('login') }}" class="btn-buy" style="display: inline-block; padding: 0.5rem 1rem; text-decoration: none;">{{ __('messages.login_btn') }}</a>
+                    </div>
+                @endauth
+            </div>
+        </div>
+    </div>
+</div>
 @endsection

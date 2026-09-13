@@ -4,8 +4,10 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * Product Attributes
@@ -22,6 +24,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['category_id'] - int - contains the product category id
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->reviews - Collection - contains the product reviews
  */
 class Product extends Model
 {
@@ -37,56 +40,6 @@ class Product extends Model
         'image',
         'category_id',
     ];
-
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->attributes['description'] = $description;
-    }
-
-    public function setPrice(float $price): void
-    {
-        $this->attributes['price'] = $price;
-    }
-
-    public function setDiscount(float $discount): void
-    {
-        $this->attributes['discount'] = $discount;
-    }
-
-    public function setSize(?string $size): void
-    {
-        $this->attributes['size'] = $size;
-    }
-
-    public function setColor(?string $color): void
-    {
-        $this->attributes['color'] = $color;
-    }
-
-    public function setMaterial(?string $material): void
-    {
-        $this->attributes['material'] = $material;
-    }
-
-    public function setStock(int $stock): void
-    {
-        $this->attributes['stock'] = $stock;
-    }
-
-    public function setImage(?string $image): void
-    {
-        $this->attributes['image'] = $image;
-    }
-
-    public function setCategoryId(int $categoryId): void
-    {
-        $this->attributes['category_id'] = $categoryId;
-    }
 
     public function getId(): int
     {
@@ -153,6 +106,56 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
+    }
+
+    public function setPrice(float $price): void
+    {
+        $this->attributes['price'] = $price;
+    }
+
+    public function setDiscount(float $discount): void
+    {
+        $this->attributes['discount'] = $discount;
+    }
+
+    public function setSize(?string $size): void
+    {
+        $this->attributes['size'] = $size;
+    }
+
+    public function setColor(?string $color): void
+    {
+        $this->attributes['color'] = $color;
+    }
+
+    public function setMaterial(?string $material): void
+    {
+        $this->attributes['material'] = $material;
+    }
+
+    public function setStock(int $stock): void
+    {
+        $this->attributes['stock'] = $stock;
+    }
+
+    public function setImage(?string $image): void
+    {
+        $this->attributes['image'] = $image;
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -166,5 +169,20 @@ class Product extends Model
     public function setCategory(Category $category): void
     {
         $this->category()->associate($category);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'product_id');
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
     }
 }
