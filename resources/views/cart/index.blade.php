@@ -3,16 +3,16 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<h2>Carrito de compras</h2>
+<h2>{{ __('messages.cart_title') }}</h2>
 
 <div class="table-container" style="margin-top: 1.5rem;">
     <table>
         <thead>
             <tr>
-                <th>Producto</th>
-                <th>Precio unitario</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
+                <th>{{ __('messages.lbl_product') }}</th>
+                <th>{{ __('messages.lbl_unit_price') }}</th>
+                <th>{{ __('messages.lbl_quantity') }}</th>
+                <th>{{ __('messages.lbl_subtotal') }}</th>
                 <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
@@ -44,24 +44,24 @@
     </table>
 
     @if (count($viewData['items']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">Tu carrito está vacío.</div>
+        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.cart_empty') }}</div>
     @endif
 </div>
 
 @if (count($viewData['items']) > 0)
 <div style="display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">Seguir comprando</a>
+    <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.btn_continue_shopping') }}</a>
     <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <span style="font-size: 1.25rem; font-weight: 700;">Total: ${{ number_format($viewData['total'], 2) }}</span>
+        <span style="font-size: 1.25rem; font-weight: 700;">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
         <form action="{{ route('cart.checkout') }}" method="POST">
             @csrf
-            <button type="submit" class="btn">Proceder al pago</button>
+            <button type="submit" class="btn">{{ __('messages.btn_checkout') }}</button>
         </form>
     </div>
 </div>
 @else
 <div style="text-align: center; margin-top: 1.5rem;">
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">Ver catálogo</a>
+    <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.nav_catalog') }}</a>
 </div>
 @endif
 @endsection

@@ -29,6 +29,7 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
     1. Getters y Setters de atributos primitivos de la base de datos (los que usan ->attributes).
     2. Getters y Setters de atributos primitivos adicionales.
     3. Getters y Setters no primitivos (relaciones).
+  - **Timestamps:** Se pueden crear getters para los timestamps (ej. `created_at`), PERO NO setters, ya que Laravel los gestiona automáticamente.
 - **Relaciones:** Siempre poner a las relaciones getter y setter. Las relaciones se traducen en dos funciones que conectan ambos modelos.
 - **Asignación Masiva:** Utilizar $fillable para definir qué atributos del modelo se pueden asignar en masa. La propiedad $guarded debe contener un arreglo con los atributos que no deseas que se asignen masivamente.
 - **Consultas DB (N+1):** Usar Eloquent. Solucionar el problema de consultas N+1 haciendo "1 sola consulta para sacar todos los productos" mediante *Eager Loading* (with()).
@@ -38,12 +39,12 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - Siempre usar migraciones, tener un archivo por cada tabla.
   - Todo se debe poder reversar mediante los métodos up y down en cada tabla.
   - **Timestamps:** Siempre poner los 	imestamps(). Dado que este método crea internamente created_at y updated_at, **no** se deben combinar creándolos de nuevo a mano, ya que es redundante.
-- **Factories:** Define uno o más patrones para crear modelos ficticios. Si a un modelo se le define su propio factory, hay que incluir el trait HasFactory en la clase modelo verificando que sí tenga el archivo factory correspondiente en la carpeta.
+- **Factories:** Define uno o más patrones para crear modelos ficticios. Si a un modelo se le define su propio factory, hay que incluir el trait HasFactory en la clase modelo verificando que sí tenga el archivo factory correspondiente en la carpeta. Si se incluye el trait HasFactory pero no se usa en el modelo o no existe el factory.
 - **Seeding:** Utilizar php artisan db:seed para llenar las tablas y probar la app usando datos ficticios obligatoriamente.
 
 ## 5. Vistas y Código HTML
 - **Código HTML Exclusivo:** El código HTML debe ir exclusivamente en las vistas (views), manteniendo la menor cantidad de elementos posibles para que sean reutilizables.
-- **Traducciones:** Utilizar las directivas de lang para el manejo de idiomas en la interfaz.
+- **Traducciones:** Utilizar las directivas de lang para el manejo de idiomas en la interfaz. Si existe una mezcla de inglés y español (textos quemados) en las vistas se penaliza.
 - **Datos en la Vista:** Enviar datos obligatoriamente con el arreglo asociativo $viewData, nunca con compact.
 - **Separación de CSS y HTML:** Se debe separar el CSS del HTML, ubicando los archivos CSS en una carpeta dentro de `public` llamada `css`, y en las vistas (`resources`) llamarlos mediante un *layout*.
 

@@ -5,7 +5,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,7 +14,6 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * Order Attributes
  * $this->attributes['id'] - int - contains the order primary key
  * $this->attributes['order_number'] - string - contains the unique order number
- * $this->attributes['creation_date'] - date - contains the order creation date
  * $this->attributes['total_amount'] - float - contains the order total amount
  * $this->attributes['status'] - string - contains the order status
  * $this->attributes['user_id'] - int - contains the customer foreign key
@@ -24,11 +22,8 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  */
 class Order extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'order_number',
-        'creation_date',
         'total_amount',
         'status',
         'user_id',
@@ -37,7 +32,6 @@ class Order extends Model
     protected function casts(): array
     {
         return [
-            'creation_date' => 'date',
             'total_amount' => 'decimal:2',
         ];
     }
@@ -45,11 +39,6 @@ class Order extends Model
     public function setOrderNumber(string $orderNumber): void
     {
         $this->attributes['order_number'] = $orderNumber;
-    }
-
-    public function setCreationDate(string $creationDate): void
-    {
-        $this->attributes['creation_date'] = $creationDate;
     }
 
     public function setTotalAmount(float $totalAmount): void
@@ -75,11 +64,6 @@ class Order extends Model
     public function getOrderNumber(): string
     {
         return $this->attributes['order_number'];
-    }
-
-    public function getCreationDate(): string
-    {
-        return $this->attributes['creation_date'];
     }
 
     public function getTotalAmount(): float
