@@ -80,8 +80,6 @@ Estamos utilizando **Laragon / MAMP** como entorno de desarrollo local. Los serv
    ```
 
 ## 🚀 Despliegue en GCP (Google Cloud Platform)
+El proyecto se encuentra actualmente desplegado en GCP, invitamos al usuario a dar un vistazo al proyecto
 
-Más adelante, el proyecto se desplegará en la infraestructura de GCP. Para ese momento:
-- Se usarán las variables de entorno de producción de GCP.
-- La base de datos se migrará a un servicio como Cloud SQL (MySQL).
-- El código que se subirá será exclusivamente el que provenga de la rama `main` tras pasar por integración en `develop`.
+http://136.111.62.204/
