@@ -20,16 +20,6 @@ class Category extends Model
         'name',
     ];
 
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function products(): HasMany
-    {
-        return $this->hasMany(Product::class);
-    }
-
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -48,5 +38,15 @@ class Category extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function products(): HasMany
+    {
+        return $this->hasMany(Product::class);
     }
 }
