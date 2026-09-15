@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * User Attributes
@@ -47,36 +48,6 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
-    }
-
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function setEmail(string $email): void
-    {
-        $this->attributes['email'] = $email;
-    }
-
-    public function setPassword(string $password): void
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-
-    public function setPhone(?string $phone): void
-    {
-        $this->attributes['phone'] = $phone;
-    }
-
-    public function setAddress(?string $address): void
-    {
-        $this->attributes['address'] = $address;
-    }
-
-    public function setRole(string $role): void
-    {
-        $this->attributes['role'] = $role;
     }
 
     public function getId(): int
@@ -122,5 +93,50 @@ class User extends Authenticatable
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
+    }
+
+    public function setPassword(string $password): void
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->attributes['phone'] = $phone;
+    }
+
+    public function setAddress(?string $address): void
+    {
+        $this->attributes['address'] = $address;
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->attributes['role'] = $role;
+    }
+
+    public function orders(): HasMany
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
     }
 }
