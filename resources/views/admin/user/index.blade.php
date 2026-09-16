@@ -29,7 +29,7 @@
                 <td>{{ $user->getPhone() ?? 'N/A' }}</td>
                 <td>{{ $user->getAddress() ?? 'N/A' }}</td>
                 <td>
-                    <span style="padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: {{ $user->getRole() === 'admin' ? '#fee2e2' : '#dbeafe' }}; color: {{ $user->getRole() === 'admin' ? '#991b1b' : '#1e40af' }};">
+                    <span class="{{ $user->getRole() === 'admin' ? 'role-badge-admin' : 'role-badge-client' }}">
                         {{ ucfirst($user->getRole()) }}
                     </span>
                 </td>
@@ -49,7 +49,7 @@
     </table>
     
     @if(count($viewData['users']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_users_registered') }}</div>
+        <div class="empty-state">{{ __('messages.no_users_registered') }}</div>
     @endif
 </div>
 @endsection

@@ -3,12 +3,12 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div style="max-width: 600px; margin: 0 auto; background-color: var(--white); padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
-    <h2 style="margin-bottom: 1.5rem;">Editar Usuario: {{ $viewData['user']->getName() }}</h2>
+<div class="admin-container-box">
+    <h2 class="admin-title">Editar Usuario: {{ $viewData['user']->getName() }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">
-            <ul style="margin-left: 1.5rem;">
+            <ul class="admin-mt-4">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -16,41 +16,41 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('users.update', ['id' => $viewData['user']->getId()]) }}" style="display: flex; flex-direction: column; gap: 1rem;">
+    <form method="POST" action="{{ route('users.update', ['id' => $viewData['user']->getId()]) }}" class="admin-form-container">
         @csrf
         @method('PUT')
         
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.lbl_name') }}</label>
-            <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+            <label class="admin-form-label">{{ __('messages.lbl_name') }}</label>
+            <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required class="admin-form-input">
         </div>
 
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.email') }}</label>
-            <input type="email" name="email" value="{{ old('email', $viewData['user']->getEmail()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+            <label class="admin-form-label">{{ __('messages.email') }}</label>
+            <input type="email" name="email" value="{{ old('email', $viewData['user']->getEmail()) }}" required class="admin-form-input">
         </div>
         
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.phone') }}</label>
-            <input type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+            <label class="admin-form-label">{{ __('messages.phone') }}</label>
+            <input type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" class="admin-form-input">
         </div>
 
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.address_domicile') }}</label>
-            <textarea name="address" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">{{ old('address', $viewData['user']->getAddress()) }}</textarea>
+            <label class="admin-form-label">{{ __('messages.address_domicile') }}</label>
+            <textarea name="address" rows="3" class="admin-form-input">{{ old('address', $viewData['user']->getAddress()) }}</textarea>
         </div>
         
         <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.role') }}</label>
-            <select name="role" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+            <label class="admin-form-label">{{ __('messages.role') }}</label>
+            <select name="role" class="admin-form-input">
                 <option value="client" {{ old('role', $viewData['user']->getRole()) === 'client' ? 'selected' : '' }}>{{ __('messages.client') }}</option>
                 <option value="admin" {{ old('role', $viewData['user']->getRole()) === 'admin' ? 'selected' : '' }}>{{ __('messages.administrator') }}</option>
             </select>
         </div>
 
-        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+        <div class="admin-action-bar">
             <button type="submit" class="btn">{{ __('messages.update_user') }}</button>
-            <a href="{{ route('users.index') }}" class="btn" style="background-color: #6b7280;">{{ __('messages.cancel') }}</a>
+            <a href="{{ route('users.index') }}" class="btn" class="btn-secondary">{{ __('messages.cancel') }}</a>
         </div>
     </form>
 </div>

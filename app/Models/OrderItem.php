@@ -30,6 +30,12 @@ class OrderItem extends Model
         'order_id',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     protected function casts(): array
     {
         return [
@@ -39,29 +45,9 @@ class OrderItem extends Model
         ];
     }
 
-    public function setQuantity(int $quantity): void
+    public function calculateSubtotal(): float
     {
-        $this->attributes['quantity'] = $quantity;
-    }
-
-    public function setSubtotal(float $subtotal): void
-    {
-        $this->attributes['subtotal'] = $subtotal;
-    }
-
-    public function setUnitPrice(float $unitPrice): void
-    {
-        $this->attributes['unit_price'] = $unitPrice;
-    }
-
-    public function setProductId(int $productId): void
-    {
-        $this->attributes['product_id'] = $productId;
-    }
-
-    public function setOrderId(int $orderId): void
-    {
-        $this->attributes['order_id'] = $orderId;
+        return round($this->getQuantity() * $this->getUnitPrice(), 2);
     }
 
     public function getId(): int
@@ -74,9 +60,19 @@ class OrderItem extends Model
         return (int) $this->attributes['quantity'];
     }
 
+    public function setQuantity(int $quantity): void
+    {
+        $this->attributes['quantity'] = $quantity;
+    }
+
     public function getSubtotal(): float
     {
         return (float) $this->attributes['subtotal'];
+    }
+
+    public function setSubtotal(float $subtotal): void
+    {
+        $this->attributes['subtotal'] = $subtotal;
     }
 
     public function getUnitPrice(): float
@@ -84,14 +80,29 @@ class OrderItem extends Model
         return (float) $this->attributes['unit_price'];
     }
 
+    public function setUnitPrice(float $unitPrice): void
+    {
+        $this->attributes['unit_price'] = $unitPrice;
+    }
+
     public function getProductId(): int
     {
         return (int) $this->attributes['product_id'];
     }
 
+    public function setProductId(int $productId): void
+    {
+        $this->attributes['product_id'] = $productId;
+    }
+
     public function getOrderId(): int
     {
         return (int) $this->attributes['order_id'];
+    }
+
+    public function setOrderId(int $orderId): void
+    {
+        $this->attributes['order_id'] = $orderId;
     }
 
     public function getCreatedAt(): string
@@ -102,11 +113,6 @@ class OrderItem extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function calculateSubtotal(): float
-    {
-        return round($this->getQuantity() * $this->getUnitPrice(), 2);
     }
 
     public function product(): BelongsTo

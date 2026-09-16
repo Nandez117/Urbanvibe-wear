@@ -4,17 +4,17 @@
 
 @section('content')
 <div class="title-section">
-    <h2>Gestión de Categorías</h2>
+    <h2>{{ __('messages.manage_categories') }}</h2>
 </div>
 
-<div style="display: flex; gap: 2rem; align-items: flex-start;">
+<div class="es-47118b4a">
     
-    <div style="flex: 1; background-color: var(--white); padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
-        <h3 style="margin-bottom: 1rem;">Nueva Categoría</h3>
+    <div class="es-9f13cd59">
+        <h3 class="es-4986ecf7">{{ __('messages.new_category') }}</h3>
         
         @if ($errors->any())
             <div class="alert alert-error">
-                <ul style="margin-left: 1.5rem;">
+                <ul class="es-552f38ac">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -22,18 +22,18 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('categories.store') }}" style="display: flex; flex-direction: column; gap: 1rem;">
+        <form method="POST" action="{{ route('categories.store') }}" class="es-f48bc238">
             @csrf
             <div>
-                <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Nombre de la Categoría</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Hoodie" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
+                <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Hoodie" required class="es-9ef793ad">
             </div>
-            <button type="submit" class="btn">Crear Categoría</button>
+            <button type="submit" class="btn">{{ __('messages.btn_create_category') }}</button>
         </form>
     </div>
 
     
-    <div style="flex: 2; margin-top: 0;" class="table-container">
+    <div class="table-container es-4a68d232">
         <table>
             <thead>
                 <tr>
@@ -63,8 +63,8 @@
         </table>
         
         @if(count($viewData['categories']) === 0)
-            <div style="padding: 2rem; text-align: center; color: var(--text-gray);">
-                No hay categorías registradas en el sistema.
+            <div class="es-80f9a287">
+                {{ __('messages.no_categories') }}
             </div>
         @endif
     </div>

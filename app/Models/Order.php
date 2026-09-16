@@ -32,31 +32,17 @@ class Order extends Model
         'user_id',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     protected function casts(): array
     {
         return [
             'total_amount' => 'decimal:2',
         ];
-    }
-
-    public function setOrderNumber(string $orderNumber): void
-    {
-        $this->attributes['order_number'] = $orderNumber;
-    }
-
-    public function setTotalAmount(float $totalAmount): void
-    {
-        $this->attributes['total_amount'] = $totalAmount;
-    }
-
-    public function setStatus(string $status): void
-    {
-        $this->attributes['status'] = $status;
-    }
-
-    public function setUserId(int $userId): void
-    {
-        $this->attributes['user_id'] = $userId;
     }
 
     public function getId(): int
@@ -69,9 +55,19 @@ class Order extends Model
         return $this->attributes['order_number'];
     }
 
+    public function setOrderNumber(string $orderNumber): void
+    {
+        $this->attributes['order_number'] = $orderNumber;
+    }
+
     public function getTotalAmount(): float
     {
         return (float) $this->attributes['total_amount'];
+    }
+
+    public function setTotalAmount(float $totalAmount): void
+    {
+        $this->attributes['total_amount'] = $totalAmount;
     }
 
     public function getStatus(): string
@@ -79,9 +75,19 @@ class Order extends Model
         return $this->attributes['status'];
     }
 
+    public function setStatus(string $status): void
+    {
+        $this->attributes['status'] = $status;
+    }
+
     public function getUserId(): int
     {
         return (int) $this->attributes['user_id'];
+    }
+
+    public function setUserId(int $userId): void
+    {
+        $this->attributes['user_id'] = $userId;
     }
 
     public function getCreatedAt(): string
@@ -92,11 +98,6 @@ class Order extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function getPayment(): ?Payment
-    {
-        return $this->payment;
     }
 
     public function user(): BelongsTo
@@ -124,14 +125,19 @@ class Order extends Model
         return $this->items;
     }
 
+    public function setItems(Collection $items): void
+    {
+        $this->items = $items;
+    }
+
     public function payment(): HasOne
     {
         return $this->hasOne(Payment::class);
     }
 
-    public function setItems(Collection $items): void
+    public function getPayment(): ?Payment
     {
-        $this->items = $items;
+        return $this->payment;
     }
 
     public function setPayment(Payment $payment): void

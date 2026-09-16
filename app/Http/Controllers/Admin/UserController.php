@@ -71,7 +71,7 @@ class UserController extends Controller
         $hasOrders = Order::where('user_id', $user->getId())->exists();
 
         if ($hasOrders) {
-            return redirect()->route('users.index')->with('error', 'No se puede eliminar el usuario porque tiene pedidos de compra asociados (Regla de Integridad).');
+            return redirect()->route('users.index')->with('error', __('messages.user_has_orders_error'));
         }
 
         $user->delete();

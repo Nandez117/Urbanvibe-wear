@@ -6,8 +6,6 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 - **Responsabilidad Exclusiva:** Las rutas solo deben encargarse de conectar las URLs con los métodos de los controladores. Queda estrictamente prohibido incluir lógica de negocio, validaciones o consultas a la base de datos en estos archivos.
 - **Referencias de Rutas:** Se recomienda utilizar la referencia basada en importación (use ControllerClass) o clases ([Controller::class, 'method']) en lugar de cadenas de texto quemadas (string-based).
 - **Nomenclatura:** Poner siempre el alias (nombre) a la vista/ruta usando ->name('alias'). Todas las rutas deben seguir el estándar de nomenclatura estricto `recurso.metodo` o `controlador.metodo` si lo exige el profesor, asegurando que estén nombradas de forma consistente.
-
-## 1.1 Estructura de Controladores
 - **Separación de Administrador:** Todos los controladores y la lógica encargada de la gestión administrativa (CRUD de productos, categorías, usuarios, etc.) deben estar aislados en una subcarpeta `Admin` (ej. `app/Http/Controllers/Admin`).
 
 ## 2. Controladores

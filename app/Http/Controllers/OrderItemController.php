@@ -41,7 +41,7 @@ class OrderItemController extends Controller
             $product = Product::findOrFail($request->input('product_id'));
             $order = Order::where('user_id', Auth::id())
                 ->findOrFail($request->input('order_id'));
-            abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden modificar.');
+            abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_modify'));
             $orderItem = new OrderItem;
             $orderItem->setQuantity((int) $request->input('quantity'));
             $orderItem->setUnitPrice($product->getPrice());
@@ -67,9 +67,9 @@ class OrderItemController extends Controller
         $viewData['title'] = 'Editar detalle de pedido';
         $viewData['orderItem'] = OrderItem::with('order')->findOrFail($id);
         abort_if($viewData['orderItem']->getOrder()->getUserId() !== Auth::id(), 404);
-        abort_if($viewData['orderItem']->getOrder()->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden modificar.');
+        abort_if($viewData['orderItem']->getOrder()->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_modify'));
         $viewData['orders'] = Order::where('user_id', Auth::id())
-            ->where('status', '!=', 'Pagado')
+            ->where('status', '!=', 'paid')
             ->get();
 
         return view('order-item.edit')->with('viewData', $viewData);
@@ -80,7 +80,7 @@ class OrderItemController extends Controller
         DB::transaction(function () use ($request, $id): void {
             $orderItem = OrderItem::with('product')->findOrFail($id);
             $order = Order::where('user_id', Auth::id())->findOrFail($orderItem->getOrderId());
-            abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden modificar.');
+            abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_modify'));
             $product = $orderItem->getProduct();
             $quantityDifference = (int) $request->input('quantity') - $orderItem->getQuantity();
             $orderItem->setQuantity((int) $request->input('quantity'));
@@ -103,7 +103,7 @@ class OrderItemController extends Controller
         DB::transaction(function () use ($id): void {
             $orderItem = OrderItem::with('product')->findOrFail($id);
             $order = Order::where('user_id', Auth::id())->findOrFail($orderItem->getOrderId());
-            abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden modificar.');
+            abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_modify'));
             $product = $orderItem->getProduct();
             $product->setStock($product->getStock() + $orderItem->getQuantity());
             $product->save();

@@ -5,7 +5,7 @@
 @section('content')
 <div class="auth-page">
     <div class="auth-card">
-        <h2>Iniciar sesión</h2>
+        <h2>{{ __('messages.login') }}</h2>
 
         @if ($errors->any())
             <div class="alert alert-error">
@@ -27,11 +27,11 @@
                 <label for="password">{{ __('messages.lbl_password') }}</label>
                 <input id="password" type="password" name="password" required>
             </div>
-            <button type="submit" class="btn btn-block">Iniciar sesión</button>
+            <button type="submit" class="btn btn-block">{{ __('messages.login') }}</button>
         </form>
 
         <div class="auth-switch">
-            ¿No tienes cuenta? <a href="{{ route('register.index') }}">Regístrate</a>
+            {{ __('messages.no_account') }} <a href="{{ route('register.index') }}">{{ __('messages.register') }}</a>
         </div>
     </div>
 </div>

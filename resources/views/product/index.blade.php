@@ -7,19 +7,19 @@
     
         <aside class="catalog-sidebar">
         <form action="{{ route('products.index') }}" method="GET">
-            <h3>Filtros</h3>
+            <h3>{{ __('messages.filters') }}</h3>
             
             <div class="sidebar-section">
-                <h4>Ordenar por</h4>
-                <select name="sort" class="form-control" onchange="this.form.submit()" style="width: 100%; padding: 0.5rem; border-radius: 6px; background: var(--surface-input); color: var(--text-primary); border: 1px solid var(--border-subtle);">
-                    <option value="">Relevancia</option>
-                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>Últimos añadidos</option>
-                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Precio: Menor a Mayor</option>
-                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Precio: Mayor a Menor</option>
+                <h4>{{ __('messages.sort_by') }}</h4>
+                <select name="sort" class="form-control es-a4156c53" onchange="this.form.submit()">
+                    <option value="">{{ __('messages.relevance') }}</option>
+                    <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>{{ __('messages.latest_added') }}</option>
+                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>{{ __('messages.price_low_high') }}</option>
+                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>{{ __('messages.price_high_low') }}</option>
                 </select>
             </div>
             <div class="sidebar-section">
-                <h4>Categoría</h4>
+                <h4>{{ __('messages.category') }}</h4>
                 @foreach($viewData['categories'] as $category)
                     <label class="sidebar-checkbox">
                         <input type="checkbox" name="category_id[]" value="{{ $category->getId() }}" 
@@ -30,16 +30,16 @@
             </div>
 
             <div class="sidebar-section">
-                <h4>Precio (USD)</h4>
-                <div style="display: flex; gap: 0.5rem; align-items: center;">
-                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min" class="qty-input" style="width: 100%;">
+                <h4>{{ __('messages.price_usd') }}</h4>
+                <div class="es-afcd7ed5">
+                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min" class="qty-input es-199b6f0e">
                     <span>-</span>
-                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max" class="qty-input" style="width: 100%;">
+                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max" class="qty-input es-199b6f0e">
                 </div>
             </div>
             
             <div class="sidebar-section">
-                <h4>Tallas</h4>
+                <h4>{{ __('messages.sizes') }}</h4>
                 @foreach(['S', 'M', 'L', 'XL'] as $size)
                     <label class="sidebar-checkbox">
                         <input type="checkbox" name="sizes[]" value="{{ $size }}"
@@ -49,8 +49,8 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn" style="width: 100%; margin-bottom: 0.5rem; justify-content: center;">Aplicar</button>
-            <a href="{{ route('products.index') }}" class="btn" style="width: 100%; background: var(--surface-input); color: var(--text-primary); text-align: center; justify-content: center; text-decoration: none;">Limpiar</a>
+            <button type="submit" class="btn es-8ec3300d">{{ __('messages.apply') }}</button>
+            <a href="{{ route('products.index') }}" class="btn es-e1463324">{{ __('messages.clear') }}</a>
         </form>
     </aside>
 
@@ -58,7 +58,7 @@
     <main class="catalog-content">
         <div class="catalog-topbar">
             <div>
-                <strong>Resultados encontrados:</strong> {{ count($viewData['products']) }}
+                <strong>{{ __('messages.results_found') }}</strong> {{ count($viewData['products']) }}
             </div>
             @if(Auth::check() && Auth::user()->getRole() === 'admin')
                 <a href="{{ route('products.create') }}" class="btn btn-sm">Registrar Nuevo Producto</a>
@@ -70,7 +70,7 @@
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
                     <a href="{{ route('products.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
-                        <div class="product-badge" style="display:flex; justify-content:space-between; width:calc(100% - 1rem);">
+                        <div class="product-badge es-ee238a7d">
                             <span>
                                 {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
                                 @if(Auth::check() && Auth::user()->getRole() === 'admin')
@@ -78,7 +78,7 @@
                                 @endif
                             </span>
                             @if(Auth::check() && Auth::user()->getRole() === 'admin' && $product->getStock() < 10)
-                                <span style="background-color: var(--danger); padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.65rem;">STOCK BAJO</span>
+                                <span class="es-58e8f199">{{ __('messages.low_stock') }}</span>
                             @endif
                         </div>
                         
@@ -105,13 +105,13 @@
                                 </button>
                             </form>
                         @else
-                            <button class="btn-buy" style="background: var(--surface-input); color: var(--text-secondary); cursor: not-allowed;" disabled>{{ __('messages.out_of_stock') }}</button>
+                            <button class="btn-buy es-41baa003" disabled>{{ __('messages.out_of_stock') }}</button>
                         @endif
 
                         @auth
                             <form action="{{ route('wishlist.store', ['id' => $product->getId()]) }}" method="POST" style="margin-top:0.5rem;">
                                 @csrf
-                                <button type="submit" class="btn" style="width: 100%; border: 1px solid var(--border-subtle); background: transparent; color: var(--text-primary);">
+                                <button type="submit" class="btn es-9923df7b">
                                     <i class="fa-regular fa-heart"></i> {{ __('messages.btn_add_wishlist') }}
                                 </button>
                             </form>
@@ -133,9 +133,9 @@
         </div>
         
         @if(count($viewData['products']) === 0)
-            <div style="padding: 3rem; text-align: center; color: var(--text-secondary); border: 1px dashed var(--border-subtle); border-radius: 12px;">
-                <i class="fa-solid fa-box-open" style="font-size: 3rem; margin-bottom: 1rem;"></i>
-                <p>No hay productos registrados en el catálogo.</p>
+            <div class="es-c1d199b6">
+                <i class="fa-solid fa-box-open es-9aa1019a"></i>
+                <p>{{ __('messages.no_products_catalog') }}</p>
             </div>
         @endif
     </main>

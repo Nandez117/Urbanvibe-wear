@@ -27,6 +27,12 @@ class Wishlist extends Model
         'product_id',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -37,14 +43,14 @@ class Wishlist extends Model
         return $this->attributes['user_id'];
     }
 
-    public function getProductId(): int
-    {
-        return $this->attributes['product_id'];
-    }
-
     public function setUserId(int $userId): void
     {
         $this->attributes['user_id'] = $userId;
+    }
+
+    public function getProductId(): int
+    {
+        return $this->attributes['product_id'];
     }
 
     public function setProductId(int $productId): void

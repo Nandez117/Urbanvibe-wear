@@ -5,6 +5,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -18,8 +19,16 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class Category extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
+    ];
+
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
     ];
 
     public function getId(): int
@@ -32,6 +41,11 @@ class Category extends Model
         return $this->attributes['name'];
     }
 
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
     public function getCreatedAt(): string
     {
         return $this->attributes['created_at'];
@@ -40,11 +54,6 @@ class Category extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
     }
 
     public function products(): HasMany

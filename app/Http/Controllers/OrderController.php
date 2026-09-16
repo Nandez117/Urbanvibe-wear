@@ -20,7 +20,7 @@ class OrderController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Pedidos - Urbanvibe Wear';
+        $viewData['title'] = __('messages.orders_title');
         $viewData['orders'] = Order::with('user')
             ->where('user_id', Auth::id())
             ->get();
@@ -31,7 +31,7 @@ class OrderController extends Controller
     public function create(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Crear pedido';
+        $viewData['title'] = __('messages.create_order');
 
         return view('order.create')->with('viewData', $viewData);
     }
@@ -41,7 +41,7 @@ class OrderController extends Controller
         $order = new Order;
         $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
         $order->setTotalAmount(0);
-        $order->setStatus('Pendiente');
+        $order->setStatus('pending');
         $order->setUserId(Auth::id());
         $order->save();
 
@@ -52,12 +52,12 @@ class OrderController extends Controller
     public function edit(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Editar pedido';
+        $viewData['title'] = __('messages.edit_order');
         $viewData['order'] = Order::where('user_id', Auth::id())
             ->with('items.product')
             ->findOrFail($id);
 
-        abort_if($viewData['order']->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden editar.');
+        abort_if($viewData['order']->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_edit'));
         $viewData['products'] = Product::where('stock', '>', 0)->get();
 
         return view('order.edit')->with('viewData', $viewData);
@@ -66,7 +66,7 @@ class OrderController extends Controller
     public function update(UpdateOrderRequest $request, string $id): RedirectResponse
     {
         $order = Order::where('user_id', Auth::id())->findOrFail($id);
-        abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden editar.');
+        abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_edit'));
         $order->setStatus($request->input('status'));
         $order->save();
 
@@ -76,7 +76,7 @@ class OrderController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $order = Order::where('user_id', Auth::id())->findOrFail($id);
-        abort_if($order->getStatus() === 'Pagado', 403, 'Los pedidos pagados no se pueden eliminar.');
+        abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_delete'));
         $order->delete();
 
         return redirect()->route('orders.index')->with('success', __('messages.order_delete_success'));
@@ -88,11 +88,11 @@ class OrderController extends Controller
             ->with('items.product', 'user', 'payment')
             ->findOrFail($id);
 
-        abort_if($order->getStatus() !== 'Pagado', 403, 'Solo se puede descargar factura de pedidos pagados.');
+        abort_if($order->getStatus() !== 'paid', 403, __('messages.invoice_only_paid'));
 
         $viewData = [];
         $viewData['order'] = $order;
-        $viewData['title'] = 'Factura Pedido #'.$order->getOrderNumber();
+        $viewData['title'] = __('messages.invoice_title').' #'.$order->getOrderNumber();
 
         $pdf = Pdf::loadView('order.invoice', ['viewData' => $viewData]);
 

@@ -41,6 +41,12 @@ class User extends Authenticatable
         'role',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     protected $hidden = [
         'password',
         'remember_token',
@@ -64,9 +70,19 @@ class User extends Authenticatable
         return $this->attributes['name'];
     }
 
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
     public function getEmail(): string
     {
         return $this->attributes['email'];
+    }
+
+    public function setEmail(string $email): void
+    {
+        $this->attributes['email'] = $email;
     }
 
     public function getPassword(): string
@@ -74,9 +90,19 @@ class User extends Authenticatable
         return $this->attributes['password'];
     }
 
+    public function setPassword(string $password): void
+    {
+        $this->attributes['password'] = Hash::make($password);
+    }
+
     public function getPhone(): ?string
     {
         return $this->attributes['phone'] ?? null;
+    }
+
+    public function setPhone(?string $phone): void
+    {
+        $this->attributes['phone'] = $phone;
     }
 
     public function getAddress(): ?string
@@ -84,9 +110,19 @@ class User extends Authenticatable
         return $this->attributes['address'] ?? null;
     }
 
+    public function setAddress(?string $address): void
+    {
+        $this->attributes['address'] = $address;
+    }
+
     public function getRole(): string
     {
         return $this->attributes['role'];
+    }
+
+    public function setRole(string $role): void
+    {
+        $this->attributes['role'] = $role;
     }
 
     public function getCreatedAt(): string
@@ -99,49 +135,9 @@ class User extends Authenticatable
         return $this->attributes['updated_at'];
     }
 
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function setEmail(string $email): void
-    {
-        $this->attributes['email'] = $email;
-    }
-
-    public function setPassword(string $password): void
-    {
-        $this->attributes['password'] = Hash::make($password);
-    }
-
-    public function setPhone(?string $phone): void
-    {
-        $this->attributes['phone'] = $phone;
-    }
-
-    public function setAddress(?string $address): void
-    {
-        $this->attributes['address'] = $address;
-    }
-
-    public function setRole(string $role): void
-    {
-        $this->attributes['role'] = $role;
-    }
-
     public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
-    }
-
-    public function reviews(): HasMany
-    {
-        return $this->hasMany(Review::class);
-    }
-
-    public function wishlists(): HasMany
-    {
-        return $this->hasMany(Wishlist::class);
     }
 
     public function getOrders(): Collection
@@ -154,6 +150,11 @@ class User extends Authenticatable
         $this->orders = $orders;
     }
 
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
     public function getReviews(): Collection
     {
         return $this->reviews;
@@ -162,6 +163,11 @@ class User extends Authenticatable
     public function setReviews(Collection $reviews): void
     {
         $this->reviews = $reviews;
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class);
     }
 
     public function getWishlists(): Collection

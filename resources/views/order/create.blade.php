@@ -3,8 +3,8 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div style="max-width: 800px; margin: 0 auto; background-color: var(--white); padding: 2rem; border-radius: 0.5rem;">
-    <h2>Crear Pedido</h2>
+<div class="es-9b7d0058">
+    <h2>{{ __('messages.create_order') }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -16,11 +16,11 @@
         </div>
     @endif
 
-    <p style="color: var(--text-gray); margin-bottom: 1.5rem;">El pedido se asociará automáticamente a tu cuenta. Después podrás agregar los productos.</p>
+    <p class="es-550a9f75">{{ __('messages.order_associated_auto') }}</p>
 
     <form method="POST" action="{{ route('orders.store') }}">
         @csrf
-        <button type="submit" class="btn">Crear pedido</button>
+        <button type="submit" class="btn">{{ __('messages.create_order_btn') }}</button>
         <a href="{{ route('orders.index') }}" class="btn">{{ __('messages.cancel') }}</a>
     </form>
 </div>

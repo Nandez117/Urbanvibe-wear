@@ -3,7 +3,7 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div style="max-width: 800px; margin: 0 auto; background-color: var(--white); padding: 2rem; border-radius: 0.5rem;">
+<div class="es-9b7d0058">
     <h2>{{ __('messages.register_review') }}</h2>
 
     @if ($errors->any())

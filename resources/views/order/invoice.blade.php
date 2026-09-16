@@ -44,7 +44,7 @@
             </tr>
             @endforeach
             <tr class="total-row">
-                <td colspan="3" style="text-align: right;">{{ __('messages.lbl_total_paid') }}:</td>
+                <td colspan="3" class="es-7851dbc0">{{ __('messages.lbl_total_paid') }}:</td>
                 <td>${{ number_format($viewData['order']->getTotalAmount(), 2) }}</td>
             </tr>
         </tbody>
