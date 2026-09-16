@@ -4,6 +4,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -13,6 +14,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * $this->attributes['name'] - string - contains the category name
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->products - Collection - contains the products relation
  */
 class Category extends Model
 {
@@ -48,5 +50,15 @@ class Category extends Model
     public function products(): HasMany
     {
         return $this->hasMany(Product::class);
+    }
+
+    public function getProducts(): Collection
+    {
+        return $this->products;
+    }
+
+    public function setProducts(Collection $products): void
+    {
+        $this->products = $products;
     }
 }

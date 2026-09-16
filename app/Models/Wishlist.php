@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /**
- * [Attributes]
- * id: int
- * user_id: int
- * product_id: int
- * created_at: string
- * updated_at: string
+ * Wishlist Attributes
+ * $this->attributes['id'] - int - contains the wishlist primary key
+ * $this->attributes['user_id'] - int - contains the user foreign key
+ * $this->attributes['product_id'] - int - contains the product foreign key
+ * $this->attributes['created_at'] - datetime - contains the creation timestamp
+ * $this->attributes['updated_at'] - datetime - contains the update timestamp
  *
- * [Relations]
  * user: User
  * product: Product
+ * $this->user - User - contains the user relation
+ * $this->product - Product - contains the product relation
  */
 class Wishlist extends Model
 {

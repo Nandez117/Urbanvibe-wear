@@ -23,7 +23,7 @@
                 <input id="name" type="text" name="name" value="{{ old('name') }}" required>
             </div>
             <div class="auth-field">
-                <label for="email">Correo electrónico</label>
+                <label for="email">{{ __('messages.email_long') }}</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="auth-field">
@@ -35,18 +35,18 @@
                 <input id="password_confirmation" type="password" name="password_confirmation" required>
             </div>
             <div class="auth-field">
-                <label for="phone">Teléfono</label>
+                <label for="phone">{{ __('messages.phone') }}</label>
                 <input id="phone" type="text" name="phone" value="{{ old('phone') }}">
             </div>
             <div class="auth-field">
-                <label for="address">Dirección</label>
+                <label for="address">{{ __('messages.address') }}</label>
                 <input id="address" type="text" name="address" value="{{ old('address') }}">
             </div>
             <button type="submit" class="btn btn-block">Crear cuenta</button>
         </form>
 
         <div class="auth-switch">
-            ¿Ya tienes cuenta? <a href="{{ route('login') }}">Inicia sesión</a>
+            ¿Ya tienes cuenta? <a href="{{ route('login.index') }}">Inicia sesión</a>
         </div>
     </div>
 </div>

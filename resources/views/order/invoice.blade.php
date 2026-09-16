@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', __('messages.invoice_title') . ' ' . $viewData['order']->getOrderNumber())
 @push('styles')

@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -33,7 +33,7 @@
             <input id="quantity" type="number" name="quantity" min="1" value="{{ old('quantity', $viewData['orderItem']->getQuantity()) }}" required>
         </div>
         <button type="submit" class="btn">Actualizar detalle</button>
-        <a href="{{ route('order-items.index') }}" class="btn">Cancelar</a>
+        <a href="{{ route('order-items.index') }}" class="btn">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

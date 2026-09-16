@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -30,7 +30,7 @@
             </select>
         </div>
         <div class="order-actions">
-            <a href="{{ route('orders.index') }}" class="btn btn-secondary">Cancelar</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
             <button type="submit" class="btn">Guardar pedido</button>
         </div>
     </form>
@@ -53,9 +53,9 @@
             @csrf
             <input type="hidden" name="order_id" value="{{ $viewData['order']->getId() }}">
             <div class="order-form-field">
-                <label for="product_id">Producto</label>
+                <label for="product_id">{{ __('messages.product_label') }}</label>
                 <select id="product_id" name="product_id" required>
-                    <option value="">Seleccione un producto</option>
+                    <option value="">{{ __('messages.select_product') }}</option>
                     @foreach ($viewData['products'] as $product)
                         <option value="{{ $product->getId() }}" data-stock="{{ $product->getStock() }}">{{ $product->getName() }} · {{ $product->getStock() }} disponibles</option>
                     @endforeach

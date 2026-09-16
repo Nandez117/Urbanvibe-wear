@@ -1,4 +1,4 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
@@ -27,7 +27,7 @@
 
         <div style="margin-top: 1rem; display: flex; gap: 1rem;">
             <button type="submit" class="btn">{{ __('messages.btn_update') }}</button>
-            <a href="{{ route('categories.index') }}" class="btn" style="background-color: #6b7280;">Cancelar</a>
+            <a href="{{ route('categories.index') }}" class="btn" style="background-color: #6b7280;">{{ __('messages.cancel') }}</a>
         </div>
     </form>
 </div>

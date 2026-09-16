@@ -1,4 +1,4 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
@@ -8,7 +8,7 @@
 </div>
 
 <div style="display: flex; gap: 2rem; align-items: flex-start;">
-    <!-- Formulario para crear -->
+    
     <div style="flex: 1; background-color: var(--white); padding: 1.5rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
         <h3 style="margin-bottom: 1rem;">Nueva Categoría</h3>
         
@@ -32,7 +32,7 @@
         </form>
     </div>
 
-    <!-- Tabla -->
+    
     <div style="flex: 2; margin-top: 0;" class="table-container">
         <table>
             <thead>

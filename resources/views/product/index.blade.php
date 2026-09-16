@@ -1,10 +1,10 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
 @section('content')
 <div class="catalog-layout">
-    <!-- Sidebar Filters -->
+    
         <aside class="catalog-sidebar">
         <form action="{{ route('products.index') }}" method="GET">
             <h3>Filtros</h3>
@@ -54,7 +54,7 @@
         </form>
     </aside>
 
-    <!-- Main Content -->
+    
     <main class="catalog-content">
         <div class="catalog-topbar">
             <div>
@@ -105,9 +105,7 @@
                                 </button>
                             </form>
                         @else
-                            <button class="btn-buy" style="background: var(--surface-input); color: var(--text-secondary); cursor: not-allowed;" disabled>
-                                Agotado
-                            </button>
+                            <button class="btn-buy" style="background: var(--surface-input); color: var(--text-secondary); cursor: not-allowed;" disabled>{{ __('messages.out_of_stock') }}</button>
                         @endif
 
                         @auth

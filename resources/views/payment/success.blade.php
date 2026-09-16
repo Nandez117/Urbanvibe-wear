@@ -12,7 +12,7 @@
                 <i class="fa-solid fa-file-pdf"></i> Descargar Factura PDF
             </a>
             <a href="{{ route('products.index') }}" class="btn btn-outline-light">Volver al Catálogo</a>
-            <a href="{{ route('orders.index') }}" class="btn btn-outline-light">Ver mis pedidos</a>
+            <a href="{{ route('orders.index') }}" class="btn btn-outline-light">{{ __('messages.view_my_orders') }}</a>
         </div>
     </div>
 </div>

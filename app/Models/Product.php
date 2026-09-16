@@ -25,6 +25,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
  * $this->reviews - Collection - contains the product reviews
+ * $this->category - Category - contains the category relation
  */
 class Product extends Model
 {

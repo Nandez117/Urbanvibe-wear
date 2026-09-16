@@ -19,6 +19,9 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * $this->attributes['user_id'] - int - contains the customer foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->user - User - contains the user relation
+ * $this->items - Collection - contains the items relation
+ * $this->payment - Payment - contains the payment relation
  */
 class Order extends Model
 {
@@ -91,6 +94,11 @@ class Order extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getPayment(): ?Payment
+    {
+        return $this->payment;
+    }
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -121,8 +129,13 @@ class Order extends Model
         return $this->hasOne(Payment::class);
     }
 
-    public function getPayment(): ?Payment
+    public function setItems(Collection $items): void
     {
-        return $this->payment;
+        $this->items = $items;
+    }
+
+    public function setPayment(Payment $payment): void
+    {
+        $this->payment()->associate($payment);
     }
 }

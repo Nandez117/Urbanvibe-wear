@@ -1,4 +1,4 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -35,7 +35,7 @@
             <div style="margin-bottom: 2rem; padding: 1rem; background: var(--surface-elevated); border-radius: 8px; border: 1px solid var(--border-subtle);">
                 <div style="margin-bottom: 0.5rem;"><strong>Disponibilidad:</strong> 
                     <span style="color: {{ $viewData['product']->getStock() > 0 ? '#3ddc84' : '#ff5470' }}">
-                        {{ $viewData['product']->getStock() > 0 ? $viewData['product']->getStock() . ' en stock' : 'Agotado' }}
+                        {{ $viewData['product']->getStock() > 0 ? $viewData['product']->getStock() . ' en stock' : __('messages.out_of_stock') }}
                     </span>
                 </div>
                 @if($viewData['product']->getSize())
@@ -45,7 +45,7 @@
                     <div style="margin-bottom: 0.5rem;"><strong>Material:</strong> {{ $viewData['product']->getMaterial() }}</div>
                 @endif
                 @if($viewData['product']->getColor())
-                    <div><strong>Color:</strong> {{ $viewData['product']->getColor() }}</div>
+                    <div><strong>{{ __('messages.color_colon') }}</strong> {{ $viewData['product']->getColor() }}</div>
                 @endif
             </div>
 
@@ -55,24 +55,21 @@
                     <div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
                         <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="qty-input" style="width: 80px; text-align: center; font-size: 1.2rem; padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-subtle); background: var(--surface-input); color: var(--text-primary);">
                         <button type="submit" class="btn-buy" style="flex: 1; font-size: 1.2rem; padding: 1rem;">
-                            <i class="fa-solid fa-cart-plus"></i> Añadir al carrito
-                        </button>
+                            <i class="fa-solid fa-cart-plus"></i>{{ __('messages.add_to_cart') }}</button>
                     </div>
                 </form>
             @else
-                <button class="btn-buy" style="background: var(--surface-input); color: var(--text-secondary); cursor: not-allowed; padding: 1rem; font-size: 1.2rem; margin-top: auto;" disabled>
-                    Agotado
-                </button>
+                <button class="btn-buy" style="background: var(--surface-input); color: var(--text-secondary); cursor: not-allowed; padding: 1rem; font-size: 1.2rem; margin-top: auto;" disabled>{{ __('messages.out_of_stock') }}</button>
             @endif
         </div>
     </div>
 </div>
-    {{-- Reviews Section --}}
+    
     <div style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border-subtle);">
         <h2 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--text-primary);">{{ __('messages.user_reviews') }}</h2>
         
         <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
-            {{-- Review List --}}
+            
             <div style="flex: 2; min-width: 300px;">
                 @if(count($viewData['product']->getReviews()) > 0)
                     @foreach($viewData['product']->getReviews() as $review)
@@ -90,7 +87,7 @@
                 @endif
             </div>
 
-            {{-- Review Form --}}
+            
             <div style="flex: 1; min-width: 300px;">
                 @auth
                     <div style="background: var(--surface-elevated); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-subtle);">
@@ -117,7 +114,7 @@
                 @else
                     <div style="background: var(--surface-elevated); padding: 1.5rem; border-radius: 8px; border: 1px solid var(--border-subtle); text-align: center;">
                         <p style="margin-bottom: 1rem; color: var(--text-secondary);">{{ __('messages.must_login_review') }}</p>
-                        <a href="{{ route('login') }}" class="btn-buy" style="display: inline-block; padding: 0.5rem 1rem; text-decoration: none;">{{ __('messages.login_btn') }}</a>
+                        <a href="{{ route('login.index') }}" class="btn-buy" style="display: inline-block; padding: 0.5rem 1rem; text-decoration: none;">{{ __('messages.login_btn') }}</a>
                     </div>
                 @endauth
             </div>

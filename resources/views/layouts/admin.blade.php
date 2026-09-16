@@ -1,4 +1,4 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,7 +20,7 @@
         
         <nav class="nav-links">
               <a href="/" class="nav-link">Volver a Tienda</a>
-              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Gestionar Productos</a>
+              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">Productos</a>
               <a href="/categories" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">Categorías</a>
               <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">Usuarios</a>
           </nav>
@@ -36,16 +36,16 @@
                 @if(Auth::user()->getRole() === 'admin')
                     <a href="{{ route('users.index') }}" class="header-icon" title="Gestión de usuarios"><i class="fa-regular fa-user"></i></a>
                 @else
-                    <a href="{{ route('profile') }}" class="header-icon" title="Mi perfil"><i class="fa-regular fa-user"></i></a>
+                    <a href="{{ route('profile.index') }}" class="header-icon" title="{{ __('messages.my_profile') }}"><i class="fa-regular fa-user"></i></a>
                 @endif
-                <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                <form action="{{ route('logout.store') }}" method="POST" style="display: inline;">
                     @csrf
                     <button type="submit" class="header-icon" style="background: none; border: none; cursor: pointer;">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </form>
             @else
-                <a href="{{ route('login') }}" class="header-icon"><i class="fa-solid fa-right-to-bracket"></i></a>
+                <a href="{{ route('login.index') }}" class="header-icon"><i class="fa-solid fa-right-to-bracket"></i></a>
             @endauth
         </div>
     </header>

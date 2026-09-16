@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['order_id'] - int - contains the order foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->product - Product - contains the product relation
+ * $this->order - Order - contains the order relation
  */
 class OrderItem extends Model
 {

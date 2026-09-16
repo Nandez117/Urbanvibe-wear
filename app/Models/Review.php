@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['product_id'] - int - contains the reviewed product foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->user - User - contains the user relation
+ * $this->product - Product - contains the product relation
  */
 class Review extends Model
 {

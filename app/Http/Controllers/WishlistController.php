@@ -17,7 +17,7 @@ class WishlistController extends Controller
     public function index(): View|RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $viewData = [];
@@ -30,7 +30,7 @@ class WishlistController extends Controller
     public function store(string $productId): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $user = Auth::user();
@@ -52,7 +52,7 @@ class WishlistController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $wishlist = Wishlist::findOrFail($id);
@@ -67,7 +67,7 @@ class WishlistController extends Controller
     public function checkout(): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $wishlists = Wishlist::with('product')->where('user_id', Auth::id())->get();

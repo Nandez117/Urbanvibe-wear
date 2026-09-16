@@ -17,6 +17,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['order_id'] - int - contains the order foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->order - Order - contains the order relation
  */
 class Payment extends Model
 {

@@ -2,8 +2,9 @@
 
 // Autor: Juan Manuel Hernandez Martelo
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
 use App\Models\Category;
@@ -19,7 +20,7 @@ class CategoryController extends Controller
         $viewData['title'] = __('messages.category_index_title');
         $viewData['categories'] = Category::all();
 
-        return view('category.index')->with('viewData', $viewData);
+        return view('admin.category.index')->with('viewData', $viewData);
     }
 
     public function store(StoreCategoryRequest $request): RedirectResponse
@@ -37,7 +38,7 @@ class CategoryController extends Controller
         $viewData['title'] = __('messages.category_edit_title');
         $viewData['category'] = Category::findOrFail($id);
 
-        return view('category.edit')->with('viewData', $viewData);
+        return view('admin.category.edit')->with('viewData', $viewData);
     }
 
     public function update(UpdateCategoryRequest $request, string $id): RedirectResponse

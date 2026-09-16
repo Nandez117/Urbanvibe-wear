@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -21,7 +21,7 @@
     <form method="POST" action="{{ route('orders.store') }}">
         @csrf
         <button type="submit" class="btn">Crear pedido</button>
-        <a href="{{ route('orders.index') }}" class="btn">Cancelar</a>
+        <a href="{{ route('orders.index') }}" class="btn">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

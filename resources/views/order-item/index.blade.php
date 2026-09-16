@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -13,7 +13,7 @@
         <thead>
             <tr>
                 <th>Pedido</th>
-                <th>Producto</th>
+                <th>{{ __('messages.product_label') }}</th>
                 <th>Cantidad</th>
                 <th>Precio unitario</th>
                 <th>Subtotal</th>

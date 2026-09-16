@@ -4,11 +4,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * User Attributes
@@ -23,6 +24,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * $this->attributes['remember_token'] - string - contains the remember me token
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->orders - Collection - contains the orders relation
+ * $this->reviews - Collection - contains the reviews relation
+ * $this->wishlists - Collection - contains the wishlists relation
  */
 class User extends Authenticatable
 {
@@ -138,5 +142,35 @@ class User extends Authenticatable
     public function wishlists(): HasMany
     {
         return $this->hasMany(Wishlist::class);
+    }
+
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function setOrders(Collection $orders): void
+    {
+        $this->orders = $orders;
+    }
+
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
+    }
+
+    public function setReviews(Collection $reviews): void
+    {
+        $this->reviews = $reviews;
+    }
+
+    public function getWishlists(): Collection
+    {
+        return $this->wishlists;
+    }
+
+    public function setWishlists(Collection $wishlists): void
+    {
+        $this->wishlists = $wishlists;
     }
 }

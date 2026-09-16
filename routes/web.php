@@ -4,9 +4,11 @@
 // Juan Manuel Hernandez
 // Esteban Alvarez
 
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\ProductController as AdminProductController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
-use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
@@ -17,35 +19,35 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [UserController::class, 'profile'])->name('profile');
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/profile', [UserController::class, 'profile'])->name('profile.index');
+    Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+    Route::get('/users/{id}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+    Route::put('/users/{id}', [AdminUserController::class, 'update'])->name('users.update');
+    Route::delete('/users/{id}', [AdminUserController::class, 'destroy'])->name('users.destroy');
 });
 
-Route::get('/register', [AuthController::class, 'showRegister'])->name('register')->middleware('guest');
+Route::get('/register', [AuthController::class, 'showRegister'])->name('register.index')->middleware('guest');
 Route::post('/register', [AuthController::class, 'register'])->name('register.store')->middleware('guest');
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
+Route::get('/login', [AuthController::class, 'showLogin'])->name('login.index')->middleware('guest');
 Route::post('/login', [AuthController::class, 'login'])->name('login.store')->middleware('guest');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout.store')->middleware('auth');
 
-Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::post('/categories', [CategoryController::class, 'store'])->name('categories.store');
-Route::get('/categories/{id}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
-Route::put('/categories/{id}', [CategoryController::class, 'update'])->name('categories.update');
-Route::delete('/categories/{id}', [CategoryController::class, 'destroy'])->name('categories.destroy');
+Route::get('/categories', [AdminCategoryController::class, 'index'])->name('categories.index');
+Route::post('/categories', [AdminCategoryController::class, 'store'])->name('categories.store');
+Route::get('/categories/{id}/edit', [AdminCategoryController::class, 'edit'])->name('categories.edit');
+Route::put('/categories/{id}', [AdminCategoryController::class, 'update'])->name('categories.update');
+Route::delete('/categories/{id}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/create', [AdminProductController::class, 'create'])->name('products.create');
+Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
-Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{id}', [ProductController::class, 'update'])->name('products.update');
-Route::delete('/products/{id}', [ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/{id}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{id}', [AdminProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{id}', [AdminProductController::class, 'destroy'])->name('products.destroy');
 
 Route::middleware('auth')->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
@@ -56,11 +58,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/orders/{id}', [OrderController::class, 'destroy'])->name('orders.destroy');
     Route::get('/orders/{id}/invoice', [OrderController::class, 'downloadInvoice'])->name('orders.invoice');
 });
+
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth');
+
 Route::middleware('auth')->group(function () {
     Route::get('/orders/{id}/payments/create', [PaymentController::class, 'create'])->name('payments.create');
     Route::post('/orders/{id}/payments', [PaymentController::class, 'store'])->name('payments.store');

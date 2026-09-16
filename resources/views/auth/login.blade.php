@@ -1,4 +1,4 @@
-<!--Yan Frank Ríos López-->
+
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -20,7 +20,7 @@
         <form method="POST" action="{{ route('login.store') }}">
             @csrf
             <div class="auth-field">
-                <label for="email">Correo electrónico</label>
+                <label for="email">{{ __('messages.email_long') }}</label>
                 <input id="email" type="email" name="email" value="{{ old('email') }}" required>
             </div>
             <div class="auth-field">
@@ -31,7 +31,7 @@
         </form>
 
         <div class="auth-switch">
-            ¿No tienes cuenta? <a href="{{ route('register') }}">Regístrate</a>
+            ¿No tienes cuenta? <a href="{{ route('register.index') }}">Regístrate</a>
         </div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -28,9 +28,9 @@
             </select>
         </div>
         <div>
-            <label for="product_id">Producto</label>
+            <label for="product_id">{{ __('messages.product_label') }}</label>
             <select id="product_id" name="product_id" required>
-                <option value="">Seleccione un producto</option>
+                <option value="">{{ __('messages.select_product') }}</option>
                 @foreach ($viewData['products'] as $product)
                     <option value="{{ $product->getId() }}" {{ old('product_id') == $product->getId() ? 'selected' : '' }}>{{ $product->getName() }} (Stock: {{ $product->getStock() }})</option>
                 @endforeach
@@ -41,7 +41,7 @@
             <input id="quantity" type="number" name="quantity" min="1" value="{{ old('quantity', 1) }}" required>
         </div>
         <button type="submit" class="btn">Registrar detalle</button>
-        <a href="{{ route('order-items.index') }}" class="btn">Cancelar</a>
+        <a href="{{ route('order-items.index') }}" class="btn">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

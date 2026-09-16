@@ -1,10 +1,10 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
 @section('content')
 <div class="title-section">
-    <h2>Gestión de Clientes (Usuarios)</h2>
+    <h2>{{ __('messages.user_management_title') }}</h2>
 </div>
 
 <div class="table-container">
@@ -13,10 +13,10 @@
             <tr>
                 <th>ID</th>
                 <th>{{ __('messages.lbl_name') }}</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Rol</th>
+                <th>{{ __('messages.email') }}</th>
+                <th>{{ __('messages.phone') }}</th>
+                <th>{{ __('messages.address') }}</th>
+                <th>{{ __('messages.role') }}</th>
                 <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
@@ -49,9 +49,7 @@
     </table>
     
     @if(count($viewData['users']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">
-            No hay usuarios registrados en el sistema.
-        </div>
+        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_users_registered') }}</div>
     @endif
 </div>
 @endsection
