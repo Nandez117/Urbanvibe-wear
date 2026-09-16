@@ -99,7 +99,6 @@ class WishlistController extends Controller
             $orderItem->save();
         }
 
-        // Clear wishlist after creating order
         Wishlist::where('user_id', Auth::id())->delete();
 
         return redirect()->route('payments.create', ['id' => $order->getId()])
