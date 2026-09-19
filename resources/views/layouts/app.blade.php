@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}?v=2">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}?v={{ time() }}">
     <link rel="stylesheet" href="{{ asset('css/extracted.css') }}">
     @stack('styles')
 </head>
