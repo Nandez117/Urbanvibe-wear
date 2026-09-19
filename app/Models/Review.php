@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Esteban Alvarez Garcia
+// Esteban Alvarez Garcia
 
 namespace App\Models;
 
@@ -16,6 +16,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * $this->attributes['product_id'] - int - contains the reviewed product foreign key
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->user - User - contains the user relation
+ * $this->product - Product - contains the product relation
  */
 class Review extends Model
 {
@@ -26,31 +28,17 @@ class Review extends Model
         'product_id',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     protected function casts(): array
     {
         return [
             'rating' => 'integer',
         ];
-    }
-
-    public function setRating(int $rating): void
-    {
-        $this->attributes['rating'] = $rating;
-    }
-
-    public function setComment(?string $comment): void
-    {
-        $this->attributes['comment'] = $comment;
-    }
-
-    public function setUserId(int $userId): void
-    {
-        $this->attributes['user_id'] = $userId;
-    }
-
-    public function setProductId(int $productId): void
-    {
-        $this->attributes['product_id'] = $productId;
     }
 
     public function getId(): int
@@ -63,9 +51,19 @@ class Review extends Model
         return (int) $this->attributes['rating'];
     }
 
+    public function setRating(int $rating): void
+    {
+        $this->attributes['rating'] = $rating;
+    }
+
     public function getComment(): ?string
     {
         return $this->attributes['comment'] ?? null;
+    }
+
+    public function setComment(?string $comment): void
+    {
+        $this->attributes['comment'] = $comment;
     }
 
     public function getUserId(): int
@@ -73,9 +71,19 @@ class Review extends Model
         return (int) $this->attributes['user_id'];
     }
 
+    public function setUserId(int $userId): void
+    {
+        $this->attributes['user_id'] = $userId;
+    }
+
     public function getProductId(): int
     {
         return (int) $this->attributes['product_id'];
+    }
+
+    public function setProductId(int $productId): void
+    {
+        $this->attributes['product_id'] = $productId;
     }
 
     public function getCreatedAt(): string

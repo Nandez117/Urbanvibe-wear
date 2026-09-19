@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', __('messages.invoice_title') . ' ' . $viewData['order']->getOrderNumber())
 @push('styles')
@@ -44,7 +44,7 @@
             </tr>
             @endforeach
             <tr class="total-row">
-                <td colspan="3" style="text-align: right;">{{ __('messages.lbl_total_paid') }}:</td>
+                <td colspan="3" class="es-7851dbc0">{{ __('messages.lbl_total_paid') }}:</td>
                 <td>${{ number_format($viewData['order']->getTotalAmount(), 2) }}</td>
             </tr>
         </tbody>

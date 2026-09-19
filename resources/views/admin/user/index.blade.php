@@ -1,22 +1,22 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
 @section('content')
 <div class="title-section">
-    <h2>Gestión de Clientes (Usuarios)</h2>
+    <h2>{{ __('messages.user_management_title') }}</h2>
 </div>
 
 <div class="table-container">
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>{{ __('messages.lbl_id') }}</th>
                 <th>{{ __('messages.lbl_name') }}</th>
-                <th>Email</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
-                <th>Rol</th>
+                <th>{{ __('messages.email') }}</th>
+                <th>{{ __('messages.phone') }}</th>
+                <th>{{ __('messages.address') }}</th>
+                <th>{{ __('messages.role') }}</th>
                 <th>{{ __('messages.lbl_actions') }}</th>
             </tr>
         </thead>
@@ -29,7 +29,7 @@
                 <td>{{ $user->getPhone() ?? 'N/A' }}</td>
                 <td>{{ $user->getAddress() ?? 'N/A' }}</td>
                 <td>
-                    <span style="padding: 0.25rem 0.5rem; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; background-color: {{ $user->getRole() === 'admin' ? '#fee2e2' : '#dbeafe' }}; color: {{ $user->getRole() === 'admin' ? '#991b1b' : '#1e40af' }};">
+                    <span class="{{ $user->getRole() === 'admin' ? 'role-badge-admin' : 'role-badge-client' }}">
                         {{ ucfirst($user->getRole()) }}
                     </span>
                 </td>
@@ -49,9 +49,7 @@
     </table>
     
     @if(count($viewData['users']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">
-            No hay usuarios registrados en el sistema.
-        </div>
+        <div class="empty-state">{{ __('messages.no_users_registered') }}</div>
     @endif
 </div>
 @endsection

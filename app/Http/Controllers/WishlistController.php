@@ -1,23 +1,28 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Wishlist;
+use App\Services\OrderService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class WishlistController extends Controller
 {
+    private OrderService $orderService;
+
+    public function __construct(OrderService $orderService)
+    {
+        $this->orderService = $orderService;
+    }
+
     public function index(): View|RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $viewData = [];
@@ -30,7 +35,7 @@ class WishlistController extends Controller
     public function store(string $productId): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $user = Auth::user();
@@ -52,7 +57,7 @@ class WishlistController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $wishlist = Wishlist::findOrFail($id);
@@ -67,7 +72,7 @@ class WishlistController extends Controller
     public function checkout(): RedirectResponse
     {
         if (! Auth::check()) {
-            return redirect()->route('login');
+            return redirect()->route('login.index');
         }
 
         $wishlists = Wishlist::with('product')->where('user_id', Auth::id())->get();
@@ -81,23 +86,7 @@ class WishlistController extends Controller
             $totalAmount += $wishlist->getProduct()->getPrice();
         }
 
-        $order = new Order;
-        $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setTotalAmount($totalAmount);
-        $order->setStatus('Pendiente');
-        $order->setUserId(Auth::id());
-        $order->save();
-
-        foreach ($wishlists as $wishlist) {
-            $product = $wishlist->getProduct();
-            $orderItem = new OrderItem;
-            $orderItem->setQuantity(1);
-            $orderItem->setUnitPrice($product->getPrice());
-            $orderItem->setSubtotal($product->getPrice());
-            $orderItem->setProductId($product->getId());
-            $orderItem->setOrderId($order->getId());
-            $orderItem->save();
-        }
+        $order = $this->orderService->createOrderFromWishlists($wishlists, $totalAmount, Auth::id());
 
         Wishlist::where('user_id', Auth::id())->delete();
 

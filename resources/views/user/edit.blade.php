@@ -1,57 +1,51 @@
-{{-- Autor: Juan Manuel Hernandez Martelo --}}
-@extends('layouts.admin')
+{{-- Juan Manuel Hernandez Martelo --}}
+@extends('layouts.app')
 @section('title', $viewData['title'])
 
 @section('content')
-<div style="max-width: 600px; margin: 0 auto; background-color: var(--white); padding: 2rem; border-radius: 0.5rem; box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);">
-    <h2 style="margin-bottom: 1.5rem;">Editar Usuario: {{ $viewData['user']->getName() }}</h2>
+<div class="es-ab6bc014">
+    <div class="es-3cc856c9">
+        <h2 class="es-6b5830b5">{{ __('messages.btn_edit')  }}</h2>
 
-    @if ($errors->any())
-        <div class="alert alert-error">
-            <ul style="margin-left: 1.5rem;">
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        @if ($errors->any())
+            <div class="alert alert-error">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
-    <form method="POST" action="{{ route('users.update', ['id' => $viewData['user']->getId()]) }}" style="display: flex; flex-direction: column; gap: 1rem;">
-        @csrf
-        @method('PUT')
-        
-        <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">{{ __('messages.lbl_name') }}</label>
-            <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
-        </div>
+        <form method="POST" action="{{ route('profile.update') }}">
+            @csrf
+            @method('PUT')
+            
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">{{ __('messages.lbl_name') }}</label>
+                <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-main);">
+            </div>
 
-        <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Email</label>
-            <input type="email" name="email" value="{{ old('email', $viewData['user']->getEmail()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
-        </div>
-        
-        <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Teléfono</label>
-            <input type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
-        </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">{{ __('messages.lbl_email')  }}</label>
+                <input type="email" value="{{ $viewData['user']->getEmail() }}" disabled style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-tertiary); color: var(--text-muted); cursor: not-allowed;">
+            </div>
 
-        <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Dirección (Domicilio)</label>
-            <textarea name="address" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">{{ old('address', $viewData['user']->getAddress()) }}</textarea>
-        </div>
-        
-        <div>
-            <label style="display: block; font-weight: 500; margin-bottom: 0.25rem;">Rol</label>
-            <select name="role" style="width: 100%; padding: 0.5rem; border: 1px solid #d1d5db; border-radius: 0.375rem;">
-                <option value="client" {{ old('role', $viewData['user']->getRole()) === 'client' ? 'selected' : '' }}>Cliente</option>
-                <option value="admin" {{ old('role', $viewData['user']->getRole()) === 'admin' ? 'selected' : '' }}>Administrador</option>
-            </select>
-        </div>
+            <div style="margin-bottom: 1rem;">
+                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">{{ __('messages.lbl_phone')  }}</label>
+                <input type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-main);">
+            </div>
 
-        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
-            <button type="submit" class="btn">Actualizar Usuario</button>
-            <a href="{{ route('users.index') }}" class="btn" style="background-color: #6b7280;">Cancelar</a>
-        </div>
-    </form>
+            <div style="margin-bottom: 1.5rem;">
+                <label style="display: block; margin-bottom: 0.5rem; color: var(--text-muted);">{{ __('messages.lbl_address')  }}</label>
+                <input type="text" name="address" value="{{ old('address', $viewData['user']->getAddress()) }}" style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-primary); color: var(--text-main);">
+            </div>
+
+            <div style="display: flex; gap: 1rem;">
+                <button type="submit" class="btn" style="flex: 1;">{{ __('messages.btn_save')  }}</button>
+                <a href="{{ route('profile.index') }}" class="btn" style="flex: 1; text-align: center; background: transparent; border: 1px solid var(--border); color: var(--text-muted);">{{ __('messages.cancel')  }}</a>
+            </div>
+        </form>
+    </div>
 </div>
 @endsection

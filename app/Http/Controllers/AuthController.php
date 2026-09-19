@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function showRegister(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Crear cuenta';
+        $viewData['title'] = __('messages.title_create_account');
 
         return view('auth.register')->with('viewData', $viewData);
     }
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('home')->with('success', __('messages.auth_register_success'));
+        return redirect()->route('home.index')->with('success', __('messages.auth_register_success'));
     }
 
     public function showLogin(): View
@@ -55,13 +55,13 @@ class AuthController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->route('home')->with('success', __('messages.auth_login_success'));
+        return redirect()->route('home.index')->with('success', __('messages.auth_login_success'));
     }
 
     public function logout(): RedirectResponse
     {
         Auth::logout();
 
-        return redirect()->route('home')->with('success', __('messages.auth_logout_success'));
+        return redirect()->route('home.index')->with('success', __('messages.auth_logout_success'));
     }
 }

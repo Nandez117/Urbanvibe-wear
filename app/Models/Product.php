@@ -1,10 +1,11 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -25,9 +26,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * $this->attributes['created_at'] - datetime - contains the creation timestamp
  * $this->attributes['updated_at'] - datetime - contains the update timestamp
  * $this->reviews - Collection - contains the product reviews
+ * $this->category - Category - contains the category relation
  */
 class Product extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'name',
         'description',
@@ -41,6 +45,12 @@ class Product extends Model
         'category_id',
     ];
 
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at',
+    ];
+
     public function getId(): int
     {
         return $this->attributes['id'];
@@ -51,9 +61,19 @@ class Product extends Model
         return $this->attributes['name'];
     }
 
+    public function setName(string $name): void
+    {
+        $this->attributes['name'] = $name;
+    }
+
     public function getDescription(): string
     {
         return $this->attributes['description'];
+    }
+
+    public function setDescription(string $description): void
+    {
+        $this->attributes['description'] = $description;
     }
 
     public function getPrice(): float
@@ -61,9 +81,19 @@ class Product extends Model
         return (float) $this->attributes['price'];
     }
 
+    public function setPrice(float $price): void
+    {
+        $this->attributes['price'] = $price;
+    }
+
     public function getDiscount(): float
     {
         return (float) $this->attributes['discount'];
+    }
+
+    public function setDiscount(float $discount): void
+    {
+        $this->attributes['discount'] = $discount;
     }
 
     public function getSize(): ?string
@@ -71,9 +101,19 @@ class Product extends Model
         return $this->attributes['size'] ?? null;
     }
 
+    public function setSize(?string $size): void
+    {
+        $this->attributes['size'] = $size;
+    }
+
     public function getColor(): ?string
     {
         return $this->attributes['color'] ?? null;
+    }
+
+    public function setColor(?string $color): void
+    {
+        $this->attributes['color'] = $color;
     }
 
     public function getMaterial(): ?string
@@ -81,9 +121,19 @@ class Product extends Model
         return $this->attributes['material'] ?? null;
     }
 
+    public function setMaterial(?string $material): void
+    {
+        $this->attributes['material'] = $material;
+    }
+
     public function getStock(): int
     {
         return (int) $this->attributes['stock'];
+    }
+
+    public function setStock(int $stock): void
+    {
+        $this->attributes['stock'] = $stock;
     }
 
     public function getImage(): ?string
@@ -91,9 +141,19 @@ class Product extends Model
         return $this->attributes['image'] ?? null;
     }
 
+    public function setImage(?string $image): void
+    {
+        $this->attributes['image'] = $image;
+    }
+
     public function getCategoryId(): int
     {
         return (int) $this->attributes['category_id'];
+    }
+
+    public function setCategoryId(int $categoryId): void
+    {
+        $this->attributes['category_id'] = $categoryId;
     }
 
     public function getCreatedAt(): string
@@ -104,56 +164,6 @@ class Product extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
-    }
-
-    public function setName(string $name): void
-    {
-        $this->attributes['name'] = $name;
-    }
-
-    public function setDescription(string $description): void
-    {
-        $this->attributes['description'] = $description;
-    }
-
-    public function setPrice(float $price): void
-    {
-        $this->attributes['price'] = $price;
-    }
-
-    public function setDiscount(float $discount): void
-    {
-        $this->attributes['discount'] = $discount;
-    }
-
-    public function setSize(?string $size): void
-    {
-        $this->attributes['size'] = $size;
-    }
-
-    public function setColor(?string $color): void
-    {
-        $this->attributes['color'] = $color;
-    }
-
-    public function setMaterial(?string $material): void
-    {
-        $this->attributes['material'] = $material;
-    }
-
-    public function setStock(int $stock): void
-    {
-        $this->attributes['stock'] = $stock;
-    }
-
-    public function setImage(?string $image): void
-    {
-        $this->attributes['image'] = $image;
-    }
-
-    public function setCategoryId(int $categoryId): void
-    {
-        $this->attributes['category_id'] = $categoryId;
     }
 
     public function category(): BelongsTo

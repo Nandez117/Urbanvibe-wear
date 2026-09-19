@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -27,15 +27,15 @@
                 <td>{{ $order->getUser()->getName() }}</td>
                 <td>{{ $order->getCreatedAt() }}</td>
                 <td>${{ number_format($order->getTotalAmount(), 2) }}</td>
-                <td>{{ $order->getStatus() }}</td>
+                <td>{{ $order->getStatus() === 'paid' ? __('messages.status_paid') : __('messages.status_pending') }}</td>
                 <td>
                     <div class="actions-row">
                         @if (!$order->getPayment())
                             <a href="{{ route('payments.create', ['id' => $order->getId()]) }}" class="btn btn-sm btn-success">{{ __('messages.btn_register_payment') }}</a>
                         @else
-                            <span style="color: var(--success); font-weight: 600;">{{ __('messages.status_paid') }}</span>
+                            <span class="es-9b6d6a2d">{{ __('messages.status_paid') }}</span>
                         @endif
-                        @if ($order->getStatus() !== 'Pagado')
+                        @if ($order->getStatus() !== 'paid')
                             <a href="{{ route('orders.edit', ['id' => $order->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
                             <form action="{{ route('orders.destroy', ['id' => $order->getId()]) }}" method="POST">
                                 @csrf
@@ -43,7 +43,7 @@
                                 <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
                             </form>
                         @else
-                            <span style="color: var(--text-gray);"></span>
+                            <span class="es-1e36e7c9"></span>
                         @endif
                     </div>
                 </td>
@@ -53,7 +53,7 @@
     </table>
 
     @if (count($viewData['orders']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_orders') }}</div>
+        <div class="es-80f9a287">{{ __('messages.no_orders') }}</div>
     @endif
 </div>
 @endsection

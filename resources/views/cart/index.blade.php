@@ -1,11 +1,11 @@
-<!--Yan Frank Ríos López-->
+
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
 @section('content')
 <h2>{{ __('messages.cart_title') }}</h2>
 
-<div class="table-container" style="margin-top: 1.5rem;">
+<div class="table-container es-185d793c">
     <table>
         <thead>
             <tr>
@@ -27,7 +27,7 @@
                         @method('PUT')
                         <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}"
                                style="width: 60px; padding: 0.25rem; border-radius: 6px; border: 1px solid var(--border-subtle); background-color: var(--surface-input); color: var(--text-primary);">
-                        <button type="submit" class="btn" style="padding: 0.25rem 0.75rem; font-size: 0.875rem;">{{ __('messages.btn_update') }}</button>
+                        <button type="submit" class="btn es-8fb9526e">{{ __('messages.btn_update') }}</button>
                     </form>
                 </td>
                 <td>${{ number_format($item['subtotal'], 2) }}</td>
@@ -35,7 +35,7 @@
                     <form action="{{ route('cart.remove', ['id' => $item['product']->getId()]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn" style="background-color: var(--danger);">{{ __('messages.btn_delete') }}</button>
+                        <button type="submit" class="btn es-f04bb9c8">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>
@@ -44,15 +44,15 @@
     </table>
 
     @if (count($viewData['items']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.cart_empty') }}</div>
+        <div class="es-80f9a287">{{ __('messages.cart_empty') }}</div>
     @endif
 </div>
 
 @if (count($viewData['items']) > 0)
-<div style="display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap;">
+<div class="es-78c73b27">
     <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.btn_continue_shopping') }}</a>
-    <div style="display: flex; align-items: center; gap: 1.5rem;">
-        <span style="font-size: 1.25rem; font-weight: 700;">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
+    <div class="es-62eecf9b">
+        <span class="es-9cf61fc5">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
         <form action="{{ route('cart.checkout') }}" method="POST">
             @csrf
             <button type="submit" class="btn">{{ __('messages.btn_checkout') }}</button>
@@ -60,7 +60,7 @@
     </div>
 </div>
 @else
-<div style="text-align: center; margin-top: 1.5rem;">
+<div class="es-cafd824d">
     <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.nav_catalog') }}</a>
 </div>
 @endif

@@ -2,37 +2,38 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div style="max-width: 720px; margin: 0 auto; background-color: var(--white); padding: 2rem; border-radius: 0.5rem;">
-    <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+<div class="es-e4fe4b34">
+    <div class="es-92837179">
         <div>
-            <p style="color: var(--text-gray); margin-bottom: 0.25rem;">Cuenta personal</p>
-            <h2>Mi perfil</h2>
+            <p class="es-fad8088b">{{ __('messages.personal_account') }}</p>
+            <h2>{{ __('messages.my_profile') }}</h2>
         </div>
-        <i class="fa-regular fa-circle-user" style="font-size: 3rem; color: var(--accent);"></i>
+        <i class="fa-regular fa-circle-user es-88d42768"></i>
     </div>
 
-    <div style="display: grid; gap: 1rem;">
+    <div class="es-7ad8514a">
         <div>
             <strong>{{ __('messages.lbl_name') }}</strong>
             <p>{{ $viewData['user']->getName() }}</p>
         </div>
         <div>
-            <strong>Correo electrónico</strong>
+            <strong>{{ __('messages.email_long') }}</strong>
             <p>{{ $viewData['user']->getEmail() }}</p>
         </div>
         <div>
-            <strong>Teléfono</strong>
+            <strong>{{ __('messages.phone') }}</strong>
             <p>{{ $viewData['user']->getPhone() ?: 'No registrado' }}</p>
         </div>
         <div>
-            <strong>Dirección</strong>
+            <strong>{{ __('messages.address') }}</strong>
             <p>{{ $viewData['user']->getAddress() ?: 'No registrada' }}</p>
         </div>
     </div>
 
-    <div style="display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;">
-        <a href="{{ route('orders.index') }}" class="btn">Ver mis pedidos</a>
-        <a href="{{ route('home') }}" class="btn btn-secondary">Volver a la tienda</a>
+    <div class="es-938c88b9">
+        <a href="{{ route('profile.edit') }}" class="btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">{{ __('messages.btn_edit')  }}</a>
+            <a href="{{ route('orders.index') }}" class="btn">{{ __('messages.view_my_orders') }}</a>
+        <a href="{{ route('home.index') }}" class="btn btn-secondary">{{ __('messages.back_to_store') }}</a>
     </div>
 </div>
 @endsection

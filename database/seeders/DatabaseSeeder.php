@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace Database\Seeders;
 
@@ -28,10 +28,10 @@ class DatabaseSeeder extends Seeder
             'email' => 'test@example.com',
         ]);
 
-        $catCamisas = Category::firstOrCreate(['name' => 'Camisas']);
-        $catPantalones = Category::firstOrCreate(['name' => 'Pantalones']);
-        $catBusos = Category::firstOrCreate(['name' => 'Busos']);
-        $catAccesorios = Category::firstOrCreate(['name' => 'Accesorios']);
+        $catCamisas = Category::factory()->create(['name' => 'Camisas']);
+        $catPantalones = Category::factory()->create(['name' => 'Pantalones']);
+        $catBusos = Category::factory()->create(['name' => 'Busos']);
+        $catAccesorios = Category::factory()->create(['name' => 'Accesorios']);
 
         $productsData = [
             [
@@ -85,14 +85,15 @@ class DatabaseSeeder extends Seeder
         ];
 
         foreach ($productsData as $data) {
-            $product = new Product;
-            $product->setName($data['name']);
-            $product->setDescription($data['description']);
-            $product->setPrice($data['price']);
-            $product->setStock($data['stock']);
-            $product->setCategoryId($data['category_id']);
-            $product->setImage($data['image']);
-            $product->save();
+            Product::factory()->create([
+                'name' => $data['name'],
+                'description' => $data['description'],
+                'price' => $data['price'],
+                'stock' => $data['stock'],
+                'category_id' => $data['category_id'],
+                'image' => $data['image'],
+            ]);
         }
+
     }
 }

@@ -7,9 +7,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AddToCartRequest;
 use App\Http\Requests\UpdateCartRequest;
 use App\Models\Order;
-use App\Models\OrderItem;
 use App\Models\Product;
 use App\Services\Cart;
+use App\Services\OrderService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
@@ -19,15 +19,18 @@ class CartController extends Controller
 {
     private Cart $cart;
 
-    public function __construct(Cart $cart)
+    private OrderService $orderService;
+
+    public function __construct(Cart $cart, OrderService $orderService)
     {
         $this->cart = $cart;
+        $this->orderService = $orderService;
     }
 
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Carrito de compras';
+        $viewData['title'] = __('messages.title_cart');
         $viewData['items'] = $this->cart->getItems();
         $viewData['total'] = $this->cart->getTotal();
 

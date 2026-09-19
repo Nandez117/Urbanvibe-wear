@@ -27,7 +27,7 @@ class AddToCartRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'quantity.max' => 'No hay suficiente stock disponible para esa cantidad.',
+            'quantity.max' => __('messages.val_no_stock'),
         ];
     }
 }

@@ -1,4 +1,4 @@
-{{-- Autor: Esteban Alvarez Garcia --}}
+{{--  Esteban Alvarez Garcia  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -26,14 +26,14 @@
                 <td>{{ $review->getProduct()->getName() }}</td>
                 <td>{{ $review->getUser()->getName() }}</td>
                 <td>{{ $review->getRating() }}/5</td>
-                <td>{{ $review->getComment() ?? 'Sin comentario' }}</td>
+                <td>{{ $review->getComment() ?? __('messages.no_comment') }}</td>
                 <td>{{ $review->getCreatedAt() }}</td>
                 <td>
                     <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
                     <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn" style="background-color: #ef4444;">{{ __('messages.btn_delete') }}</button>
+                        <button type="submit" class="btn es-e3edf5f5">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>
@@ -42,7 +42,7 @@
     </table>
 
     @if (count($viewData['reviews']) === 0)
-        <div style="padding: 2rem; text-align: center; color: var(--text-gray);">{{ __('messages.no_reviews') }}</div>
+        <div class="es-80f9a287">{{ __('messages.no_reviews') }}</div>
     @endif
 </div>
 @endsection

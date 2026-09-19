@@ -1,89 +1,49 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
-use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    public function index(): View
+    public function profile(): View
     {
-        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
-
         $viewData = [];
-        $viewData['title'] = 'Usuarios - Urbanvibe Wear';
-        $viewData['users'] = User::all();
+        $viewData['title'] = __('messages.title_my_profile');
+        $viewData['user'] = User::findOrFail(Auth::id());
 
-        return view('user.index')->with('viewData', $viewData);
+        return view('user.profile')->with('viewData', $viewData);
     }
 
-    public function edit(string $id): View
+    public function edit(): View
     {
-        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
-
         $viewData = [];
-        $viewData['title'] = 'Editar Usuario';
-        $viewData['user'] = User::findOrFail($id);
+        $viewData['title'] = __('messages.title_my_profile');
+        $viewData['user'] = Auth::user();
 
         return view('user.edit')->with('viewData', $viewData);
     }
 
-    public function update(UpdateUserRequest $request, string $id): RedirectResponse
+    public function update(Request $request): RedirectResponse
     {
-        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:255',
+        ]);
 
-        $user = User::findOrFail($id);
-
+        $user = Auth::user();
         $user->setName($request->input('name'));
-        $user->setEmail($request->input('email'));
-
-        if ($request->filled('address')) {
-            $user->setAddress($request->input('address'));
-        }
-
-        if ($request->filled('phone')) {
-            $user->setPhone($request->input('phone'));
-        }
-
-        if ($request->filled('role')) {
-            $user->setRole($request->input('role'));
-        }
-
+        $user->setPhone($request->input('phone'));
+        $user->setAddress($request->input('address'));
         $user->save();
 
-        return redirect()->route('users.index')->with('success', __('messages.user_update_success'));
-    }
-
-    public function destroy(string $id): RedirectResponse
-    {
-        abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
-
-        $user = User::findOrFail($id);
-
-        $hasOrders = Order::where('user_id', $user->getId())->exists();
-
-        if ($hasOrders) {
-            return redirect()->route('users.index')->with('error', 'No se puede eliminar el usuario porque tiene pedidos de compra asociados (Regla de Integridad).');
-        }
-
-        $user->delete();
-
-        return redirect()->route('users.index')->with('success', __('messages.user_delete_success'));
-    }
-
-    public function profile(): View
-    {
-        $viewData = [];
-        $viewData['title'] = 'Mi perfil - Urbanvibe Wear';
-        $viewData['user'] = User::findOrFail(Auth::id());
-
-        return view('user.profile')->with('viewData', $viewData);
+        return redirect()->route('profile.index')->with('success', __('messages.user_update_success'));
     }
 }
