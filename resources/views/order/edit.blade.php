@@ -26,7 +26,7 @@
         <div class="order-form-field">
             <label for="status">{{ __('messages.order_status') }}</label>
             <select id="status" name="status" required class="es-de2eb184">
-                <option value="Pendiente" {{ old('status', $viewData['order']->getStatus()) === 'pending' ? 'selected' : '' }}>{{ __('messages.status_pending') }}</option>
+                <option value="{{ __('messages.pending') }}" {{ old('status', $viewData['order']->getStatus()) === 'pending' ? 'selected' : '' }}>{{ __('messages.status_pending') }}</option>
             </select>
         </div>
         <div class="order-actions">

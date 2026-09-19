@@ -26,7 +26,7 @@
             @csrf
             <div>
                 <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="Ej. Hoodie" required class="es-9ef793ad">
+                <input type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('messages.ex_hoodie') }}" required class="es-9ef793ad">
             </div>
             <button type="submit" class="btn">{{ __('messages.btn_create_category') }}</button>
         </form>
@@ -37,7 +37,7 @@
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>{{ __('messages.lbl_id') }}</th>
                     <th>{{ __('messages.lbl_name') }}</th>
                     <th>{{ __('messages.lbl_actions') }}</th>
                 </tr>

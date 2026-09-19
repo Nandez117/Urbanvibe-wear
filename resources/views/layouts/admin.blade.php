@@ -21,9 +21,9 @@
         
         <nav class="nav-links">
               <a href="/" class="nav-link">{{ __('messages.back_to_store') }}</a>
-              <a href="/products" class="nav-link {{ request()->is('products*') ? 'active' : '' }}">{{ __('messages.products') }}</a>
-              <a href="/categories" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">{{ __('messages.categories') }}</a>
-              <a href="/users" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">{{ __('messages.users') }}</a>
+              <a href="{{ route('admin.products.index') }}" class="nav-link {{ request()->is('admin/products*') ? 'active' : '' }}">{{ __('messages.products') }}</a>
+              <a href="{{ route('categories.index') }}" class="nav-link {{ request()->is('categories*') ? 'active' : '' }}">{{ __('messages.categories') }}</a>
+              <a href="{{ route('users.index') }}" class="nav-link {{ request()->is('users*') ? 'active' : '' }}">{{ __('messages.users') }}</a>
           </nav>
         
                 <div class="header-icons">

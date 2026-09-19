@@ -16,7 +16,7 @@ class AuthController extends Controller
     public function showRegister(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Crear cuenta';
+        $viewData['title'] = __('messages.title_create_account');
 
         return view('auth.register')->with('viewData', $viewData);
     }

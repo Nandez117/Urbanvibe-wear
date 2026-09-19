@@ -25,7 +25,7 @@ class StorePaymentRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'reference.unique' => 'Esta referencia de transacción ya fue registrada.',
+            'reference.unique' => __('messages.val_unique_ref'),
         ];
     }
 }

@@ -26,7 +26,7 @@
                 <td>{{ $review->getProduct()->getName() }}</td>
                 <td>{{ $review->getUser()->getName() }}</td>
                 <td>{{ $review->getRating() }}/5</td>
-                <td>{{ $review->getComment() ?? 'Sin comentario' }}</td>
+                <td>{{ $review->getComment() ?? __('messages.no_comment') }}</td>
                 <td>{{ $review->getCreatedAt() }}</td>
                 <td>
                     <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>

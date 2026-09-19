@@ -39,7 +39,7 @@
                    </a>
             @auth
                 @if(Auth::user()->getRole() === 'admin')
-                      <a href="/categories" class="header-icon" title="{{ __('messages.admin_panel') }}"><i class="fa-solid fa-screwdriver-wrench"></i></a>
+                      <a href="{{ route('admin.products.index') }}" class="header-icon" title="{{ __('messages.admin_panel') }}"><i class="fa-solid fa-screwdriver-wrench"></i></a>
                       <a href="{{ route('users.index') }}" class="header-icon" title="{{ __('messages.user_management') }}"><i class="fa-regular fa-user"></i></a>
                   @else
                       <a href="{{ route('profile.index') }}" class="header-icon" title="{{ __('messages.my_profile') }}"><i class="fa-regular fa-user"></i></a>

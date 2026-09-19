@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Esteban Alvarez Garcia
+// Esteban Alvarez Garcia
 
 namespace App\Http\Controllers;
 
@@ -19,7 +19,7 @@ class OrderItemController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Detalles de pedidos - Urbanvibe Wear';
+        $viewData['title'] = __('messages.title_order_details');
         $viewData['orderItems'] = OrderItem::with(['product', 'order'])->get();
 
         return view('order-item.index')->with('viewData', $viewData);
@@ -64,7 +64,7 @@ class OrderItemController extends Controller
     public function edit(string $id): View
     {
         $viewData = [];
-        $viewData['title'] = 'Editar detalle de pedido';
+        $viewData['title'] = __('messages.title_edit_order_item');
         $viewData['orderItem'] = OrderItem::with('order')->findOrFail($id);
         abort_if($viewData['orderItem']->getOrder()->getUserId() !== Auth::id(), 404);
         abort_if($viewData['orderItem']->getOrder()->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_modify'));

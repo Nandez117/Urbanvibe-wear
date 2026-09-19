@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Esteban Alvarez Garcia
+// Esteban Alvarez Garcia
 
 namespace App\Http\Requests;
 
@@ -27,7 +27,7 @@ class UpdateOrderItemRequest extends StoreOrderItemRequest
                     $availableStock = $orderItem->getProduct()->getStock() + $orderItem->getQuantity();
 
                     if ((int) $this->input('quantity') > $availableStock) {
-                        $validator->errors()->add('quantity', 'La cantidad supera el stock disponible.');
+                        $validator->errors()->add('quantity', __('messages.val_stock_exceeded'));
                     }
                 }
             },

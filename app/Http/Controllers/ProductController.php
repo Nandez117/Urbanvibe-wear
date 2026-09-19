@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers;
 
@@ -51,7 +51,7 @@ class ProductController extends Controller
     {
         $viewData = [];
         $product = Product::with('category')->findOrFail($id);
-        $viewData['title'] = $product->getName().' - Urbanvibe Wear';
+        $viewData['title'] = $product->getName().__('messages.brand_suffix');
         $viewData['product'] = $product;
 
         return view('product.show')->with('viewData', $viewData);

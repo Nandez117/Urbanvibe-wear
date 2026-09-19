@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers\Admin;
 
@@ -15,6 +15,19 @@ use Illuminate\View\View;
 
 class ProductController extends Controller
 {
+    public function index(): View|RedirectResponse
+    {
+        if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
+            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+        }
+
+        $viewData = [];
+        $viewData['title'] = __('messages.products');
+        $viewData['products'] = Product::all();
+
+        return view('admin.product.index')->with('viewData', $viewData);
+    }
+
     public function create(): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
@@ -61,7 +74,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index')->with('success', __('messages.product_create_success'));
+        return redirect()->route('admin.products.index')->with('success', __('messages.product_create_success'));
     }
 
     public function edit(string $id): View|RedirectResponse
@@ -71,7 +84,7 @@ class ProductController extends Controller
         }
 
         $viewData = [];
-        $viewData['title'] = 'Editar Producto';
+        $viewData['title'] = __('messages.title_edit_product');
         $viewData['product'] = Product::findOrFail($id);
         $viewData['categories'] = Category::all();
 
@@ -103,7 +116,7 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('products.index')->with('success', __('messages.product_update_success'));
+        return redirect()->route('admin.products.index')->with('success', __('messages.product_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -115,6 +128,6 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('products.index')->with('success', __('messages.product_delete_success'));
+        return redirect()->route('admin.products.index')->with('success', __('messages.product_delete_success'));
     }
 }

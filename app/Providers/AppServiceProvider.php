@@ -1,7 +1,5 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
-
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;

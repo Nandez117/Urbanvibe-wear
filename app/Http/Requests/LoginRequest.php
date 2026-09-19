@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Yan Frank Ríos López
+// Yan Frank Ríos López
 
 namespace App\Http\Requests;
 

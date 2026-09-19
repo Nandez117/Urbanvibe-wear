@@ -11,7 +11,7 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
+                <th>{{ __('messages.lbl_id') }}</th>
                 <th>{{ __('messages.lbl_name') }}</th>
                 <th>{{ __('messages.email') }}</th>
                 <th>{{ __('messages.phone') }}</th>

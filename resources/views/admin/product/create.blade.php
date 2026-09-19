@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="es-9bde6a43">
-    <h2 class="admin-title">Registrar Nuevo Producto</h2>
+    <h2 class="admin-title">{{ __('messages.register_product') }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -60,7 +60,7 @@
         <div class="admin-grid-3">
             <div>
                 <label class="admin-form-label">{{ __('messages.lbl_size') }}</label>
-                <input type="text" name="size" value="{{ old('size') }}" placeholder="S, M, L..." class="admin-form-input">
+                <input type="text" name="size" value="{{ old('size') }}" placeholder="{{ __('messages.size_placeholder') }}" class="admin-form-input">
             </div>
             <div>
                 <label class="admin-form-label">{{ __('messages.lbl_color') }}</label>

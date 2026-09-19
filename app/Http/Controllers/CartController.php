@@ -30,7 +30,7 @@ class CartController extends Controller
     public function index(): View
     {
         $viewData = [];
-        $viewData['title'] = 'Carrito de compras';
+        $viewData['title'] = __('messages.title_cart');
         $viewData['items'] = $this->cart->getItems();
         $viewData['total'] = $this->cart->getTotal();
 

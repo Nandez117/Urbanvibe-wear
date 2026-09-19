@@ -21,12 +21,12 @@
 
 <div class="features-container">
     <div>
-        <i class="fa-solid fa-shield-halved" class="feature-icon"></i>
+        <i class="fa-solid fa-shield-halved feature-icon"></i>
         <h3 class="feature-title">{{ __('messages.secure_payments') }}</h3>
         <p>{{ __('messages.secure_payments_desc') }}</p>
     </div>
     <div>
-        <i class="fa-solid fa-rotate-left" class="feature-icon"></i>
+        <i class="fa-solid fa-rotate-left feature-icon"></i>
         <h3 class="feature-title">{{ __('messages.returns') }}</h3>
         <p>{{ __('messages.returns_desc') }}</p>
     </div>

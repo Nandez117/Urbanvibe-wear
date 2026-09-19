@@ -1,16 +1,16 @@
 # Normativas y Estándares de Desarrollo (Urbanvibe-wear)
 
-Este documento define las políticas técnicas y de estilo que el equipo debe seguir para garantizar la calidad, legibilidad y consistencia del código. El incumplimiento de estas normas conlleva penalizaciones en la evaluación.
+Este documento define las políticas técnicas y de estilo que el equipo debe seguir para garantizar la calidad, legibilidad y consistencia del código. El incumplimiento de estas normas conlleva penalizaciones.
 
 ## 1. Enrutamiento (Rutas)
 - **Responsabilidad Exclusiva:** Las rutas solo deben encargarse de conectar las URLs con los métodos de los controladores. Queda estrictamente prohibido incluir lógica de negocio, validaciones o consultas a la base de datos en estos archivos.
-- **Referencias de Rutas:** Se recomienda utilizar la referencia basada en importación (use ControllerClass) o clases ([Controller::class, 'method']) en lugar de cadenas de texto quemadas (string-based).
-- **Nomenclatura:** Poner siempre el alias (nombre) a la vista/ruta usando ->name('alias'). Todas las rutas deben seguir el estándar de nomenclatura estricto `recurso.metodo` o `controlador.metodo` si lo exige el profesor, asegurando que estén nombradas de forma consistente.
+- **Referencias de Rutas:** Se debe utilizar la referencia basada en importación (use ControllerClass) o clases ([Controller::class, 'method']) en lugar de cadenas de texto quemadas (string-based).
+- **Nomenclatura:** Poner siempre el alias (nombre) a la vista/ruta usando ->name('alias'). Todas las rutas deben seguir el estándar de nomenclatura estricto `recurso.metodo` o `controlador.metodo` asegurando que estén nombradas de forma consistente.
 - **Separación de Administrador:** Todos los controladores y la lógica encargada de la gestión administrativa (CRUD de productos, categorías, usuarios, etc.) deben estar aislados en una subcarpeta `Admin` (ej. `app/Http/Controllers/Admin`).
 
 ## 2. Controladores
 - **Controladores Limpios:** No poner código reutilizable en los controladores. Los controladores solo definen funciones que devuelven las vistas correspondientes (con esos nombres agregando .blade.php).
-- **Validaciones y Request:** Las validaciones de datos no deben ir en los controladores, deben delegarse a clases externas (Form Requests) o al modelo (anotar validaciones sueltas en el controlador penaliza, ya que "no es lo mejor"). 
+- **Validaciones y Request:** Las validaciones de datos no deben ir en los controladores, deben delegarse a clases externas (Form Requests) o al modelo (anotar validaciones sueltas en el controlador no es lo mejor). 
 - **Uso de Importaciones:** Las clases deben importarse arriba usando use.
 - **Tipado Estricto:** Se deben definir siempre los tipados de los argumentos y los retornos de los métodos (por ejemplo, public function show(string $id): View).
 - **Inyección de Modelos:** No se permite el uso de *Route Model Binding* directo en los parámetros. Se debe recibir el identificador y realizar la búsqueda manualmente mediante Eloquent.
@@ -23,9 +23,9 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
   - En Laravel todas las tablas en la base de datos tienen que estar en plural y sus columnas en *snake_case*.
   - Al instanciar un modelo, la variable debe tener el mismo nombre que la clase (ej. $product = new Product();).
   - No mezclar inglés y español en el modelo.
-  - Importaciones sin usar el use arriba en el modelo están penalizadas.
+  - Importaciones sin usar el use arriba en el modelo no esta permitido.
 - **Listado de Atributos:** En el controlador se puede acceder a los atributos del modelo, pero en los modelos no se tienen que definir los atributos nativos de Laravel porque dinámicamente el controlador los trae de la DB.  Sin embargo, **SIEMPRE** se debe poner el listado completo de atributos como un comentario (DocBlock) en la parte superior para  "reconocerlos". Además, las relaciones del modelo **SIEMPRE** deben estar documentadas en este DocBlock.
-- **Encapsulamiento y Acceso Único:** Penalización de -0.0 o -0.4 por no hacerlo. Colocar atributos privados (si aplica, aunque Laravel usa $this->attributes) y usar obligatoriamente getters y setters para el encapsulamiento (ej. $product->getName();). Esto garantiza un único punto de acceso desde el código donde se modifica y obtiene cada atributo.
+- **Encapsulamiento y Acceso Único:** Colocar atributos privados (si aplica, aunque Laravel usa $this->attributes) y usar obligatoriamente getters y setters para el encapsulamiento (ej. $product->getName();). Esto garantiza un único punto de acceso desde el código donde se modifica y obtiene cada atributo.
   - **Ordenamiento de Métodos:** Seguir estrictamente este orden:
     1. Getters y Setters de atributos primitivos de la base de datos (los que usan ->attributes).
     2. Getters y Setters de atributos primitivos adicionales.
@@ -46,7 +46,7 @@ Este documento define las políticas técnicas y de estilo que el equipo debe se
 ## 5. Vistas y Código HTML
 - **Código HTML Exclusivo:** El código HTML debe ir exclusivamente en las vistas (views), manteniendo la menor cantidad de elementos posibles para que sean reutilizables.
 - **Cero Comentarios de Maquetación:** Está estrictamente prohibido dejar comentarios HTML (`<!-- -->`) o comentarios Blade (`{{-- --}}`) en las vistas finales que se entregan a producción.
-- **Traducciones:** Utilizar las directivas de lang para el manejo de idiomas en la interfaz. Si existe una mezcla de inglés y español (textos quemados) en las vistas se penaliza.
+- **Traducciones:** Utilizar las directivas de lang para el manejo de idiomas en la interfaz. Si existe una mezcla de inglés y español (textos quemados) en las vistas se debe eliminar.
 - **Datos en la Vista:** Enviar datos obligatoriamente con el arreglo asociativo $viewData, nunca con compact.
 - **Separación de CSS y HTML:** Se debe separar el CSS del HTML, ubicando los archivos CSS en una carpeta dentro de `public` llamada `css`, y en las vistas (`resources`) llamarlos mediante un *layout*.
 

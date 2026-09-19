@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers\Admin;
 
@@ -19,7 +19,7 @@ class UserController extends Controller
         abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
 
         $viewData = [];
-        $viewData['title'] = 'Usuarios - Urbanvibe Wear';
+        $viewData['title'] = __('messages.title_users');
         $viewData['users'] = User::all();
 
         return view('admin.user.index')->with('viewData', $viewData);
@@ -30,7 +30,7 @@ class UserController extends Controller
         abort_unless(User::findOrFail(Auth::id())->getRole() === 'admin', 403);
 
         $viewData = [];
-        $viewData['title'] = 'Editar Usuario';
+        $viewData['title'] = __('messages.title_edit_user');
         $viewData['user'] = User::findOrFail($id);
 
         return view('admin.user.edit')->with('viewData', $viewData);

@@ -32,9 +32,9 @@
             <div class="sidebar-section">
                 <h4>{{ __('messages.price_usd') }}</h4>
                 <div class="es-afcd7ed5">
-                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="Min" class="qty-input es-199b6f0e">
+                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="{{ __('messages.min') }}" class="qty-input es-199b6f0e">
                     <span>-</span>
-                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="Max" class="qty-input es-199b6f0e">
+                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="{{ __('messages.max') }}" class="qty-input es-199b6f0e">
                 </div>
             </div>
             
@@ -61,7 +61,7 @@
                 <strong>{{ __('messages.results_found') }}</strong> {{ count($viewData['products']) }}
             </div>
             @if(Auth::check() && Auth::user()->getRole() === 'admin')
-                <a href="{{ route('products.create') }}" class="btn btn-sm">Registrar Nuevo Producto</a>
+                <a href="{{ route('products.create') }}" class="btn btn-sm">{{ __('messages.register_product') }}</a>
 
             @endif
         </div>

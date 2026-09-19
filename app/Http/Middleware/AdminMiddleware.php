@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Esteban Alvarez Garcia
+// Esteban Alvarez Garcia
 
 namespace App\Http\Middleware;
 

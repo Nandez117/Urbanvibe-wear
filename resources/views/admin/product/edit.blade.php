@@ -60,15 +60,15 @@
         <div class="admin-grid-3">
             <div>
                 <label class="admin-form-label">{{ __('messages.lbl_size') }}</label>
-                <input type="text" name="size" value="{{ old('size', $viewData['product']->getSize()) }}" placeholder="S, M, L..." class="admin-form-input">
+                <input type="text" name="size" value="{{ old('size', $viewData['product']->getSize()) }}" placeholder="{{ __('messages.size_placeholder') }}" class="admin-form-input">
             </div>
             <div>
                 <label class="admin-form-label">{{ __('messages.lbl_color') }}</label>
-                <input type="text" name="color" value="{{ old('color', $viewData['product']->get{{ __('messages.lbl_color') }}()) }}" class="admin-form-input">
+                <input type="text" name="color" value="{{ old('color', $viewData['product']->getColor()) }}" class="admin-form-input">
             </div>
             <div>
                 <label class="admin-form-label">{{ __('messages.lbl_material') }}</label>
-                <input type="text" name="material" value="{{ old('material', $viewData['product']->get{{ __('messages.lbl_material') }}()) }}" class="admin-form-input">
+                <input type="text" name="material" value="{{ old('material', $viewData['product']->getMaterial()) }}" class="admin-form-input">
             </div>
         </div>
 

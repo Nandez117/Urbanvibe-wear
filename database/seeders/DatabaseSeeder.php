@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace Database\Seeders;
 
@@ -96,8 +96,6 @@ class DatabaseSeeder extends Seeder
         }
 
         // Add a few more random products to prove the factory works dynamically
-        Product::factory()->count(3)->create([
-            'category_id' => $catCamisas->getId(),
-        ]);
+
     }
 }

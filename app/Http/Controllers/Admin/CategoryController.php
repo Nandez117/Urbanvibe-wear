@@ -1,6 +1,6 @@
 <?php
 
-// Autor: Juan Manuel Hernandez Martelo
+// Juan Manuel Hernandez Martelo
 
 namespace App\Http\Controllers\Admin;
 
