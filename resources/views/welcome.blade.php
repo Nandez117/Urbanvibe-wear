@@ -10,10 +10,10 @@
     </p>
     
     <div class="hero-buttons">
-        <a href="{{ route('products.index') }}" class="btn" class="hero-btn-primary">{{ __('messages.nav_catalog') }}</a>
+        <a href="{{ route('products.index') }}" class="btn hero-btn-primary">{{ __('messages.nav_catalog') }}</a>
         @auth
             @if (Auth::user()->getRole() === 'admin')
-                <a href="{{ route('users.index') }}" class="btn" class="hero-btn-outline">{{ __('messages.manage_users') }}</a>
+                <a href="{{ route('users.index') }}" class="btn hero-btn-outline">{{ __('messages.manage_users') }}</a>
             @endif
         @endauth
     </div>
