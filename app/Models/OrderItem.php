@@ -7,6 +7,19 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+/**
+ * OrderItem Attributes
+ * $this->attributes['id'] - int - contains the order item primary key
+ * $this->attributes['quantity'] - int - contains the purchased quantity
+ * $this->attributes['subtotal'] - float - contains the calculated subtotal
+ * $this->attributes['unit_price'] - float - contains the product unit price
+ * $this->attributes['product_id'] - int - contains the product foreign key
+ * $this->attributes['order_id'] - int - contains the order foreign key
+ * $this->attributes['created_at'] - datetime - contains the creation timestamp
+ * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->product - Product - contains the product relation
+ * $this->order - Order - contains the order relation
+ */
 class OrderItem extends Model
 {
     protected $fillable = [

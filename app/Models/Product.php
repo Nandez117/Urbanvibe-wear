@@ -10,6 +10,24 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Product Attributes
+ * $this->attributes['id'] - int - contains the product primary key (id)
+ * $this->attributes['name'] - string - contains the product name
+ * $this->attributes['description'] - string - contains the product description
+ * $this->attributes['price'] - float - contains the product price
+ * $this->attributes['discount'] - float - contains the product discount
+ * $this->attributes['size'] - string - contains the product size
+ * $this->attributes['color'] - string - contains the product color
+ * $this->attributes['material'] - string - contains the product material
+ * $this->attributes['stock'] - int - contains the product stock
+ * $this->attributes['image'] - string - contains the product image
+ * $this->attributes['category_id'] - int - contains the product category id
+ * $this->attributes['created_at'] - datetime - contains the creation timestamp
+ * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->reviews - Collection - contains the product reviews
+ * $this->category - Category - contains the category relation
+ */
 class Product extends Model
 {
     use HasFactory;

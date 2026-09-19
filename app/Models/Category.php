@@ -9,6 +9,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * Category Attributes
+ * $this->attributes['id'] - int - contains the category primary key (id)
+ * $this->attributes['name'] - string - contains the category name
+ * $this->attributes['created_at'] - datetime - contains the creation timestamp
+ * $this->attributes['updated_at'] - datetime - contains the update timestamp
+ * $this->products - Collection - contains the products relation
+ */
 class Category extends Model
 {
     use HasFactory;
