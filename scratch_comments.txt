@@ -1,0 +1,277 @@
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\Admin\CategoryController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\Admin\ProductController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\Admin\UserController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\AuthController.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\CartController.php:3] // Yan Frank Ri­os Lopez
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\Controller.php:7] //
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\OrderController.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\OrderItemController.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\PaymentController.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\ProductController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\ReviewController.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\UserController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Controllers\WishlistController.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Middleware\AdminMiddleware.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\AddToCartRequest.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\LoginRequest.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\RegisterRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreCategoryRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreOrderItemRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreOrderRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StorePaymentRequest.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreProductRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreReviewRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:12] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:13] * Determine if the user is authorized to make this request.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:14] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:20] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:21] * Get the validation rules that apply to the request.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:22] *
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:23] * @return array<string, ValidationRule|array<mixed>|string>
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:24] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\StoreUserRequest.php:28] //
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateCartRequest.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateCategoryRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateOrderItemRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateOrderRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateProductRequest.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateReviewRequest.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:12] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:13] * Determine if the user is authorized to make this request.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:14] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:20] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:21] * Get the validation rules that apply to the request.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:22] *
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:23] * @return array<string, ValidationRule|array<mixed>|string>
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Http\Requests\UpdateUserRequest.php:24] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:12] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:13] * Category Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:14] * $this->attributes['id'] - int - contains the category primary key (id)
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:15] * $this->attributes['name'] - string - contains the category name
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:16] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:17] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:18] * $this->products - Collection - contains the products relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Category.php:19] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:13] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:14] * Order Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:15] * $this->attributes['id'] - int - contains the order primary key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:16] * $this->attributes['order_number'] - string - contains the unique order number
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:17] * $this->attributes['total_amount'] - float - contains the order total amount
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:18] * $this->attributes['status'] - string - contains the order status
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:19] * $this->attributes['user_id'] - int - contains the customer foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:20] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:21] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:22] * $this->user - User - contains the user relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:23] * $this->items - Collection - contains the items relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:24] * $this->payment - Payment - contains the payment relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Order.php:25] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:11] * OrderItem Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:12] * $this->attributes['id'] - int - contains the order item primary key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:13] * $this->attributes['quantity'] - int - contains the purchased quantity
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:14] * $this->attributes['subtotal'] - float - contains the calculated subtotal
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:15] * $this->attributes['unit_price'] - float - contains the product unit price
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:16] * $this->attributes['product_id'] - int - contains the product foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:17] * $this->attributes['order_id'] - int - contains the order foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:18] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:19] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:20] * $this->product - Product - contains the product relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:21] * $this->order - Order - contains the order relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\OrderItem.php:22] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:11] * Payment Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:12] * $this->attributes['id'] - int - contains the payment primary key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:13] * $this->attributes['reference'] - string - contains the unique transaction reference
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:14] * $this->attributes['method'] - string - contains the payment method
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:15] * $this->attributes['amount'] - float - contains the payment amount
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:16] * $this->attributes['status'] - string - contains the payment status
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:17] * $this->attributes['order_id'] - int - contains the order foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:18] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:19] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:20] * $this->order - Order - contains the order relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Payment.php:21] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:13] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:14] * Product Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:15] * $this->attributes['id'] - int - contains the product primary key (id)
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:16] * $this->attributes['name'] - string - contains the product name
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:17] * $this->attributes['description'] - string - contains the product description
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:18] * $this->attributes['price'] - float - contains the product price
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:19] * $this->attributes['discount'] - float - contains the product discount
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:20] * $this->attributes['size'] - string - contains the product size
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:21] * $this->attributes['color'] - string - contains the product color
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:22] * $this->attributes['material'] - string - contains the product material
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:23] * $this->attributes['stock'] - int - contains the product stock
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:24] * $this->attributes['image'] - string - contains the product image
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:25] * $this->attributes['category_id'] - int - contains the product category id
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:26] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:27] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:28] * $this->reviews - Collection - contains the product reviews
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:29] * $this->category - Category - contains the category relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Product.php:30] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:3] // Esteban Alvarez Garcia
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:11] * Review Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:12] * $this->attributes['id'] - int - contains the review primary key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:13] * $this->attributes['rating'] - int - contains the product rating
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:14] * $this->attributes['comment'] - string - contains the review comment
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:15] * $this->attributes['user_id'] - int - contains the reviewer foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:16] * $this->attributes['product_id'] - int - contains the reviewed product foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:17] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:18] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:19] * $this->user - User - contains the user relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:20] * $this->product - Product - contains the product relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Review.php:21] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:14] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:15] * User Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:16] * $this->attributes['id'] - int - contains the user primary key (id)
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:17] * $this->attributes['name'] - string - contains the user name
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:18] * $this->attributes['email'] - string - contains the user email
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:19] * $this->attributes['email_verified_at'] - datetime - contains the email verification timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:20] * $this->attributes['password'] - string - contains the user password
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:21] * $this->attributes['phone'] - string - contains the user phone
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:22] * $this->attributes['address'] - string - contains the user address
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:23] * $this->attributes['role'] - string - contains the user role (admin, client)
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:24] * $this->attributes['remember_token'] - string - contains the remember me token
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:25] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:26] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:27] * $this->orders - Collection - contains the orders relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:28] * $this->reviews - Collection - contains the reviews relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:29] * $this->wishlists - Collection - contains the wishlists relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\User.php:30] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:11] * Wishlist Attributes
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:12] * $this->attributes['id'] - int - contains the wishlist primary key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:13] * $this->attributes['user_id'] - int - contains the user foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:14] * $this->attributes['product_id'] - int - contains the product foreign key
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:15] * $this->attributes['created_at'] - datetime - contains the creation timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:16] * $this->attributes['updated_at'] - datetime - contains the update timestamp
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:17] *
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:18] * user: User
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:19] * product: Product
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:20] * $this->user - User - contains the user relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:21] * $this->product - Product - contains the product relation
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Models\Wishlist.php:22] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:9] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:10] * Register any application services.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:11] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:14] //
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:17] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:18] * Bootstrap any application services.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:19] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Providers\AppServiceProvider.php:22] //
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Services\Cart.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/app\Services\OrderService.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/routes\web.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/routes\web.php:4] // Juan Manuel Hernandez
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/routes\web.php:5] // Esteban Alvarez
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/seeders\DatabaseSeeder.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/seeders\DatabaseSeeder.php:98] // Add a few more random products to prove the factory works dynamically
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\CategoryFactory.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\ProductFactory.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:12] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:13] * @extends Factory<User>
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:14] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:17] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:18] * The current password being used by the factory.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:19] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:22] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:23] * Define the model's default state.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:24] *
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:25] * @return array<string, mixed>
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:26] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:38] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:39] * Indicate that the model's email address should be unverified.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/factories\UserFactory.php:40] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\category\edit.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\category\index.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\product\create.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\product\create.blade.php:77] <input type="file" name="image" accept="image/*" class="admin-form-input">
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\product\edit.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\product\edit.blade.php:77] <input type="file" name="image" accept="image/*" class="admin-form-input">
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\product\index.blade.php:1] {{-- Juan Manuel Hernandez Martelo --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\user\edit.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\admin\user\index.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\layouts\admin.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\layouts\app.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order\create.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order\edit.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order\index.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order\invoice.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order-item\create.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order-item\edit.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\order-item\index.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\product\index.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\product\show.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\review\create.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\review\edit.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\review\index.blade.php:1] {{--  Esteban Alvarez Garcia  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\user\edit.blade.php:1] {{-- Juan Manuel Hernandez Martelo --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\welcome.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/resources/views\wishlist\index.blade.php:1] {{--  Juan Manuel Hernandez Martelo  --}}
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000000_1_create_users_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000000_2_create_password_reset_tokens_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000000_3_create_sessions_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000001_1_create_cache_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000001_2_create_cache_locks_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000002_1_create_jobs_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000002_2_create_job_batches_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\0001_01_01_000002_3_create_failed_jobs_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:11] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:12] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:22] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:23] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221302_create_categories_table.php:24] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:11] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:12] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:31] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:32] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221303_create_products_table.php:33] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:11] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:12] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:25] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:26] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221304_create_orders_table.php:27] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:11] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:12] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:26] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:27] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221305_create_order_items_table.php:28] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:10] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:11] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:12] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:25] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:26] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221306_create_reviews_table.php:27] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:3] // Yan Frank Ríos López
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:11] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:12] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:13] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:27] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:28] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_08_28_221307_create_payments_table.php:29] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:3] // Juan Manuel Hernandez Martelo
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:11] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:12] * Run the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:13] */
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:24] /**
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:25] * Reverse the migrations.
+[d:/Documents/documentos/u/semestre 5/Arquitectura/PHP/Proyecto/Urbanvibe-wear/database/migrations\2026_09_09_222324_create_wishlists_table.php:26] */

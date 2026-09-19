@@ -32,7 +32,6 @@
         </form>
     </div>
 
-    
     <div class="table-container es-4a68d232">
         <table>
             <thead>

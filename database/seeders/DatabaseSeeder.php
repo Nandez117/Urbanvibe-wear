@@ -95,7 +95,5 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        // Add a few more random products to prove the factory works dynamically
-
     }
 }

@@ -87,7 +87,6 @@
                 @endif
             </div>
 
-            
             <div class="es-5029516c">
                 @auth
                     <div class="es-b83ac13f">

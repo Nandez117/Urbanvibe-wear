@@ -11,23 +11,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
-/**
- * User Attributes
- * $this->attributes['id'] - int - contains the user primary key (id)
- * $this->attributes['name'] - string - contains the user name
- * $this->attributes['email'] - string - contains the user email
- * $this->attributes['email_verified_at'] - datetime - contains the email verification timestamp
- * $this->attributes['password'] - string - contains the user password
- * $this->attributes['phone'] - string - contains the user phone
- * $this->attributes['address'] - string - contains the user address
- * $this->attributes['role'] - string - contains the user role (admin, client)
- * $this->attributes['remember_token'] - string - contains the remember me token
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->orders - Collection - contains the orders relation
- * $this->reviews - Collection - contains the reviews relation
- * $this->wishlists - Collection - contains the wishlists relation
- */
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;

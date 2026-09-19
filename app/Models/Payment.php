@@ -7,18 +7,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-/**
- * Payment Attributes
- * $this->attributes['id'] - int - contains the payment primary key
- * $this->attributes['reference'] - string - contains the unique transaction reference
- * $this->attributes['method'] - string - contains the payment method
- * $this->attributes['amount'] - float - contains the payment amount
- * $this->attributes['status'] - string - contains the payment status
- * $this->attributes['order_id'] - int - contains the order foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->order - Order - contains the order relation
- */
 class Payment extends Model
 {
     protected $fillable = [

@@ -54,7 +54,6 @@
         </form>
     </aside>
 
-    
     <main class="catalog-content">
         <div class="catalog-topbar">
             <div>

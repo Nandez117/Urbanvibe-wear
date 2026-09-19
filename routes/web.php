@@ -1,8 +1,6 @@
 <?php
 
 // Yan Frank Ríos López
-// Juan Manuel Hernandez
-// Esteban Alvarez
 
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\ProductController as AdminProductController;
