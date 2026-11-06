@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" enctype="multipart/form-data" action="{{ route('products.store') }}" class="admin-form-container">
+    <form method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}" class="admin-form-container">
         @csrf
         
         <div class="es-85f50244">
@@ -72,14 +72,14 @@
             </div>
         </div>
 
-                <div class="admin-mt-4">
+        <div class="admin-mt-4">
             <label class="admin-form-label">{{ __('messages.lbl_product_image') }}</label>
             <input type="file" name="image" accept="image/*" class="admin-form-input">
         </div>
 
         <div class="admin-action-bar">
             <button type="submit" class="btn">{{ __('messages.btn_save_product') }}</button>
-            <a href="{{ route('products.index') }}" class="btn" class="btn-secondary">{{ __('messages.cancel') }}</a>
+            <a href="{{ route('admin.product.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
         </div>
     </form>
 </div>

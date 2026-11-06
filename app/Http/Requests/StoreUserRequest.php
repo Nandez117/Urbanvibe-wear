@@ -4,12 +4,10 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreUserRequest extends FormRequest
 {
-    
     public function authorize(): bool
     {
         return false;
@@ -18,7 +16,7 @@ class StoreUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            
+
         ];
     }
 }

@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('reviews.update', ['id' => $viewData['review']->getId()]) }}">
+    <form method="POST" action="{{ route('review.update', ['id' => $viewData['review']->getId()]) }}">
         @csrf
         @method('PUT')
         <div>
@@ -44,7 +44,7 @@
             <textarea id="comment" name="comment">{{ old('comment', $viewData['review']->getComment()) }}</textarea>
         </div>
         <button type="submit" class="btn">{{ __('messages.update_review') }}</button>
-        <a href="{{ route('reviews.index') }}" class="btn">{{ __('messages.cancel') }}</a>
+        <a href="{{ route('review.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

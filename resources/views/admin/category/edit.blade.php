@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="es-b0d1bae9">
-    <h2 class="es-d3297f95">Editar Categoría: {{ $viewData['category']->getName() }}</h2>
+    <h2 class="es-d3297f95">{{ __('messages.category_edit_title') }}: {{ $viewData['category']->getName() }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('categories.update', ['id' => $viewData['category']->getId()]) }}" style="display: flex; flex-direction: column; gap: 1rem;">
+    <form method="POST" action="{{ route('admin.category.update', ['id' => $viewData['category']->getId()]) }}" style="display: flex; flex-direction: column; gap: 1rem;">
         @csrf
         @method('PUT')
         
@@ -27,7 +27,7 @@
 
         <div class="es-4a9a10b0">
             <button type="submit" class="btn">{{ __('messages.btn_update') }}</button>
-            <a href="{{ route('categories.index') }}" class="btn es-cfd0a5ab">{{ __('messages.cancel') }}</a>
+            <a href="{{ route('admin.category.index') }}" class="btn es-cfd0a5ab">{{ __('messages.cancel') }}</a>
         </div>
     </form>
 </div>

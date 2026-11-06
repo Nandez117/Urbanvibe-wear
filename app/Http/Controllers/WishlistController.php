@@ -90,7 +90,7 @@ class WishlistController extends Controller
 
         Wishlist::where('user_id', Auth::id())->delete();
 
-        return redirect()->route('payments.create', ['id' => $order->getId()])
+        return redirect()->route('payment.create', ['id' => $order->getId()])
             ->with('success', __('messages.wishlist_order_created'));
     }
 }

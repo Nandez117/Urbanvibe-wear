@@ -18,7 +18,7 @@ class ReviewController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.review_index_title');
-        $viewData['reviews'] = Review::with(['user', 'product'])->get();
+        $viewData['reviews'] = Review::with(['user', 'product'])->orderBy('id', 'desc')->paginate(8);
 
         return view('review.index')->with('viewData', $viewData);
     }
@@ -46,7 +46,7 @@ class ReviewController extends Controller
             return back()->with('success', __('messages.review_create_success'));
         }
 
-        return redirect()->route('reviews.index')->with('success', __('messages.review_create_success'));
+        return redirect()->route('review.index')->with('success', __('messages.review_create_success'));
     }
 
     public function edit(string $id): View
@@ -69,7 +69,7 @@ class ReviewController extends Controller
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
-        return redirect()->route('reviews.index')->with('success', __('messages.review_update_success'));
+        return redirect()->route('review.index')->with('success', __('messages.review_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -77,6 +77,6 @@ class ReviewController extends Controller
         $review = Review::findOrFail($id);
         $review->delete();
 
-        return redirect()->route('reviews.index')->with('success', __('messages.review_delete_success'));
+        return redirect()->route('review.index')->with('success', __('messages.review_delete_success'));
     }
 }

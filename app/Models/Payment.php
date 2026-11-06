@@ -4,23 +4,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 /**
- * Payment Attributes
- * $this->attributes['id'] - int - contains the payment primary key
- * $this->attributes['reference'] - string - contains the unique transaction reference
+ * PAYMENT ATTRIBUTES
+ * $this->attributes['id'] - int - contains the payment primary key (id)
+ * $this->attributes['reference'] - string - contains the transaction reference
  * $this->attributes['method'] - string - contains the payment method
  * $this->attributes['amount'] - float - contains the payment amount
  * $this->attributes['status'] - string - contains the payment status
- * $this->attributes['order_id'] - int - contains the order foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->order - Order - contains the order relation
+ * $this->attributes['order_id'] - int - contains the referenced order id
+ * $this->attributes['created_at'] - datetime - contains the payment creation date
+ * $this->attributes['updated_at'] - datetime - contains the payment update date
+ * $this->order - Order - contains the associated Order
  */
 class Payment extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'reference',
         'method',
@@ -42,9 +46,26 @@ class Payment extends Model
         ];
     }
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'method' => 'required|in:credit_card,paypal',
+            'amount' => 'required|numeric|min:0.01',
+            'card_number' => 'nullable|string|min:13|max:19',
+            'card_cvv' => 'nullable|string|min:3|max:4',
+            'card_expiration' => 'nullable|string',
+            'paypal_email' => 'nullable|email',
+        ]);
+    }
+
     public function getId(): int
     {
         return (int) $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getReference(): string

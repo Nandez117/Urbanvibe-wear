@@ -4,24 +4,25 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 /**
- * Wishlist Attributes
- * $this->attributes['id'] - int - contains the wishlist primary key
- * $this->attributes['user_id'] - int - contains the user foreign key
- * $this->attributes['product_id'] - int - contains the product foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- *
- * user: User
- * product: Product
- * $this->user - User - contains the user relation
- * $this->product - Product - contains the product relation
+ * WISHLIST ATTRIBUTES
+ * $this->attributes['id'] - int - contains the wishlist primary key (id)
+ * $this->attributes['user_id'] - int - contains the referenced user id
+ * $this->attributes['product_id'] - int - contains the referenced product id
+ * $this->attributes['created_at'] - datetime - contains the wishlist creation date
+ * $this->attributes['updated_at'] - datetime - contains the wishlist update date
+ * $this->user - User - contains the associated User
+ * $this->product - Product - contains the associated Product
  */
 class Wishlist extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'user_id',
         'product_id',
@@ -33,9 +34,22 @@ class Wishlist extends Model
         'updated_at',
     ];
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'product_id' => 'required|exists:products,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getUserId(): int
@@ -80,7 +94,7 @@ class Wishlist extends Model
 
     public function setUser(User $user): void
     {
-        $this->user = $user;
+        $this->user()->associate($user);
     }
 
     public function product(): BelongsTo
@@ -95,6 +109,6 @@ class Wishlist extends Model
 
     public function setProduct(Product $product): void
     {
-        $this->product = $product;
+        $this->product()->associate($product);
     }
 }

@@ -59,7 +59,7 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index')->with('success', __('messages.user_update_success'));
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -71,11 +71,11 @@ class UserController extends Controller
         $hasOrders = Order::where('user_id', $user->getId())->exists();
 
         if ($hasOrders) {
-            return redirect()->route('users.index')->with('error', __('messages.user_has_orders_error'));
+            return redirect()->route('admin.user.index')->with('error', __('messages.user_has_orders_error'));
         }
 
         $user->delete();
 
-        return redirect()->route('users.index')->with('success', __('messages.user_delete_success'));
+        return redirect()->route('admin.user.index')->with('success', __('messages.user_delete_success'));
     }
 }

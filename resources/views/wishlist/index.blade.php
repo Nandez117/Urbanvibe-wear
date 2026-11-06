@@ -43,12 +43,12 @@
                             {{ $wishlist->getProduct()->getName() }}
                         </h4>
                         <div class="es-59442942">
-                            ${{ number_format($wishlist->getProduct()->getPrice(), 2) }}
+                            ${{ number_format($wishlist->getProduct()->getPrice(), 2) }} USD
                         </div>
                     </div>
                     
                     <div class="es-0ba2053e">
-                        <a href="{{ route('products.show', ['id' => $wishlist->getProduct()->getId()]) }}" class="btn" style="flex: 1; text-align: center;">{{ __('messages.btn_details') }}</a>
+                        <a href="{{ route('product.show', ['id' => $wishlist->getProduct()->getId()]) }}" class="btn" style="flex: 1; text-align: center;">{{ __('messages.btn_details') }}</a>
                         <form action="{{ route('wishlist.destroy', ['id' => $wishlist->getId()]) }}" method="POST" style="flex: 1;">
                             @csrf
                             @method('DELETE')
@@ -63,7 +63,7 @@
         <div class="es-c1d199b6">
             <i class="fa-regular fa-heart es-9aa1019a"></i>
             <p>{{ __('messages.wishlist_empty') }}</p>
-            <a href="{{ route('products.index') }}" class="btn btn-outline-light es-988c5fa7">{{ __('messages.nav_catalog') }}</a>
+            <a href="{{ route('product.index') }}" class="btn btn-outline-light es-988c5fa7">{{ __('messages.nav_catalog') }}</a>
         </div>
     @endif
 </div>

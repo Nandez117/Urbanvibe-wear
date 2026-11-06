@@ -8,12 +8,13 @@ use App\Http\Requests\StoreOrderRequest;
 use App\Http\Requests\UpdateOrderRequest;
 use App\Models\Order;
 use App\Models\Product;
-use Barryvdh\DomPDF\Facade\Pdf;
+use App\Services\Invoices\InvoiceExporterFactory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Response;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends Controller
 {
@@ -21,9 +22,10 @@ class OrderController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.orders_title');
-        $viewData['orders'] = Order::with('user')
+        $viewData['orders'] = Order::with(['user', 'payment'])
             ->where('user_id', Auth::id())
-            ->get();
+            ->orderBy('id', 'desc')
+            ->paginate(8);
 
         return view('order.index')->with('viewData', $viewData);
     }
@@ -45,7 +47,7 @@ class OrderController extends Controller
         $order->setUserId(Auth::id());
         $order->save();
 
-        return redirect()->route('orders.edit', ['id' => $order->getId()])
+        return redirect()->route('order.edit', ['id' => $order->getId()])
             ->with('success', __('messages.order_created_add_products'));
     }
 
@@ -70,7 +72,7 @@ class OrderController extends Controller
         $order->setStatus($request->input('status'));
         $order->save();
 
-        return redirect()->route('orders.index')->with('success', __('messages.order_update_success'));
+        return redirect()->route('order.index')->with('success', __('messages.order_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -79,10 +81,10 @@ class OrderController extends Controller
         abort_if($order->getStatus() === 'paid', 403, __('messages.paid_orders_cannot_delete'));
         $order->delete();
 
-        return redirect()->route('orders.index')->with('success', __('messages.order_delete_success'));
+        return redirect()->route('order.index')->with('success', __('messages.order_delete_success'));
     }
 
-    public function downloadInvoice(string $id): Response
+    public function downloadInvoice(string $id, Request $request, InvoiceExporterFactory $factory): Response
     {
         $order = Order::where('user_id', Auth::id())
             ->with('items.product', 'user', 'payment')
@@ -90,12 +92,9 @@ class OrderController extends Controller
 
         abort_if($order->getStatus() !== 'paid', 403, __('messages.invoice_only_paid'));
 
-        $viewData = [];
-        $viewData['order'] = $order;
-        $viewData['title'] = __('messages.invoice_title').' #'.$order->getOrderNumber();
+        $format = (string) $request->query('format', 'pdf');
+        $exporter = $factory->getExporter($format);
 
-        $pdf = Pdf::loadView('order.invoice', ['viewData' => $viewData]);
-
-        return $pdf->download('factura_'.$order->getOrderNumber().'.pdf');
+        return $exporter->export($order);
     }
 }

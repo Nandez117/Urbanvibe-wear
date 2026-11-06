@@ -5,7 +5,7 @@
 @section('content')
 <div class="title-section">
     <h2>{{ __('messages.reviews_title') }}</h2>
-    <a href="{{ route('reviews.create') }}" class="btn">{{ __('messages.review_create_title') }}</a>
+    <a href="{{ route('review.create') }}" class="btn">{{ __('messages.review_create_title') }}</a>
 </div>
 
 <div class="table-container">
@@ -29,20 +29,26 @@
                 <td>{{ $review->getComment() ?? __('messages.no_comment') }}</td>
                 <td>{{ $review->getCreatedAt() }}</td>
                 <td>
-                    <a href="{{ route('reviews.edit', ['id' => $review->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
-                    <form action="{{ route('reviews.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn es-e3edf5f5">{{ __('messages.btn_delete') }}</button>
-                    </form>
+                    <div class="actions-row">
+                        <a href="{{ route('review.edit', ['id' => $review->getId()]) }}" class="btn btn-sm btn-secondary">{{ __('messages.btn_edit') }}</a>
+                        <form action="{{ route('review.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
 
-    @if (count($viewData['reviews']) === 0)
+    @if ($viewData['reviews']->total() === 0)
         <div class="es-80f9a287">{{ __('messages.no_reviews') }}</div>
+    @elseif ($viewData['reviews']->hasPages())
+        <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1rem 0;">
+            {{ $viewData['reviews']->links() }}
+        </div>
     @endif
 </div>
 @endsection

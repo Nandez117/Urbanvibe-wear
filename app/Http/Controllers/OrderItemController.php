@@ -57,7 +57,7 @@ class OrderItemController extends Controller
             $order->save();
         });
 
-        return redirect()->route('orders.edit', ['id' => $request->input('order_id')])
+        return redirect()->route('order.edit', ['id' => $request->input('order_id')])
             ->with('success', __('messages.order_item_add_success'));
     }
 
@@ -95,7 +95,7 @@ class OrderItemController extends Controller
             $order->save();
         });
 
-        return redirect()->route('order-items.index')->with('success', __('messages.order_item_update_success'));
+        return redirect()->route('orderItem.index')->with('success', __('messages.order_item_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -113,6 +113,6 @@ class OrderItemController extends Controller
             $order->save();
         });
 
-        return redirect()->route('order-items.index')->with('success', __('messages.order_item_delete_success'));
+        return redirect()->route('orderItem.index')->with('success', __('messages.order_item_delete_success'));
     }
 }

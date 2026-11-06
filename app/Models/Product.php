@@ -9,9 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 /**
- * Product Attributes
+ * PRODUCT ATTRIBUTES
  * $this->attributes['id'] - int - contains the product primary key (id)
  * $this->attributes['name'] - string - contains the product name
  * $this->attributes['description'] - string - contains the product description
@@ -22,11 +23,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * $this->attributes['material'] - string - contains the product material
  * $this->attributes['stock'] - int - contains the product stock
  * $this->attributes['image'] - string - contains the product image
- * $this->attributes['category_id'] - int - contains the product category id
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->reviews - Collection - contains the product reviews
- * $this->category - Category - contains the category relation
+ * $this->attributes['category_id'] - int - contains the referenced category id
+ * $this->attributes['created_at'] - datetime - contains the product creation date
+ * $this->attributes['updated_at'] - datetime - contains the product update date
+ * $this->category - Category - contains the associated Category
+ * $this->reviews - Collection - contains the associated reviews
+ * $this->orderItems - Collection - contains the associated order items
+ * $this->wishlists - Collection - contains the associated wishlists
  */
 class Product extends Model
 {
@@ -51,9 +54,41 @@ class Product extends Model
         'updated_at',
     ];
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'description' => 'required|string',
+            'price' => 'required|numeric|gt:0',
+            'discount' => 'nullable|numeric|min:0|max:100',
+            'size' => 'nullable|string|max:10',
+            'color' => 'nullable|string|max:50',
+            'material' => 'nullable|string|max:100',
+            'stock' => 'required|integer|min:0',
+            'category_id' => 'required|exists:categories,id',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+    }
+
+    public static function sumPricesByQuantities(iterable $products, array $productsInSession): float
+    {
+        $total = 0;
+        foreach ($products as $product) {
+            $quantity = $productsInSession[$product->getId()] ?? 0;
+            $total += ($product->getFinalPrice() * $quantity);
+        }
+
+        return round($total, 2);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getName(): string
@@ -166,6 +201,18 @@ class Product extends Model
         return $this->attributes['updated_at'];
     }
 
+    public function getFinalPrice(): float
+    {
+        $price = $this->getPrice();
+        $discount = $this->getDiscount();
+
+        if ($discount > 0) {
+            return round($price - ($price * ($discount / 100)), 2);
+        }
+
+        return $price;
+    }
+
     public function category(): BelongsTo
     {
         return $this->belongsTo(Category::class, 'category_id');
@@ -193,6 +240,36 @@ class Product extends Model
 
     public function setReviews(Collection $reviews): void
     {
-        $this->reviews = $reviews;
+        $this->setRelation('reviews', $reviews);
+    }
+
+    public function orderItems(): HasMany
+    {
+        return $this->hasMany(OrderItem::class, 'product_id');
+    }
+
+    public function getOrderItems(): Collection
+    {
+        return $this->orderItems;
+    }
+
+    public function setOrderItems(Collection $orderItems): void
+    {
+        $this->setRelation('orderItems', $orderItems);
+    }
+
+    public function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class, 'product_id');
+    }
+
+    public function getWishlists(): Collection
+    {
+        return $this->wishlists;
+    }
+
+    public function setWishlists(Collection $wishlists): void
+    {
+        $this->setRelation('wishlists', $wishlists);
     }
 }

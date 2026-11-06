@@ -18,10 +18,10 @@
 
     <p class="es-550a9f75">{{ __('messages.order_associated_auto') }}</p>
 
-    <form method="POST" action="{{ route('orders.store') }}">
+    <form method="POST" action="{{ route('order.store') }}">
         @csrf
         <button type="submit" class="btn">{{ __('messages.create_order_btn') }}</button>
-        <a href="{{ route('orders.index') }}" class="btn">{{ __('messages.cancel') }}</a>
+        <a href="{{ route('order.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

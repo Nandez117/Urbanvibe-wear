@@ -41,7 +41,7 @@ class ProductController extends Controller
             }
         }
 
-        $viewData['products'] = $query->get();
+        $viewData['products'] = $query->paginate(8)->withQueryString();
         $viewData['categories'] = Category::all();
 
         return view('product.index')->with('viewData', $viewData);

@@ -1,3 +1,4 @@
+{{--  Yan Frank Ríos López  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 @section('content')
@@ -8,11 +9,16 @@
         <p class="text-secondary mb-4">{{ __('messages.your_order') }} <strong>{{ $viewData['order']->getOrderNumber() }}</strong> {{ __('messages.processed_successfully') }}</p>
         
         <div class="d-grid gap-3 es-c561bdf0">
-            <a href="{{ route('orders.invoice', ['id' => $viewData['order']->getId()]) }}" class="btn" style="background: #ef4444; color: white; padding: 1rem; font-weight: bold; font-size: 1.1rem; border-radius: 8px;">
-                <i class="fa-solid fa-file-pdf"></i> {{ __('messages.download_invoice') }}
-            </a>
-            <a href="{{ route('products.index') }}" class="btn btn-outline-light">{{ __('messages.back_to_catalog') }}</a>
-            <a href="{{ route('orders.index') }}" class="btn btn-outline-light">{{ __('messages.view_my_orders') }}</a>
+            <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'pdf']) }}" class="btn" style="background: #ef4444; color: white; padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
+                    <i class="fa-solid fa-file-pdf"></i> {{ __('messages.download_pdf') }}
+                </a>
+                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'csv']) }}" class="btn" style="background: #10b981; color: white; padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
+                    <i class="fa-solid fa-file-csv"></i> {{ __('messages.download_csv') }}
+                </a>
+            </div>
+            <a href="{{ route('product.index') }}" class="btn btn-outline-light">{{ __('messages.back_to_catalog') }}</a>
+            <a href="{{ route('order.index') }}" class="btn btn-outline-light">{{ __('messages.view_my_orders') }}</a>
         </div>
     </div>
 </div>

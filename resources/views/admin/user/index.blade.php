@@ -35,8 +35,8 @@
                 </td>
                 <td>
                     <div class="actions-row">
-                        <a href="{{ route('users.edit', ['id' => $user->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
-                        <form action="{{ route('users.destroy', ['id' => $user->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este usuario?');">
+                        <a href="{{ route('admin.user.edit', ['id' => $user->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
+                        <form action="{{ route('admin.user.destroy', ['id' => $user->getId()]) }}" method="POST" onsubmit="return confirm('{{ __('messages.confirm_delete_user') }}');">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>

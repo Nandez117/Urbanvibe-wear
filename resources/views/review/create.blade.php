@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('reviews.store') }}">
+    <form method="POST" action="{{ route('review.store') }}">
         @csrf
         <div>
             <label for="user_id">{{ __('messages.user_label') }}</label>
@@ -45,7 +45,7 @@
             <textarea id="comment" name="comment">{{ old('comment') }}</textarea>
         </div>
         <button type="submit" class="btn">{{ __('messages.register_review') }}</button>
-        <a href="{{ route('reviews.index') }}" class="btn">{{ __('messages.cancel') }}</a>
+        <a href="{{ route('review.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

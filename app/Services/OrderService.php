@@ -7,10 +7,18 @@ namespace App\Services;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
+use App\Services\Payments\PaymentGatewayFactory;
 use Illuminate\Support\Str;
 
 class OrderService
 {
+    private PaymentGatewayFactory $paymentGatewayFactory;
+
+    public function __construct(PaymentGatewayFactory $paymentGatewayFactory)
+    {
+        $this->paymentGatewayFactory = $paymentGatewayFactory;
+    }
+
     public function createOrderFromCart(array $items, float $totalAmount, int $userId): Order
     {
         $order = new Order;
@@ -35,27 +43,9 @@ class OrderService
 
     public function processPayment(Order $order, array $paymentData): Payment
     {
-        $payment = new Payment;
-        $payment->setAmount((float) $paymentData['amount']);
-        $payment->setMethod($paymentData['method']);
-        $payment->setReference($paymentData['reference']);
-        $payment->setStatus('approved');
-        $payment->setOrderId($order->getId());
-        $payment->save();
+        $gateway = $this->paymentGatewayFactory->getGateway($paymentData['method'] ?? null);
 
-        foreach ($order->getItems() as $item) {
-            $product = $item->getProduct();
-            if ($product) {
-                $newStock = $product->getStock() - $item->getQuantity();
-                $product->setStock(max(0, $newStock));
-                $product->save();
-            }
-        }
-
-        $order->setStatus('paid');
-        $order->save();
-
-        return $payment;
+        return $gateway->process($order, $paymentData);
     }
 
     public function createOrderFromWishlists($wishlists, float $totalAmount, int $userId): Order

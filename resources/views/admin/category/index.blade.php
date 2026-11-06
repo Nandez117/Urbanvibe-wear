@@ -22,7 +22,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('categories.store') }}" class="es-f48bc238">
+        <form method="POST" action="{{ route('admin.category.store') }}" class="es-f48bc238">
             @csrf
             <div>
                 <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
@@ -48,8 +48,8 @@
                     <td>{{ $category->getName() }}</td>
                     <td>
                         <div class="actions-row">
-                            <a href="{{ route('categories.edit', ['id' => $category->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
-                            <form action="{{ route('categories.destroy', ['id' => $category->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
+                            <a href="{{ route('admin.category.edit', ['id' => $category->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>
+                            <form action="{{ route('admin.category.destroy', ['id' => $category->getId()]) }}" method="POST" onsubmit="return confirm('{{ __('messages.confirm_delete_category') }}');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>

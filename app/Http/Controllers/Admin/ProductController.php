@@ -18,12 +18,12 @@ class ProductController extends Controller
     public function index(): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $viewData = [];
         $viewData['title'] = __('messages.products');
-        $viewData['products'] = Product::all();
+        $viewData['products'] = Product::with('category')->paginate(10);
 
         return view('admin.product.index')->with('viewData', $viewData);
     }
@@ -31,7 +31,7 @@ class ProductController extends Controller
     public function create(): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $viewData = [];
@@ -44,7 +44,7 @@ class ProductController extends Controller
     public function store(StoreProductRequest $request): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = new Product;
@@ -74,13 +74,13 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.products.index')->with('success', __('messages.product_create_success'));
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_create_success'));
     }
 
     public function edit(string $id): View|RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $viewData = [];
@@ -94,7 +94,7 @@ class ProductController extends Controller
     public function update(UpdateProductRequest $request, string $id): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = Product::findOrFail($id);
@@ -116,18 +116,18 @@ class ProductController extends Controller
 
         $product->save();
 
-        return redirect()->route('admin.products.index')->with('success', __('messages.product_update_success'));
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
     {
         if (! Auth::check() || Auth::user()->getRole() !== 'admin') {
-            return redirect()->route('products.index')->with('error', __('messages.access_denied_admin'));
+            return redirect()->route('product.index')->with('error', __('messages.access_denied_admin'));
         }
 
         $product = Product::findOrFail($id);
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('success', __('messages.product_delete_success'));
+        return redirect()->route('admin.product.index')->with('success', __('messages.product_delete_success'));
     }
 }

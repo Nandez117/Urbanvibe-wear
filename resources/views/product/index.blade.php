@@ -5,8 +5,8 @@
 @section('content')
 <div class="catalog-layout">
     
-        <aside class="catalog-sidebar">
-        <form action="{{ route('products.index') }}" method="GET">
+    <aside class="catalog-sidebar">
+        <form action="{{ route('product.index') }}" method="GET">
             <h3>{{ __('messages.filters') }}</h3>
             
             <div class="sidebar-section">
@@ -50,35 +50,25 @@
             </div>
 
             <button type="submit" class="btn es-8ec3300d">{{ __('messages.apply') }}</button>
-            <a href="{{ route('products.index') }}" class="btn es-e1463324">{{ __('messages.clear') }}</a>
+            <a href="{{ route('product.index') }}" class="btn es-e1463324">{{ __('messages.clear') }}</a>
         </form>
     </aside>
 
     <main class="catalog-content">
         <div class="catalog-topbar">
             <div>
-                <strong>{{ __('messages.results_found') }}</strong> {{ count($viewData['products']) }}
+                <strong>{{ __('messages.results_found') }}</strong> {{ $viewData['products']->total() }}
             </div>
-            @if(Auth::check() && Auth::user()->getRole() === 'admin')
-                <a href="{{ route('products.create') }}" class="btn btn-sm">{{ __('messages.register_product') }}</a>
-
-            @endif
         </div>
 
         <div class="product-grid">
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
-                    <a href="{{ route('products.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
+                    <a href="{{ route('product.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
                         <div class="product-badge es-ee238a7d">
                             <span>
-                                {{ $product->getStock() > 0 ? 'EN STOCK' : 'AGOTADO' }}
-                                @if(Auth::check() && Auth::user()->getRole() === 'admin')
-                                    ({{ $product->getStock() }})
-                                @endif
+                                {{ $product->getStock() > 0 ? __('messages.in_stock') : __('messages.out_of_stock') }}
                             </span>
-                            @if(Auth::check() && Auth::user()->getRole() === 'admin' && $product->getStock() < 10)
-                                <span class="es-58e8f199">{{ __('messages.low_stock') }}</span>
-                            @endif
                         </div>
                         
                         <div class="product-image-container">
@@ -115,26 +105,19 @@
                                 </button>
                             </form>
                         @endauth
-
-                        @if(Auth::check() && Auth::user()->getRole() === 'admin')
-                            <div class="admin-actions">
-                                <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn btn-sm btn-admin">{{ __('messages.btn_edit') }}</a>
-                                <form action="{{ route('products.destroy', ['id' => $product->getId()]) }}" method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este producto?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger btn-admin">{{ __('messages.btn_delete') }}</button>
-                                </form>
-                            </div>
-                        @endif
                     </div>
                 </div>
             @endforeach
         </div>
         
-        @if(count($viewData['products']) === 0)
+        @if($viewData['products']->total() === 0)
             <div class="es-c1d199b6">
                 <i class="fa-solid fa-box-open es-9aa1019a"></i>
                 <p>{{ __('messages.no_products_catalog') }}</p>
+            </div>
+        @else
+            <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1.5rem 0;">
+                {{ $viewData['products']->links() }}
             </div>
         @endif
     </main>

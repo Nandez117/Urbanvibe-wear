@@ -5,7 +5,7 @@
 @section('content')
 <div class="es-9b7d0058">
     <h2>{{ __('messages.edit_order_detail') }}</h2>
-    <p>Producto: {{ $viewData['orderItem']->getProduct()->getName() }}</p>
+    <p>{{ __('messages.lbl_product') }}: {{ $viewData['orderItem']->getProduct()->getName() }}</p>
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -17,7 +17,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('order-items.update', ['id' => $viewData['orderItem']->getId()]) }}">
+    <form method="POST" action="{{ route('orderItem.update', ['id' => $viewData['orderItem']->getId()]) }}">
         @csrf
         @method('PUT')
         <div>
@@ -33,7 +33,7 @@
             <input id="quantity" type="number" name="quantity" min="1" value="{{ old('quantity', $viewData['orderItem']->getQuantity()) }}" required>
         </div>
         <button type="submit" class="btn">{{ __('messages.update_detail') }}</button>
-        <a href="{{ route('order-items.index') }}" class="btn">{{ __('messages.cancel') }}</a>
+        <a href="{{ route('orderItem.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
     </form>
 </div>
 @endsection

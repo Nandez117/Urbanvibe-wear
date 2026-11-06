@@ -29,7 +29,7 @@ class CategoryController extends Controller
         $category->setName($request->input('name'));
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', __('messages.category_create_success'));
+        return redirect()->route('admin.category.index')->with('success', __('messages.category_create_success'));
     }
 
     public function edit(string $id): View
@@ -47,7 +47,7 @@ class CategoryController extends Controller
         $category->setName($request->input('name'));
         $category->save();
 
-        return redirect()->route('categories.index')->with('success', __('messages.category_update_success'));
+        return redirect()->route('admin.category.index')->with('success', __('messages.category_update_success'));
     }
 
     public function destroy(string $id): RedirectResponse
@@ -57,11 +57,11 @@ class CategoryController extends Controller
         $hasProducts = Product::where('category_id', $category->getId())->exists();
 
         if ($hasProducts) {
-            return redirect()->route('categories.index')->with('error', __('messages.category_delete_error'));
+            return redirect()->route('admin.category.index')->with('error', __('messages.category_delete_error'));
         }
 
         $category->delete();
 
-        return redirect()->route('categories.index')->with('success', __('messages.category_delete_success'));
+        return redirect()->route('admin.category.index')->with('success', __('messages.category_delete_success'));
     }
 }

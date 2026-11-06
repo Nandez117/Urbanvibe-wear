@@ -5,26 +5,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Http\Request;
 
 /**
- * Order Attributes
- * $this->attributes['id'] - int - contains the order primary key
+ * ORDER ATTRIBUTES
+ * $this->attributes['id'] - int - contains the order primary key (id)
  * $this->attributes['order_number'] - string - contains the unique order number
  * $this->attributes['total_amount'] - float - contains the order total amount
  * $this->attributes['status'] - string - contains the order status
- * $this->attributes['user_id'] - int - contains the customer foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->user - User - contains the user relation
- * $this->items - Collection - contains the items relation
- * $this->payment - Payment - contains the payment relation
+ * $this->attributes['user_id'] - int - contains the referenced user id
+ * $this->attributes['created_at'] - datetime - contains the order creation date
+ * $this->attributes['updated_at'] - datetime - contains the order update date
+ * $this->user - User - contains the associated User
+ * $this->items - Collection - contains the associated order items
+ * $this->payment - Payment - contains the associated payment
  */
 class Order extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'order_number',
         'total_amount',
@@ -45,9 +49,24 @@ class Order extends Model
         ];
     }
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'order_number' => 'nullable|string|max:50',
+            'total_amount' => 'nullable|numeric|min:0',
+            'status' => 'nullable|in:pending,paid,cancelled',
+            'user_id' => 'nullable|exists:users,id',
+        ]);
+    }
+
     public function getId(): int
     {
         return (int) $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getOrderNumber(): string
@@ -127,7 +146,7 @@ class Order extends Model
 
     public function setItems(Collection $items): void
     {
-        $this->items = $items;
+        $this->setRelation('items', $items);
     }
 
     public function payment(): HasOne
@@ -142,6 +161,6 @@ class Order extends Model
 
     public function setPayment(Payment $payment): void
     {
-        $this->payment()->associate($payment);
+        $this->setRelation('payment', $payment);
     }
 }

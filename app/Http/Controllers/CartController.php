@@ -86,7 +86,7 @@ class CartController extends Controller
 
         $this->cart->clear();
 
-        return redirect()->route('payments.create', ['id' => $order->getId()])
+        return redirect()->route('payment.create', ['id' => $order->getId()])
             ->with('success', __('messages.order_created_payment_pending'));
     }
 }

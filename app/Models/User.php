@@ -8,25 +8,26 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Hash;
 
 /**
- * User Attributes
+ * USER ATTRIBUTES
  * $this->attributes['id'] - int - contains the user primary key (id)
  * $this->attributes['name'] - string - contains the user name
  * $this->attributes['email'] - string - contains the user email
- * $this->attributes['email_verified_at'] - datetime - contains the email verification timestamp
+ * $this->attributes['email_verified_at'] - datetime - contains the user email verification date
  * $this->attributes['password'] - string - contains the user password
  * $this->attributes['phone'] - string - contains the user phone
  * $this->attributes['address'] - string - contains the user address
- * $this->attributes['role'] - string - contains the user role (admin, client)
- * $this->attributes['remember_token'] - string - contains the remember me token
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->orders - Collection - contains the orders relation
- * $this->reviews - Collection - contains the reviews relation
- * $this->wishlists - Collection - contains the wishlists relation
+ * $this->attributes['role'] - string - contains the user role (client or admin)
+ * $this->attributes['remember_token'] - string - contains the remember token
+ * $this->attributes['created_at'] - datetime - contains the user creation date
+ * $this->attributes['updated_at'] - datetime - contains the user update date
+ * $this->orders - Collection - contains the associated orders
+ * $this->reviews - Collection - contains the associated reviews
+ * $this->wishlists - Collection - contains the associated wishlists
  */
 class User extends Authenticatable
 {
@@ -60,9 +61,29 @@ class User extends Authenticatable
         ];
     }
 
+    public static function validate(Request $request): void
+    {
+        $id = $request->route('id');
+        $uniqueEmail = $id ? 'unique:users,email,'.$id : 'unique:users,email';
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|'.$uniqueEmail,
+            'password' => 'nullable|string|min:8',
+            'phone' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',
+            'role' => 'nullable|in:admin,client',
+        ]);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getName(): string
@@ -147,7 +168,7 @@ class User extends Authenticatable
 
     public function setOrders(Collection $orders): void
     {
-        $this->orders = $orders;
+        $this->setRelation('orders', $orders);
     }
 
     public function reviews(): HasMany
@@ -162,7 +183,7 @@ class User extends Authenticatable
 
     public function setReviews(Collection $reviews): void
     {
-        $this->reviews = $reviews;
+        $this->setRelation('reviews', $reviews);
     }
 
     public function wishlists(): HasMany
@@ -177,6 +198,6 @@ class User extends Authenticatable
 
     public function setWishlists(Collection $wishlists): void
     {
-        $this->wishlists = $wishlists;
+        $this->setRelation('wishlists', $wishlists);
     }
 }

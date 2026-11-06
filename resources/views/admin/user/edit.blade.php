@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="admin-container-box">
-    <h2 class="admin-title">Editar Usuario: {{ $viewData['user']->getName() }}</h2>
+    <h2 class="admin-title">{{ __('messages.title_edit_user') }}: {{ $viewData['user']->getName() }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('users.update', ['id' => $viewData['user']->getId()]) }}" class="admin-form-container">
+    <form method="POST" action="{{ route('admin.user.update', ['id' => $viewData['user']->getId()]) }}" class="admin-form-container">
         @csrf
         @method('PUT')
         
@@ -50,7 +50,7 @@
 
         <div class="admin-action-bar">
             <button type="submit" class="btn">{{ __('messages.update_user') }}</button>
-            <a href="{{ route('users.index') }}" class="btn" class="btn-secondary">{{ __('messages.cancel') }}</a>
+            <a href="{{ route('admin.user.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
         </div>
     </form>
 </div>

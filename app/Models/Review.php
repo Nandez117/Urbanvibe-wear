@@ -4,23 +4,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 /**
- * Review Attributes
- * $this->attributes['id'] - int - contains the review primary key
+ * REVIEW ATTRIBUTES
+ * $this->attributes['id'] - int - contains the review primary key (id)
  * $this->attributes['rating'] - int - contains the product rating
  * $this->attributes['comment'] - string - contains the review comment
- * $this->attributes['user_id'] - int - contains the reviewer foreign key
- * $this->attributes['product_id'] - int - contains the reviewed product foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->user - User - contains the user relation
- * $this->product - Product - contains the product relation
+ * $this->attributes['user_id'] - int - contains the referenced user id
+ * $this->attributes['product_id'] - int - contains the referenced product id
+ * $this->attributes['created_at'] - datetime - contains the review creation date
+ * $this->attributes['updated_at'] - datetime - contains the review update date
+ * $this->user - User - contains the associated User
+ * $this->product - Product - contains the associated Product
  */
 class Review extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'rating',
         'comment',
@@ -41,9 +45,24 @@ class Review extends Model
         ];
     }
 
+    public static function validate(Request $request): void
+    {
+        $request->validate([
+            'rating' => 'required|integer|min:1|max:5',
+            'comment' => 'required|string|max:1000',
+            'product_id' => 'required|exists:products,id',
+            'user_id' => 'required|exists:users,id',
+        ]);
+    }
+
     public function getId(): int
     {
         return (int) $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getRating(): int

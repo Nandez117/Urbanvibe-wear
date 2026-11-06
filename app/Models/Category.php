@@ -8,14 +8,15 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Http\Request;
 
 /**
- * Category Attributes
+ * CATEGORY ATTRIBUTES
  * $this->attributes['id'] - int - contains the category primary key (id)
  * $this->attributes['name'] - string - contains the category name
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->products - Collection - contains the products relation
+ * $this->attributes['created_at'] - datetime - contains the category creation date
+ * $this->attributes['updated_at'] - datetime - contains the category update date
+ * $this->products - Collection - contains the associated products
  */
 class Category extends Model
 {
@@ -31,9 +32,24 @@ class Category extends Model
         'updated_at',
     ];
 
+    public static function validate(Request $request): void
+    {
+        $id = $request->route('id');
+        $uniqueRule = $id ? 'unique:categories,name,'.$id : 'unique:categories,name';
+
+        $request->validate([
+            'name' => 'required|string|max:255|'.$uniqueRule,
+        ]);
+    }
+
     public function getId(): int
     {
         return $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getName(): string
@@ -68,6 +84,6 @@ class Category extends Model
 
     public function setProducts(Collection $products): void
     {
-        $this->products = $products;
+        $this->setRelation('products', $products);
     }
 }

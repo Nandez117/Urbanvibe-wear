@@ -1,4 +1,4 @@
-{{-- Juan Manuel Hernandez Martelo --}}
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.admin')
 @section('title', $viewData['title'])
 
@@ -9,7 +9,7 @@
 
 <div class="es-47118b4a">
     <div class="admin-flex admin-justify-between admin-items-center admin-mb-4">
-        <a href="{{ route('products.create') }}" class="btn">{{ __('messages.register_product') ?? 'Registrar Producto' }}</a>
+        <a href="{{ route('admin.product.create') }}" class="btn">{{ __('messages.register_product') }}</a>
     </div>
 
     @if(session('success'))
@@ -44,10 +44,10 @@
                         <td>{{ $product->getStock() }}</td>
                         <td>
                             <div class="actions-row">
-                                <a href="{{ route('products.edit', ['id' => $product->getId()]) }}" class="btn btn-sm btn-secondary">
+                                <a href="{{ route('admin.product.edit', ['id' => $product->getId()]) }}" class="btn btn-sm btn-secondary">
                                     <i class="fa-solid fa-pencil"></i>
                                 </a>
-                                <form action="{{ route('products.destroy', ['id' => $product->getId()]) }}" method="POST" onsubmit="return confirm('Seguro que deseas eliminar este producto?');">
+                                <form action="{{ route('admin.product.destroy', ['id' => $product->getId()]) }}" method="POST" onsubmit="return confirm('{{ __('messages.confirm_delete_product') }}');">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-sm btn-danger">
@@ -64,6 +64,12 @@
                 @endforelse
             </tbody>
         </table>
+
+        @if($viewData['products']->hasPages())
+            <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1rem 0;">
+                {{ $viewData['products']->links() }}
+            </div>
+        @endif
     </div>
 </div>
 @endsection

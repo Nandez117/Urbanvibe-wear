@@ -1,3 +1,4 @@
+{{--  Yan Frank Ríos López  --}}
 
 @extends('layouts.app')
 @section('title', $viewData['title'])
@@ -50,7 +51,7 @@
 
 @if (count($viewData['items']) > 0)
 <div class="es-78c73b27">
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.btn_continue_shopping') }}</a>
+    <a href="{{ route('product.index') }}" class="btn btn-secondary">{{ __('messages.btn_continue_shopping') }}</a>
     <div class="es-62eecf9b">
         <span class="es-9cf61fc5">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
         <form action="{{ route('cart.checkout') }}" method="POST">
@@ -61,7 +62,7 @@
 </div>
 @else
 <div class="es-cafd824d">
-    <a href="{{ route('products.index') }}" class="btn btn-secondary">{{ __('messages.nav_catalog') }}</a>
+    <a href="{{ route('product.index') }}" class="btn btn-secondary">{{ __('messages.nav_catalog') }}</a>
 </div>
 @endif
 @endsection

@@ -4,24 +4,28 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Http\Request;
 
 /**
- * OrderItem Attributes
- * $this->attributes['id'] - int - contains the order item primary key
+ * ORDERITEM ATTRIBUTES
+ * $this->attributes['id'] - int - contains the order item primary key (id)
  * $this->attributes['quantity'] - int - contains the purchased quantity
  * $this->attributes['subtotal'] - float - contains the calculated subtotal
  * $this->attributes['unit_price'] - float - contains the product unit price
- * $this->attributes['product_id'] - int - contains the product foreign key
- * $this->attributes['order_id'] - int - contains the order foreign key
- * $this->attributes['created_at'] - datetime - contains the creation timestamp
- * $this->attributes['updated_at'] - datetime - contains the update timestamp
- * $this->product - Product - contains the product relation
- * $this->order - Order - contains the order relation
+ * $this->attributes['product_id'] - int - contains the referenced product id
+ * $this->attributes['order_id'] - int - contains the referenced order id
+ * $this->attributes['created_at'] - datetime - contains the order item creation date
+ * $this->attributes['updated_at'] - datetime - contains the order item update date
+ * $this->product - Product - contains the associated Product
+ * $this->order - Order - contains the associated Order
  */
 class OrderItem extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'quantity',
         'subtotal',
@@ -45,14 +49,23 @@ class OrderItem extends Model
         ];
     }
 
-    public function calculateSubtotal(): float
+    public static function validate(Request $request): void
     {
-        return round($this->getQuantity() * $this->getUnitPrice(), 2);
+        $request->validate([
+            'quantity' => 'required|integer|min:1',
+            'product_id' => 'required|exists:products,id',
+            'order_id' => 'required|exists:orders,id',
+        ]);
     }
 
     public function getId(): int
     {
         return (int) $this->attributes['id'];
+    }
+
+    public function setId(int $id): void
+    {
+        $this->attributes['id'] = $id;
     }
 
     public function getQuantity(): int
@@ -113,6 +126,11 @@ class OrderItem extends Model
     public function getUpdatedAt(): string
     {
         return $this->attributes['updated_at'];
+    }
+
+    public function calculateSubtotal(): float
+    {
+        return round($this->getQuantity() * $this->getUnitPrice(), 2);
     }
 
     public function product(): BelongsTo

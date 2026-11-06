@@ -4,9 +4,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateProfileRequest;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
@@ -30,20 +30,14 @@ class UserController extends Controller
         return view('user.edit')->with('viewData', $viewData);
     }
 
-    public function update(Request $request): RedirectResponse
+    public function update(UpdateProfileRequest $request): RedirectResponse
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'phone' => 'nullable|string|max:20',
-            'address' => 'nullable|string|max:255',
-        ]);
-
         $user = Auth::user();
         $user->setName($request->input('name'));
         $user->setPhone($request->input('phone'));
         $user->setAddress($request->input('address'));
         $user->save();
 
-        return redirect()->route('profile.index')->with('success', __('messages.user_update_success'));
+        return redirect()->route('user.profile')->with('success', __('messages.user_update_success'));
     }
 }

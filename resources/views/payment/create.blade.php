@@ -1,3 +1,4 @@
+{{--  Yan Frank Ríos López  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -6,8 +7,8 @@
     <div class="form-card">
         <h2>{{ __('messages.register_payment') }}</h2>
         <p class="es-78c6aefe">
-            Pedido {{ $viewData['order']->getOrderNumber() }} &mdash;
-            ${{ number_format($viewData['order']->getTotalAmount(), 2) }}
+            {{ __('messages.lbl_order_number') }}: {{ $viewData['order']->getOrderNumber() }} &mdash;
+            ${{ number_format($viewData['order']->getTotalAmount(), 2) }} USD
         </p>
 
         @if ($errors->any())
@@ -20,7 +21,7 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('payments.store', ['id' => $viewData['order']->getId()]) }}">
+        <form method="POST" action="{{ route('payment.store', ['id' => $viewData['order']->getId()]) }}">
             @csrf
             <div class="form-field">
                 <label for="amount">{{ __('messages.amount') }}</label>
@@ -31,9 +32,10 @@
                 <label for="method">{{ __('messages.payment_method') }}</label>
                 <select id="method" name="method" required>
                     <option value="">{{ __('messages.select_method') }}</option>
-                    <option value="{{ __('messages.credit_card') }}" {{ old('method') == '{{ __('messages.credit_card') }}' ? 'selected' : '' }}>{{ __('messages.credit_card') }}</option>
-                    <option value="{{ __('messages.pse') }}" {{ old('method') == '{{ __('messages.pse') }}' ? 'selected' : '' }}>{{ __('messages.pse') }}</option>
-                    <option value="{{ __('messages.cash') }}" {{ old('method') == '{{ __('messages.cash') }}' ? 'selected' : '' }}>{{ __('messages.cash') }}</option>
+                    <option value="credit_card" {{ old('method') === 'credit_card' ? 'selected' : '' }}>{{ __('messages.credit_card') }}</option>
+                    <option value="paypal" {{ old('method') === 'paypal' ? 'selected' : '' }}>PayPal</option>
+                    <option value="pse" {{ old('method') === 'pse' ? 'selected' : '' }}>{{ __('messages.pse') }}</option>
+                    <option value="cash" {{ old('method') === 'cash' ? 'selected' : '' }}>{{ __('messages.cash') }}</option>
                 </select>
             </div>
             <div class="form-field">

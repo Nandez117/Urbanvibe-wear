@@ -13,9 +13,13 @@ class AdminMiddleware
 {
     public function handle(Request $request, Closure $next): Response
     {
+        if (! $request->user()) {
+            return redirect()->route('login.index');
+        }
+
         $user = User::findOrFail($request->user()->getAuthIdentifier());
 
-        abort_unless($user->getRole() === 'admin', 403);
+        abort_unless($user->getRole() === 'admin', 403, __('messages.access_denied_admin'));
 
         return $next($request);
     }

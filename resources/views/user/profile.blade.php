@@ -1,3 +1,4 @@
+{{--  Juan Manuel Hernandez Martelo  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -22,17 +23,17 @@
         </div>
         <div>
             <strong>{{ __('messages.phone') }}</strong>
-            <p>{{ $viewData['user']->getPhone() ?: 'No registrado' }}</p>
+            <p>{{ $viewData['user']->getPhone() ?: __('messages.not_registered') }}</p>
         </div>
         <div>
             <strong>{{ __('messages.address') }}</strong>
-            <p>{{ $viewData['user']->getAddress() ?: 'No registrada' }}</p>
+            <p>{{ $viewData['user']->getAddress() ?: __('messages.not_registered') }}</p>
         </div>
     </div>
 
     <div class="es-938c88b9">
-        <a href="{{ route('profile.edit') }}" class="btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">{{ __('messages.btn_edit')  }}</a>
-            <a href="{{ route('orders.index') }}" class="btn">{{ __('messages.view_my_orders') }}</a>
+        <a href="{{ route('user.edit') }}" class="btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">{{ __('messages.btn_edit') }}</a>
+        <a href="{{ route('order.index') }}" class="btn">{{ __('messages.view_my_orders') }}</a>
         <a href="{{ route('home.index') }}" class="btn btn-secondary">{{ __('messages.back_to_store') }}</a>
     </div>
 </div>

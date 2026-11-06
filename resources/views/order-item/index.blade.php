@@ -5,7 +5,7 @@
 @section('content')
 <div class="title-section">
     <h2>{{ __('messages.order_details') }}</h2>
-    <a href="{{ route('order-items.create') }}" class="btn">{{ __('messages.register_detail') }}</a>
+    <a href="{{ route('orderItem.create') }}" class="btn">{{ __('messages.register_detail') }}</a>
 </div>
 
 <div class="table-container">
@@ -27,14 +27,16 @@
                 <td>{{ $orderItem->getProduct()->getName() }}</td>
                 <td>{{ $orderItem->getQuantity() }}</td>
                 <td>${{ number_format($orderItem->getUnitPrice(), 2) }}</td>
-                <td>${{ number_format($orderItem->get{{ __('messages.subtotal') }}(), 2) }}</td>
+                <td>${{ number_format($orderItem->getSubtotal(), 2) }}</td>
                 <td>
-                    <a href="{{ route('order-items.edit', ['id' => $orderItem->getId()]) }}" class="btn">{{ __('messages.btn_edit') }}</a>
-                    <form action="{{ route('order-items.destroy', ['id' => $orderItem->getId()]) }}" method="POST" style="display: inline;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn es-e3edf5f5">{{ __('messages.btn_delete') }}</button>
-                    </form>
+                    <div class="actions-row">
+                        <a href="{{ route('orderItem.edit', ['id' => $orderItem->getId()]) }}" class="btn btn-sm btn-secondary">{{ __('messages.btn_edit') }}</a>
+                        <form action="{{ route('orderItem.destroy', ['id' => $orderItem->getId()]) }}" method="POST" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
+                        </form>
+                    </div>
                 </td>
             </tr>
             @endforeach
