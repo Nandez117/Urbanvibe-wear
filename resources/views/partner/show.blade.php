@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank RÃ­os LÃ³pez  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -9,8 +9,10 @@
             <div class="main-image-container">
                 @if(!empty($viewData['product']['image']))
                     <img src="{{ $viewData['product']['image'] }}" alt="{{ $viewData['product']['name'] }}" class="es-85f50244">
+                @elseif(in_array(strtolower($viewData['product']['category']), ['laptops', 'celulares', 'tablets', 'consolas', 'audio', 'smartwatches']))
+                    <i class="fa-solid fa-laptop product-image-placeholder"></i>
                 @else
-                    <i class="fa-solid fa-shoe-prints product-image-placeholder"></i>
+                    <i class="fa-solid fa-box-open product-image-placeholder"></i>
                 @endif
             </div>
         </div>
@@ -19,7 +21,12 @@
             <span class="role-badge-client">
                 <i class="fa-solid fa-handshake"></i> {{ __('messages.partner_badge') }}
             </span>
-            <div class="product-category admin-mt-4">{{ $viewData['product']['category'] }}</div>
+            <div class="product-category admin-mt-4">
+                {{ $viewData['product']['category'] }}
+                @if(!empty($viewData['product']['brand']))
+                    <span class="badge bg-secondary ms-2">{{ $viewData['product']['brand'] }}</span>
+                @endif
+            </div>
             <h1 class="product-title-detail">{{ $viewData['product']['name'] }}</h1>
 
             <div class="product-price-section">
@@ -46,6 +53,11 @@
                 <a href="{{ route('partner.index') }}" class="btn btn-secondary">
                     <i class="fa-solid fa-arrow-left"></i> {{ __('messages.btn_back_to_partner') }}
                 </a>
+                @if(!empty($viewData['product']['url']))
+                    <a href="{{ $viewData['product']['url'] }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> {{ __('messages.btn_view_on_partner_store') }}
+                    </a>
+                @endif
             </div>
         </div>
     </div>

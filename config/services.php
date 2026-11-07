@@ -36,7 +36,7 @@ return [
     ],
 
     'partner' => [
-        'url' => env('PARTNER_API_URL', 'http://127.0.0.1:8000/api/v1/products'),
+        'url' => env('PARTNER_API_URL', 'http://34.60.117.225/api/products'),
     ],
 
 ];

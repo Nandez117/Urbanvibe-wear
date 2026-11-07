@@ -53,4 +53,28 @@ class ProductApiTest extends TestCase
             ->assertJsonPath('status', 'success')
             ->assertJsonPath('data.id', $product->getId());
     }
+
+    public function test_api_products_flat_format_for_external_teams(): void
+    {
+        $category = Category::factory()->create();
+        Product::factory()->count(2)->create([
+            'category_id' => $category->getId(),
+        ]);
+
+        $response = $this->getJson('/api/products');
+
+        $response->assertStatus(200)
+            ->assertJsonStructure([
+                '*' => [
+                    'id',
+                    'name',
+                    'description',
+                    'price',
+                    'stock',
+                    'brand',
+                    'category',
+                    'url',
+                ],
+            ]);
+    }
 }

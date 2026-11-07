@@ -50,6 +50,8 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
 Route::get('/partner-products', [PartnerProductController::class, 'index'])->name('partner.index');
 Route::get('/partner-products/{id}', [PartnerProductController::class, 'show'])->name('partner.show');
+Route::get('/productos-aliados', [PartnerProductController::class, 'index'])->name('partner.aliados');
+Route::get('/productos-aliados/{id}', [PartnerProductController::class, 'show'])->name('partner.aliados.show');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');

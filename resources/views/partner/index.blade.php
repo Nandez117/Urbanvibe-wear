@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank RÃ­os LÃ³pez  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -37,13 +37,20 @@
                 <div class="product-image-container">
                     @if(!empty($product['image']))
                         <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="es-85f50244">
+                    @elseif(in_array(strtolower($product['category']), ['laptops', 'celulares', 'tablets', 'consolas', 'audio', 'smartwatches']))
+                        <i class="fa-solid fa-laptop product-image-placeholder"></i>
                     @else
-                        <i class="fa-solid fa-shoe-prints product-image-placeholder"></i>
+                        <i class="fa-solid fa-box-open product-image-placeholder"></i>
                     @endif
                 </div>
 
                 <div class="product-details">
-                    <div class="product-category">{{ $product['category'] }}</div>
+                    <div class="product-category">
+                        {{ $product['category'] }}
+                        @if(!empty($product['brand']))
+                            <span class="badge bg-secondary ms-1">{{ $product['brand'] }}</span>
+                        @endif
+                    </div>
                     <h3 class="product-title">{{ $product['name'] }}</h3>
                     <p class="product-description">{{ Str::limit($product['description'], 85) }}</p>
                     <div class="product-price">
@@ -59,6 +66,11 @@
                 <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="btn btn-secondary es-9923df7b">
                     <i class="fa-solid fa-eye"></i> {{ __('messages.btn_details') }}
                 </a>
+                @if(!empty($product['url']))
+                    <a href="{{ $product['url'] }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary es-9923df7b">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> {{ __('messages.btn_view_on_partner_store') }}
+                    </a>
+                @endif
             </div>
         </div>
     @empty

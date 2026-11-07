@@ -45,16 +45,36 @@ class ProductApiController extends Controller
                 'color' => $product->getColor(),
                 'material' => $product->getMaterial(),
                 'stock' => $product->getStock(),
+                'brand' => 'Urbanvibe Wear',
                 'category' => [
                     'id' => $product->getCategory()->getId(),
                     'name' => $product->getCategory()->getName(),
                 ],
                 'image' => $product->getImage() ? asset('storage/'.$product->getImage()) : null,
+                'url' => url('/products/'.$product->getId()),
                 'rating_average' => $avgRating ? round((float) $avgRating, 1) : null,
                 'reviews_count' => $product->getReviews()->count(),
                 'created_at' => $product->getCreatedAt(),
             ];
         });
+
+        if ($request->query('format') === 'flat' || ! $request->is('api/v1*')) {
+            $flat = $products->map(function ($p) {
+                return [
+                    'id' => $p['id'],
+                    'name' => $p['name'],
+                    'description' => $p['description'],
+                    'price' => number_format((float) $p['final_price'], 2, '.', ''),
+                    'stock' => $p['stock'],
+                    'brand' => 'Urbanvibe Wear',
+                    'category' => $p['category']['name'] ?? 'Ropa Urbana',
+                    'url' => $p['url'],
+                    'image' => $p['image'],
+                ];
+            });
+
+            return response()->json($flat->values(), 200);
+        }
 
         return response()->json([
             'status' => 'success',
@@ -64,7 +84,7 @@ class ProductApiController extends Controller
         ], 200);
     }
 
-    public function show(string $id): JsonResponse
+    public function show(Request $request, string $id): JsonResponse
     {
         $product = Product::with(['category', 'reviews.user'])->find($id);
 
@@ -87,7 +107,7 @@ class ProductApiController extends Controller
             ];
         });
 
-        return response()->json([
+        $response = [
             'status' => 'success',
             'team' => 'Equipo 3 - Urbanvibe Wear',
             'data' => [
@@ -101,16 +121,36 @@ class ProductApiController extends Controller
                 'color' => $product->getColor(),
                 'material' => $product->getMaterial(),
                 'stock' => $product->getStock(),
+                'brand' => 'Urbanvibe Wear',
                 'category' => [
                     'id' => $product->getCategory()->getId(),
                     'name' => $product->getCategory()->getName(),
                 ],
                 'image' => $product->getImage() ? asset('storage/'.$product->getImage()) : null,
+                'url' => url('/products/'.$product->getId()),
                 'rating_average' => $avgRating ? round((float) $avgRating, 1) : null,
                 'reviews_count' => $reviews->count(),
                 'reviews' => $reviews,
                 'created_at' => $product->getCreatedAt(),
             ],
-        ], 200);
+        ];
+
+        if ($request->query('format') === 'flat' || ! $request->is('api/v1*')) {
+            $item = $response['data'];
+
+            return response()->json([
+                'id' => $item['id'],
+                'name' => $item['name'],
+                'description' => $item['description'],
+                'price' => number_format((float) $item['final_price'], 2, '.', ''),
+                'stock' => $item['stock'],
+                'brand' => 'Urbanvibe Wear',
+                'category' => $item['category']['name'] ?? 'Ropa Urbana',
+                'url' => $item['url'],
+                'image' => $item['image'],
+            ], 200);
+        }
+
+        return response()->json($response, 200);
     }
 }
