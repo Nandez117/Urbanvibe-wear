@@ -2,68 +2,68 @@
   {
     "id": 1,
     "name": "Camiseta Oversize Street Drop",
-    "description": "Camiseta de algodón pesado de 240 GSM con corte oversize, cuello acanalado reforzado y logo bordado en el pecho.",
+    "description": "Camiseta de algodÃ³n pesado de 240 GSM con corte oversize, cuello acanalado reforzado y logo bordado en el pecho.",
     "price": "24.23",
     "stock": 100,
     "brand": "Urbanvibe Wear",
     "category": "Camisas",
-    "url": "http://136.111.62.204/products/1",
-    "image": "http://136.111.62.204/storage/products/camisata-oversize-street.png"
+    "url": "http://136.119.15.69/products/1",
+    "image": "http://136.119.15.69/storage/products/camisata-oversize-street.png"
   },
   {
     "id": 2,
     "name": "Joggers Cargo City Runner",
-    "description": "Pantalones tipo cargo con ajuste elástico en los tobillos, cinta ajustable y seis bolsillos utilitarios.",
+    "description": "Pantalones tipo cargo con ajuste elÃ¡stico en los tobillos, cinta ajustable y seis bolsillos utilitarios.",
     "price": "37.80",
     "stock": 85,
     "brand": "Urbanvibe Wear",
     "category": "Pantalones",
-    "url": "http://136.111.62.204/products/2",
-    "image": "http://136.111.62.204/storage/products/Jogger-cargo-city-runner.png"
+    "url": "http://136.119.15.69/products/2",
+    "image": "http://136.119.15.69/storage/products/Jogger-cargo-city-runner.png"
   },
   {
     "id": 3,
     "name": "Sudadera con Capucha Night Owl",
-    "description": "Hoodie de corte relajado, interior de felpa cepillada suave e impresión gráfica reflectante en la espalda.",
+    "description": "Hoodie de corte relajado, interior de felpa cepillada suave e impresiÃ³n grÃ¡fica reflectante en la espalda.",
     "price": "48.99",
     "stock": 60,
     "brand": "Urbanvibe Wear",
     "category": "Busos",
-    "url": "http://136.111.62.204/products/3",
-    "image": "http://136.111.62.204/storage/products/sudadera-con-capucha-night-owl.png"
+    "url": "http://136.119.15.69/products/3",
+    "image": "http://136.119.15.69/storage/products/sudadera-con-capucha-night-owl.png"
   },
   {
     "id": 4,
     "name": "Chaqueta Cortavientos Neon Vibe",
-    "description": "Cortavientos técnico ligero e impermeable con cremalleras termoselladas y detalles en colores neón.",
+    "description": "Cortavientos tÃ©cnico ligero e impermeable con cremalleras termoselladas y detalles en colores neÃ³n.",
     "price": "46.75",
     "stock": 40,
     "brand": "Urbanvibe Wear",
     "category": "Busos",
-    "url": "http://136.111.62.204/products/4",
-    "image": "http://136.111.62.204/storage/products/chaqueta-cortavientos-neon-vibe.png"
+    "url": "http://136.119.15.69/products/4",
+    "image": "http://136.119.15.69/storage/products/chaqueta-cortavientos-neon-vibe.png"
   },
   {
     "id": 5,
     "name": "Gorro Beanie Urban Basic",
-    "description": "Gorro de punto acanalado grueso, ajuste cómodo y etiqueta tejida en el doblez frontal.",
+    "description": "Gorro de punto acanalado grueso, ajuste cÃ³modo y etiqueta tejida en el doblez frontal.",
     "price": "15.00",
     "stock": 120,
     "brand": "Urbanvibe Wear",
     "category": "Accesorios",
-    "url": "http://136.111.62.204/products/5",
-    "image": "http://136.111.62.204/storage/products/beanie-urban-basic.png"
+    "url": "http://136.119.15.69/products/5",
+    "image": "http://136.119.15.69/storage/products/beanie-urban-basic.png"
   },
   {
     "id": 6,
-    "name": "Pantalón Denim Vintage Skate",
-    "description": "Jeans de corte holgado estilo años 90, lavado vintage stone wash y tela de mezclilla resistente.",
+    "name": "PantalÃ³n Denim Vintage Skate",
+    "description": "Jeans de corte holgado estilo aÃ±os 90, lavado vintage stone wash y tela de mezclilla resistente.",
     "price": "50.00",
     "stock": 55,
     "brand": "Urbanvibe Wear",
     "category": "Pantalones",
-    "url": "http://136.111.62.204/products/6",
-    "image": "http://136.111.62.204/storage/products/pantalon-denim-vintage-skate.png"
+    "url": "http://136.119.15.69/products/6",
+    "image": "http://136.119.15.69/storage/products/pantalon-denim-vintage-skate.png"
   },
   {
     "id": 7,
@@ -73,7 +73,7 @@
     "stock": 45,
     "brand": "Urbanvibe Wear",
     "category": "Camisas",
-    "url": "http://136.111.62.204/products/7",
+    "url": "http://136.119.15.69/products/7",
     "image": null
   },
   {
@@ -84,18 +84,18 @@
     "stock": 30,
     "brand": "Urbanvibe Wear",
     "category": "Busos",
-    "url": "http://136.111.62.204/products/8",
+    "url": "http://136.119.15.69/products/8",
     "image": null
   },
   {
     "id": 9,
-    "name": "Pantalón Parachute Cargo Tech",
-    "description": "Pantalón parachute ligero con tancas ajustables en cintura y botamanga. Corte holgado techwear.",
+    "name": "PantalÃ³n Parachute Cargo Tech",
+    "description": "PantalÃ³n parachute ligero con tancas ajustables en cintura y botamanga. Corte holgado techwear.",
     "price": "43.70",
     "stock": 35,
     "brand": "Urbanvibe Wear",
     "category": "Pantalones",
-    "url": "http://136.111.62.204/products/9",
+    "url": "http://136.119.15.69/products/9",
     "image": null
   },
   {
@@ -106,29 +106,29 @@
     "stock": 80,
     "brand": "Urbanvibe Wear",
     "category": "Accesorios",
-    "url": "http://136.111.62.204/products/10",
+    "url": "http://136.119.15.69/products/10",
     "image": null
   },
   {
     "id": 11,
     "name": "Bolso Crossbody Chest Rig",
-    "description": "Pequeño bolso cruzado táctico impermeable con múltiples divisiones para llaves, smartphone y billetera.",
+    "description": "PequeÃ±o bolso cruzado tÃ¡ctico impermeable con mÃºltiples divisiones para llaves, smartphone y billetera.",
     "price": "32.50",
     "stock": 50,
     "brand": "Urbanvibe Wear",
     "category": "Accesorios",
-    "url": "http://136.111.62.204/products/11",
+    "url": "http://136.119.15.69/products/11",
     "image": null
   },
   {
     "id": 12,
     "name": "Buzo Cuello Redondo Retro Minimalist",
-    "description": "Crewneck clásico sin capota con rib elástico en puños y pretina. Cómodo para cualquier outfit.",
+    "description": "Crewneck clÃ¡sico sin capota con rib elÃ¡stico en puÃ±os y pretina. CÃ³modo para cualquier outfit.",
     "price": "38.00",
     "stock": 50,
     "brand": "Urbanvibe Wear",
     "category": "Busos",
-    "url": "http://136.111.62.204/products/12",
+    "url": "http://136.119.15.69/products/12",
     "image": null
   }
 ]
