@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Urbanwear hoodie illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#292439"/>
+      <stop offset="1" stop-color="#151820"/>
+    </linearGradient>
+    <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#c5b8ff"/>
+      <stop offset="1" stop-color="#806de0"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#000" flood-opacity=".38"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="475" cy="175" r="155" fill="#aa8cff" opacity=".1"/>
+  <circle cx="105" cy="650" r="210" fill="#26d7b3" opacity=".06"/>
+  <path d="M66 0h468M66 800h468" stroke="#fff" stroke-opacity=".06"/>
+  <g filter="url(#shadow)" transform="translate(0 8)">
+    <path d="M213 209c-40 7-68 29-83 70l-42 116 75 28 27-53v246h220V370l27 53 75-28-42-116c-15-41-43-63-83-70l-32-30h-110z" fill="url(#fabric)" stroke="#e8e2ff" stroke-opacity=".48" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M235 215c3-66 29-95 65-95s62 29 65 95l-32 44h-66z" fill="#554a85" stroke="#e8e2ff" stroke-opacity=".5" stroke-width="4"/>
+    <path d="M268 152c7 18 18 27 32 27s25-9 32-27" fill="none" stroke="#e8e2ff" stroke-opacity=".45" stroke-width="4"/>
+    <path d="M190 370v246m220-246v246" stroke="#fff" stroke-opacity=".15" stroke-width="3"/>
+    <path d="M222 466h156v73c0 12-10 22-22 22h-112c-12 0-22-10-22-22z" fill="#6d5bbc" stroke="#e8e2ff" stroke-opacity=".38" stroke-width="3"/>
+    <path d="M273 256v67m54-67v67" stroke="#f1edff" stroke-opacity=".7" stroke-width="4" stroke-linecap="round"/>
+  </g>
+  <text x="300" y="702" text-anchor="middle" fill="#e8e2ff" font-family="Arial,sans-serif" font-size="16" letter-spacing="5">URBANVIBE</text>
+  <text x="300" y="735" text-anchor="middle" fill="#a29cb7" font-family="Arial,sans-serif" font-size="11" letter-spacing="3">STREET ESSENTIALS</text>
+</svg>

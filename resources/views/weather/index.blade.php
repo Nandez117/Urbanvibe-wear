@@ -71,11 +71,11 @@
                     </div>
 
                     <div class="product-image-container">
-                        @if($product->getImage())
-                            <img src="{{ asset('storage/' . $product->getImage()) }}" alt="{{ $product->getName() }}" class="es-85f50244">
-                        @else
-                            <i class="fa-solid fa-shirt product-image-placeholder"></i>
-                        @endif
+                        <x-product-image
+                            :src="$product->getImage() ? asset('storage/' . $product->getImage()) : null"
+                            :alt="$product->getName()"
+                            :category="$product->getCategory()->getName()"
+                        />
                     </div>
 
                     <div class="product-details">

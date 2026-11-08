@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Urbanwear shirt illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#202a35"/>
+      <stop offset="1" stop-color="#111820"/>
+    </linearGradient>
+    <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#b8f5e8"/>
+      <stop offset="1" stop-color="#54cdb7"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#000" flood-opacity=".35"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="480" cy="170" r="155" fill="#26d7b3" opacity=".08"/>
+  <circle cx="110" cy="660" r="210" fill="#8e7bff" opacity=".07"/>
+  <path d="M66 0h468M66 800h468" stroke="#fff" stroke-opacity=".06"/>
+  <g filter="url(#shadow)" transform="translate(0 8)">
+    <path d="m213 192 55-42h54l55 42 100 48-56 113-64-30v281H243V323l-64 30-56-113z" fill="url(#fabric)" stroke="#d7fff5" stroke-opacity=".45" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M268 150c2 35 14 54 27 54s25-19 27-54" fill="#202a35" stroke="#d7fff5" stroke-opacity=".5" stroke-width="5"/>
+    <path d="M243 323v281m114-281v281" stroke="#fff" stroke-opacity=".16" stroke-width="3"/>
+    <path d="M382 352v68h-43" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="4"/>
+    <circle cx="365" cy="376" r="4" fill="#fff" opacity=".7"/>
+  </g>
+  <text x="300" y="702" text-anchor="middle" fill="#d9e8e7" font-family="Arial,sans-serif" font-size="16" letter-spacing="5">URBANVIBE</text>
+  <text x="300" y="735" text-anchor="middle" fill="#84949d" font-family="Arial,sans-serif" font-size="11" letter-spacing="3">STREET ESSENTIALS</text>
+</svg>

@@ -7,13 +7,12 @@
     <div class="product-detail-layout">
         <div class="product-gallery">
             <div class="main-image-container">
-                @if(!empty($viewData['product']['image']))
-                    <img src="{{ $viewData['product']['image'] }}" alt="{{ $viewData['product']['name'] }}" class="es-85f50244">
-                @elseif(in_array(strtolower($viewData['product']['category']), ['laptops', 'celulares', 'tablets', 'consolas', 'audio', 'smartwatches']))
-                    <i class="fa-solid fa-laptop product-image-placeholder"></i>
-                @else
-                    <i class="fa-solid fa-box-open product-image-placeholder"></i>
-                @endif
+                <x-product-image
+                    :src="$viewData['product']['image'] ?? null"
+                    :alt="$viewData['product']['name']"
+                    :category="$viewData['product']['category']"
+                    style="width: 100%; height: 100%; object-fit: cover;"
+                />
             </div>
         </div>
 

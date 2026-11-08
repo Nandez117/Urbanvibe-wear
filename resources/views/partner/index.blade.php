@@ -35,13 +35,11 @@
                 </div>
 
                 <div class="product-image-container">
-                    @if(!empty($product['image']))
-                        <img src="{{ $product['image'] }}" alt="{{ $product['name'] }}" class="es-85f50244">
-                    @elseif(in_array(strtolower($product['category']), ['laptops', 'celulares', 'tablets', 'consolas', 'audio', 'smartwatches']))
-                        <i class="fa-solid fa-laptop product-image-placeholder"></i>
-                    @else
-                        <i class="fa-solid fa-box-open product-image-placeholder"></i>
-                    @endif
+                    <x-product-image
+                        :src="$product['image'] ?? null"
+                        :alt="$product['name']"
+                        :category="$product['category']"
+                    />
                 </div>
 
                 <div class="product-details">

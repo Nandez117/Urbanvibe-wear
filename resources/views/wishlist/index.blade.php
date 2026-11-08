@@ -27,11 +27,12 @@
             @foreach($viewData['wishlists'] as $wishlist)
             <div class="es-5dbd8ed5">
                 <div class="es-a58ddb0b">
-                    @if($wishlist->getProduct()->getImage())
-                        <img src="{{ asset('storage/' . $wishlist->getProduct()->getImage()) }}" alt="{{ $wishlist->getProduct()->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
-                    @else
-                        <i class="fa-solid fa-shirt es-079c0adc"></i>
-                    @endif
+                    <x-product-image
+                        :src="$wishlist->getProduct()->getImage() ? asset('storage/' . $wishlist->getProduct()->getImage()) : null"
+                        :alt="$wishlist->getProduct()->getName()"
+                        :category="$wishlist->getProduct()->getCategory()->getName()"
+                        style="width: 100%; height: 100%; object-fit: cover;"
+                    />
                 </div>
                 
                 <div class="es-d2391ef8">

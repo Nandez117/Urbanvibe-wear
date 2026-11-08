@@ -31,6 +31,7 @@ class PartnerProductTest extends TestCase
 
         $response = $this->get('/partner-products');
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)
+            ->assertSee('images/products/electronics.svg');
     }
 }

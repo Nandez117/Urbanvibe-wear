@@ -10,11 +10,12 @@
 
     <div class="es-e9152490">
         <div class="es-1342032c">
-            @if($viewData['product']->getImage())
-                <img src="{{ asset('storage/' . $viewData['product']->getImage()) }}" alt="{{ $viewData['product']->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
-            @else
-                <i class="fa-solid fa-shirt"></i>
-            @endif
+            <x-product-image
+                :src="$viewData['product']->getImage() ? asset('storage/' . $viewData['product']->getImage()) : null"
+                :alt="$viewData['product']->getName()"
+                :category="$viewData['product']->getCategory()->getName()"
+                style="width: 100%; height: 100%; object-fit: cover;"
+            />
         </div>
 
         <div class="es-d004dec4">

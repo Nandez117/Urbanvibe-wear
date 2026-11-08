@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" role="img" aria-label="Urbanwear trousers illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#25313a"/>
+      <stop offset="1" stop-color="#15191e"/>
+    </linearGradient>
+    <linearGradient id="fabric" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#9eb8c2"/>
+      <stop offset="1" stop-color="#607b87"/>
+    </linearGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="24" stdDeviation="20" flood-color="#000" flood-opacity=".4"/>
+    </filter>
+  </defs>
+  <rect width="600" height="800" fill="url(#bg)"/>
+  <circle cx="475" cy="170" r="155" fill="#26d7b3" opacity=".08"/>
+  <circle cx="100" cy="660" r="210" fill="#e7ac67" opacity=".06"/>
+  <path d="M66 0h468M66 800h468" stroke="#fff" stroke-opacity=".06"/>
+  <g filter="url(#shadow)" transform="translate(0 8)">
+    <path d="M192 167h216l27 440H322l-22-250-22 250H165z" fill="url(#fabric)" stroke="#d8e6e9" stroke-opacity=".45" stroke-width="4" stroke-linejoin="round"/>
+    <path d="M192 167h216l5 68H188z" fill="#526975" stroke="#d8e6e9" stroke-opacity=".4" stroke-width="4"/>
+    <path d="M300 235v122" stroke="#d8e6e9" stroke-opacity=".35" stroke-width="4"/>
+    <path d="M207 306h60v94h-60zm126 0h60v94h-60z" fill="#506975" stroke="#d8e6e9" stroke-opacity=".32" stroke-width="3"/>
+    <path d="M175 580h104m44 0h105" stroke="#2d4149" stroke-width="12" stroke-linecap="round"/>
+    <path d="M220 246v30m160-30v30" stroke="#d8e6e9" stroke-opacity=".6" stroke-width="4"/>
+  </g>
+  <text x="300" y="702" text-anchor="middle" fill="#dbe5e6" font-family="Arial,sans-serif" font-size="16" letter-spacing="5">URBANVIBE</text>
+  <text x="300" y="735" text-anchor="middle" fill="#91a0a5" font-family="Arial,sans-serif" font-size="11" letter-spacing="3">STREET ESSENTIALS</text>
+</svg>
