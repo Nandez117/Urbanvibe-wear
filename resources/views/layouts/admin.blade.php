@@ -14,23 +14,23 @@
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
+    <header class="admin-header">
+        <div class="header-left">
             <a href="{{ route('home.index') }}" class="logo">Urbanvibe Wear</a>
         </div>
-        
+
         <nav class="nav-links">
             <a href="{{ route('home.index') }}" class="nav-link">{{ __('messages.back_to_store') }}</a>
             <a href="{{ route('admin.product.index') }}" class="nav-link {{ request()->routeIs('admin.product.*') ? 'active' : '' }}">{{ __('messages.products') }}</a>
             <a href="{{ route('admin.category.index') }}" class="nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">{{ __('messages.categories') }}</a>
             <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">{{ __('messages.users') }}</a>
         </nav>
-        
+
         <div class="header-icons">
-            <div class="lang-switch-box" style="display: flex; gap: 0.25rem; align-items: center; margin-right: 0.5rem; font-size: 0.85rem; font-weight: 600;">
-                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill" style="color: {{ app()->getLocale() === 'es' ? 'var(--accent, #ff5722)' : 'var(--text-muted, #888)' }}; text-decoration: none;">ES</a>
-                <span style="color: var(--border, #444);">|</span>
-                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill" style="color: {{ app()->getLocale() === 'en' ? 'var(--accent, #ff5722)' : 'var(--text-muted, #888)' }}; text-decoration: none;">EN</a>
+            <div class="lang-switch-box">
+                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill {{ app()->getLocale() === 'es' ? 'lang-pill--active' : '' }}">ES</a>
+                <span class="lang-sep">|</span>
+                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill {{ app()->getLocale() === 'en' ? 'lang-pill--active' : '' }}">EN</a>
             </div>
 
             <a href="{{ route('cart.index') }}" class="header-icon es-d85c4e64">

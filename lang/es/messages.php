@@ -43,6 +43,8 @@ return [
     // User
     'user_delete_error' => 'No se puede eliminar el usuario porque tiene órdenes de compra asociadas (Regla de Integridad).',
     // UI Elements
+    'ticker_shipping' => 'ENVÍO GRATIS DESDE $500.000',
+    'ticker_returns' => '30 DÍAS PARA CAMBIOS',
     'nav_home' => 'Inicio',
     'nav_catalog' => 'Catálogo',
     'nav_cart' => 'Carrito',

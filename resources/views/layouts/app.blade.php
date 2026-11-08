@@ -14,28 +14,85 @@
 </head>
 <body>
 
+    <div class="ticker-bar" aria-label="{{ __('messages.ticker_shipping') }}">
+        <div class="ticker-track" aria-hidden="true">
+            <span class="ticker-item"><i class="fa-solid fa-truck-fast"></i> {{ __('messages.ticker_shipping') }}</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><i class="fa-solid fa-rotate-left"></i> {{ __('messages.ticker_returns') }}</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><i class="fa-solid fa-truck-fast"></i> {{ __('messages.ticker_shipping') }}</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><i class="fa-solid fa-rotate-left"></i> {{ __('messages.ticker_returns') }}</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><i class="fa-solid fa-truck-fast"></i> {{ __('messages.ticker_shipping') }}</span>
+            <span class="ticker-sep">✦</span>
+            <span class="ticker-item"><i class="fa-solid fa-rotate-left"></i> {{ __('messages.ticker_returns') }}</span>
+            <span class="ticker-sep">✦</span>
+        </div>
+    </div>
+
+    <div class="Drawer" id="drawer" popover="manual">
+        <div class="Drawer-scroller">
+            <nav class="Drawer-sheet" tabindex="-1" aria-label="{{ __('messages.nav_home') }}">
+                <div class="drawer-header">
+                    <span class="drawer-brand">Urbanvibe Wear</span>
+                    <button class="drawer-close-btn" id="drawer-close" aria-label="Cerrar menú">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul class="drawer-nav-list">
+                    <li><a href="{{ route('home.index') }}" class="drawer-nav-link {{ request()->routeIs('home.index') ? 'active' : '' }}">
+                        <i class="fa-solid fa-house" aria-hidden="true"></i> {{ __('messages.nav_welcome') }}
+                    </a></li>
+                    <li><a href="{{ route('product.index') }}" class="drawer-nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-shirt" aria-hidden="true"></i> {{ __('messages.nav_catalog') }}
+                    </a></li>
+                    <li><a href="{{ route('weather.index') }}" class="drawer-nav-link {{ request()->routeIs('weather.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-cloud-sun" aria-hidden="true"></i> {{ __('messages.nav_weather') }}
+                    </a></li>
+                    <li><a href="{{ route('partner.index') }}" class="drawer-nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-handshake" aria-hidden="true"></i> {{ __('messages.nav_partner') }}
+                    </a></li>
+                    <li><a href="{{ route('order.index') }}" class="drawer-nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-box" aria-hidden="true"></i> {{ __('messages.nav_orders') }}
+                    </a></li>
+                    <li><a href="{{ route('review.index') }}" class="drawer-nav-link {{ request()->routeIs('review.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-star" aria-hidden="true"></i> {{ __('messages.nav_reviews') }}
+                    </a></li>
+                    @auth
+                        <li><a href="{{ route('wishlist.index') }}" class="drawer-nav-link {{ request()->routeIs('wishlist.*') ? 'active' : '' }}">
+                            <i class="fa-solid fa-heart" aria-hidden="true"></i> {{ __('messages.nav_wishlist') }}
+                        </a></li>
+                    @endauth
+                </ul>
+            </nav>
+        </div>
+    </div>
+
     <header>
-        <div class="logo-container">
+        <div class="header-left">
+            <button id="drawer-open"
+                    class="menu-toggle-btn"
+                    aria-label="Menú"
+                    aria-expanded="false"
+                    aria-controls="drawer">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="header-center">
             <a href="{{ route('home.index') }}" class="logo">Urbanvibe Wear</a>
         </div>
-        
-        <nav class="nav-links">
-            <a href="{{ route('home.index') }}" class="nav-link {{ request()->routeIs('home.index') ? 'active' : '' }}">{{ __('messages.nav_welcome') }}</a>
-            <a href="{{ route('product.index') }}" class="nav-link {{ request()->routeIs('product.*') ? 'active' : '' }}">{{ __('messages.nav_catalog') }}</a>
-            <a href="{{ route('weather.index') }}" class="nav-link {{ request()->routeIs('weather.*') ? 'active' : '' }}"><i class="fa-solid fa-cloud-sun"></i> {{ __('messages.nav_weather') }}</a>
-            <a href="{{ route('partner.index') }}" class="nav-link {{ request()->routeIs('partner.*') ? 'active' : '' }}"><i class="fa-solid fa-handshake"></i> {{ __('messages.nav_partner') }}</a>
-            <a href="{{ route('order.index') }}" class="nav-link {{ request()->routeIs('order.*') ? 'active' : '' }}">{{ __('messages.nav_orders') }}</a>
-            <a href="{{ route('review.index') }}" class="nav-link {{ request()->routeIs('review.*') ? 'active' : '' }}">{{ __('messages.nav_reviews') }}</a>
-            @auth
-                <a href="{{ route('wishlist.index') }}" class="nav-link {{ request()->routeIs('wishlist.*') ? 'active' : '' }}">{{ __('messages.nav_wishlist') }}</a>
-            @endauth
-        </nav>
-        
+
         <div class="header-icons">
-            <div class="lang-switch-box" style="display: flex; gap: 0.25rem; align-items: center; margin-right: 0.5rem; font-size: 0.85rem; font-weight: 600;">
-                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill" style="color: {{ app()->getLocale() === 'es' ? 'var(--accent, #ff5722)' : 'var(--text-muted, #888)' }}; text-decoration: none;">ES</a>
-                <span style="color: var(--border, #444);">|</span>
-                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill" style="color: {{ app()->getLocale() === 'en' ? 'var(--accent, #ff5722)' : 'var(--text-muted, #888)' }}; text-decoration: none;">EN</a>
+            <div class="lang-switch-box">
+                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill {{ app()->getLocale() === 'es' ? 'lang-pill--active' : '' }}">ES</a>
+                <span class="lang-sep">|</span>
+                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill {{ app()->getLocale() === 'en' ? 'lang-pill--active' : '' }}">EN</a>
             </div>
 
             <a href="{{ route('cart.index') }}" class="header-icon es-d85c4e64">
@@ -70,7 +127,7 @@
                 {{ session('success') }}
             </div>
         @endif
-        
+
         @if(session('error'))
             <div class="alert alert-error">
                 {{ session('error') }}
@@ -79,6 +136,64 @@
 
         @yield('content')
     </main>
+
+    <script>
+        (function () {
+            const drawer = document.getElementById('drawer');
+            const openBtn = document.getElementById('drawer-open');
+            const closeBtn = document.getElementById('drawer-close');
+            const scroller = drawer.querySelector('.Drawer-scroller');
+            const sheet = drawer.querySelector('.Drawer-sheet');
+            const mainEl = document.querySelector('main');
+
+            async function openDrawer() {
+                drawer.showPopover();
+                if (!CSS.supports('scroll-initial-target', 'nearest')) {
+                    scroller.scrollTo({ left: scroller.offsetWidth, behavior: 'instant' });
+                    await new Promise(function (r) {
+                        requestAnimationFrame(function () { requestAnimationFrame(r); });
+                    });
+                }
+                scroller.scrollTo({ left: 0, behavior: 'auto' });
+            }
+
+            function closeDrawer() {
+                scroller.scrollTo({ left: scroller.offsetWidth, behavior: 'auto' });
+            }
+
+            var visibleThreshold = 1 / window.innerWidth;
+            var observer = new IntersectionObserver(function (entries) {
+                var entry = entries[entries.length - 1];
+                if (entry.intersectionRatio < visibleThreshold) {
+                    drawer.hidePopover();
+                    if (mainEl) { mainEl.inert = false; }
+                    openBtn.setAttribute('aria-expanded', 'false');
+                }
+                if (entry.intersectionRatio === 1) {
+                    if (mainEl) { mainEl.inert = true; }
+                    openBtn.setAttribute('aria-expanded', 'true');
+                    sheet.focus();
+                }
+            }, { root: drawer, threshold: [visibleThreshold, 1] });
+            observer.observe(sheet);
+
+            if (!CSS.supports('animation-timeline: scroll()')) {
+                scroller.addEventListener('scroll', function () {
+                    var ratio = 1 - scroller.scrollLeft / sheet.offsetWidth;
+                    drawer.style.setProperty('--drawer-backdrop', ratio);
+                });
+            }
+
+            openBtn.addEventListener('click', openDrawer);
+            if (closeBtn) { closeBtn.addEventListener('click', closeDrawer); }
+            drawer.addEventListener('click', function (event) {
+                if (!sheet.contains(event.target)) { closeDrawer(); }
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') { closeDrawer(); }
+            });
+        }());
+    </script>
 
 </body>
 </html>

@@ -25,7 +25,7 @@ return [
     'payment_create_title' => 'Register Payment',
 
     // Product
-    'product_catalog_title' => 'Product Catalog - Urbanvibe Wear',
+    'product_catalog_title' => 'Product Catalogue - Urbanvibe Wear',
     'access_denied_admin' => 'Access denied. Only administrators can perform this action.',
     'product_create_title' => 'Register Product',
     'product_create_success' => 'Product registered successfully.',
@@ -43,8 +43,10 @@ return [
     // User
     'user_delete_error' => 'Cannot delete user because they have associated purchase orders (Integrity Rule).',
     // UI Elements
+    'ticker_shipping' => 'FREE SHIPPING FROM $500,000',
+    'ticker_returns' => '30 DAYS FOR RETURNS',
     'nav_home' => 'Home',
-    'nav_catalog' => 'Catalog',
+    'nav_catalog' => 'Catalogue',
     'nav_cart' => 'Cart',
     'nav_login' => 'Log in',
     'nav_register' => 'Register',
@@ -76,7 +78,7 @@ return [
 
     'welcome_title' => 'Welcome - Urbanvibe Wear',
     'welcome_main' => 'Urbanvibe Wear',
-    'welcome_subtitle' => 'Your exclusive urban clothing store. Explore our catalog and find the style that defines you.',
+    'welcome_subtitle' => 'Your exclusive urban clothing store. Explore our catalogue and find the style that defines you.',
     'manage_users' => 'Manage Users',
     'secure_payments' => 'Secure Payments',
     'secure_payments_desc' => 'Your information is protected.',
@@ -228,8 +230,8 @@ return [
     'apply' => 'Apply',
     'clear' => 'Clear',
     'results_found' => 'Results found:',
-    'no_products_catalog' => 'No products registered in the catalog.',
-    'back_to_catalog' => 'Back to Catalog',
+    'no_products_catalog' => 'No products registered in the catalogue.',
+    'back_to_catalog' => 'Back to Catalogue',
     'size_label' => 'Size:',
     'material_label' => 'Material:',
     'low_stock' => 'LOW STOCK',
@@ -289,10 +291,10 @@ return [
     'not_registered' => 'Not registered',
     'decrease_quantity' => 'Decrease quantity',
     'increase_quantity' => 'Increase quantity',
-    'partner_badge' => 'Partner Store Catalog',
+    'partner_badge' => 'Partner Store Catalogue',
     'partner_store_title' => 'Partner Store (Team 2) - Technology',
     'partner_source_label' => 'Product source',
-    'partner_demo_mode_notice' => 'Displaying catalog in demo/contingency mode synchronized with external API.',
+    'partner_demo_mode_notice' => 'Displaying catalogue in demo/contingency mode synchronized with external API.',
     'partner_no_products' => 'No partner products available at this time.',
     'btn_back_to_partner' => 'Back to partner store',
     'btn_view_on_partner_store' => 'View on Team 2 Store',
