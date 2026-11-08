@@ -24,17 +24,22 @@ Route::get('/', [HomeController::class, 'index'])->name('home.index');
 Route::get('/lang/{locale}', [LocaleController::class, 'switch'])->name('lang.switch');
 
 Route::middleware('guest')->group(function () {
-    Route::get('/register', [AuthController::class, 'showRegister'])->name('auth.showRegister');
-    Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
-    Route::get('/login', [AuthController::class, 'showLogin'])->name('auth.showLogin');
-    Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
-    // Aliases
-    Route::get('/register-alias', [AuthController::class, 'showRegister'])->name('register.index');
-    Route::get('/login-alias', [AuthController::class, 'showLogin'])->name('login.index');
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register.index');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.store');
+    Route::get('/login', [AuthController::class, 'showLogin'])->name('login.index');
+    Route::post('/login', [AuthController::class, 'login'])->name('login.store');
+
+    // Compatibility aliases
+    Route::get('/login-alias', [AuthController::class, 'showLogin'])->name('login');
+    Route::get('/register-alias', [AuthController::class, 'showRegister']);
+    Route::get('/auth/login', [AuthController::class, 'showLogin'])->name('auth.showLogin');
+    Route::post('/auth/login', [AuthController::class, 'login'])->name('auth.login');
+    Route::get('/auth/register', [AuthController::class, 'showRegister'])->name('auth.showRegister');
+    Route::post('/auth/register', [AuthController::class, 'register'])->name('auth.register');
 });
 
-Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
-Route::post('/logout-alias', [AuthController::class, 'logout'])->name('logout.store')->middleware('auth');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout.store')->middleware('auth');
+Route::post('/logout-alias', [AuthController::class, 'logout'])->name('auth.logout')->middleware('auth');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [UserController::class, 'profile'])->name('user.profile');
@@ -50,8 +55,10 @@ Route::get('/products/{id}', [ProductController::class, 'show'])->name('product.
 Route::get('/weather', [WeatherController::class, 'index'])->name('weather.index');
 Route::get('/partner-products', [PartnerProductController::class, 'index'])->name('partner.index');
 Route::get('/partner-products/{id}', [PartnerProductController::class, 'show'])->name('partner.show');
+Route::post('/partner-products/{id}/cart', [PartnerProductController::class, 'addToCart'])->name('partner.cart.add');
 Route::get('/productos-aliados', [PartnerProductController::class, 'index'])->name('partner.aliados');
 Route::get('/productos-aliados/{id}', [PartnerProductController::class, 'show'])->name('partner.aliados.show');
+Route::post('/productos-aliados/{id}/cart', [PartnerProductController::class, 'addToCart'])->name('partner.aliados.cart.add');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
@@ -59,8 +66,9 @@ Route::put('/cart/{id}', [CartController::class, 'update'])->name('cart.update')
 Route::delete('/cart/{id}', [CartController::class, 'remove'])->name('cart.remove');
 Route::post('/cart/checkout', [CartController::class, 'checkout'])->name('cart.checkout')->middleware('auth');
 
+Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
+
 Route::middleware('auth')->group(function () {
-    Route::get('/orders', [OrderController::class, 'index'])->name('order.index');
     Route::get('/orders/create', [OrderController::class, 'create'])->name('order.create');
     Route::post('/orders', [OrderController::class, 'store'])->name('order.store');
     Route::get('/orders/{id}/edit', [OrderController::class, 'edit'])->name('order.edit');

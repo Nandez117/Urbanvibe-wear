@@ -38,7 +38,7 @@
                 <div class="es-d2391ef8">
                     <div>
                         <div class="es-b82d2c74">
-                            {{ $wishlist->getProduct()->getCategory()->getName() }}
+                            {{ $wishlist->getProduct()->getCategory()->getTranslatedName() }}
                         </div>
                         <h4 class="es-e69e65b6">
                             {{ $wishlist->getProduct()->getName() }}

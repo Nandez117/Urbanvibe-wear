@@ -20,7 +20,7 @@
 
         <div class="es-d004dec4">
             <div class="es-0d330c11">
-                {{ $viewData['product']->getCategory()->getName() }}
+                {{ $viewData['product']->getCategory()->getTranslatedName() }}
             </div>
             <h1 class="es-52803023">
                 {{ $viewData['product']->getName() }}

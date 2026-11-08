@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
+use Illuminate\Support\Str;
 
 /**
  * CATEGORY ATTRIBUTES
@@ -60,6 +62,23 @@ class Category extends Model
     public function setName(string $name): void
     {
         $this->attributes['name'] = $name;
+    }
+
+    public static function translateName(?string $name): string
+    {
+        if (! $name) {
+            return '';
+        }
+
+        $slug = Str::slug($name, '_');
+        $key = 'messages.category_name_'.$slug;
+
+        return Lang::has($key) ? (string) __($key) : $name;
+    }
+
+    public function getTranslatedName(): string
+    {
+        return self::translateName($this->attributes['name'] ?? null);
     }
 
     public function getCreatedAt(): string
