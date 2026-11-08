@@ -25,7 +25,7 @@
             <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="es-9ef793ad">
                 <div class="product-badge es-ee238a7d">
                     <span>
-                        <i class="fa-solid fa-shop"></i> {{ $product['category'] }}
+                        <i class="fa-solid fa-shop"></i> {{ \App\Models\Category::translateName($product['category']) }}
                     </span>
                     @if($product['rating'])
                         <span class="es-58e8f199">
@@ -46,7 +46,7 @@
 
                 <div class="product-details">
                     <div class="product-category">
-                        {{ $product['category'] }}
+                        {{ \App\Models\Category::translateName($product['category']) }}
                         @if(!empty($product['brand']))
                             <span class="badge bg-secondary ms-1">{{ $product['brand'] }}</span>
                         @endif
@@ -66,11 +66,13 @@
                 <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="btn btn-secondary es-9923df7b">
                     <i class="fa-solid fa-eye"></i> {{ __('messages.btn_details') }}
                 </a>
-                @if(!empty($product['url']))
-                    <a href="{{ $product['url'] }}" target="_blank" rel="noopener noreferrer" class="btn btn-outline-primary es-9923df7b">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> {{ __('messages.btn_view_on_partner_store') }}
-                    </a>
-                @endif
+                <form action="{{ route('partner.cart.add', ['id' => $product['id']]) }}" method="POST" class="es-9923df7b">
+                    @csrf
+                    <input type="hidden" name="quantity" value="1">
+                    <button type="submit" class="btn-buy" style="width: 100%; justify-content: center;">
+                        <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
+                    </button>
+                </form>
             </div>
         </div>
     @empty

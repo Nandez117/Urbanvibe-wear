@@ -24,7 +24,7 @@
             <div class="weather-numbers">
                 <h1 class="weather-temp" style="font-size: 3.2rem; margin: 0;">{{ $viewData['weather']['temperature'] }}°C</h1>
                 <p class="weather-condition" style="font-size: 1.2rem; color: var(--text-muted); margin: 0.25rem 0;">
-                    {{ $viewData['weather']['condition'] }}
+                    {{ __($viewData['weather']['condition']) }}
                 </p>
                 <small>{{ __('messages.weather_feels_like') }}: {{ $viewData['weather']['apparent_temperature'] }}°C</small>
             </div>
@@ -47,7 +47,7 @@
         <div class="weather-recommendation-box alert alert-success admin-mt-4">
             <h4 style="margin: 0 0 0.5rem 0;">
                 <i class="fa-solid fa-vest-patches"></i>
-                {{ __('messages.weather_recommendation_title') }}: {{ $viewData['weather']['recommendation']['tag'] }}
+                {{ __('messages.weather_recommendation_title') }}: {{ __($viewData['weather']['recommendation']['tag']) }}
             </h4>
             <p style="margin: 0;">
                 {{ __($viewData['weather']['recommendation']['description']) }}
@@ -64,7 +64,7 @@
             <div class="product-card">
                 <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="es-9ef793ad">
                     <div class="product-badge es-ee238a7d">
-                        <span>{{ $product->getCategory()->getName() }}</span>
+                        <span>{{ $product->getCategory()->getTranslatedName() }}</span>
                         <span class="es-58e8f199">
                             <i class="fa-solid fa-shirt"></i> {{ __('messages.weather_recommended_tag') }}
                         </span>
@@ -79,7 +79,7 @@
                     </div>
 
                     <div class="product-details">
-                        <div class="product-category">{{ $product->getCategory()->getName() }}</div>
+                        <div class="product-category">{{ $product->getCategory()->getTranslatedName() }}</div>
                         <h3 class="product-title">{{ $product->getName() }}</h3>
                         <div class="product-price">${{ number_format($product->getPrice(), 2) }} USD</div>
                     </div>

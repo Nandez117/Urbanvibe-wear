@@ -69,7 +69,7 @@ class WeatherService
             'apparent_temperature' => 22.5,
             'humidity' => 65,
             'wind_speed' => 9.5,
-            'condition' => 'Parcialmente Nublado',
+            'condition' => 'messages.weather_condition_partly_cloudy',
             'icon' => 'fa-cloud-sun',
             'is_rain' => false,
             'recommendation' => $this->getOutfitRecommendation(22.0, false),
@@ -80,14 +80,14 @@ class WeatherService
     private function parseWeatherCode(int $code): array
     {
         return match (true) {
-            $code === 0 => ['text' => 'Despejado / Soleado', 'icon' => 'fa-sun', 'is_rain' => false],
-            $code >= 1 && $code <= 3 => ['text' => 'Parcialmente Nublado', 'icon' => 'fa-cloud-sun', 'is_rain' => false],
-            $code >= 45 && $code <= 48 => ['text' => 'Niebla / Neblina', 'icon' => 'fa-smog', 'is_rain' => false],
-            $code >= 51 && $code <= 67 => ['text' => 'Lluvia / Llovizna', 'icon' => 'fa-cloud-showers-heavy', 'is_rain' => true],
-            $code >= 71 && $code <= 77 => ['text' => 'Nieve', 'icon' => 'fa-snowflake', 'is_rain' => false],
-            $code >= 80 && $code <= 82 => ['text' => 'Aguacero', 'icon' => 'fa-cloud-rain', 'is_rain' => true],
-            $code >= 95 => ['text' => 'Tormenta Eléctrica', 'icon' => 'fa-bolt', 'is_rain' => true],
-            default => ['text' => 'Nublado', 'icon' => 'fa-cloud', 'is_rain' => false],
+            $code === 0 => ['text' => 'messages.weather_condition_clear', 'icon' => 'fa-sun', 'is_rain' => false],
+            $code >= 1 && $code <= 3 => ['text' => 'messages.weather_condition_partly_cloudy', 'icon' => 'fa-cloud-sun', 'is_rain' => false],
+            $code >= 45 && $code <= 48 => ['text' => 'messages.weather_condition_fog', 'icon' => 'fa-smog', 'is_rain' => false],
+            $code >= 51 && $code <= 67 => ['text' => 'messages.weather_condition_rain', 'icon' => 'fa-cloud-showers-heavy', 'is_rain' => true],
+            $code >= 71 && $code <= 77 => ['text' => 'messages.weather_condition_snow', 'icon' => 'fa-snowflake', 'is_rain' => false],
+            $code >= 80 && $code <= 82 => ['text' => 'messages.weather_condition_heavy_rain', 'icon' => 'fa-cloud-rain', 'is_rain' => true],
+            $code >= 95 => ['text' => 'messages.weather_condition_thunderstorm', 'icon' => 'fa-bolt', 'is_rain' => true],
+            default => ['text' => 'messages.weather_condition_cloudy', 'icon' => 'fa-cloud', 'is_rain' => false],
         };
     }
 
@@ -95,7 +95,7 @@ class WeatherService
     {
         if ($isRain) {
             return [
-                'tag' => 'Lluvia Urbana',
+                'tag' => 'messages.weather_tag_rain',
                 'description' => 'messages.weather_outfit_rain',
                 'categories' => ['Busos', 'Pantalones', 'Accesorios'],
             ];
@@ -103,7 +103,7 @@ class WeatherService
 
         if ($temp < 18) {
             return [
-                'tag' => 'Clima Fresco / Frío',
+                'tag' => 'messages.weather_tag_cold',
                 'description' => 'messages.weather_outfit_cold',
                 'categories' => ['Busos', 'Pantalones'],
             ];
@@ -111,14 +111,14 @@ class WeatherService
 
         if ($temp > 25) {
             return [
-                'tag' => 'Día Cálido / Soleado',
+                'tag' => 'messages.weather_tag_hot',
                 'description' => 'messages.weather_outfit_hot',
                 'categories' => ['Camisas', 'Accesorios'],
             ];
         }
 
         return [
-            'tag' => 'Clima Templado Ideal',
+            'tag' => 'messages.weather_tag_mild',
             'description' => 'messages.weather_outfit_mild',
             'categories' => ['Camisas', 'Pantalones', 'Accesorios'],
         ];

@@ -45,7 +45,7 @@
                 @foreach ($viewData['categories'] as $category)
                 <tr>
                     <td>{{ $category->getId() }}</td>
-                    <td>{{ $category->getName() }}</td>
+                    <td>{{ $category->getTranslatedName() }}</td>
                     <td>
                         <div class="actions-row">
                             <a href="{{ route('admin.category.edit', ['id' => $category->getId()]) }}" class="btn btn-sm">{{ __('messages.btn_edit') }}</a>

@@ -22,7 +22,7 @@
                 <i class="fa-solid fa-handshake"></i> {{ __('messages.partner_badge') }}
             </span>
             <div class="product-category admin-mt-4">
-                {{ $viewData['product']['category'] }}
+                {{ \App\Models\Category::translateName($viewData['product']['category']) }}
                 @if(!empty($viewData['product']['brand']))
                     <span class="badge bg-secondary ms-2">{{ $viewData['product']['brand'] }}</span>
                 @endif
@@ -53,11 +53,13 @@
                 <a href="{{ route('partner.index') }}" class="btn btn-secondary">
                     <i class="fa-solid fa-arrow-left"></i> {{ __('messages.btn_back_to_partner') }}
                 </a>
-                @if(!empty($viewData['product']['url']))
-                    <a href="{{ $viewData['product']['url'] }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i> {{ __('messages.btn_view_on_partner_store') }}
-                    </a>
-                @endif
+                <form action="{{ route('partner.cart.add', ['id' => $viewData['product']['id']]) }}" method="POST" style="display: inline-flex; align-items: center; gap: 0.5rem; margin: 0;">
+                    @csrf
+                    <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']['stock'] > 0 ? $viewData['product']['stock'] : 1 }}" class="qty-input es-199b6f0e">
+                    <button type="submit" class="btn-buy">
+                        <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
+                    </button>
+                </form>
             </div>
         </div>
     </div>

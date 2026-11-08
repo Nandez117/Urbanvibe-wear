@@ -4,7 +4,7 @@
 
 @section('content')
 <div class="es-b0d1bae9">
-    <h2 class="es-d3297f95">{{ __('messages.category_edit_title') }}: {{ $viewData['category']->getName() }}</h2>
+    <h2 class="es-d3297f95">{{ __('messages.category_edit_title') }}: {{ $viewData['category']->getTranslatedName() }}</h2>
 
     @if ($errors->any())
         <div class="alert alert-error">

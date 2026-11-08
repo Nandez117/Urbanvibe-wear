@@ -24,7 +24,7 @@
                     <label class="sidebar-checkbox">
                         <input type="checkbox" name="category_id[]" value="{{ $category->getId() }}" 
                         {{ is_array(request('category_id')) && in_array($category->getId(), request('category_id')) ? 'checked' : '' }}> 
-                        {{ $category->getName() }}
+                        {{ $category->getTranslatedName() }}
                     </label>
                 @endforeach
             </div>
@@ -80,7 +80,7 @@
                         </div>
 
                         <div class="product-details">
-                            <div class="product-category">{{ $product->getCategory()->getName() }}</div>
+                            <div class="product-category">{{ $product->getCategory()->getTranslatedName() }}</div>
                             <h3 class="product-title">{{ $product->getName() }}</h3>
                             <div class="product-price">${{ number_format($product->getPrice(), 2) }} USD</div>
                     </a>

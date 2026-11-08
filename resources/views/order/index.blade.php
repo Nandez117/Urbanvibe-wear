@@ -56,7 +56,12 @@
     </table>
 
     @if ($viewData['orders']->total() === 0)
-        <div class="es-80f9a287">{{ __('messages.no_orders') }}</div>
+        <div class="es-80f9a287">
+            <p class="admin-mb-4">{{ __('messages.no_orders') }}</p>
+            @guest
+                <a href="{{ route('login.index') }}" class="btn">{{ __('messages.nav_login') }}</a>
+            @endguest
+        </div>
     @elseif ($viewData['orders']->hasPages())
         <div class="pagination-wrapper">
             {{ $viewData['orders']->links() }}

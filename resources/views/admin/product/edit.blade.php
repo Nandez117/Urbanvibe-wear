@@ -30,7 +30,7 @@
                 <select name="category_id" required class="admin-form-input">
                     @foreach ($viewData['categories'] as $category)
                         <option value="{{ $category->getId() }}" {{ (old('category_id') ?? $viewData['product']->getCategoryId()) == $category->getId() ? 'selected' : '' }}>
-                            {{ $category->getName() }}
+                            {{ $category->getTranslatedName() }}
                         </option>
                     @endforeach
                 </select>

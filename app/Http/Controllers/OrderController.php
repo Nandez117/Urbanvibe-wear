@@ -22,10 +22,16 @@ class OrderController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.orders_title');
-        $viewData['orders'] = Order::with(['user', 'payment'])
-            ->where('user_id', Auth::id())
-            ->orderBy('id', 'desc')
-            ->paginate(8);
+
+        if (Auth::check()) {
+            $query = Order::with(['user', 'payment'])->orderBy('id', 'desc');
+            if (Auth::user()->getRole() !== 'admin') {
+                $query->where('user_id', Auth::id());
+            }
+            $viewData['orders'] = $query->paginate(8);
+        } else {
+            $viewData['orders'] = Order::whereRaw('1 = 0')->paginate(8);
+        }
 
         return view('order.index')->with('viewData', $viewData);
     }
