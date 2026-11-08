@@ -64,7 +64,7 @@
         <div class="product-grid">
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
-                    <a href="{{ route('product.show', ['id' => $product->getId()]) }}" style="text-decoration: none; color: inherit; display: contents;">
+                    <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="product-card-link">
                         <div class="product-badge es-ee238a7d">
                             <span>
                                 {{ $product->getStock() > 0 ? __('messages.in_stock') : __('messages.out_of_stock') }}
@@ -73,7 +73,7 @@
                         
                         <div class="product-image-container">
                             @if($product->getImage())
-                                <img src="{{ asset('storage/' . $product->getImage()) }}" alt="{{ $product->getName() }}" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img src="{{ asset('storage/' . $product->getImage()) }}" alt="{{ $product->getName() }}" class="product-image">
                             @else
                                 <i class="fa-solid fa-shirt product-image-placeholder"></i>
                             @endif
@@ -98,7 +98,7 @@
                         @endif
 
                         @auth
-                            <form action="{{ route('wishlist.store', ['id' => $product->getId()]) }}" method="POST" style="margin-top:0.5rem;">
+                            <form action="{{ route('wishlist.store', ['id' => $product->getId()]) }}" method="POST" class="wishlist-form">
                                 @csrf
                                 <button type="submit" class="btn es-9923df7b">
                                     <i class="fa-regular fa-heart"></i> {{ __('messages.btn_add_wishlist') }}
@@ -116,7 +116,7 @@
                 <p>{{ __('messages.no_products_catalog') }}</p>
             </div>
         @else
-            <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1.5rem 0;">
+            <div class="catalog-pagination">
                 {{ $viewData['products']->links() }}
             </div>
         @endif

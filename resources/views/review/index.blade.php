@@ -46,7 +46,7 @@
     @if ($viewData['reviews']->total() === 0)
         <div class="es-80f9a287">{{ __('messages.no_reviews') }}</div>
     @elseif ($viewData['reviews']->hasPages())
-        <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1rem 0;">
+        <div class="pagination-wrapper">
             {{ $viewData['reviews']->links() }}
         </div>
     @endif

@@ -58,7 +58,7 @@
     @if ($viewData['orders']->total() === 0)
         <div class="es-80f9a287">{{ __('messages.no_orders') }}</div>
     @elseif ($viewData['orders']->hasPages())
-        <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1rem 0;">
+        <div class="pagination-wrapper">
             {{ $viewData['orders']->links() }}
         </div>
     @endif

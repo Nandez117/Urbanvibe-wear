@@ -66,7 +66,7 @@
         </table>
 
         @if($viewData['products']->hasPages())
-            <div class="admin-mt-4" style="display: flex; justify-content: center; padding: 1rem 0;">
+            <div class="pagination-wrapper">
                 {{ $viewData['products']->links() }}
             </div>
         @endif
