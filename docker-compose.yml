@@ -1,0 +1,51 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: urbanvibe_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+    networks:
+      - urbanvibe_network
+    depends_on:
+      - database
+
+  web:
+    image: nginx:alpine
+    container_name: urbanvibe_web
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - urbanvibe_network
+    depends_on:
+      - app
+
+  database:
+    image: mysql:8.0
+    container_name: urbanvibe_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: urbanvibe_wear
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - urbanvibe_network
+
+networks:
+  urbanvibe_network:
+    driver: bridge
+
+volumes:
+  db_data:
+    driver: local
