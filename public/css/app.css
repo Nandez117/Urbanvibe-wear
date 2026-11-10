@@ -693,7 +693,7 @@ tr:last-child td {
     width: 250px;
     flex-shrink: 0;
     background: var(--surface);
-    padding: 1.5rem;
+    padding: 1rem 1.25rem;
     border-radius: 12px;
     border: 1px solid var(--border-subtle);
     position: sticky;
@@ -703,18 +703,18 @@ tr:last-child td {
 
 .catalog-sidebar h3 {
     font-size: 1.1rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--text-primary);
 }
 
 .sidebar-section {
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.9rem;
 }
 
 .sidebar-section h4 {
     font-size: 0.9rem;
     color: var(--text-secondary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.4rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
 }
@@ -723,7 +723,7 @@ tr:last-child td {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     color: var(--text-primary);
     font-size: 0.95rem;
 }

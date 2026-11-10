@@ -8,24 +8,11 @@
     <div class="hero-scanlines" aria-hidden="true"></div>
 
     <div class="hero-inner">
-        <div class="hero-terminal-label" aria-hidden="true">
-            <span class="terminal-dot terminal-dot--red"></span>
-            <span class="terminal-dot terminal-dot--yellow"></span>
-            <span class="terminal-dot terminal-dot--green"></span>
-            <span class="terminal-label-text">urbanvibe_system v2.0</span>
-        </div>
-
         <h1 class="hero-glitch-title" data-text="URBANVIBE WEAR" aria-label="Urbanvibe Wear">
             URBANVIBE WEAR
         </h1>
 
         <p class="hero-typewriter" id="hero-typewriter" aria-live="polite"></p>
-
-        <div class="hero-tags" aria-hidden="true">
-            <span class="hero-tag">&lt;SS-2026&gt;</span>
-            <span class="hero-tag">&lt;URBAN_COLLECTION&gt;</span>
-            <span class="hero-tag">&lt;STYLE.EXE&gt;</span>
-        </div>
 
         <div class="hero-actions">
             <a href="{{ route('product.index') }}" class="btn hero-btn-primary">
