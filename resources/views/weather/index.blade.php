@@ -4,10 +4,10 @@
 
 @section('content')
 <div class="weather-page-container">
-    <div class="weather-hero-card es-c1d199b6">
+    <div class="weather-hero-card empty-state--dashed">
         <div class="weather-city-selector-bar admin-mb-4">
             <span class="lbl-city">{{ __('messages.weather_select_city') }}:</span>
-            <div class="city-pills es-85f50244 admin-mt-4">
+            <div class="city-pills form-grid-2 admin-mt-4">
                 @foreach ($viewData['cities'] as $key => $cityInfo)
                     <a href="{{ route('weather.index', ['city' => $key]) }}"
                        class="btn btn-sm {{ $viewData['selectedCity'] === $key ? 'btn-primary' : 'btn-secondary' }}">
@@ -17,9 +17,9 @@
             </div>
         </div>
 
-        <div class="weather-main-display es-47118b4a">
+        <div class="weather-main-display split-layout">
             <div class="weather-icon-badge">
-                <i class="fa-solid {{ $viewData['weather']['icon'] }} es-35c98830 weather-icon-lg"></i>
+                <i class="fa-solid {{ $viewData['weather']['icon'] }} badge-count weather-icon-lg"></i>
             </div>
             <div class="weather-numbers">
                 <h1 class="weather-temp">{{ $viewData['weather']['temperature'] }}°C</h1>
@@ -28,7 +28,7 @@
                 </p>
                 <small>{{ __('messages.weather_feels_like') }}: {{ $viewData['weather']['apparent_temperature'] }}°C</small>
             </div>
-            <div class="weather-metrics es-9f13cd59">
+            <div class="weather-metrics card-panel">
                 <div>
                     <i class="fa-solid fa-droplet"></i>
                     <strong>{{ __('messages.weather_humidity') }}:</strong> {{ $viewData['weather']['humidity'] }}%
@@ -62,10 +62,10 @@
     <div class="product-grid">
         @foreach ($viewData['products'] as $product)
             <div class="product-card">
-                <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="es-9ef793ad">
-                    <div class="product-badge es-ee238a7d">
+                <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="form-input-full">
+                    <div class="product-badge card-badge-row">
                         <span>{{ $product->getCategory()->getTranslatedName() }}</span>
-                        <span class="es-58e8f199">
+                        <span class="badge-rating">
                             <i class="fa-solid fa-shirt"></i> {{ __('messages.weather_recommended_tag') }}
                         </span>
                     </div>

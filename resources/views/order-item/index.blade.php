@@ -44,7 +44,7 @@
     </table>
 
     @if (count($viewData['orderItems']) === 0)
-        <div class="es-80f9a287">{{ __('messages.no_order_details') }}</div>
+        <div class="empty-state">{{ __('messages.no_order_details') }}</div>
     @endif
 </div>
 @endsection

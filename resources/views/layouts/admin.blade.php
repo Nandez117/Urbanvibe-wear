@@ -67,11 +67,11 @@
                 <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill {{ app()->getLocale() === 'en' ? 'lang-pill--active' : '' }}">EN</a>
             </div>
 
-            <a href="{{ route('cart.index') }}" class="header-icon es-d85c4e64">
+            <a href="{{ route('cart.index') }}" class="header-icon cart-icon-wrap">
                 <i class="fa-solid fa-cart-shopping"></i>
                 @php($cartCount = app(\App\Services\Cart::class)->getCount())
                 @if ($cartCount > 0)
-                    <span class="es-35c98830">{{ $cartCount }}</span>
+                    <span class="badge-count">{{ $cartCount }}</span>
                 @endif
             </a>
             @auth
@@ -80,9 +80,9 @@
                 @else
                     <a href="{{ route('user.profile') }}" class="header-icon" title="{{ __('messages.my_profile') }}"><i class="fa-regular fa-user"></i></a>
                 @endif
-                <form action="{{ route('logout.store') }}" method="POST" class="es-3df0a395">
+                <form action="{{ route('logout.store') }}" method="POST" class="inline-form">
                     @csrf
-                    <button type="submit" class="header-icon es-338eb478" title="{{ __('messages.nav_logout') }}">
+                    <button type="submit" class="header-icon icon-button" title="{{ __('messages.nav_logout') }}">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </form>

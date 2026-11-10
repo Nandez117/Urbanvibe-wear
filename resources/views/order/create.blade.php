@@ -3,7 +3,7 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-9b7d0058">
+<div class="content-card">
     <h2>{{ __('messages.create_order') }}</h2>
 
     @if ($errors->any())
@@ -16,7 +16,7 @@
         </div>
     @endif
 
-    <p class="es-550a9f75">{{ __('messages.order_associated_auto') }}</p>
+    <p class="order-form-hint">{{ __('messages.order_associated_auto') }}</p>
 
     <form method="POST" action="{{ route('order.store') }}">
         @csrf

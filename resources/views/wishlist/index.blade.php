@@ -2,13 +2,13 @@
 @extends('layouts.app')
 @section('title', $viewData['title'])
 @section('content')
-<div class="container py-5 es-12a642d2">
-    <div class="es-9fd65ce1">
+<div class="container py-5 content-card--xl">
+    <div class="wishlist-head">
         <h2 class="text-white m-0">{{ $viewData['title'] }}</h2>
         @if(count($viewData['wishlists']) > 0)
             <form action="{{ route('wishlist.checkout') }}" method="POST">
                 @csrf
-                <button type="submit" class="btn es-1cf6a8d6">
+                <button type="submit" class="btn wishlist-badge">
                     <i class="fa-solid fa-credit-card"></i> {{ __('messages.btn_checkout') }}
                 </button>
             </form>
@@ -19,14 +19,14 @@
         <div class="alert alert-success">{{ session('success') }}</div>
     @endif
     @if(session('error'))
-        <div class="alert alert-error es-98f161c7">{{ session('error') }}</div>
+        <div class="alert alert-error wishlist-alert">{{ session('error') }}</div>
     @endif
 
     @if(count($viewData['wishlists']) > 0)
-        <div class="es-f48bc238">
+        <div class="form-stack">
             @foreach($viewData['wishlists'] as $wishlist)
-            <div class="es-5dbd8ed5">
-                <div class="es-a58ddb0b">
+            <div class="wishlist-item">
+                <div class="wishlist-item-image">
                     <x-product-image
                         :src="$wishlist->getProduct()->getImage() ? asset('storage/' . $wishlist->getProduct()->getImage()) : null"
                         :alt="$wishlist->getProduct()->getName()"
@@ -35,25 +35,25 @@
                     />
                 </div>
                 
-                <div class="es-d2391ef8">
+                <div class="wishlist-item-body">
                     <div>
-                        <div class="es-b82d2c74">
+                        <div class="wishlist-item-category">
                             {{ $wishlist->getProduct()->getCategory()->getTranslatedName() }}
                         </div>
-                        <h4 class="es-e69e65b6">
+                        <h4 class="wishlist-item-title">
                             {{ $wishlist->getProduct()->getName() }}
                         </h4>
-                        <div class="es-59442942">
+                        <div class="wishlist-item-price">
                             ${{ number_format($wishlist->getProduct()->getPrice(), 2) }} USD
                         </div>
                     </div>
                     
-                    <div class="es-0ba2053e">
+                    <div class="wishlist-item-actions">
                         <a href="{{ route('product.show', ['id' => $wishlist->getProduct()->getId()]) }}" class="btn actions-split">{{ __('messages.btn_details') }}</a>
                         <form action="{{ route('wishlist.destroy', ['id' => $wishlist->getId()]) }}" method="POST" class="actions-split">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn es-a03e6c58">{{ __('messages.btn_delete') }}</button>
+                            <button type="submit" class="btn btn-outline-danger">{{ __('messages.btn_delete') }}</button>
                         </form>
                     </div>
                 </div>
@@ -61,10 +61,10 @@
             @endforeach
         </div>
     @else
-        <div class="es-c1d199b6">
-            <i class="fa-regular fa-heart es-9aa1019a"></i>
+        <div class="empty-state--dashed">
+            <i class="fa-regular fa-heart empty-state-icon"></i>
             <p>{{ __('messages.wishlist_empty') }}</p>
-            <a href="{{ route('product.index') }}" class="btn btn-outline-light es-988c5fa7">{{ __('messages.nav_catalog') }}</a>
+            <a href="{{ route('product.index') }}" class="btn btn-outline-light mt-1">{{ __('messages.nav_catalog') }}</a>
         </div>
     @endif
 </div>

@@ -7,14 +7,14 @@
     <h2>{{ __('messages.manage_categories') }}</h2>
 </div>
 
-<div class="es-47118b4a">
+<div class="split-layout">
     
-    <div class="es-9f13cd59">
-        <h3 class="es-4986ecf7">{{ __('messages.new_category') }}</h3>
+    <div class="card-panel">
+        <h3 class="mb-1">{{ __('messages.new_category') }}</h3>
         
         @if ($errors->any())
             <div class="alert alert-error">
-                <ul class="es-552f38ac">
+                <ul class="ml-15">
                     @foreach ($errors->all() as $error)
                         <li>{{ $error }}</li>
                     @endforeach
@@ -22,18 +22,18 @@
             </div>
         @endif
 
-        <form method="POST" action="{{ route('admin.category.store') }}" class="es-f48bc238">
+        <form method="POST" action="{{ route('admin.category.store') }}" class="form-stack">
             @csrf
             <div>
-                <label class="es-4e832e11" for="category-name">{{ __('messages.category_name') }}</label>
-                <input id="category-name" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('messages.ex_hoodie') }}" required class="es-9ef793ad">
+                <label class="form-label-block" for="category-name">{{ __('messages.category_name') }}</label>
+                <input id="category-name" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('messages.ex_hoodie') }}" required class="form-input-full">
                 @error('name')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <button type="submit" class="btn">{{ __('messages.btn_create_category') }}</button>
         </form>
     </div>
 
-    <div class="table-container es-4a68d232">
+    <div class="table-container table-grow">
         <table>
             <thead>
                 <tr>
@@ -63,7 +63,7 @@
         </table>
         
         @if(count($viewData['categories']) === 0)
-            <div class="es-80f9a287">
+            <div class="empty-state">
                 {{ __('messages.no_categories') }}
             </div>
         @endif

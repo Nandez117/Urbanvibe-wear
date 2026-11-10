@@ -44,7 +44,7 @@
     </table>
 
     @if ($viewData['reviews']->total() === 0)
-        <div class="es-80f9a287">{{ __('messages.no_reviews') }}</div>
+        <div class="empty-state">{{ __('messages.no_reviews') }}</div>
     @elseif ($viewData['reviews']->hasPages())
         <div class="pagination-wrapper">
             {{ $viewData['reviews']->links() }}

@@ -3,16 +3,16 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-e4fe4b34">
-    <div class="es-92837179">
+<div class="content-card content-card--md">
+    <div class="profile-header">
         <div>
-            <p class="es-fad8088b">{{ __('messages.personal_account') }}</p>
+            <p class="profile-eyebrow">{{ __('messages.personal_account') }}</p>
             <h2>{{ __('messages.my_profile') }}</h2>
         </div>
-        <i class="fa-regular fa-circle-user es-88d42768"></i>
+        <i class="fa-regular fa-circle-user profile-avatar"></i>
     </div>
 
-    <div class="es-7ad8514a">
+    <div class="profile-data-grid">
         <div>
             <strong>{{ __('messages.lbl_name') }}</strong>
             <p>{{ $viewData['user']->getName() }}</p>
@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="es-938c88b9">
+    <div class="profile-actions-row">
         <a href="{{ route('user.edit') }}" class="btn btn-outline-accent">{{ __('messages.btn_edit') }}</a>
         <a href="{{ route('order.index') }}" class="btn">{{ __('messages.view_my_orders') }}</a>
         <a href="{{ route('home.index') }}" class="btn btn-secondary">{{ __('messages.back_to_store') }}</a>

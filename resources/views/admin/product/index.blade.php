@@ -7,7 +7,7 @@
     <h2>{{ __('messages.products') }}</h2>
 </div>
 
-<div class="es-47118b4a">
+<div class="split-layout">
     <div class="admin-flex admin-justify-between admin-items-center admin-mb-4">
         <a href="{{ route('admin.product.create') }}" class="btn">{{ __('messages.register_product') }}</a>
     </div>
@@ -24,7 +24,7 @@
         </div>
     @endif
 
-    <div class="table-container es-4a68d232">
+    <div class="table-container table-grow">
         <table>
             <thead>
                 <tr>
@@ -59,7 +59,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="5" class="es-80f9a287">{{ __('messages.no_products') }}</td>
+                        <td colspan="5" class="empty-state">{{ __('messages.no_products') }}</td>
                     </tr>
                 @endforelse
             </tbody>

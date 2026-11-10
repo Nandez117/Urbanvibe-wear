@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/order-edit.css') }}">
 @endpush
 
-<div class="es-9b7d0058">
+<div class="content-card">
     <h2>{{ __('messages.lbl_order_number') }}: {{ $viewData['order']->getOrderNumber() }}</h2>
 
     @if ($errors->any())
@@ -26,7 +26,7 @@
         <div class="order-form-field">
             <label for="status">{{ __('messages.order_status') }}</label>
             @php($currentStatus = old('status', $viewData['order']->getStatus()))
-            <select id="status" name="status" required class="es-de2eb184">
+            <select id="status" name="status" required class="form-input-order">
                 <option value="pending" {{ $currentStatus === 'pending' ? 'selected' : '' }}>{{ __('messages.status_pending') }}</option>
                 <option value="paid" {{ $currentStatus === 'paid' ? 'selected' : '' }}>{{ __('messages.status_paid') }}</option>
                 <option value="cancelled" {{ $currentStatus === 'cancelled' ? 'selected' : '' }}>{{ __('messages.status_cancelled') }}</option>
@@ -41,12 +41,12 @@
     <section class="order-section">
         <h3>{{ __('messages.order_products') }}</h3>
         @forelse ($viewData['order']->getItems() as $item)
-            <div class="es-d2041e54">
+            <div class="order-item-row">
                 <span>{{ $item->getProduct()->getName() }} x {{ $item->getQuantity() }}</span>
                 <strong>${{ number_format($item->getSubtotal(), 2) }} USD</strong>
             </div>
         @empty
-            <p class="es-1e36e7c9">{{ __('messages.no_products_in_order') }}</p>
+            <p class="order-item-muted">{{ __('messages.no_products_in_order') }}</p>
         @endforelse
     </section>
 

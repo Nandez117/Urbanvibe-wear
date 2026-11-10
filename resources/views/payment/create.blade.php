@@ -6,7 +6,7 @@
 <div class="auth-page">
     <div class="form-card">
         <h2>{{ __('messages.register_payment') }}</h2>
-        <p class="es-78c6aefe">
+        <p class="payment-subtitle">
             {{ __('messages.lbl_order_number') }}: {{ $viewData['order']->getOrderNumber() }} &mdash;
             ${{ number_format($viewData['order']->getTotalAmount(), 2) }} USD
         </p>

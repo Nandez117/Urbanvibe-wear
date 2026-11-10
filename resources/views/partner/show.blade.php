@@ -44,7 +44,7 @@
             <div class="detail-block">
                 <p><strong>{{ __('messages.lbl_stock') }}:</strong> {{ $viewData['product']['stock'] }}</p>
                 @if($viewData['product']['rating'])
-                    <p><strong>{{ __('messages.lbl_rating') }}:</strong> <i class="fa-solid fa-star es-58e8f199"></i> {{ $viewData['product']['rating'] }}/5</p>
+                    <p><strong>{{ __('messages.lbl_rating') }}:</strong> <i class="fa-solid fa-star badge-rating"></i> {{ $viewData['product']['rating'] }}/5</p>
                 @endif
             </div>
 
@@ -54,7 +54,7 @@
                 </a>
                 <form action="{{ route('partner.cart.add', ['id' => $viewData['product']['id']]) }}" method="POST" class="cart-inline-form">
                     @csrf
-                    <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']['stock'] > 0 ? $viewData['product']['stock'] : 1 }}" class="qty-input es-199b6f0e">
+                    <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']['stock'] > 0 ? $viewData['product']['stock'] : 1 }}" class="qty-input w-full">
                     <button type="submit" class="btn-buy">
                         <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
                     </button>

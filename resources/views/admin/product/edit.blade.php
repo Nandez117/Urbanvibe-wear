@@ -3,7 +3,7 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-9bde6a43">
+<div class="content-card content-card--lg">
     <h2 class="admin-title">{{ __('messages.edit_product') }} {{ $viewData['product']->getName() }}</h2>
 
     @if ($errors->any())
@@ -20,7 +20,7 @@
         @csrf
         @method('PUT')
         
-        <div class="es-85f50244">
+        <div class="form-grid-2">
             <div>
                 <label class="admin-form-label" for="name">{{ __('messages.lbl_name') }} *</label>
                 <input id="name" type="text" name="name" value="{{ old('name', $viewData['product']->getName()) }}" required class="admin-form-input">

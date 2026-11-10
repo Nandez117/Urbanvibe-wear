@@ -3,7 +3,7 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-9b7d0058">
+<div class="content-card">
     <h2>{{ __('messages.register_review') }}</h2>
 
     @if ($errors->any())
