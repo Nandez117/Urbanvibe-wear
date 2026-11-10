@@ -1310,6 +1310,26 @@ tr:last-child td {
     color: var(--text-secondary);
 }
 
+/* Contenedor y tarjeta del formulario de edición de perfil (U8) */
+.profile-page {
+    max-width: 480px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.profile-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+
+.profile-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
 /* ─── Utilidades V3: reemplazo de estilos inline por clases ─── */
 
 /* Imagen que llena su contenedor (tarjetas de producto / wishlist / partner) */

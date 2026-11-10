@@ -3,9 +3,9 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-ab6bc014">
-    <div class="es-3cc856c9">
-        <h2 class="es-6b5830b5">{{ __('messages.btn_edit') }}</h2>
+<div class="profile-page">
+    <div class="profile-card">
+        <h2 class="profile-title">{{ __('messages.btn_edit') }}</h2>
 
         @if ($errors->any())
             <div class="alert alert-error">
