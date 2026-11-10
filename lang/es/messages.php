@@ -119,6 +119,7 @@ return [
     'lbl_status' => 'Estado',
     'btn_register_payment' => 'Registrar pago',
     'status_paid' => 'Pagado',
+    'status_cancelled' => 'Cancelado',
     'no_orders' => 'No hay pedidos registrados.',
     'invoice_title' => 'Factura',
     'electronic_receipt' => 'Comprobante de Pago Electronico',

@@ -102,6 +102,17 @@
             @auth
                 <div class="es-b83ac13f">
                     <h3 class="es-4986ecf7">{{ __('messages.leave_review') }}</h3>
+
+                    @if ($errors->any())
+                        <div class="alert alert-error">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+
                     <form action="{{ route('review.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="from_product" value="1">
@@ -109,13 +120,19 @@
                         <input type="hidden" name="product_id" value="{{ $viewData['product']->getId() }}">
                         
                         <div class="es-4986ecf7">
-                            <label class="es-c1739c50">{{ __('messages.rating_1_5') }}:</label>
-                            <input type="number" name="rating" min="1" max="5" value="5" required class="es-14281b58">
+                            <label class="es-c1739c50" for="review-rating">{{ __('messages.rating_1_5') }}:</label>
+                            <input id="review-rating" type="number" name="rating" min="1" max="5" value="{{ old('rating', 5) }}" required class="es-14281b58">
+                            @error('rating')
+                                <span class="field-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         
                         <div class="es-4986ecf7">
-                            <label class="es-c1739c50">{{ __('messages.comment') }}:</label>
-                            <textarea name="comment" rows="3" required class="es-14281b58"></textarea>
+                            <label class="es-c1739c50" for="review-comment">{{ __('messages.comment') }}:</label>
+                            <textarea id="review-comment" name="comment" rows="3" required class="es-14281b58">{{ old('comment') }}</textarea>
+                            @error('comment')
+                                <span class="field-error">{{ $message }}</span>
+                            @enderror
                         </div>
                         
                         <button type="submit" class="btn-buy es-32aa8c52">{{ __('messages.publish_review') }}</button>

@@ -119,6 +119,7 @@ return [
     'lbl_status' => 'Status',
     'btn_register_payment' => 'Register Payment',
     'status_paid' => 'Paid',
+    'status_cancelled' => 'Cancelled',
     'no_orders' => 'No orders registered.',
     'invoice_title' => 'Invoice',
     'electronic_receipt' => 'Electronic Payment Receipt',

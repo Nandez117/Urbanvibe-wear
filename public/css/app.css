@@ -1461,3 +1461,11 @@ tr:last-child td {
 .weather-rec-title {
     margin: 0 0 0.5rem 0;
 }
+
+/* Mensaje de error por campo (@error) */
+.field-error {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--danger);
+}
