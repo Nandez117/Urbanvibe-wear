@@ -1412,3 +1412,52 @@ tr:last-child td {
     color: var(--text-secondary);
     cursor: not-allowed;
 }
+
+/* ─── V3 (cierre): clases para los últimos estilos inline ─── */
+
+/* Form en línea (botones borrar en tablas) */
+.form-inline {
+    display: inline;
+}
+
+/* Form de actualizar cantidad en el carrito */
+.cart-qty-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Input de cantidad pequeño (carrito) */
+.cart-qty-input {
+    width: 60px;
+    padding: 0.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Tipografía del clima */
+.weather-icon-lg {
+    font-size: 3.5rem;
+}
+
+.weather-temp {
+    font-size: 3.2rem;
+    margin: 0;
+}
+
+.weather-condition {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: 0.25rem 0;
+}
+
+/* Reset de márgenes para títulos/párrafos de cajas */
+.m-0 {
+    margin: 0;
+}
+
+.weather-rec-title {
+    margin: 0 0 0.5rem 0;
+}

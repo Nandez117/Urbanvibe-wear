@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank Rï¿½os Lï¿½pez  --}}
 
 @extends('layouts.app')
 @section('title', $viewData['title'])
@@ -23,11 +23,10 @@
                 <td>{{ $item['product']->getName() }}</td>
                 <td>${{ number_format($item['product']->getPrice(), 2) }}</td>
                 <td>
-                    <form action="{{ route('cart.update', ['id' => $item['product']->getId()]) }}" method="POST" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <form action="{{ route('cart.update', ['id' => $item['product']->getId()]) }}" method="POST" class="cart-qty-form">
                         @csrf
                         @method('PUT')
-                        <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}"
-                               style="width: 60px; padding: 0.25rem; border-radius: 6px; border: 1px solid var(--border-subtle); background-color: var(--surface-input); color: var(--text-primary);">
+                        <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}" class="cart-qty-input">
                         <button type="submit" class="btn es-8fb9526e">{{ __('messages.btn_update') }}</button>
                     </form>
                 </td>

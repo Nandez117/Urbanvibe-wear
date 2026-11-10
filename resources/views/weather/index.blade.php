@@ -19,11 +19,11 @@
 
         <div class="weather-main-display es-47118b4a">
             <div class="weather-icon-badge">
-                <i class="fa-solid {{ $viewData['weather']['icon'] }} es-35c98830" style="font-size: 3.5rem;"></i>
+                <i class="fa-solid {{ $viewData['weather']['icon'] }} es-35c98830 weather-icon-lg"></i>
             </div>
             <div class="weather-numbers">
-                <h1 class="weather-temp" style="font-size: 3.2rem; margin: 0;">{{ $viewData['weather']['temperature'] }}°C</h1>
-                <p class="weather-condition" style="font-size: 1.2rem; color: var(--text-secondary); margin: 0.25rem 0;">
+                <h1 class="weather-temp">{{ $viewData['weather']['temperature'] }}°C</h1>
+                <p class="weather-condition">
                     {{ __($viewData['weather']['condition']) }}
                 </p>
                 <small>{{ __('messages.weather_feels_like') }}: {{ $viewData['weather']['apparent_temperature'] }}°C</small>
@@ -45,11 +45,11 @@
         </div>
 
         <div class="weather-recommendation-box alert alert-success admin-mt-4">
-            <h4 style="margin: 0 0 0.5rem 0;">
+            <h4 class="weather-rec-title">
                 <i class="fa-solid fa-vest-patches"></i>
                 {{ __('messages.weather_recommendation_title') }}: {{ __($viewData['weather']['recommendation']['tag']) }}
             </h4>
-            <p style="margin: 0;">
+            <p class="m-0">
                 {{ __($viewData['weather']['recommendation']['description']) }}
             </p>
         </div>
