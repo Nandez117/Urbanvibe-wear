@@ -16,9 +16,18 @@ class ReviewController extends Controller
 {
     public function index(): View
     {
+        $user = auth()->user();
+
+        $query = Review::with(['user', 'product'])->orderBy('id', 'desc');
+
+        // Clients can only see their own reviews; admins see all of them.
+        if ($user->getRole() !== 'admin') {
+            $query->where('user_id', $user->getId());
+        }
+
         $viewData = [];
         $viewData['title'] = __('messages.review_index_title');
-        $viewData['reviews'] = Review::with(['user', 'product'])->orderBy('id', 'desc')->paginate(8);
+        $viewData['reviews'] = $query->paginate(8);
 
         return view('review.index')->with('viewData', $viewData);
     }
@@ -27,7 +36,6 @@ class ReviewController extends Controller
     {
         $viewData = [];
         $viewData['title'] = __('messages.review_create_title');
-        $viewData['users'] = User::all();
         $viewData['products'] = Product::all();
 
         return view('review.create')->with('viewData', $viewData);
@@ -38,7 +46,8 @@ class ReviewController extends Controller
         $review = new Review;
         $review->setRating((int) $request->input('rating'));
         $review->setComment($request->input('comment'));
-        $review->setUserId((int) $request->input('user_id'));
+        // The review always belongs to the authenticated user; never trust client input.
+        $review->setUserId((int) auth()->id());
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
@@ -51,10 +60,12 @@ class ReviewController extends Controller
 
     public function edit(string $id): View
     {
+        $review = Review::findOrFail($id);
+        $this->authorizeReviewAccess($review);
+
         $viewData = [];
         $viewData['title'] = __('messages.review_edit_title');
-        $viewData['review'] = Review::findOrFail($id);
-        $viewData['users'] = User::all();
+        $viewData['review'] = $review;
         $viewData['products'] = Product::all();
 
         return view('review.edit')->with('viewData', $viewData);
@@ -63,9 +74,10 @@ class ReviewController extends Controller
     public function update(UpdateReviewRequest $request, string $id): RedirectResponse
     {
         $review = Review::findOrFail($id);
+        $this->authorizeReviewAccess($review);
+
         $review->setRating((int) $request->input('rating'));
         $review->setComment($request->input('comment'));
-        $review->setUserId((int) $request->input('user_id'));
         $review->setProductId((int) $request->input('product_id'));
         $review->save();
 
@@ -75,8 +87,24 @@ class ReviewController extends Controller
     public function destroy(string $id): RedirectResponse
     {
         $review = Review::findOrFail($id);
+        $this->authorizeReviewAccess($review);
+
         $review->delete();
 
         return redirect()->route('review.index')->with('success', __('messages.review_delete_success'));
+    }
+
+    /**
+     * Only the review owner or an admin may edit/update/delete a review.
+     */
+    private function authorizeReviewAccess(Review $review): void
+    {
+        $user = auth()->user();
+
+        abort_unless(
+            $user->getRole() === 'admin' || $review->getUserId() === $user->getId(),
+            403,
+            __('messages.review_access_denied')
+        );
     }
 }

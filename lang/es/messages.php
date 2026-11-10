@@ -54,6 +54,7 @@ return [
     // Product
     'product_catalog_title' => 'Catálogo de Productos - Urbanvibe Wear',
     'access_denied_admin' => 'Acceso denegado. Solo los administradores pueden realizar esta acción.',
+    'review_access_denied' => 'No tienes permiso para modificar esta reseña.',
     'product_create_title' => 'Registrar Producto',
     'product_create_success' => 'Producto registrado exitosamente.',
     'product_update_success' => 'Producto actualizado exitosamente.',

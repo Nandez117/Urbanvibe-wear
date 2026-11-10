@@ -116,7 +116,6 @@
                     <form action="{{ route('review.store') }}" method="POST">
                         @csrf
                         <input type="hidden" name="from_product" value="1">
-                        <input type="hidden" name="user_id" value="{{ auth()->user()->getId() }}">
                         <input type="hidden" name="product_id" value="{{ $viewData['product']->getId() }}">
                         
                         <div class="mb-1">

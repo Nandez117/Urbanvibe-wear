@@ -18,7 +18,6 @@ class UpdateReviewRequest extends FormRequest
         return [
             'rating' => 'required|integer|min:1|max:5',
             'comment' => 'nullable|string',
-            'user_id' => 'required|integer|exists:users,id',
             'product_id' => 'required|integer|exists:products,id',
         ];
     }
