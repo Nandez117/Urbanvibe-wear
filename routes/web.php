@@ -93,12 +93,14 @@ Route::middleware('auth')->group(function () {
     Route::delete('/wishlist/{id}', [WishlistController::class, 'destroy'])->name('wishlist.destroy');
 });
 
-Route::get('/reviews', [ReviewController::class, 'index'])->name('review.index');
-Route::get('/reviews/create', [ReviewController::class, 'create'])->name('review.create');
-Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
-Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('review.update');
-Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+Route::middleware('auth')->group(function () {
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('review.index');
+    Route::get('/reviews/create', [ReviewController::class, 'create'])->name('review.create');
+    Route::post('/reviews', [ReviewController::class, 'store'])->name('review.store');
+    Route::get('/reviews/{id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
+    Route::put('/reviews/{id}', [ReviewController::class, 'update'])->name('review.update');
+    Route::delete('/reviews/{id}', [ReviewController::class, 'destroy'])->name('review.destroy');
+});
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(function () {
     Route::get('/users', [AdminUserController::class, 'index'])->name('user.index');

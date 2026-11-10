@@ -36,7 +36,7 @@
             <nav class="Drawer-sheet" tabindex="-1" aria-label="{{ __('messages.nav_home') }}">
                 <div class="drawer-header">
                     <span class="drawer-brand">Urbanvibe Wear</span>
-                    <button class="drawer-close-btn" id="drawer-close" aria-label="Cerrar menú">
+                    <button class="drawer-close-btn" id="drawer-close" aria-label="{{ __('messages.aria_close_menu') }}">
                         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -73,7 +73,7 @@
         <div class="header-left">
             <button id="drawer-open"
                     class="menu-toggle-btn"
-                    aria-label="Menú"
+                    aria-label="{{ __('messages.aria_open_menu') }}"
                     aria-expanded="false"
                     aria-controls="drawer">
                 <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
@@ -89,17 +89,22 @@
         </div>
 
         <div class="header-icons">
-            <div class="lang-switch-box">
-                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill {{ app()->getLocale() === 'es' ? 'lang-pill--active' : '' }}">ES</a>
-                <span class="lang-sep">|</span>
-                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill {{ app()->getLocale() === 'en' ? 'lang-pill--active' : '' }}">EN</a>
+            <div class="lang-switch" role="group" aria-label="{{ __('messages.lang_switch_label') }}">
+                <a href="{{ route('lang.switch', ['locale' => 'es']) }}"
+                   class="lang-option {{ app()->getLocale() === 'es' ? 'lang-option--active' : '' }}"
+                   @if(app()->getLocale() === 'es') aria-current="true" @endif
+                   title="{{ __('messages.lang_spanish') }}">Español</a>
+                <a href="{{ route('lang.switch', ['locale' => 'en']) }}"
+                   class="lang-option {{ app()->getLocale() === 'en' ? 'lang-option--active' : '' }}"
+                   @if(app()->getLocale() === 'en') aria-current="true" @endif
+                   title="{{ __('messages.lang_english') }}">English</a>
             </div>
 
-            <a href="{{ route('cart.index') }}" class="header-icon es-d85c4e64">
+            <a href="{{ route('cart.index') }}" class="header-icon cart-icon-wrap">
                 <i class="fa-solid fa-cart-shopping"></i>
                 @php($cartCount = app(\App\Services\Cart::class)->getCount())
                 @if ($cartCount > 0)
-                    <span class="es-35c98830">{{ $cartCount }}</span>
+                    <span class="badge-count">{{ $cartCount }}</span>
                 @endif
             </a>
             @auth
@@ -109,9 +114,9 @@
                 @else
                     <a href="{{ route('user.profile') }}" class="header-icon" title="{{ __('messages.my_profile') }}"><i class="fa-regular fa-user"></i></a>
                 @endif
-                <form action="{{ route('logout.store') }}" method="POST" class="es-3df0a395">
+                <form action="{{ route('logout.store') }}" method="POST" class="inline-form">
                     @csrf
-                    <button type="submit" class="header-icon es-338eb478" title="{{ __('messages.nav_logout') }}">
+                    <button type="submit" class="header-icon icon-button" title="{{ __('messages.nav_logout') }}">
                         <i class="fa-solid fa-right-from-bracket"></i>
                     </button>
                 </form>
@@ -136,6 +141,35 @@
 
         @yield('content')
     </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-brand-name">Urbanvibe Wear</p>
+                <p class="footer-tagline">{{ __('messages.footer_tagline') }}</p>
+            </div>
+            <div class="footer-col">
+                <h2 class="footer-heading">{{ __('messages.footer_quick_links') }}</h2>
+                <ul class="footer-links">
+                    <li><a href="{{ route('product.index') }}" class="footer-link">{{ __('messages.footer_catalog') }}</a></li>
+                    <li><a href="{{ route('order.index') }}" class="footer-link">{{ __('messages.footer_orders') }}</a></li>
+                    <li><a href="{{ route('review.index') }}" class="footer-link">{{ __('messages.footer_reviews') }}</a></li>
+                    <li><a href="{{ route('partner.index') }}" class="footer-link">{{ __('messages.footer_partner') }}</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2 class="footer-heading">{{ __('messages.footer_follow_us') }}</h2>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_facebook') }}"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_instagram') }}"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_twitter') }}"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; {{ date('Y') }} Urbanvibe Wear. {{ __('messages.footer_copyright') }}
+        </div>
+    </footer>
 
     <script>
         (function () {

@@ -166,28 +166,35 @@ header {
     color: var(--accent);
 }
 
-/* ─── Lang Switch ─────────────────────────────────────────── */
-.lang-switch-box {
-    display: flex;
-    gap: 0.25rem;
+/* ─── Lang Switch (conmutador de idioma segmentado) ───────── */
+.lang-switch {
+    display: inline-flex;
     align-items: center;
-    font-size: 0.82rem;
+    gap: 0.35rem;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px;
+    background-color: var(--surface-input);
+    font-size: 0.78rem;
     font-weight: 600;
 }
 
-.lang-pill {
+.lang-option {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color 0.2s;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    line-height: 1.4;
+    transition: color 0.2s, background-color 0.2s;
 }
 
-.lang-pill:hover,
-.lang-pill--active {
-    color: var(--accent);
+.lang-option:hover {
+    color: var(--text-primary);
 }
 
-.lang-sep {
-    color: var(--border-subtle);
+.lang-option--active {
+    color: var(--text-on-accent);
+    background-color: var(--accent);
 }
 
 /* ─── Navigation Drawer ───────────────────────────────────── */
@@ -548,6 +555,16 @@ tr:last-child td {
     flex-wrap: wrap;
 }
 
+/* Botones de acción (Editar/Eliminar) con tamaño uniforme en tablas */
+.actions-row .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
 .btn-sm {
     padding: 0.4rem 0.9rem;
     font-size: 0.85rem;
@@ -635,11 +652,32 @@ tr:last-child td {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--surface-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 90px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 .form-field input:focus,
-.form-field select:focus {
+.form-field select:focus,
+.form-field textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .catalog-layout {
@@ -658,6 +696,9 @@ tr:last-child td {
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
 }
 
 .catalog-sidebar h3 {
@@ -821,6 +862,15 @@ tr:last-child td {
     /* Darker blue */
 }
 
+/* Pie de acciones de la tarjeta de producto (catálogo/clima): mismo formato */
+.product-card-actions {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
 .admin-actions {
     display: flex;
     gap: 0.5rem;
@@ -943,6 +993,7 @@ tr:last-child td {
 
     .catalog-sidebar {
         width: 100%;
+        position: static;
     }
 }
 /* Extraídos de las vistas (Regla de Cero Inline Styles) */
@@ -1262,4 +1313,328 @@ tr:last-child td {
     font-weight: 600;
     background-color: #dbeafe;
     color: #1e40af;
+}
+
+/* ─── Formulario de perfil (user/edit) — V3: clases en vez de estilo inline ─── */
+.profile-field {
+    margin-bottom: 1rem;
+}
+
+.profile-field--last {
+    margin-bottom: 1.5rem;
+}
+
+.profile-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.profile-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+.profile-input:disabled {
+    background: var(--surface-elevated);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.profile-actions .btn {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-actions .btn-cancel {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+/* Contenedor y tarjeta del formulario de edición de perfil (U8) */
+.profile-page {
+    max-width: 480px;
+    margin: 2.5rem auto;
+    padding: 0 1.5rem;
+}
+
+.profile-card {
+    background: var(--surface);
+    border: 1px solid var(--border-subtle);
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+
+.profile-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-primary);
+}
+
+/* ─── Utilidades V3: reemplazo de estilos inline por clases ─── */
+
+/* Imagen que llena su contenedor (tarjetas de producto / wishlist / partner) */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botón ancho completo y centrado */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Botón contorno con color de acento (editar perfil) */
+.btn-outline-accent {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+/* Fila de acciones flexibles a partes iguales (wishlist) */
+.actions-split {
+    flex: 1;
+    text-align: center;
+}
+
+/* Form en línea para botones de añadir al carrito (partner/show) */
+.cart-inline-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+/* Botones de descarga de factura (payment/success) */
+.invoice-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-invoice {
+    padding: 0.85rem 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--text-on-accent);
+}
+
+.btn-invoice--pdf {
+    background: var(--danger);
+}
+
+.btn-invoice--csv {
+    background: var(--success);
+}
+
+/* Input de cantidad grande (product/show) */
+.qty-input--detail {
+    width: 80px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Separaciones superiores reutilizables */
+.mt-auto {
+    margin-top: auto;
+}
+
+.mt-sm {
+    margin-top: 0.75rem;
+}
+
+/* Formulario simple en columna (admin/category/edit) */
+.form-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-full {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.375rem;
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Campo de solo lectura (payment/create: monto fijo) */
+.input-readonly {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+/* ─── V3 (cierre): clases para los últimos estilos inline ─── */
+
+/* Form en línea (botones borrar en tablas) */
+.form-inline {
+    display: inline;
+}
+
+/* Form de actualizar cantidad en el carrito */
+.cart-qty-form {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+/* Input de cantidad pequeño (carrito) */
+.cart-qty-input {
+    width: 60px;
+    padding: 0.25rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Tipografía del clima */
+.weather-icon-lg {
+    font-size: 3.5rem;
+}
+
+.weather-temp {
+    font-size: 3.2rem;
+    margin: 0;
+}
+
+.weather-condition {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin: 0.25rem 0;
+}
+
+/* Reset de márgenes para títulos/párrafos de cajas */
+.m-0 {
+    margin: 0;
+}
+
+.weather-rec-title {
+    margin: 0 0 0.5rem 0;
+}
+
+/* Mensaje de error por campo (@error) */
+.field-error {
+    display: block;
+    margin-top: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--danger);
+}
+
+/* ─── Global Footer (U4) ───────────────────────────────────── */
+.site-footer {
+    margin-top: auto;
+    background-color: var(--surface);
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+.footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 1.5rem;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 2rem;
+}
+
+.footer-brand-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    max-width: 32ch;
+}
+
+.footer-heading {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent);
+}
+
+.footer-social {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.footer-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-subtle);
+    background-color: var(--surface-elevated);
+    color: var(--text-secondary);
+    text-decoration: none;
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.footer-social-link:hover {
+    color: var(--text-on-accent);
+    background-color: var(--accent);
+    border-color: var(--accent);
+}
+
+.footer-bottom {
+    border-top: 1px solid var(--border-subtle);
+    padding: 1.25rem 1.5rem;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
 }

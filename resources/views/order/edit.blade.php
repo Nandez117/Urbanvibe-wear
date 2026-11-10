@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ asset('css/order-edit.css') }}">
 @endpush
 
-<div class="es-9b7d0058">
+<div class="content-card">
     <h2>{{ __('messages.lbl_order_number') }}: {{ $viewData['order']->getOrderNumber() }}</h2>
 
     @if ($errors->any())
@@ -25,8 +25,11 @@
         @method('PUT')
         <div class="order-form-field">
             <label for="status">{{ __('messages.order_status') }}</label>
-            <select id="status" name="status" required class="es-de2eb184">
-                <option value="pending" {{ old('status', $viewData['order']->getStatus()) === 'pending' ? 'selected' : '' }}>{{ __('messages.status_pending') }}</option>
+            @php($currentStatus = old('status', $viewData['order']->getStatus()))
+            <select id="status" name="status" required class="form-input-order">
+                <option value="pending" {{ $currentStatus === 'pending' ? 'selected' : '' }}>{{ __('messages.status_pending') }}</option>
+                <option value="paid" {{ $currentStatus === 'paid' ? 'selected' : '' }}>{{ __('messages.status_paid') }}</option>
+                <option value="cancelled" {{ $currentStatus === 'cancelled' ? 'selected' : '' }}>{{ __('messages.status_cancelled') }}</option>
             </select>
         </div>
         <div class="order-actions">
@@ -38,12 +41,12 @@
     <section class="order-section">
         <h3>{{ __('messages.order_products') }}</h3>
         @forelse ($viewData['order']->getItems() as $item)
-            <div class="es-d2041e54">
+            <div class="order-item-row">
                 <span>{{ $item->getProduct()->getName() }} x {{ $item->getQuantity() }}</span>
                 <strong>${{ number_format($item->getSubtotal(), 2) }} USD</strong>
             </div>
         @empty
-            <p class="es-1e36e7c9">{{ __('messages.no_products_in_order') }}</p>
+            <p class="order-item-muted">{{ __('messages.no_products_in_order') }}</p>
         @endforelse
     </section>
 
@@ -57,7 +60,7 @@
                 <select id="product_id" name="product_id" required>
                     <option value="">{{ __('messages.select_product') }}</option>
                     @foreach ($viewData['products'] as $product)
-                        <option value="{{ $product->getId() }}" data-stock="{{ $product->getStock() }}">{{ $product->getName() }} · {{ $product->getStock() }} {{ __('messages.in_stock') }}</option>
+                        <option value="{{ $product->getId() }}" data-stock="{{ $product->getStock() }}" {{ (string) old('product_id') === (string) $product->getId() ? 'selected' : '' }}>{{ $product->getName() }} · {{ $product->getStock() }} {{ __('messages.in_stock') }}</option>
                     @endforeach
                 </select>
             </div>
@@ -65,7 +68,7 @@
                 <label for="quantity">{{ __('messages.quantity') }}</label>
                 <div class="quantity-control">
                     <button class="quantity-button" type="button" data-quantity-action="decrease" aria-label="{{ __('messages.decrease_quantity') }}">−</button>
-                    <input class="quantity-input" id="quantity" type="number" name="quantity" min="1" value="1" required>
+                    <input class="quantity-input" id="quantity" type="number" name="quantity" min="1" value="{{ old('quantity', 1) }}" required>
                     <button class="quantity-button" type="button" data-quantity-action="increase" aria-label="{{ __('messages.increase_quantity') }}">+</button>
                 </div>
             </div>

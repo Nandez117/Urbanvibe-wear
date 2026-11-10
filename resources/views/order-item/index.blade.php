@@ -31,7 +31,7 @@
                 <td>
                     <div class="actions-row">
                         <a href="{{ route('orderItem.edit', ['id' => $orderItem->getId()]) }}" class="btn btn-sm btn-secondary">{{ __('messages.btn_edit') }}</a>
-                        <form action="{{ route('orderItem.destroy', ['id' => $orderItem->getId()]) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('orderItem.destroy', ['id' => $orderItem->getId()]) }}" method="POST" class="form-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
@@ -44,7 +44,7 @@
     </table>
 
     @if (count($viewData['orderItems']) === 0)
-        <div class="es-80f9a287">{{ __('messages.no_order_details') }}</div>
+        <div class="empty-state">{{ __('messages.no_order_details') }}</div>
     @endif
 </div>
 @endsection

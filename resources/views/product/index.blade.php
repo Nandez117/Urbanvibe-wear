@@ -11,7 +11,7 @@
             
             <div class="sidebar-section">
                 <h4>{{ __('messages.sort_by') }}</h4>
-                <select name="sort" class="form-control es-a4156c53" onchange="this.form.submit()">
+                <select name="sort" class="form-control filter-select" onchange="this.form.submit()">
                     <option value="">{{ __('messages.relevance') }}</option>
                     <option value="newest" {{ request('sort') == 'newest' ? 'selected' : '' }}>{{ __('messages.latest_added') }}</option>
                     <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>{{ __('messages.price_low_high') }}</option>
@@ -31,10 +31,10 @@
 
             <div class="sidebar-section">
                 <h4>{{ __('messages.price_usd') }}</h4>
-                <div class="es-afcd7ed5">
-                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="{{ __('messages.min') }}" class="qty-input es-199b6f0e">
+                <div class="price-range">
+                    <input type="number" name="min_price" value="{{ request('min_price') }}" placeholder="{{ __('messages.min') }}" class="qty-input w-full">
                     <span>-</span>
-                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="{{ __('messages.max') }}" class="qty-input es-199b6f0e">
+                    <input type="number" name="max_price" value="{{ request('max_price') }}" placeholder="{{ __('messages.max') }}" class="qty-input w-full">
                 </div>
             </div>
             
@@ -49,8 +49,8 @@
                 @endforeach
             </div>
 
-            <button type="submit" class="btn es-8ec3300d">{{ __('messages.apply') }}</button>
-            <a href="{{ route('product.index') }}" class="btn es-e1463324">{{ __('messages.clear') }}</a>
+            <button type="submit" class="btn btn-full-mb">{{ __('messages.apply') }}</button>
+            <a href="{{ route('product.index') }}" class="btn btn-clear">{{ __('messages.clear') }}</a>
         </form>
     </aside>
 
@@ -65,7 +65,7 @@
             @foreach ($viewData['products'] as $product)
                 <div class="product-card">
                     <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="product-card-link">
-                        <div class="product-badge es-ee238a7d">
+                        <div class="product-badge card-badge-row">
                             <span>
                                 {{ $product->getStock() > 0 ? __('messages.in_stock') : __('messages.out_of_stock') }}
                             </span>
@@ -94,13 +94,13 @@
                                 </button>
                             </form>
                         @else
-                            <button class="btn-buy es-41baa003" disabled>{{ __('messages.out_of_stock') }}</button>
+                            <button class="btn-buy btn-disabled" disabled>{{ __('messages.out_of_stock') }}</button>
                         @endif
 
                         @auth
                             <form action="{{ route('wishlist.store', ['id' => $product->getId()]) }}" method="POST" class="wishlist-form">
                                 @csrf
-                                <button type="submit" class="btn es-9923df7b">
+                                <button type="submit" class="btn btn-outline">
                                     <i class="fa-regular fa-heart"></i> {{ __('messages.btn_add_wishlist') }}
                                 </button>
                             </form>
@@ -111,8 +111,8 @@
         </div>
         
         @if($viewData['products']->total() === 0)
-            <div class="es-c1d199b6">
-                <i class="fa-solid fa-box-open es-9aa1019a"></i>
+            <div class="empty-state--dashed">
+                <i class="fa-solid fa-box-open empty-state-icon"></i>
                 <p>{{ __('messages.no_products_catalog') }}</p>
             </div>
         @else

@@ -11,7 +11,7 @@
                     :src="$viewData['product']['image'] ?? null"
                     :alt="$viewData['product']['name']"
                     :category="$viewData['product']['category']"
-                    style="width: 100%; height: 100%; object-fit: cover;"
+                    class="img-cover"
                 />
             </div>
         </div>
@@ -44,7 +44,7 @@
             <div class="detail-block">
                 <p><strong>{{ __('messages.lbl_stock') }}:</strong> {{ $viewData['product']['stock'] }}</p>
                 @if($viewData['product']['rating'])
-                    <p><strong>{{ __('messages.lbl_rating') }}:</strong> <i class="fa-solid fa-star es-58e8f199"></i> {{ $viewData['product']['rating'] }}/5</p>
+                    <p><strong>{{ __('messages.lbl_rating') }}:</strong> <i class="fa-solid fa-star badge-rating"></i> {{ $viewData['product']['rating'] }}/5</p>
                 @endif
             </div>
 
@@ -52,9 +52,9 @@
                 <a href="{{ route('partner.index') }}" class="btn btn-secondary">
                     <i class="fa-solid fa-arrow-left"></i> {{ __('messages.btn_back_to_partner') }}
                 </a>
-                <form action="{{ route('partner.cart.add', ['id' => $viewData['product']['id']]) }}" method="POST" style="display: inline-flex; align-items: center; gap: 0.5rem; margin: 0;">
+                <form action="{{ route('partner.cart.add', ['id' => $viewData['product']['id']]) }}" method="POST" class="cart-inline-form">
                     @csrf
-                    <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']['stock'] > 0 ? $viewData['product']['stock'] : 1 }}" class="qty-input es-199b6f0e">
+                    <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']['stock'] > 0 ? $viewData['product']['stock'] : 1 }}" class="qty-input w-full">
                     <button type="submit" class="btn-buy">
                         <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
                     </button>

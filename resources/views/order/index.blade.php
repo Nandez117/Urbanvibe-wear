@@ -56,7 +56,7 @@
     </table>
 
     @if ($viewData['orders']->total() === 0)
-        <div class="es-80f9a287">
+        <div class="empty-state">
             <p class="admin-mb-4">{{ __('messages.no_orders') }}</p>
             @guest
                 <a href="{{ route('login.index') }}" class="btn">{{ __('messages.nav_login') }}</a>

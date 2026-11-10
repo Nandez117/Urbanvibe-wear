@@ -31,7 +31,7 @@
                 <td>
                     <div class="actions-row">
                         <a href="{{ route('review.edit', ['id' => $review->getId()]) }}" class="btn btn-sm btn-secondary">{{ __('messages.btn_edit') }}</a>
-                        <form action="{{ route('review.destroy', ['id' => $review->getId()]) }}" method="POST" style="display: inline;">
+                        <form action="{{ route('review.destroy', ['id' => $review->getId()]) }}" method="POST" class="form-inline">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-sm btn-danger">{{ __('messages.btn_delete') }}</button>
@@ -44,7 +44,7 @@
     </table>
 
     @if ($viewData['reviews']->total() === 0)
-        <div class="es-80f9a287">{{ __('messages.no_reviews') }}</div>
+        <div class="empty-state">{{ __('messages.no_reviews') }}</div>
     @elseif ($viewData['reviews']->hasPages())
         <div class="pagination-wrapper">
             {{ $viewData['reviews']->links() }}

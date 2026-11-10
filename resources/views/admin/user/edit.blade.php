@@ -21,31 +21,36 @@
         @method('PUT')
         
         <div>
-            <label class="admin-form-label">{{ __('messages.lbl_name') }}</label>
-            <input type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required class="admin-form-input">
+            <label class="admin-form-label" for="name">{{ __('messages.lbl_name') }}</label>
+            <input id="name" type="text" name="name" value="{{ old('name', $viewData['user']->getName()) }}" required class="admin-form-input">
+            @error('name')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div>
-            <label class="admin-form-label">{{ __('messages.email') }}</label>
-            <input type="email" name="email" value="{{ old('email', $viewData['user']->getEmail()) }}" required class="admin-form-input">
+            <label class="admin-form-label" for="email">{{ __('messages.email') }}</label>
+            <input id="email" type="email" name="email" value="{{ old('email', $viewData['user']->getEmail()) }}" required class="admin-form-input">
+            @error('email')<span class="field-error">{{ $message }}</span>@enderror
         </div>
         
         <div>
-            <label class="admin-form-label">{{ __('messages.phone') }}</label>
-            <input type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" class="admin-form-input">
+            <label class="admin-form-label" for="phone">{{ __('messages.phone') }}</label>
+            <input id="phone" type="tel" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}" class="admin-form-input">
+            @error('phone')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div>
-            <label class="admin-form-label">{{ __('messages.address_domicile') }}</label>
-            <textarea name="address" rows="3" class="admin-form-input">{{ old('address', $viewData['user']->getAddress()) }}</textarea>
+            <label class="admin-form-label" for="address">{{ __('messages.address_domicile') }}</label>
+            <input id="address" type="text" name="address" value="{{ old('address', $viewData['user']->getAddress()) }}" class="admin-form-input">
+            @error('address')<span class="field-error">{{ $message }}</span>@enderror
         </div>
         
         <div>
-            <label class="admin-form-label">{{ __('messages.role') }}</label>
-            <select name="role" class="admin-form-input">
+            <label class="admin-form-label" for="role">{{ __('messages.role') }}</label>
+            <select id="role" name="role" class="admin-form-input">
                 <option value="client" {{ old('role', $viewData['user']->getRole()) === 'client' ? 'selected' : '' }}>{{ __('messages.client') }}</option>
                 <option value="admin" {{ old('role', $viewData['user']->getRole()) === 'admin' ? 'selected' : '' }}>{{ __('messages.administrator') }}</option>
             </select>
+            @error('role')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div class="admin-action-bar">

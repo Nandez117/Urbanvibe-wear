@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank Rï¿½os Lï¿½pez  --}}
 
 @extends('layouts.app')
 @section('title', $viewData['title'])
@@ -6,7 +6,7 @@
 @section('content')
 <h2>{{ __('messages.cart_title') }}</h2>
 
-<div class="table-container es-185d793c">
+<div class="table-container mt-15">
     <table>
         <thead>
             <tr>
@@ -23,12 +23,11 @@
                 <td>{{ $item['product']->getName() }}</td>
                 <td>${{ number_format($item['product']->getPrice(), 2) }}</td>
                 <td>
-                    <form action="{{ route('cart.update', ['id' => $item['product']->getId()]) }}" method="POST" style="display: flex; gap: 0.5rem; align-items: center;">
+                    <form action="{{ route('cart.update', ['id' => $item['product']->getId()]) }}" method="POST" class="cart-qty-form">
                         @csrf
                         @method('PUT')
-                        <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}"
-                               style="width: 60px; padding: 0.25rem; border-radius: 6px; border: 1px solid var(--border-subtle); background-color: var(--surface-input); color: var(--text-primary);">
-                        <button type="submit" class="btn es-8fb9526e">{{ __('messages.btn_update') }}</button>
+                        <input type="number" name="quantity" value="{{ $item['quantity'] }}" min="1" max="{{ $item['product']->getStock() }}" class="cart-qty-input">
+                        <button type="submit" class="btn btn-sm">{{ __('messages.btn_update') }}</button>
                     </form>
                 </td>
                 <td>${{ number_format($item['subtotal'], 2) }}</td>
@@ -36,7 +35,7 @@
                     <form action="{{ route('cart.remove', ['id' => $item['product']->getId()]) }}" method="POST">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn es-f04bb9c8">{{ __('messages.btn_delete') }}</button>
+                        <button type="submit" class="btn btn-danger-bg">{{ __('messages.btn_delete') }}</button>
                     </form>
                 </td>
             </tr>
@@ -45,15 +44,15 @@
     </table>
 
     @if (count($viewData['items']) === 0)
-        <div class="es-80f9a287">{{ __('messages.cart_empty') }}</div>
+        <div class="empty-state">{{ __('messages.cart_empty') }}</div>
     @endif
 </div>
 
 @if (count($viewData['items']) > 0)
-<div class="es-78c73b27">
+<div class="cart-footer-bar">
     <a href="{{ route('product.index') }}" class="btn btn-secondary">{{ __('messages.btn_continue_shopping') }}</a>
-    <div class="es-62eecf9b">
-        <span class="es-9cf61fc5">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
+    <div class="cart-total-group">
+        <span class="cart-total-amount">{{ __('messages.lbl_total') }}: ${{ number_format($viewData['total'], 2) }}</span>
         <form action="{{ route('cart.checkout') }}" method="POST">
             @csrf
             <button type="submit" class="btn">{{ __('messages.btn_checkout') }}</button>
@@ -61,7 +60,7 @@
     </div>
 </div>
 @else
-<div class="es-cafd824d">
+<div class="text-center-mt">
     <a href="{{ route('product.index') }}" class="btn btn-secondary">{{ __('messages.nav_catalog') }}</a>
 </div>
 @endif

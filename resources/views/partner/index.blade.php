@@ -3,17 +3,17 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="partner-header-section es-c1d199b6">
-    <span class="role-badge-client es-35c98830">
+<div class="partner-header-section empty-state--dashed">
+    <span class="role-badge-client badge-count">
         <i class="fa-solid fa-handshake"></i> {{ __('messages.partner_badge') }}
     </span>
-    <h1 class="welcome-title es-9bde6a43">{{ __('messages.partner_store_title') }}</h1>
+    <h1 class="welcome-title content-card--lg">{{ __('messages.partner_store_title') }}</h1>
     <p class="welcome-subtitle">
         {{ __('messages.partner_source_label') }}: <strong>{{ $viewData['partnerSource'] }}</strong>
     </p>
 
     @if($viewData['isFallback'])
-        <div class="alert alert-info es-85f50244">
+        <div class="alert alert-info form-grid-2">
             <i class="fa-solid fa-circle-info"></i> {{ __('messages.partner_demo_mode_notice') }}
         </div>
     @endif
@@ -22,13 +22,13 @@
 <div class="product-grid">
     @forelse ($viewData['partnerProducts'] as $product)
         <div class="product-card">
-            <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="es-9ef793ad">
-                <div class="product-badge es-ee238a7d">
+            <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="form-input-full">
+                <div class="product-badge card-badge-row">
                     <span>
                         <i class="fa-solid fa-shop"></i> {{ \App\Models\Category::translateName($product['category']) }}
                     </span>
                     @if($product['rating'])
-                        <span class="es-58e8f199">
+                        <span class="badge-rating">
                             <i class="fa-solid fa-star"></i> {{ $product['rating'] }}
                         </span>
                     @endif
@@ -61,20 +61,20 @@
             </a>
 
             <div class="product-card-actions">
-                <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="btn btn-secondary es-9923df7b">
+                <a href="{{ route('partner.show', ['id' => $product['id']]) }}" class="btn btn-secondary btn-outline">
                     <i class="fa-solid fa-eye"></i> {{ __('messages.btn_details') }}
                 </a>
-                <form action="{{ route('partner.cart.add', ['id' => $product['id']]) }}" method="POST" class="es-9923df7b">
+                <form action="{{ route('partner.cart.add', ['id' => $product['id']]) }}" method="POST" class="btn-outline">
                     @csrf
                     <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="btn-buy" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn-buy btn-full">
                         <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
                     </button>
                 </form>
             </div>
         </div>
     @empty
-        <div class="es-c1d199b6">
+        <div class="empty-state--dashed">
             <p>{{ __('messages.partner_no_products') }}</p>
         </div>
     @endforelse

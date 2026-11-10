@@ -3,7 +3,7 @@
 @section('title', $viewData['title'])
 
 @section('content')
-<div class="es-9bde6a43">
+<div class="content-card content-card--lg">
     <h2 class="admin-title">{{ __('messages.register_product') }}</h2>
 
     @if ($errors->any())
@@ -19,14 +19,15 @@
     <form method="POST" enctype="multipart/form-data" action="{{ route('admin.product.store') }}" class="admin-form-container">
         @csrf
         
-        <div class="es-85f50244">
+        <div class="form-grid-2">
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_name') }} *</label>
-                <input type="text" name="name" value="{{ old('name') }}" required class="admin-form-input">
+                <label class="admin-form-label" for="name">{{ __('messages.lbl_name') }} *</label>
+                <input id="name" type="text" name="name" value="{{ old('name') }}" required class="admin-form-input">
+                @error('name')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_category') }} *</label>
-                <select name="category_id" required class="admin-form-input">
+                <label class="admin-form-label" for="category_id">{{ __('messages.lbl_category') }} *</label>
+                <select id="category_id" name="category_id" required class="admin-form-input">
                     <option value="">{{ __('messages.select_category') }}</option>
                     @foreach ($viewData['categories'] as $category)
                         <option value="{{ $category->getId() }}" {{ old('category_id') == $category->getId() ? 'selected' : '' }}>
@@ -34,47 +35,56 @@
                         </option>
                     @endforeach
                 </select>
+                @error('category_id')<span class="field-error">{{ $message }}</span>@enderror
             </div>
         </div>
 
         <div>
-            <label class="admin-form-label">{{ __('messages.lbl_description') }} *</label>
-            <textarea name="description" rows="3" required class="admin-form-input">{{ old('description') }}</textarea>
+            <label class="admin-form-label" for="description">{{ __('messages.lbl_description') }} *</label>
+            <textarea id="description" name="description" rows="3" required class="admin-form-input">{{ old('description') }}</textarea>
+            @error('description')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div class="admin-grid-3">
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_price') }} *</label>
-                <input type="number" step="0.01" min="0" name="price" value="{{ old('price') }}" required class="admin-form-input">
+                <label class="admin-form-label" for="price">{{ __('messages.lbl_price') }} *</label>
+                <input id="price" type="number" step="0.01" min="0" name="price" value="{{ old('price') }}" required class="admin-form-input">
+                @error('price')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_discount') }}</label>
-                <input type="number" step="0.01" min="0" max="100" name="discount" value="{{ old('discount', 0) }}" class="admin-form-input">
+                <label class="admin-form-label" for="discount">{{ __('messages.lbl_discount') }}</label>
+                <input id="discount" type="number" step="0.01" min="0" max="100" name="discount" value="{{ old('discount', 0) }}" class="admin-form-input">
+                @error('discount')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_stock') }} *</label>
-                <input type="number" min="0" name="stock" value="{{ old('stock', 0) }}" required class="admin-form-input">
+                <label class="admin-form-label" for="stock">{{ __('messages.lbl_stock') }} *</label>
+                <input id="stock" type="number" min="0" name="stock" value="{{ old('stock', 0) }}" required class="admin-form-input">
+                @error('stock')<span class="field-error">{{ $message }}</span>@enderror
             </div>
         </div>
 
         <div class="admin-grid-3">
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_size') }}</label>
-                <input type="text" name="size" value="{{ old('size') }}" placeholder="{{ __('messages.size_placeholder') }}" class="admin-form-input">
+                <label class="admin-form-label" for="size">{{ __('messages.lbl_size') }}</label>
+                <input id="size" type="text" name="size" value="{{ old('size') }}" placeholder="{{ __('messages.size_placeholder') }}" class="admin-form-input">
+                @error('size')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_color') }}</label>
-                <input type="text" name="color" value="{{ old('color') }}" class="admin-form-input">
+                <label class="admin-form-label" for="color">{{ __('messages.lbl_color') }}</label>
+                <input id="color" type="text" name="color" value="{{ old('color') }}" class="admin-form-input">
+                @error('color')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <div>
-                <label class="admin-form-label">{{ __('messages.lbl_material') }}</label>
-                <input type="text" name="material" value="{{ old('material') }}" class="admin-form-input">
+                <label class="admin-form-label" for="material">{{ __('messages.lbl_material') }}</label>
+                <input id="material" type="text" name="material" value="{{ old('material') }}" class="admin-form-input">
+                @error('material')<span class="field-error">{{ $message }}</span>@enderror
             </div>
         </div>
 
         <div class="admin-mt-4">
-            <label class="admin-form-label">{{ __('messages.lbl_product_image') }}</label>
-            <input type="file" name="image" accept="image/*" class="admin-form-input">
+            <label class="admin-form-label" for="image">{{ __('messages.lbl_product_image') }}</label>
+            <input id="image" type="file" name="image" accept="image/*" class="admin-form-input">
+            @error('image')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div class="admin-action-bar">
