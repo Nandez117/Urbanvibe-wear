@@ -32,7 +32,7 @@
     </div>
 
     <div class="es-938c88b9">
-        <a href="{{ route('user.edit') }}" class="btn" style="background: transparent; border: 1px solid var(--accent); color: var(--accent);">{{ __('messages.btn_edit') }}</a>
+        <a href="{{ route('user.edit') }}" class="btn btn-outline-accent">{{ __('messages.btn_edit') }}</a>
         <a href="{{ route('order.index') }}" class="btn">{{ __('messages.view_my_orders') }}</a>
         <a href="{{ route('home.index') }}" class="btn btn-secondary">{{ __('messages.back_to_store') }}</a>
     </div>

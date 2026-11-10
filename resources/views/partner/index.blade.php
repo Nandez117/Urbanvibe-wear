@@ -67,7 +67,7 @@
                 <form action="{{ route('partner.cart.add', ['id' => $product['id']]) }}" method="POST" class="es-9923df7b">
                     @csrf
                     <input type="hidden" name="quantity" value="1">
-                    <button type="submit" class="btn-buy" style="width: 100%; justify-content: center;">
+                    <button type="submit" class="btn-buy btn-full">
                         <i class="fa-solid fa-cart-shopping"></i> {{ __('messages.btn_add_cart') }}
                     </button>
                 </form>

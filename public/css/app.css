@@ -1263,3 +1263,152 @@ tr:last-child td {
     background-color: #dbeafe;
     color: #1e40af;
 }
+
+/* ─── Formulario de perfil (user/edit) — V3: clases en vez de estilo inline ─── */
+.profile-field {
+    margin-bottom: 1rem;
+}
+
+.profile-field--last {
+    margin-bottom: 1.5rem;
+}
+
+.profile-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+}
+
+.profile-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+.profile-input:disabled {
+    background: var(--surface-elevated);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}
+
+.profile-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.profile-actions .btn {
+    flex: 1;
+    text-align: center;
+}
+
+.profile-actions .btn-cancel {
+    background: transparent;
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+}
+
+/* ─── Utilidades V3: reemplazo de estilos inline por clases ─── */
+
+/* Imagen que llena su contenedor (tarjetas de producto / wishlist / partner) */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Botón ancho completo y centrado */
+.btn-full {
+    width: 100%;
+    justify-content: center;
+}
+
+/* Botón contorno con color de acento (editar perfil) */
+.btn-outline-accent {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+/* Fila de acciones flexibles a partes iguales (wishlist) */
+.actions-split {
+    flex: 1;
+    text-align: center;
+}
+
+/* Form en línea para botones de añadir al carrito (partner/show) */
+.cart-inline-form {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0;
+}
+
+/* Botones de descarga de factura (payment/success) */
+.invoice-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-invoice {
+    padding: 0.85rem 1.5rem;
+    font-weight: bold;
+    border-radius: 8px;
+    color: var(--text-on-accent);
+}
+
+.btn-invoice--pdf {
+    background: var(--danger);
+}
+
+.btn-invoice--csv {
+    background: var(--success);
+}
+
+/* Input de cantidad grande (product/show) */
+.qty-input--detail {
+    width: 80px;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Separaciones superiores reutilizables */
+.mt-auto {
+    margin-top: auto;
+}
+
+.mt-sm {
+    margin-top: 0.75rem;
+}
+
+/* Formulario simple en columna (admin/category/edit) */
+.form-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.input-full {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 0.375rem;
+    background: var(--surface-input);
+    color: var(--text-primary);
+}
+
+/* Campo de solo lectura (payment/create: monto fijo) */
+.input-readonly {
+    background-color: var(--surface);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+}

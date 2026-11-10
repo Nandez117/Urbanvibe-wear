@@ -31,7 +31,7 @@
                         :src="$wishlist->getProduct()->getImage() ? asset('storage/' . $wishlist->getProduct()->getImage()) : null"
                         :alt="$wishlist->getProduct()->getName()"
                         :category="$wishlist->getProduct()->getCategory()->getName()"
-                        style="width: 100%; height: 100%; object-fit: cover;"
+                        class="img-cover"
                     />
                 </div>
                 
@@ -49,8 +49,8 @@
                     </div>
                     
                     <div class="es-0ba2053e">
-                        <a href="{{ route('product.show', ['id' => $wishlist->getProduct()->getId()]) }}" class="btn" style="flex: 1; text-align: center;">{{ __('messages.btn_details') }}</a>
-                        <form action="{{ route('wishlist.destroy', ['id' => $wishlist->getId()]) }}" method="POST" style="flex: 1;">
+                        <a href="{{ route('product.show', ['id' => $wishlist->getProduct()->getId()]) }}" class="btn actions-split">{{ __('messages.btn_details') }}</a>
+                        <form action="{{ route('wishlist.destroy', ['id' => $wishlist->getId()]) }}" method="POST" class="actions-split">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn es-a03e6c58">{{ __('messages.btn_delete') }}</button>

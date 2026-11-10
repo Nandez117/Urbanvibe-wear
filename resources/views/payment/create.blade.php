@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank Rï¿½os Lï¿½pez  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 
@@ -26,7 +26,7 @@
             <div class="form-field">
                 <label for="amount">{{ __('messages.amount') }}</label>
                 <input id="amount" type="number" name="amount" min="0" step="0.01"
-                       value="{{ old('amount', $viewData['order']->getTotalAmount()) }}" required readonly style="background-color: var(--surface); color: var(--text-secondary); cursor: not-allowed;">
+                       value="{{ old('amount', $viewData['order']->getTotalAmount()) }}" required readonly class="input-readonly">
             </div>
             <div class="form-field">
                 <label for="method">{{ __('messages.payment_method') }}</label>

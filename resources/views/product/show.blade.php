@@ -14,7 +14,7 @@
                 :src="$viewData['product']->getImage() ? asset('storage/' . $viewData['product']->getImage()) : null"
                 :alt="$viewData['product']->getName()"
                 :category="$viewData['product']->getCategory()->getName()"
-                style="width: 100%; height: 100%; object-fit: cover;"
+                class="img-cover"
             />
         </div>
 
@@ -51,10 +51,10 @@
             </div>
 
             @if ($viewData['product']->getStock() > 0)
-                <form action="{{ route('cart.add', ['id' => $viewData['product']->getId()]) }}" method="POST" style="margin-top: auto;">
+                <form action="{{ route('cart.add', ['id' => $viewData['product']->getId()]) }}" method="POST" class="mt-auto">
                     @csrf
                     <div class="es-efd1e0b2">
-                        <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="qty-input" style="width: 80px; text-align: center; font-size: 1.2rem; padding: 0.5rem; border-radius: 6px; border: 1px solid var(--border-subtle); background: var(--surface-input); color: var(--text-primary);">
+                        <input type="number" name="quantity" value="1" min="1" max="{{ $viewData['product']->getStock() }}" class="qty-input qty-input--detail">
                         <button type="submit" class="btn-buy es-0aeb2496">
                             <i class="fa-solid fa-cart-plus"></i> {{ __('messages.add_to_cart') }}
                         </button>
@@ -65,9 +65,9 @@
             @endif
 
             @auth
-                <form action="{{ route('wishlist.store', ['id' => $viewData['product']->getId()]) }}" method="POST" style="margin-top: 0.75rem;">
+                <form action="{{ route('wishlist.store', ['id' => $viewData['product']->getId()]) }}" method="POST" class="mt-sm">
                     @csrf
-                    <button type="submit" class="btn btn-secondary" style="width: 100%;">
+                    <button type="submit" class="btn btn-secondary btn-full">
                         <i class="fa-regular fa-heart"></i> {{ __('messages.btn_add_wishlist') }}
                     </button>
                 </form>

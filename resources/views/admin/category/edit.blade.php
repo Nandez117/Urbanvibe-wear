@@ -16,13 +16,13 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.category.update', ['id' => $viewData['category']->getId()]) }}" style="display: flex; flex-direction: column; gap: 1rem;">
+    <form method="POST" action="{{ route('admin.category.update', ['id' => $viewData['category']->getId()]) }}" class="form-stacked">
         @csrf
         @method('PUT')
         
         <div>
             <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
-            <input type="text" name="name" value="{{ old('name', $viewData['category']->getName()) }}" required style="width: 100%; padding: 0.5rem; border: 1px solid var(--border-subtle); border-radius: 0.375rem; background: var(--surface-input); color: var(--text-primary);">
+            <input type="text" name="name" value="{{ old('name', $viewData['category']->getName()) }}" required class="input-full">
         </div>
 
         <div class="es-4a9a10b0">
