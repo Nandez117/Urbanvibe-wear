@@ -73,6 +73,8 @@ return [
     'ticker_shipping' => 'ENVÍO GRATIS DESDE $500.000',
     'ticker_returns' => '30 DÍAS PARA CAMBIOS',
     'nav_home' => 'Inicio',
+    'aria_open_menu' => 'Menú',
+    'aria_close_menu' => 'Cerrar menú',
     'nav_catalog' => 'Catálogo',
     'nav_cart' => 'Carrito',
     'nav_login' => 'Iniciar Sesión',

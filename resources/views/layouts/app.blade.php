@@ -36,7 +36,7 @@
             <nav class="Drawer-sheet" tabindex="-1" aria-label="{{ __('messages.nav_home') }}">
                 <div class="drawer-header">
                     <span class="drawer-brand">Urbanvibe Wear</span>
-                    <button class="drawer-close-btn" id="drawer-close" aria-label="Cerrar menú">
+                    <button class="drawer-close-btn" id="drawer-close" aria-label="{{ __('messages.aria_close_menu') }}">
                         <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                     </button>
                 </div>
@@ -73,7 +73,7 @@
         <div class="header-left">
             <button id="drawer-open"
                     class="menu-toggle-btn"
-                    aria-label="Menú"
+                    aria-label="{{ __('messages.aria_open_menu') }}"
                     aria-expanded="false"
                     aria-controls="drawer">
                 <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">

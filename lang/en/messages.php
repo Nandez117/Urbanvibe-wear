@@ -73,6 +73,8 @@ return [
     'ticker_shipping' => 'FREE SHIPPING FROM $500,000',
     'ticker_returns' => '30 DAYS FOR RETURNS',
     'nav_home' => 'Home',
+    'aria_open_menu' => 'Menu',
+    'aria_close_menu' => 'Close menu',
     'nav_catalog' => 'Catalogue',
     'nav_cart' => 'Cart',
     'nav_login' => 'Log in',
