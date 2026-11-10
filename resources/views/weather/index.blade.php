@@ -62,7 +62,7 @@
     <div class="product-grid">
         @foreach ($viewData['products'] as $product)
             <div class="product-card">
-                <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="form-input-full">
+                <a href="{{ route('product.show', ['id' => $product->getId()]) }}" class="product-card-link">
                     <div class="product-badge card-badge-row">
                         <span>{{ $product->getCategory()->getTranslatedName() }}</span>
                         <span class="badge-rating">

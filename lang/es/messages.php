@@ -133,7 +133,7 @@ return [
     'lbl_subtotal' => 'Subtotal',
     'lbl_total_paid' => 'Total Pagado',
     'invoice_footer' => 'Gracias por tu compra en Urbanvibe Wear. Si tienes alguna duda, contactanos a soporte@urbanvibe.com',
-    'reviews_title' => 'Resenas',
+    'reviews_title' => 'Reseñas',
     'lbl_user' => 'Usuario',
     'lbl_rating' => 'Calificacion',
     'lbl_comment' => 'Comentario',

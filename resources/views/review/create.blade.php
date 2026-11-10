@@ -18,16 +18,7 @@
 
     <form method="POST" action="{{ route('review.store') }}">
         @csrf
-        <div>
-            <label for="user_id">{{ __('messages.user_label') }}</label>
-            <select id="user_id" name="user_id" required>
-                <option value="">{{ __('messages.select_user') }}</option>
-                @foreach ($viewData['users'] as $user)
-                    <option value="{{ $user->getId() }}" {{ old('user_id') == $user->getId() ? 'selected' : '' }}>{{ $user->getName() }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div>
+        <div class="form-field">
             <label for="product_id">{{ __('messages.product_label') }}</label>
             <select id="product_id" name="product_id" required>
                 <option value="">{{ __('messages.select_product') }}</option>
@@ -35,17 +26,22 @@
                     <option value="{{ $product->getId() }}" {{ old('product_id') == $product->getId() ? 'selected' : '' }}>{{ $product->getName() }}</option>
                 @endforeach
             </select>
+            @error('product_id')<span class="field-error">{{ $message }}</span>@enderror
         </div>
-        <div>
+        <div class="form-field">
             <label for="rating">{{ __('messages.rating_label') }}</label>
             <input id="rating" type="number" name="rating" min="1" max="5" value="{{ old('rating') }}" required>
+            @error('rating')<span class="field-error">{{ $message }}</span>@enderror
         </div>
-        <div>
+        <div class="form-field">
             <label for="comment">{{ __('messages.comment_label') }}</label>
-            <textarea id="comment" name="comment">{{ old('comment') }}</textarea>
+            <textarea id="comment" name="comment" rows="4">{{ old('comment') }}</textarea>
+            @error('comment')<span class="field-error">{{ $message }}</span>@enderror
         </div>
-        <button type="submit" class="btn">{{ __('messages.register_review') }}</button>
-        <a href="{{ route('review.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
+        <div class="form-actions">
+            <button type="submit" class="btn">{{ __('messages.register_review') }}</button>
+            <a href="{{ route('review.index') }}" class="btn btn-secondary">{{ __('messages.cancel') }}</a>
+        </div>
     </form>
 </div>
 @endsection

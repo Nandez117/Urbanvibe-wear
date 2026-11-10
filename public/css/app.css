@@ -166,28 +166,35 @@ header {
     color: var(--accent);
 }
 
-/* ─── Lang Switch ─────────────────────────────────────────── */
-.lang-switch-box {
-    display: flex;
-    gap: 0.25rem;
+/* ─── Lang Switch (conmutador de idioma segmentado) ───────── */
+.lang-switch {
+    display: inline-flex;
     align-items: center;
-    font-size: 0.82rem;
+    gap: 0.35rem;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid var(--border-subtle);
+    border-radius: 9999px;
+    background-color: var(--surface-input);
+    font-size: 0.78rem;
     font-weight: 600;
 }
 
-.lang-pill {
+.lang-option {
     color: var(--text-secondary);
     text-decoration: none;
-    transition: color 0.2s;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    line-height: 1.4;
+    transition: color 0.2s, background-color 0.2s;
 }
 
-.lang-pill:hover,
-.lang-pill--active {
-    color: var(--accent);
+.lang-option:hover {
+    color: var(--text-primary);
 }
 
-.lang-sep {
-    color: var(--border-subtle);
+.lang-option--active {
+    color: var(--text-on-accent);
+    background-color: var(--accent);
 }
 
 /* ─── Navigation Drawer ───────────────────────────────────── */
@@ -548,6 +555,16 @@ tr:last-child td {
     flex-wrap: wrap;
 }
 
+/* Botones de acción (Editar/Eliminar) con tamaño uniforme en tablas */
+.actions-row .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 92px;
+    line-height: 1.2;
+    box-sizing: border-box;
+}
+
 .btn-sm {
     padding: 0.4rem 0.9rem;
     font-size: 0.85rem;
@@ -635,11 +652,32 @@ tr:last-child td {
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.form-field textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: var(--surface-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    min-height: 90px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
 .form-field input:focus,
-.form-field select:focus {
+.form-field select:focus,
+.form-field textarea:focus {
     outline: none;
     border-color: var(--accent);
     box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .catalog-layout {
@@ -658,6 +696,9 @@ tr:last-child td {
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid var(--border-subtle);
+    position: sticky;
+    top: 90px;
+    align-self: flex-start;
 }
 
 .catalog-sidebar h3 {
@@ -821,6 +862,15 @@ tr:last-child td {
     /* Darker blue */
 }
 
+/* Pie de acciones de la tarjeta de producto (catálogo/clima): mismo formato */
+.product-card-actions {
+    padding: 0 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
 .admin-actions {
     display: flex;
     gap: 0.5rem;
@@ -943,6 +993,7 @@ tr:last-child td {
 
     .catalog-sidebar {
         width: 100%;
+        position: static;
     }
 }
 /* Extraídos de las vistas (Regla de Cero Inline Styles) */
