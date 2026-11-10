@@ -1,4 +1,4 @@
-{{--  Yan Frank Ríos López  --}}
+{{--  Yan Frank Rï¿½os Lï¿½pez  --}}
 @extends('layouts.app')
 @section('title', $viewData['title'])
 @section('content')
@@ -10,10 +10,10 @@
         
         <div class="d-grid gap-3 es-c561bdf0">
             <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'pdf']) }}" class="btn" style="background: #ef4444; color: white; padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
+                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'pdf']) }}" class="btn" style="background: var(--danger); color: var(--text-on-accent); padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
                     <i class="fa-solid fa-file-pdf"></i> {{ __('messages.download_pdf') }}
                 </a>
-                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'csv']) }}" class="btn" style="background: #10b981; color: white; padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
+                <a href="{{ route('order.invoice', ['id' => $viewData['order']->getId(), 'format' => 'csv']) }}" class="btn" style="background: var(--success); color: var(--text-on-accent); padding: 0.85rem 1.5rem; font-weight: bold; border-radius: 8px;">
                     <i class="fa-solid fa-file-csv"></i> {{ __('messages.download_csv') }}
                 </a>
             </div>

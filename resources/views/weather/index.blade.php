@@ -23,7 +23,7 @@
             </div>
             <div class="weather-numbers">
                 <h1 class="weather-temp" style="font-size: 3.2rem; margin: 0;">{{ $viewData['weather']['temperature'] }}°C</h1>
-                <p class="weather-condition" style="font-size: 1.2rem; color: var(--text-muted); margin: 0.25rem 0;">
+                <p class="weather-condition" style="font-size: 1.2rem; color: var(--text-secondary); margin: 0.25rem 0;">
                     {{ __($viewData['weather']['condition']) }}
                 </p>
                 <small>{{ __('messages.weather_feels_like') }}: {{ $viewData['weather']['apparent_temperature'] }}°C</small>
