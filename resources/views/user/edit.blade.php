@@ -33,7 +33,7 @@
 
             <div class="profile-field">
                 <label class="profile-label" for="phone">{{ __('messages.lbl_phone') }}</label>
-                <input class="profile-input" id="phone" type="text" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}">
+                <input class="profile-input" id="phone" type="tel" name="phone" value="{{ old('phone', $viewData['user']->getPhone()) }}">
             </div>
 
             <div class="profile-field profile-field--last">

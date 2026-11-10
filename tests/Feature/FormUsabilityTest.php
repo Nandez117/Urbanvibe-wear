@@ -82,4 +82,47 @@ class FormUsabilityTest extends TestCase
 
         $this->assertStringContainsString('value="7"', $html);
     }
+
+    /** U6: el formulario de crear producto asocia labels (for/id) a sus campos. */
+    public function test_admin_product_create_has_associated_labels(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        Category::factory()->create();
+
+        $html = $this->actingAs($admin)
+            ->get('/admin/products/create')
+            ->assertOk()
+            ->getContent();
+
+        $this->assertStringContainsString('for="name"', $html);
+        $this->assertStringContainsString('id="name"', $html);
+        $this->assertStringContainsString('for="category_id"', $html);
+        $this->assertStringContainsString('id="description"', $html);
+    }
+
+    /** U9: el campo teléfono del registro usa type="tel". */
+    public function test_register_phone_is_type_tel(): void
+    {
+        $html = $this->get('/register')
+            ->assertOk()
+            ->getContent();
+
+        $this->assertStringContainsString('id="phone" type="tel"', $html);
+    }
+
+    /** U7: el formulario de editar usuario admin muestra errores por campo (@error). */
+    public function test_admin_user_edit_has_field_error_support(): void
+    {
+        $admin = User::factory()->create(['role' => 'admin']);
+        $target = User::factory()->create(['role' => 'client']);
+
+        // Fuerza un error de validación en 'name' y verifica que el input se conserva.
+        $this->actingAs($admin)
+            ->from('/admin/users/'.$target->getId().'/edit')
+            ->put('/admin/users/'.$target->getId(), [
+                'name' => '', // inválido: requerido
+                'email' => $target->getEmail(),
+            ])
+            ->assertSessionHasErrors('name');
+    }
 }

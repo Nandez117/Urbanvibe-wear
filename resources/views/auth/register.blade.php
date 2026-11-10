@@ -37,7 +37,7 @@
             </div>
             <div class="auth-field">
                 <label for="phone">{{ __('messages.phone') }}</label>
-                <input id="phone" type="text" name="phone" value="{{ old('phone') }}">
+                <input id="phone" type="tel" name="phone" value="{{ old('phone') }}">
             </div>
             <div class="auth-field">
                 <label for="address">{{ __('messages.address') }}</label>

@@ -21,8 +21,9 @@
         @method('PUT')
         
         <div>
-            <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
-            <input type="text" name="name" value="{{ old('name', $viewData['category']->getName()) }}" required class="input-full">
+            <label class="es-4e832e11" for="category-name">{{ __('messages.category_name') }}</label>
+            <input id="category-name" type="text" name="name" value="{{ old('name', $viewData['category']->getName()) }}" required class="input-full">
+            @error('name')<span class="field-error">{{ $message }}</span>@enderror
         </div>
 
         <div class="es-4a9a10b0">

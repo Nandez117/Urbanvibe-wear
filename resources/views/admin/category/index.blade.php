@@ -25,8 +25,9 @@
         <form method="POST" action="{{ route('admin.category.store') }}" class="es-f48bc238">
             @csrf
             <div>
-                <label class="es-4e832e11">{{ __('messages.category_name') }}</label>
-                <input type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('messages.ex_hoodie') }}" required class="es-9ef793ad">
+                <label class="es-4e832e11" for="category-name">{{ __('messages.category_name') }}</label>
+                <input id="category-name" type="text" name="name" value="{{ old('name') }}" placeholder="{{ __('messages.ex_hoodie') }}" required class="es-9ef793ad">
+                @error('name')<span class="field-error">{{ $message }}</span>@enderror
             </div>
             <button type="submit" class="btn">{{ __('messages.btn_create_category') }}</button>
         </form>
