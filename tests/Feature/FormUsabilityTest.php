@@ -83,6 +83,32 @@ class FormUsabilityTest extends TestCase
         $this->assertStringContainsString('value="7"', $html);
     }
 
+    /** BUG BD: una reseña válida debe guardarse sin error (tabla sin creation_date). */
+    public function test_valid_review_is_saved_without_db_error(): void
+    {
+        $user = User::factory()->create(['role' => 'client']);
+        $category = Category::factory()->create();
+        $product = Product::factory()->create(['category_id' => $category->getId()]);
+
+        $response = $this->actingAs($user)
+            ->from('/products/'.$product->getId())
+            ->post('/reviews', [
+                'from_product' => '1',
+                'user_id' => $user->getId(),
+                'product_id' => $product->getId(),
+                'rating' => 4,
+                'comment' => 'Reseña válida de prueba',
+            ]);
+
+        $response->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('reviews', [
+            'user_id' => $user->getId(),
+            'product_id' => $product->getId(),
+            'rating' => 4,
+            'comment' => 'Reseña válida de prueba',
+        ]);
+    }
+
     /** U6: el formulario de crear producto asocia labels (for/id) a sus campos. */
     public function test_admin_product_create_has_associated_labels(): void
     {
