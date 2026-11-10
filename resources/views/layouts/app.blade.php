@@ -89,10 +89,15 @@
         </div>
 
         <div class="header-icons">
-            <div class="lang-switch-box">
-                <a href="{{ route('lang.switch', ['locale' => 'es']) }}" class="lang-pill {{ app()->getLocale() === 'es' ? 'lang-pill--active' : '' }}">ES</a>
-                <span class="lang-sep">|</span>
-                <a href="{{ route('lang.switch', ['locale' => 'en']) }}" class="lang-pill {{ app()->getLocale() === 'en' ? 'lang-pill--active' : '' }}">EN</a>
+            <div class="lang-switch" role="group" aria-label="{{ __('messages.lang_switch_label') }}">
+                <a href="{{ route('lang.switch', ['locale' => 'es']) }}"
+                   class="lang-option {{ app()->getLocale() === 'es' ? 'lang-option--active' : '' }}"
+                   @if(app()->getLocale() === 'es') aria-current="true" @endif
+                   title="{{ __('messages.lang_spanish') }}">Español</a>
+                <a href="{{ route('lang.switch', ['locale' => 'en']) }}"
+                   class="lang-option {{ app()->getLocale() === 'en' ? 'lang-option--active' : '' }}"
+                   @if(app()->getLocale() === 'en') aria-current="true" @endif
+                   title="{{ __('messages.lang_english') }}">English</a>
             </div>
 
             <a href="{{ route('cart.index') }}" class="header-icon cart-icon-wrap">
