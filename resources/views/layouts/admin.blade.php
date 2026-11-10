@@ -14,17 +14,51 @@
 </head>
 <body>
 
-    <header class="admin-header">
+    <div class="Drawer" id="drawer" popover="manual">
+        <div class="Drawer-scroller">
+            <nav class="Drawer-sheet" tabindex="-1" aria-label="{{ __('messages.admin_panel') }}">
+                <div class="drawer-header">
+                    <span class="drawer-brand">Urbanvibe Wear</span>
+                    <button class="drawer-close-btn" id="drawer-close" aria-label="{{ __('messages.aria_close_menu') }}">
+                        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <ul class="drawer-nav-list">
+                    <li><a href="{{ route('admin.product.index') }}" class="drawer-nav-link {{ request()->routeIs('admin.product.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-shirt" aria-hidden="true"></i> {{ __('messages.products') }}
+                    </a></li>
+                    <li><a href="{{ route('admin.category.index') }}" class="drawer-nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">
+                        <i class="fa-solid fa-tags" aria-hidden="true"></i> {{ __('messages.categories') }}
+                    </a></li>
+                    <li><a href="{{ route('admin.user.index') }}" class="drawer-nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">
+                        <i class="fa-regular fa-user" aria-hidden="true"></i> {{ __('messages.users') }}
+                    </a></li>
+                    <li><a href="{{ route('home.index') }}" class="drawer-nav-link">
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> {{ __('messages.back_to_store') }}
+                    </a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <header>
         <div class="header-left">
-            <a href="{{ route('home.index') }}" class="logo">Urbanvibe Wear</a>
+            <button id="drawer-open"
+                    class="menu-toggle-btn"
+                    aria-label="{{ __('messages.aria_open_menu') }}"
+                    aria-expanded="false"
+                    aria-controls="drawer">
+                <svg aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
         </div>
 
-        <nav class="nav-links">
-            <a href="{{ route('home.index') }}" class="nav-link">{{ __('messages.back_to_store') }}</a>
-            <a href="{{ route('admin.product.index') }}" class="nav-link {{ request()->routeIs('admin.product.*') ? 'active' : '' }}">{{ __('messages.products') }}</a>
-            <a href="{{ route('admin.category.index') }}" class="nav-link {{ request()->routeIs('admin.category.*') ? 'active' : '' }}">{{ __('messages.categories') }}</a>
-            <a href="{{ route('admin.user.index') }}" class="nav-link {{ request()->routeIs('admin.user.*') ? 'active' : '' }}">{{ __('messages.users') }}</a>
-        </nav>
+        <div class="header-center">
+            <a href="{{ route('home.index') }}" class="logo">Urbanvibe Wear</a>
+        </div>
 
         <div class="header-icons">
             <div class="lang-switch-box">
@@ -102,6 +136,65 @@
             &copy; {{ date('Y') }} Urbanvibe Wear. {{ __('messages.footer_copyright') }}
         </div>
     </footer>
+
+    <script>
+        (function () {
+            const drawer = document.getElementById('drawer');
+            const openBtn = document.getElementById('drawer-open');
+            const closeBtn = document.getElementById('drawer-close');
+            if (!drawer || !openBtn) { return; }
+            const scroller = drawer.querySelector('.Drawer-scroller');
+            const sheet = drawer.querySelector('.Drawer-sheet');
+            const mainEl = document.querySelector('main');
+
+            async function openDrawer() {
+                drawer.showPopover();
+                if (!CSS.supports('scroll-initial-target', 'nearest')) {
+                    scroller.scrollTo({ left: scroller.offsetWidth, behavior: 'instant' });
+                    await new Promise(function (r) {
+                        requestAnimationFrame(function () { requestAnimationFrame(r); });
+                    });
+                }
+                scroller.scrollTo({ left: 0, behavior: 'auto' });
+            }
+
+            function closeDrawer() {
+                scroller.scrollTo({ left: scroller.offsetWidth, behavior: 'auto' });
+            }
+
+            var visibleThreshold = 1 / window.innerWidth;
+            var observer = new IntersectionObserver(function (entries) {
+                var entry = entries[entries.length - 1];
+                if (entry.intersectionRatio < visibleThreshold) {
+                    drawer.hidePopover();
+                    if (mainEl) { mainEl.inert = false; }
+                    openBtn.setAttribute('aria-expanded', 'false');
+                }
+                if (entry.intersectionRatio === 1) {
+                    if (mainEl) { mainEl.inert = true; }
+                    openBtn.setAttribute('aria-expanded', 'true');
+                    sheet.focus();
+                }
+            }, { root: drawer, threshold: [visibleThreshold, 1] });
+            observer.observe(sheet);
+
+            if (!CSS.supports('animation-timeline: scroll()')) {
+                scroller.addEventListener('scroll', function () {
+                    var ratio = 1 - scroller.scrollLeft / sheet.offsetWidth;
+                    drawer.style.setProperty('--drawer-backdrop', ratio);
+                });
+            }
+
+            openBtn.addEventListener('click', openDrawer);
+            if (closeBtn) { closeBtn.addEventListener('click', closeDrawer); }
+            drawer.addEventListener('click', function (event) {
+                if (!sheet.contains(event.target)) { closeDrawer(); }
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') { closeDrawer(); }
+            });
+        }());
+    </script>
 
 </body>
 </html>
