@@ -360,4 +360,17 @@ return [
     'partner_store_feature_title' => 'Partner Store Network',
     'partner_store_feature_desc' => 'Explore exclusive products integrated from our partner team\'s store.',
     'edit_category' => 'Edit Category',
+
+    // Footer
+    'footer_tagline' => 'Urban fashion with attitude. Designs that own the street.',
+    'footer_quick_links' => 'Quick links',
+    'footer_catalog' => 'Catalog',
+    'footer_orders' => 'Orders',
+    'footer_reviews' => 'Reviews',
+    'footer_partner' => 'Partner Store',
+    'footer_follow_us' => 'Follow us',
+    'footer_copyright' => 'All rights reserved.',
+    'footer_aria_facebook' => 'Follow us on Facebook',
+    'footer_aria_instagram' => 'Follow us on Instagram',
+    'footer_aria_twitter' => 'Follow us on Twitter',
 ];

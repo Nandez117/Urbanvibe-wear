@@ -137,6 +137,35 @@
         @yield('content')
     </main>
 
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <p class="footer-brand-name">Urbanvibe Wear</p>
+                <p class="footer-tagline">{{ __('messages.footer_tagline') }}</p>
+            </div>
+            <div class="footer-col">
+                <h2 class="footer-heading">{{ __('messages.footer_quick_links') }}</h2>
+                <ul class="footer-links">
+                    <li><a href="{{ route('product.index') }}" class="footer-link">{{ __('messages.footer_catalog') }}</a></li>
+                    <li><a href="{{ route('order.index') }}" class="footer-link">{{ __('messages.footer_orders') }}</a></li>
+                    <li><a href="{{ route('review.index') }}" class="footer-link">{{ __('messages.footer_reviews') }}</a></li>
+                    <li><a href="{{ route('partner.index') }}" class="footer-link">{{ __('messages.footer_partner') }}</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h2 class="footer-heading">{{ __('messages.footer_follow_us') }}</h2>
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_facebook') }}"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_instagram') }}"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_twitter') }}"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; {{ date('Y') }} Urbanvibe Wear. {{ __('messages.footer_copyright') }}
+        </div>
+    </footer>
+
     <script>
         (function () {
             const drawer = document.getElementById('drawer');
