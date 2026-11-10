@@ -157,7 +157,7 @@
                 <div class="footer-social">
                     <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_facebook') }}"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
                     <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_instagram') }}"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
-                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_twitter') }}"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                    <a href="#" class="footer-social-link" aria-label="{{ __('messages.footer_aria_twitter') }}"><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
