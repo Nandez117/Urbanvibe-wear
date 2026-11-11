@@ -40,6 +40,28 @@ class FormUsabilityTest extends TestCase
         $response->assertSessionHasInput('rating', 99);
     }
 
+    public function test_validation_errors_use_the_selected_language(): void
+    {
+        $user = User::factory()->create(['role' => 'client']);
+        $category = Category::factory()->create();
+        $product = Product::factory()->create(['category_id' => $category->getId()]);
+
+        $this->actingAs($user)
+            ->withSession(['locale' => 'es'])
+            ->from('/products/'.$product->getId())
+            ->post('/reviews', [
+                'from_product' => '1',
+                'user_id' => $user->getId(),
+                'product_id' => $product->getId(),
+                'rating' => 99,
+                'comment' => 'Comentario de prueba',
+            ])
+            ->assertSessionHasErrors('rating');
+
+        $error = session('errors')->getBag('default')->first('rating');
+        $this->assertStringContainsString('calificación', $error);
+    }
+
     /** U2: la vista de editar pedido ofrece los 3 estados válidos del sistema.
      *  Nota: edit() solo permite al dueño del pedido (where user_id = Auth::id). */
     public function test_order_edit_shows_all_valid_statuses(): void

@@ -6,13 +6,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AddToCartRequest;
 use App\Http\Requests\UpdateCartRequest;
-use App\Models\Order;
 use App\Models\Product;
 use App\Services\Cart;
 use App\Services\OrderService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 class CartController extends Controller
@@ -67,22 +65,11 @@ class CartController extends Controller
             return redirect()->route('cart.index')->with('error', __('messages.cart_empty'));
         }
 
-        $order = new Order;
-        $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setTotalAmount($this->cart->getTotal());
-        $order->setStatus('Pendiente');
-        $order->setUserId(Auth::id());
-        $order->save();
-
-        foreach ($items as $item) {
-            $orderItem = new OrderItem;
-            $orderItem->setQuantity($item['quantity']);
-            $orderItem->setUnitPrice($item['product']->getPrice());
-            $orderItem->setSubtotal($item['subtotal']);
-            $orderItem->setProductId($item['product']->getId());
-            $orderItem->setOrderId($order->getId());
-            $orderItem->save();
-        }
+        $order = $this->orderService->createOrderFromCart(
+            $items,
+            $this->cart->getTotal(),
+            (int) Auth::id(),
+        );
 
         $this->cart->clear();
 

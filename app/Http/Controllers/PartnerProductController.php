@@ -58,18 +58,18 @@ class PartnerProductController extends Controller
             return redirect()->route('partner.index')->with('error', __('messages.partner_product_not_found'));
         }
 
-        $categoryName = $partnerProduct['category'] ?? 'Tecnología';
+        $categoryName = $partnerProduct['category'] ?? __('messages.partner_default_category');
         $category = Category::firstOrCreate(['name' => $categoryName]);
 
         $product = Product::firstOrCreate(
             ['name' => $partnerProduct['name']],
             [
-                'description' => $partnerProduct['description'] ?? 'Producto importado de tienda aliada',
+                'description' => $partnerProduct['description'] ?? __('messages.partner_default_description'),
                 'price' => (float) ($partnerProduct['final_price'] ?? $partnerProduct['price']),
                 'discount' => (float) ($partnerProduct['discount'] ?? 0),
-                'size' => 'Única',
-                'color' => 'Default',
-                'material' => 'Tecnología',
+                'size' => __('messages.partner_one_size'),
+                'color' => __('messages.partner_default_value'),
+                'material' => __('messages.partner_default_category'),
                 'stock' => max(1, (int) ($partnerProduct['stock'] ?? 10)),
                 'image' => $partnerProduct['image'] ?? 'products/default.png',
                 'category_id' => $category->getId(),

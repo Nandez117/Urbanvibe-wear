@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav class="pagination-nav" aria-label="Pagination">
+    <nav class="pagination-nav" aria-label="{{ __('pagination.label') }}">
         <ul class="pagination">
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true" aria-label="{{ __('pagination.previous') }}">
@@ -49,4 +49,3 @@
         </ul>
     </nav>
 @endif
-

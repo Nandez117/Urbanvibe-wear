@@ -54,6 +54,15 @@ class ProductApiTest extends TestCase
             ->assertJsonPath('data.id', $product->getId());
     }
 
+    public function test_api_not_found_message_uses_the_current_locale(): void
+    {
+        $this->app->setLocale('es');
+
+        $this->getJson('/api/v1/products/999999')
+            ->assertNotFound()
+            ->assertJsonPath('message', 'No se encontró el producto.');
+    }
+
     public function test_api_products_flat_format_for_external_teams(): void
     {
         $category = Category::factory()->create();

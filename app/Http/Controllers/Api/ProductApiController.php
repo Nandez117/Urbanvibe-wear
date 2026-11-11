@@ -67,7 +67,7 @@ class ProductApiController extends Controller
                     'price' => number_format((float) $p['final_price'], 2, '.', ''),
                     'stock' => $p['stock'],
                     'brand' => 'Urbanvibe Wear',
-                    'category' => $p['category']['name'] ?? 'Ropa Urbana',
+                    'category' => $p['category']['name'] ?? __('messages.api_default_category'),
                     'url' => $p['url'],
                     'image' => $p['image'],
                 ];
@@ -78,7 +78,7 @@ class ProductApiController extends Controller
 
         return response()->json([
             'status' => 'success',
-            'team' => 'Equipo 3 - Urbanvibe Wear',
+            'team' => __('messages.api_team'),
             'count' => $products->count(),
             'data' => $products,
         ], 200);
@@ -91,7 +91,7 @@ class ProductApiController extends Controller
         if (! $product) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Product not found',
+                'message' => __('messages.api_product_not_found'),
             ], 404);
         }
 
@@ -100,7 +100,7 @@ class ProductApiController extends Controller
         $reviews = $product->getReviews()->map(function ($review) {
             return [
                 'id' => $review->getId(),
-                'author' => $review->getUser() ? $review->getUser()->getName() : 'Anonymous',
+                'author' => $review->getUser() ? $review->getUser()->getName() : __('messages.api_anonymous_author'),
                 'rating' => $review->getRating(),
                 'comment' => $review->getComment(),
                 'created_at' => $review->getCreatedAt(),
@@ -109,7 +109,7 @@ class ProductApiController extends Controller
 
         $response = [
             'status' => 'success',
-            'team' => 'Equipo 3 - Urbanvibe Wear',
+            'team' => __('messages.api_team'),
             'data' => [
                 'id' => $product->getId(),
                 'name' => $product->getName(),
@@ -145,7 +145,7 @@ class ProductApiController extends Controller
                 'price' => number_format((float) $item['final_price'], 2, '.', ''),
                 'stock' => $item['stock'],
                 'brand' => 'Urbanvibe Wear',
-                'category' => $item['category']['name'] ?? 'Ropa Urbana',
+                'category' => $item['category']['name'] ?? __('messages.api_default_category'),
                 'url' => $item['url'],
                 'image' => $item['image'],
             ], 200);

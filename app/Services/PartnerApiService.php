@@ -28,7 +28,7 @@ class PartnerApiService
 
                 if (is_array($items) && ! empty($items)) {
                     return [
-                        'source' => $json['team'] ?? 'Tienda Aliada (Equipo Precedente)',
+                        'source' => $json['team'] ?? __('messages.partner_source_precedent'),
                         'is_fallback' => false,
                         'products' => $this->normalizeProducts($items),
                     ];
@@ -39,7 +39,7 @@ class PartnerApiService
         }
 
         return [
-            'source' => 'Equipo 2 - Tienda de Tecnología (Catálogo Sincronizado)',
+            'source' => __('messages.partner_source_fallback'),
             'is_fallback' => true,
             'products' => $this->getFallbackProducts(),
         ];
@@ -82,15 +82,17 @@ class PartnerApiService
 
     private function normalizeSingleProduct(array $item): array
     {
-        $category = 'General';
+        $category = __('messages.partner_category_general');
         if (isset($item['category'])) {
-            $category = is_array($item['category']) ? ($item['category']['name'] ?? 'General') : (string) $item['category'];
+            $category = is_array($item['category'])
+                ? ($item['category']['name'] ?? __('messages.partner_category_general'))
+                : (string) $item['category'];
         }
 
         return [
             'id' => (int) ($item['id'] ?? rand(100, 999)),
-            'name' => (string) ($item['name'] ?? 'Producto Aliado'),
-            'description' => (string) ($item['description'] ?? 'Producto suministrado por la tienda aliada del equipo precedente.'),
+            'name' => (string) ($item['name'] ?? __('messages.partner_default_product_name')),
+            'description' => (string) ($item['description'] ?? __('messages.partner_default_product_description')),
             'price' => (float) ($item['price'] ?? 0),
             'discount' => (float) ($item['discount'] ?? 0),
             'final_price' => (float) ($item['final_price'] ?? $item['price'] ?? 0),

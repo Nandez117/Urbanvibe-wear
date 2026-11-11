@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Payment;
 use App\Services\Payments\PaymentGatewayFactory;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class OrderService
@@ -21,24 +22,26 @@ class OrderService
 
     public function createOrderFromCart(array $items, float $totalAmount, int $userId): Order
     {
-        $order = new Order;
-        $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
-        $order->setTotalAmount($totalAmount);
-        $order->setStatus('pending');
-        $order->setUserId($userId);
-        $order->save();
+        return DB::transaction(function () use ($items, $totalAmount, $userId): Order {
+            $order = new Order;
+            $order->setOrderNumber('ORD-'.strtoupper(Str::random(10)));
+            $order->setTotalAmount($totalAmount);
+            $order->setStatus('pending');
+            $order->setUserId($userId);
+            $order->save();
 
-        foreach ($items as $item) {
-            $orderItem = new OrderItem;
-            $orderItem->setQuantity($item['quantity']);
-            $orderItem->setUnitPrice($item['product']->getPrice());
-            $orderItem->setSubtotal($item['subtotal']);
-            $orderItem->setProductId($item['product']->getId());
-            $orderItem->setOrderId($order->getId());
-            $orderItem->save();
-        }
+            foreach ($items as $item) {
+                $orderItem = new OrderItem;
+                $orderItem->setQuantity($item['quantity']);
+                $orderItem->setUnitPrice($item['product']->getPrice());
+                $orderItem->setSubtotal($item['subtotal']);
+                $orderItem->setProductId($item['product']->getId());
+                $orderItem->setOrderId($order->getId());
+                $orderItem->save();
+            }
 
-        return $order;
+            return $order;
+        });
     }
 
     public function processPayment(Order $order, array $paymentData): Payment
